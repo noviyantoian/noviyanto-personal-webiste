@@ -141,7 +141,6 @@ const businessSchema = {
       worstRating: 1,
     },
     reviewBody: r.text,
-    itemReviewed: { '@id': `${URL}#business` },
   })),
 }
 
