@@ -13,6 +13,11 @@ import WebsiteProcess from '../_components/WebsiteProcess'
 
 import SemarangLocal from './_components/SemarangLocal'
 import SemarangAuthor from './_components/SemarangAuthor'
+import SemarangBusinessTypes from './_components/SemarangBusinessTypes'
+import SemarangTestimonials, {
+  TESTIMONIAL_REVIEWS,
+  TESTIMONIAL_AGGREGATE,
+} from './_components/SemarangTestimonials'
 
 const PATH = '/layanan/website/semarang'
 const URL = `${SITE.url}${PATH}`
@@ -91,6 +96,7 @@ const serviceSchema = {
     name: 'Noviyanto',
     url: SITE.url,
     jobTitle: 'Web Developer & Digital Growth Partner',
+    image: `${SITE.url}/images/noviyanto-profile.webp`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE.address.line,
@@ -111,6 +117,25 @@ const serviceSchema = {
     audienceType:
       'UMKM, profesional, dan bisnis menengah di Kota Semarang dan sekitarnya',
   },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: TESTIMONIAL_AGGREGATE.rating.toFixed(1),
+    reviewCount: TESTIMONIAL_AGGREGATE.count,
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: TESTIMONIAL_REVIEWS.map((r) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: r.author },
+    datePublished: r.date,
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: r.rating,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    reviewBody: r.text,
+  })),
 }
 
 const faqSchema = {
@@ -187,11 +212,15 @@ export default function SemarangWebsitePage() {
 
       <SemarangLocal />
 
+      <SemarangAuthor />
+
+      <SemarangBusinessTypes />
+
       <WebsiteApproach />
 
       <WebsiteIncluded />
 
-      <SemarangAuthor />
+      <SemarangTestimonials />
 
       <WebsiteProcess />
 
