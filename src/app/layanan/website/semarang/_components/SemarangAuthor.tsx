@@ -30,13 +30,13 @@ export default function SemarangAuthor() {
       <div className="container-wide">
         <div className="grid lg:grid-cols-[auto_1fr] gap-10 lg:gap-16 items-start">
           <div className="flex-shrink-0">
-            <div className="relative w-56 h-56 lg:w-72 lg:h-72 rounded-3xl overflow-hidden bg-[#F3F4F6] border border-gray-200 shadow-sm">
+            <div className="relative w-56 h-72 lg:w-72 lg:h-96 rounded-3xl overflow-hidden bg-[#F3F4F6] border border-gray-200 shadow-sm">
               <Image
                 src="/images/noviyanto-profile.webp"
                 alt="Foto Noviyanto — Web Developer & Digital Growth Partner berbasis di Semarang"
                 fill
                 sizes="(min-width: 1024px) 288px, 224px"
-                className="object-cover"
+                className="object-cover object-top"
                 priority={false}
               />
             </div>

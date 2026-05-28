@@ -16,25 +16,28 @@ Positioning: bukan vendor website biasa, tapi partner yang bantu bisnis tumbuh d
 
 ### Color Palette
 ```
-Background:     #0C0C0C   (near black, main bg)
-Surface 1:      #141414   (card bg)
-Surface 2:      #1E1E1E   (elevated card, hover)
-Surface 3:      #262626   (border, subtle divider)
-Text Primary:   #FAFAFA   (headings)
-Text Secondary: #A3A3A3   (body, description)
-Text Muted:     #525252   (placeholder, disabled)
+Background:     #FFFFFF   (white, main bg)
+Surface 1:      #F9FAFB   (card bg, section alternate)
+Surface 2:      #F3F4F6   (elevated card, hover)
+Surface 3:      #E5E7EB   (border, subtle divider)
+Text Primary:   #111827   (headings)
+Text Secondary: #6B7280   (body, description)
+Text Muted:     #9CA3AF   (placeholder, disabled)
 Accent:         #F59E0B   (amber — primary CTA, highlights)
 Accent Warm:    #F97316   (orange — secondary accent, gradients)
-Accent Glow:    #FDE68A   (light amber for glow effects)
+Accent Dark:    #D97706   (amber darker, hover state CTA)
 Success:        #22C55E
 Error:          #EF4444
-White:          #FFFFFF
+Black:          #111827
 ```
 
 ### Typography
-- **Display/Heading**: Plus Jakarta Sans (700, 800) — pakai via next/font
-- **Body**: Inter (400, 500, 600) — pakai via next/font
+- **Display/Heading**: Clash Display (500, 600, 700) — dari Fontshare, pakai via next/font/local
+- **Body**: Satoshi (400, 500, 600) — dari Fontshare, pakai via next/font/local
 - Scale: 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 48 / 60 / 72px
+- Font files wajib diletakkan di: `public/fonts/ClashDisplay/` dan `public/fonts/Satoshi/`
+- Download dari: https://www.fontshare.com/fonts/clash-display dan https://www.fontshare.com/fonts/satoshi
+- Format yang dipakai: `.otf` (sesuai yang tersedia di Fontshare)
 
 ### Spacing & Radius
 - Section padding: `py-20 lg:py-32` (160px desktop, 80px mobile)
@@ -173,6 +176,66 @@ Selalu gunakan `cn()` dari `@/lib/utils` untuk conditional classes:
 import { cn } from '@/lib/utils'
 className={cn('base', condition && 'conditional', className)}
 ```
+
+### Icon Convention (WAJIB)
+
+**JANGAN gunakan emoji** (🏠 🏢 ✈️ dll.) sebagai icon UI. Emoji render berbeda di tiap OS/browser, tidak bisa dikontrol warnanya, dan tidak konsisten dengan accent palette.
+
+**Selalu gunakan `lucide-react`** untuk semua icon — sudah ter-install, tree-shakeable, monoline, scaleable, dan bisa di-tint dengan accent amber.
+
+```tsx
+// BENAR
+import { HeartPulse, Building2, Wrench } from 'lucide-react'
+
+const items = [
+  { icon: HeartPulse, name: 'Home Service' },
+  { icon: Building2, name: 'Office' },
+] as const
+
+{items.map(({ icon: Icon, name }) => (
+  <span className="inline-flex w-11 h-11 items-center justify-center
+                   rounded-xl bg-amber-50 border border-amber-200
+                   text-amber-600">
+    <Icon className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
+  </span>
+))}
+
+// SALAH
+const items = [{ icon: '🏠', name: 'Home Service' }]
+<span>{item.icon}</span>
+```
+
+**Pattern container icon (default)**:
+- Size: `w-11 h-11` (44px touch target friendly)
+- Radius: `rounded-xl`
+- Background: `bg-amber-50` + border `border-amber-200`
+- Color: `text-amber-600`
+- Icon size: `w-5 h-5`
+- Stroke: `strokeWidth={1.75}`
+- Selalu tambah `aria-hidden="true"` jika ada label text di samping
+
+**Variant lain** (gunakan jika kebutuhan beda):
+- Subtle: `bg-[#F9FAFB]` + `text-amber-600` tanpa border
+- Inverse: `bg-amber-500` + `text-white` (untuk CTA / emphasis)
+- Mono: `text-[#6B7280]` (untuk metadata/inline)
+
+**Mapping industri standar** (reusable, hindari pilih ulang):
+| Industri | Icon |
+|---|---|
+| Home Service / Massage | `HeartPulse` |
+| Office / Coworking | `Building2` |
+| Travel / Tour / Rental | `Plane` |
+| Hukum / Legal | `Scale` |
+| Jewelry / Perhiasan | `Gem` |
+| E-commerce / Retail | `ShoppingBag` |
+| IT / SaaS | `Code2` |
+| Automotive / Workshop | `Wrench` |
+| Web Dev | `Globe` atau `Layout` |
+| SEO | `Search` atau `TrendingUp` |
+| Google Ads / Marketing | `Megaphone` atau `Target` |
+| AI / Otomasi | `Sparkles` atau `Bot` |
+| Mobile App | `Smartphone` |
+| Maintenance | `Settings` atau `ShieldCheck` |
 
 ---
 
@@ -345,6 +408,8 @@ seo: tambah structured data service pages
 - Jangan gunakan `<img>` — selalu `next/image`
 - Jangan tambah animasi yang bloking tanpa `prefers-reduced-motion` fallback
 - Jangan lupa canonical URL di setiap halaman
+- **Jangan gunakan dark mode** — website ini light mode only, tidak ada class `dark:` sama sekali
+- Jangan gunakan warna background gelap (#0C0C0C, #141414, dll.) — sudah diganti dengan light palette
 
 ---
 
@@ -353,4 +418,4 @@ seo: tambah structured data service pages
 - WA: lihat `NEXT_PUBLIC_WA_NUMBER` di env
 - Copywriting: `../copywriting/*.md` (folder sibling)
 - PRD: `../PRD_Noviyanto_v2.0_Final.docx`
-- Design inspiration: Dribbble personal brand + agency lokal Indonesia
+- Design inspiration: Stripe, Webflow — clean, bold typography, generous whitespace, light background

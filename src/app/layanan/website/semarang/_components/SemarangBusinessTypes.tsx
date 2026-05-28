@@ -1,58 +1,81 @@
 import Image from 'next/image'
+import {
+  HeartPulse,
+  Building2,
+  Plane,
+  Scale,
+  Gem,
+  ShoppingBag,
+  Code2,
+  Wrench,
+} from 'lucide-react'
 
 const BUSINESS_TYPES = [
   {
-    icon: '🏠',
+    icon: HeartPulse,
     name: 'Home Service & Massage',
     desc: 'Jasa panggilan, terapis, perawatan di rumah — booking & WhatsApp lead capture.',
   },
   {
-    icon: '🏢',
+    icon: Building2,
     name: 'Sewa Kantor & Virtual Office',
     desc: 'Coworking, serviced office, virtual office — listing ruang & form inquiry.',
   },
   {
-    icon: '✈️',
+    icon: Plane,
     name: 'Tour, Travel & Rental',
     desc: 'Paket wisata, car rental, agen travel — itinerary, harga, booking lead.',
   },
   {
-    icon: '⚖️',
+    icon: Scale,
     name: 'Firma Hukum & Konsultan',
     desc: 'Kantor pengacara, notaris, konsultan profesional — otoritas + lead form.',
   },
   {
-    icon: '💎',
+    icon: Gem,
     name: 'Perhiasan & Jewelry',
     desc: 'Toko emas, jewelry brand — katalog produk, brand storytelling, e-commerce.',
   },
   {
-    icon: '🛒',
+    icon: ShoppingBag,
     name: 'E-commerce & Retail',
     desc: 'Toko online, brand D2C, marketplace seller — funnel produk ke checkout.',
   },
   {
-    icon: '💻',
+    icon: Code2,
     name: 'B2B IT & SaaS',
     desc: 'Software house, IT services, agency — landing page B2B yang convert.',
   },
   {
-    icon: '🛵',
+    icon: Wrench,
     name: 'Automotive & Workshop',
     desc: 'Bengkel, dealer, modifikasi — katalog layanan, lokasi, jadwal service.',
   },
 ] as const
 
-const CLIENT_LOGOS = [
-  { src: '/images/clients/folkastudio.png', alt: 'Logo Folkastudio' },
-  { src: '/images/clients/prioffice.png', alt: 'Logo Prioffice' },
-  { src: '/images/clients/rockologist.png', alt: 'Logo Rockologist' },
-  { src: '/images/clients/jedahomemassage.jpg', alt: 'Logo Jeda Home Massage' },
-  { src: '/images/clients/trulyhomemassage.png', alt: 'Logo Truly Home Massage' },
-  { src: '/images/clients/lapin.png', alt: 'Logo Lapin' },
-  { src: '/images/clients/inisumedang.jpg', alt: 'Logo Ini Sumedang' },
-  { src: '/images/clients/layz-motor.jpg', alt: 'Logo Layz Motor' },
-] as const
+interface ClientLogo {
+  src: string
+  alt: string
+  dark?: boolean
+}
+
+const CLIENT_LOGOS: ClientLogo[] = [
+  { src: '/images/clients/folkastudio.svg', alt: 'Logo Folkastudio' },
+  { src: '/images/clients/navbar/prioffice.png', alt: 'Logo PriOffice' },
+  { src: '/images/clients/navbar/rockologist.png', alt: 'Logo Rockologist' },
+  { src: '/images/clients/navbar/lapin.png', alt: 'Logo Lapin' },
+  {
+    src: '/images/clients/navbar/jedahomemassage.png',
+    alt: 'Logo Jeda Home Massage',
+    dark: true,
+  },
+  {
+    src: '/images/clients/navbar/trulyhomemassage.png',
+    alt: 'Logo Truly Home Massage',
+  },
+  { src: '/images/clients/navbar/inisumedang.png', alt: 'Logo Ini Sumedang' },
+  { src: '/images/clients/navbar/layz-motor.png', alt: 'Logo Layz Motor' },
+]
 
 export default function SemarangBusinessTypes() {
   return (
@@ -81,21 +104,21 @@ export default function SemarangBusinessTypes() {
         </div>
 
         <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-          {BUSINESS_TYPES.map((b) => (
+          {BUSINESS_TYPES.map(({ icon: Icon, name, desc }) => (
             <li
-              key={b.name}
+              key={name}
               className="p-5 lg:p-6 rounded-2xl border border-gray-200 bg-white hover:border-amber-300 hover:shadow-sm transition-all"
             >
               <span
-                className="inline-flex w-11 h-11 items-center justify-center rounded-xl bg-amber-50 border border-amber-200 text-xl mb-4"
+                className="inline-flex w-11 h-11 items-center justify-center rounded-xl bg-amber-50 border border-amber-200 text-amber-600 mb-4"
                 aria-hidden="true"
               >
-                {b.icon}
+                <Icon className="w-5 h-5" strokeWidth={1.75} />
               </span>
               <h3 className="text-base font-semibold text-[#111827] mb-1.5">
-                {b.name}
+                {name}
               </h3>
-              <p className="text-sm text-[#6B7280] leading-relaxed">{b.desc}</p>
+              <p className="text-sm text-[#6B7280] leading-relaxed">{desc}</p>
             </li>
           ))}
         </ul>
@@ -114,7 +137,11 @@ export default function SemarangBusinessTypes() {
             {CLIENT_LOGOS.map((logo) => (
               <li
                 key={logo.src}
-                className="flex items-center justify-center h-20 lg:h-24 px-4 rounded-xl bg-white border border-gray-200"
+                className={
+                  logo.dark
+                    ? 'flex items-center justify-center h-20 lg:h-24 px-4 rounded-xl bg-[#1f1f1f] border border-[#1f1f1f]'
+                    : 'flex items-center justify-center h-20 lg:h-24 px-4 rounded-xl bg-white border border-gray-200'
+                }
               >
                 <div className="relative w-full h-full">
                   <Image
@@ -122,7 +149,7 @@ export default function SemarangBusinessTypes() {
                     alt={logo.alt}
                     fill
                     sizes="(min-width: 1024px) 200px, 150px"
-                    className="object-contain p-3 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
+                    className="object-contain p-3"
                   />
                 </div>
               </li>
