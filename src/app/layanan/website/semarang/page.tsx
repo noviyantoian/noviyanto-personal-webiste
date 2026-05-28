@@ -83,27 +83,23 @@ const faqItems = [
   },
 ] as const
 
-const serviceSchema = {
+const businessSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Jasa Pembuatan Website Profesional di Semarang',
+  '@type': 'ProfessionalService',
+  '@id': `${URL}#business`,
+  name: 'Noviyanto — Jasa Pembuatan Website Profesional di Semarang',
   description:
     'Jasa pembuatan website bisnis di Kota Semarang oleh Noviyanto. Website cepat, SEO-ready, mobile-first, dirancang untuk konversi.',
   url: URL,
-  serviceType: 'Web Development',
-  provider: {
-    '@type': 'Person',
-    name: 'Noviyanto',
-    url: SITE.url,
-    jobTitle: 'Web Developer & Digital Growth Partner',
-    image: `${SITE.url}/images/noviyanto-profile.webp`,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: SITE.address.line,
-      addressLocality: SITE.address.city,
-      addressRegion: SITE.address.region,
-      addressCountry: 'ID',
-    },
+  image: `${SITE.url}/images/noviyanto-profile.webp`,
+  telephone: `+${SITE.waNumber}`,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.line,
+    addressLocality: SITE.address.city,
+    addressRegion: SITE.address.region,
+    addressCountry: 'ID',
   },
   areaServed: [
     { '@type': 'City', name: 'Semarang' },
@@ -112,10 +108,20 @@ const serviceSchema = {
     { '@type': 'City', name: 'Demak' },
     { '@type': 'City', name: 'Salatiga' },
   ],
-  audience: {
-    '@type': 'BusinessAudience',
-    audienceType:
-      'UMKM, profesional, dan bisnis menengah di Kota Semarang dan sekitarnya',
+  founder: {
+    '@type': 'Person',
+    name: 'Noviyanto',
+    jobTitle: 'Web Developer & Digital Growth Partner',
+    image: `${SITE.url}/images/noviyanto-profile.webp`,
+  },
+  makesOffer: {
+    '@type': 'Offer',
+    itemOffered: {
+      '@type': 'Service',
+      name: 'Jasa Pembuatan Website Profesional di Semarang',
+      serviceType: 'Web Development',
+      url: URL,
+    },
   },
   aggregateRating: {
     '@type': 'AggregateRating',
@@ -135,6 +141,7 @@ const serviceSchema = {
       worstRating: 1,
     },
     reviewBody: r.text,
+    itemReviewed: { '@id': `${URL}#business` },
   })),
 }
 
@@ -152,7 +159,7 @@ const faqSchema = {
 }
 
 const jsonLd = [
-  serviceSchema,
+  businessSchema,
   faqSchema,
   breadcrumbSchema([
     { name: 'Beranda', url: SITE.url },
