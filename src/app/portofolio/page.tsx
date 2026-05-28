@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ExternalLink } from 'lucide-react'
 
-import { generateMetadata, breadcrumbSchema } from '@/lib/seo'
+import { generateMetadata, breadcrumbSchema, collectionPageSchema } from '@/lib/seo'
 import { SITE, INDUSTRIES } from '@/lib/constants'
 import { INDUSTRY_ICONS } from '@/lib/icons'
 import Breadcrumb from '@/components/layout/Breadcrumb'
@@ -22,10 +22,21 @@ export const metadata: Metadata = generateMetadata({
   keywords: ['portofolio Noviyanto', 'klien Noviyanto', 'case study web maintenance', 'digital marketing client'],
 })
 
-const jsonLd = breadcrumbSchema([
-  { name: 'Beranda', url: SITE.url },
-  { name: 'Portofolio', url: URL },
-])
+function buildJsonLd(items: { name: string; url: string; description?: string }[]) {
+  return [
+    collectionPageSchema({
+      url: URL,
+      name: 'Portofolio Klien Aktif Noviyanto',
+      description:
+        'Daftar klien aktif Noviyanto di berbagai industri — home service, jewelry, virtual office, otomotif, media. Bukan demo, bukan testimoni satu kali.',
+      items,
+    }),
+    breadcrumbSchema([
+      { name: 'Beranda', url: SITE.url },
+      { name: 'Portofolio', url: URL },
+    ]),
+  ]
+}
 
 interface Client {
   slug: string
@@ -147,7 +158,17 @@ export default function PortofolioPage() {
     <main className="bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            buildJsonLd(
+              clients.map((c) => ({
+                name: c.name,
+                url: `https://${c.domain}`,
+                description: c.summary,
+              })),
+            ),
+          ),
+        }}
       />
 
       <Breadcrumb

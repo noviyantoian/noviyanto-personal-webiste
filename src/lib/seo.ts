@@ -53,17 +53,22 @@ export function personSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${SITE.url}/#person`,
     name: 'Noviyanto',
     jobTitle: 'Digital Growth Partner',
     url: SITE.url,
+    image: `${SITE.url}/images/noviyanto-profile.webp`,
     sameAs: [],
+    email: SITE.email,
+    telephone: `+${SITE.waNumber}`,
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Semarang',
-      addressRegion: 'Jawa Tengah',
+      streetAddress: SITE.address.line,
+      addressLocality: SITE.address.city,
+      addressRegion: SITE.address.region,
       addressCountry: 'ID',
     },
-    areaServed: ['Semarang', 'Kendal', 'Salatiga'],
+    areaServed: ['Semarang', 'Jakarta', 'Bandung', 'Indonesia'],
     knowsAbout: [
       'Web Development',
       'Digital Marketing',
@@ -72,6 +77,7 @@ export function personSchema() {
       'Odoo ERP',
       'AI Integration',
     ],
+    worksFor: { '@id': `${SITE.url}/#business` },
   }
 }
 
@@ -109,6 +115,170 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
       position: index + 1,
       name: item.name,
       item: item.url,
+    })),
+  }
+}
+
+// ── ID Anchors (untuk cross-reference entitas sitewide) ──────────
+export const SCHEMA_ID = {
+  person: `${SITE.url}/#person`,
+  business: `${SITE.url}/#business`,
+  website: `${SITE.url}/#website`,
+} as const
+
+// ── WebSite (sitewide, di root layout) ───────────────────────────
+export function webSiteSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': SCHEMA_ID.website,
+    name: SITE.name,
+    description: SITE.description,
+    url: SITE.url,
+    inLanguage: 'id-ID',
+    publisher: { '@id': SCHEMA_ID.person },
+  }
+}
+
+// ── ProfessionalService (entitas bisnis utama, sitewide) ─────────
+export function professionalServiceSchema(opts?: {
+  aggregateRating?: {
+    ratingValue: number
+    reviewCount: number
+  }
+  review?: Array<{
+    author: string
+    date: string
+    rating: number
+    text: string
+  }>
+}) {
+  const base = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': SCHEMA_ID.business,
+    name: `${SITE.name} — ${SITE.tagline}`,
+    description: SITE.description,
+    url: SITE.url,
+    image: `${SITE.url}/images/noviyanto-profile.webp`,
+    telephone: `+${SITE.waNumber}`,
+    email: SITE.email,
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: SITE.address.line,
+      addressLocality: SITE.address.city,
+      addressRegion: SITE.address.region,
+      addressCountry: 'ID',
+    },
+    areaServed: [
+      { '@type': 'City', name: 'Semarang' },
+      { '@type': 'City', name: 'Jakarta' },
+      { '@type': 'City', name: 'Bandung' },
+      { '@type': 'Country', name: 'Indonesia' },
+    ],
+    founder: { '@id': SCHEMA_ID.person },
+  }
+
+  return {
+    ...base,
+    ...(opts?.aggregateRating && {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: opts.aggregateRating.ratingValue.toFixed(1),
+        reviewCount: opts.aggregateRating.reviewCount,
+        bestRating: '5',
+        worstRating: '1',
+      },
+    }),
+    ...(opts?.review && {
+      review: opts.review.map((r) => ({
+        '@type': 'Review',
+        author: { '@type': 'Person', name: r.author },
+        datePublished: r.date,
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: r.rating,
+          bestRating: 5,
+          worstRating: 1,
+        },
+        reviewBody: r.text,
+      })),
+    }),
+  }
+}
+
+// ── AboutPage (untuk /tentang) ───────────────────────────────────
+export function aboutPageSchema(params: {
+  url: string
+  name: string
+  description: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    mainEntity: { '@id': SCHEMA_ID.person },
+    isPartOf: { '@id': SCHEMA_ID.website },
+  }
+}
+
+// ── ContactPage (untuk /kontak) ──────────────────────────────────
+export function contactPageSchema(params: {
+  url: string
+  name: string
+  description: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    mainEntity: { '@id': SCHEMA_ID.business },
+    isPartOf: { '@id': SCHEMA_ID.website },
+  }
+}
+
+// ── CollectionPage + ItemList (untuk /layanan, /portofolio) ─────
+export function collectionPageSchema(params: {
+  url: string
+  name: string
+  description: string
+  items: Array<{ name: string; url: string; description?: string }>
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    isPartOf: { '@id': SCHEMA_ID.website },
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: params.items.length,
+      itemListElement: params.items.map((item, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: item.name,
+        url: item.url,
+        ...(item.description && { description: item.description }),
+      })),
+    },
+  }
+}
+
+// ── FAQPage ──────────────────────────────────────────────────────
+export function faqPageSchema(items: Array<{ question: string; answer: string }>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
     })),
   }
 }
