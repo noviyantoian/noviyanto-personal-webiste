@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 import { SITE } from '@/lib/constants'
 import { personSchema, webSiteSchema, professionalServiceSchema, safeJsonLd } from '@/lib/seo'
 import { GOOGLE_REVIEWS, REVIEWS_AGGREGATE } from '@/content/reviews'
-import { getSiteSettings } from '@/lib/site-settings'
+import { getSiteSettings, getDefaultOgImageUrl } from '@/lib/site-settings'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import FloatingWA from '@/components/layout/FloatingWA'
@@ -44,7 +44,7 @@ const satoshi = localFont({
 // ── Metadata (async — baca OG image default dari CMS) ────────────
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings()
-  const ogImage = settings.defaultOgImage?.url ?? SITE.ogImage
+  const ogImage = getDefaultOgImageUrl(settings) ?? SITE.ogImage
 
   return {
     metadataBase: new URL(SITE.url),
