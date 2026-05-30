@@ -47,6 +47,12 @@ const emailAdapter = process.env.SMTP_HOST
 
 export default buildConfig({
   serverURL,
+  // Admin path di-rename dari /admin -> /cms-noviyanto-ian.
+  // routes.admin WAJIB cocok dengan nama folder (payload)/cms-noviyanto-ian,
+  // kalau tidak redirect/link internal Payload tetap nunjuk /admin dan login 404.
+  routes: {
+    admin: '/cms-noviyanto-ian',
+  },
   admin: {
     user: Users.slug,
     importMap: {
