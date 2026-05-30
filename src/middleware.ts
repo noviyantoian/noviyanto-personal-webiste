@@ -48,9 +48,9 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
   const ip = getIp(req)
 
-  // Rate limit: POST /api/inquiries — 5 req / 60 detik per IP
+  // Rate limit: POST /api/inquiries — 15 req / 60 detik per IP
   if (pathname === '/api/inquiries' && req.method === 'POST') {
-    const { allowed, remaining } = rateLimit(`inquiries:${ip}`, 5, 60_000)
+    const { allowed, remaining } = rateLimit(`inquiries:${ip}`, 15, 60_000)
     if (!allowed) {
       return NextResponse.json(
         { errors: [{ message: 'Terlalu banyak permintaan. Coba lagi dalam 1 menit.' }] },
@@ -68,9 +68,9 @@ export function middleware(req: NextRequest) {
     return res
   }
 
-  // Rate limit: POST /api/users/login — 10 req / 15 menit per IP
+  // Rate limit: POST /api/users/login — 20 req / 15 menit per IP
   if (pathname === '/api/users/login' && req.method === 'POST') {
-    const { allowed } = rateLimit(`login:${ip}`, 10, 15 * 60_000)
+    const { allowed } = rateLimit(`login:${ip}`, 20, 15 * 60_000)
     if (!allowed) {
       return NextResponse.json(
         { errors: [{ message: 'Terlalu banyak percobaan login. Coba lagi dalam 15 menit.' }] },
@@ -79,9 +79,9 @@ export function middleware(req: NextRequest) {
     }
   }
 
-  // Rate limit: POST /api/users/forgot-password — 3 req / 10 menit per IP
+  // Rate limit: POST /api/users/forgot-password — 8 req / 10 menit per IP
   if (pathname === '/api/users/forgot-password' && req.method === 'POST') {
-    const { allowed } = rateLimit(`forgot:${ip}`, 3, 10 * 60_000)
+    const { allowed } = rateLimit(`forgot:${ip}`, 8, 10 * 60_000)
     if (!allowed) {
       return NextResponse.json(
         { errors: [{ message: 'Terlalu banyak permintaan reset. Coba lagi dalam 10 menit.' }] },
