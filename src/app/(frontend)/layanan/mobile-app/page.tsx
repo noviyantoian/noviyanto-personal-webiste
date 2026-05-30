@@ -22,6 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Pembuatan aplikasi mobile cross-platform (Android + iOS) dengan React Native. Untuk customer-facing, internal tim, atau hybrid.',
     path: PATH,
     keywords: ['jasa aplikasi mobile', 'developer React Native', 'app developer Indonesia', 'cross-platform app'],
+    hasGeneratedOgImage: true,
   })
 }
 

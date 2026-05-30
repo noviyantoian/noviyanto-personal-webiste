@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description: city.meta.description,
     path: PATH,
     keywords: city.meta.keywords,
+    hasGeneratedOgImage: true,
   })
 }
 

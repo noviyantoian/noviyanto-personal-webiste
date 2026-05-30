@@ -21,6 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Jasa SEO berbasis riset keyword nyata. Audit teknis, on-page, local SEO, dan konten yang membangun traffic organik sebagai aset jangka panjang.',
     path: PATH,
     keywords: ['jasa SEO', 'SEO Semarang', 'jasa optimasi Google', 'local SEO', 'audit SEO'],
+    hasGeneratedOgImage: true,
   })
 }
 

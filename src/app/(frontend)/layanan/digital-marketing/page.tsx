@@ -26,6 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'paid ads',
       'content strategy',
     ],
+    hasGeneratedOgImage: true,
   })
 }
 

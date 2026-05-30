@@ -27,6 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'jasa Google Ads',
       'Odoo developer',
     ],
+    hasGeneratedOgImage: true,
   })
 }
 

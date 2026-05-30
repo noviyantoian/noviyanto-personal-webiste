@@ -22,6 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Integrasi AI untuk otomasi bisnis: chatbot, follow-up leads, laporan otomatis, pemrosesan dokumen. n8n, OpenAI, Make, Python.',
     path: PATH,
     keywords: ['AI integration', 'otomasi bisnis', 'chatbot WhatsApp', 'n8n', 'workflow automation'],
+    hasGeneratedOgImage: true,
   })
 }
 

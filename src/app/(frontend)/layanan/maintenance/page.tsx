@@ -21,6 +21,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Layanan maintenance website: update CMS/plugin, backup rutin, monitoring uptime, optimasi performa, dan update konten kecil.',
     path: PATH,
     keywords: ['maintenance website', 'perawatan website', 'jasa update website', 'website monitoring'],
+    hasGeneratedOgImage: true,
   })
 }
 

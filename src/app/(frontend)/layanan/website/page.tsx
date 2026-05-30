@@ -31,6 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'jasa website Semarang',
       'web developer Indonesia',
     ],
+    hasGeneratedOgImage: true,
   })
 }
 
