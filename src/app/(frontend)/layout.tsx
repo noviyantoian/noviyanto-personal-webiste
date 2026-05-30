@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import { SITE } from '@/lib/constants'
 import { personSchema, webSiteSchema, professionalServiceSchema, safeJsonLd } from '@/lib/seo'
 import { GOOGLE_REVIEWS, REVIEWS_AGGREGATE } from '@/content/reviews'
+import { getSiteSettings } from '@/lib/site-settings'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import FloatingWA from '@/components/layout/FloatingWA'
@@ -40,34 +41,39 @@ const satoshi = localFont({
   fallback: ['system-ui', '-apple-system', 'Arial', 'sans-serif'],
 })
 
-// ── Metadata ─────────────────────────────────────────────────────
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
-  title: {
-    default: `${SITE.name} — ${SITE.tagline} | Web Development & Digital Marketing`,
-    template: `%s | ${SITE.name}`,
-  },
-  description: SITE.description,
-  keywords: ['jasa pembuatan website', 'digital marketing', 'google ads', 'SEO', 'web developer Semarang', 'Noviyanto'],
-  authors: [{ name: 'Noviyanto', url: SITE.url }],
-  creator: 'Noviyanto',
-  openGraph: {
-    type: 'website',
-    locale: 'id_ID',
-    url: SITE.url,
-    siteName: SITE.name,
-    title: `${SITE.name} — ${SITE.tagline}`,
+// ── Metadata (async — baca OG image default dari CMS) ────────────
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings()
+  const ogImage = settings.defaultOgImage?.url ?? SITE.ogImage
+
+  return {
+    metadataBase: new URL(SITE.url),
+    title: {
+      default: `${SITE.name} — ${SITE.tagline} | Web Development & Digital Marketing`,
+      template: `%s | ${SITE.name}`,
+    },
     description: SITE.description,
-    images: [{ url: SITE.ogImage, width: 1200, height: 630, alt: SITE.name }],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: `${SITE.name} — ${SITE.tagline}`,
-    description: SITE.description,
-    images: [SITE.ogImage],
-  },
-  robots: { index: true, follow: true },
-  alternates: { canonical: SITE.url },
+    keywords: ['jasa pembuatan website', 'digital marketing', 'google ads', 'SEO', 'web developer Semarang', 'Noviyanto'],
+    authors: [{ name: 'Noviyanto', url: SITE.url }],
+    creator: 'Noviyanto',
+    openGraph: {
+      type: 'website',
+      locale: 'id_ID',
+      url: SITE.url,
+      siteName: SITE.name,
+      title: `${SITE.name} — ${SITE.tagline}`,
+      description: SITE.description,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: SITE.name }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${SITE.name} — ${SITE.tagline}`,
+      description: SITE.description,
+      images: [ogImage],
+    },
+    robots: { index: true, follow: true },
+    alternates: { canonical: SITE.url },
+  }
 }
 
 export const viewport: Viewport = {
@@ -77,7 +83,10 @@ export const viewport: Viewport = {
 }
 
 // ── Root Layout ───────────────────────────────────────────────────
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const settings = await getSiteSettings()
+  const sameAs = settings.sameAs?.map((s) => s.url).filter(Boolean) ?? ['https://folkastudio.com']
+
   return (
     <html lang="id" suppressHydrationWarning className={`${clashDisplay.variable} ${satoshi.variable}`}>
       <head>
@@ -90,7 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{
             __html: safeJsonLd([
               webSiteSchema(),
-              personSchema(),
+              personSchema({ sameAs }),
               professionalServiceSchema({
                 aggregateRating: {
                   ratingValue: REVIEWS_AGGREGATE.rating,

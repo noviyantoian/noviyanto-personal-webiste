@@ -6,7 +6,7 @@ export function GET() {
   const u = SITE.url
   const body = `# Noviyanto
 
-> Digital growth partner berbasis di Semarang. Bantu bisnis tumbuh dan dapat leads melalui web development, Google Ads, SEO, digital marketing, Odoo ERP, AI integration, mobile app, dan maintenance website. Founder Folkastudio (50+ proyek digital).
+> Digital growth partner berbasis di Semarang. Bantu bisnis tumbuh dan dapat leads melalui web development, Google Ads, SEO, digital marketing, AI integration, mobile app, dan maintenance website. Founder Folkastudio (50+ proyek digital).
 
 ## Profil
 - Nama: Noviyanto
@@ -29,7 +29,6 @@ export function GET() {
 - [Google Ads](${u}/layanan/google-ads): Setup, optimasi rutin, tracking konversi. Customer baru bisa masuk minggu pertama.
 - [SEO Organik](${u}/layanan/seo): Audit teknis, on-page, local SEO, konten. Traffic organik sebagai aset jangka panjang.
 - [Digital Marketing](${u}/layanan/digital-marketing): Strategi terpadu lintas kanal — paid, content, email, analitik.
-- [Odoo CRM & ERP](${u}/layanan/odoo): Implementasi Odoo (CRM, Accounting, HR, Inventory, Project, Website). Developer tersertifikasi.
 - [AI Integration](${u}/layanan/ai-integration): Otomasi pekerjaan berulang dengan n8n, OpenAI, Anthropic Claude, Make, Python.
 - [Aplikasi Mobile](${u}/layanan/mobile-app): React Native cross-platform Android + iOS.
 - [Maintenance Website](${u}/layanan/maintenance): Update, backup, monitoring uptime, optimasi performa.
@@ -54,7 +53,7 @@ export function GET() {
 - Inisumedang (inisumedang.com): Manage VPS
 
 ## Stack Teknologi
-Next.js, React, React Native, TypeScript, Tailwind CSS, Odoo, n8n, OpenAI API, Anthropic Claude, Python, Vercel, PostgreSQL
+Next.js, React, React Native, TypeScript, Tailwind CSS, n8n, OpenAI API, Anthropic Claude, Python, Vercel, PostgreSQL
 
 ## Kontak
 Konsultasi pertama gratis 30 menit. Hubungi via WhatsApp (+${SITE.waNumber}), email (${SITE.email}), atau isi form konsultasi di /kontak.

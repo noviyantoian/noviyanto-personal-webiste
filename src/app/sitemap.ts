@@ -11,7 +11,6 @@ const SERVICE_SLUGS = [
   'google-ads',
   'seo',
   'digital-marketing',
-  'odoo',
   'ai-integration',
   'mobile-app',
   'maintenance',

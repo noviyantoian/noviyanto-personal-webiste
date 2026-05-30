@@ -26,7 +26,6 @@ export const WA_MESSAGES = {
   googleAds: 'Halo, saya ingin tahu lebih lanjut tentang layanan Google Ads.',
   seo: 'Halo, saya ingin konsultasi audit SEO untuk website saya.',
   digitalMarketing: 'Halo, saya ingin diskusi strategi digital marketing untuk bisnis saya.',
-  odoo: 'Halo, saya tertarik dengan implementasi Odoo untuk bisnis saya.',
   aiIntegration: 'Halo, saya ingin diskusi tentang otomasi AI untuk bisnis saya.',
   mobileApp: 'Halo, saya ingin konsultasi pembuatan aplikasi mobile.',
   maintenance: 'Halo, saya ingin tahu paket maintenance website yang tersedia.',

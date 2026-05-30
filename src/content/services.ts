@@ -81,29 +81,6 @@ export const services: Service[] = [
     metaDescription:
       'Jasa digital marketing di Semarang. Dari strategi, eksekusi, sampai laporan. Website, SEO, Google Ads, Meta Ads dalam satu ekosistem.',
   },
-  /* ODOO - sementara dinonaktifkan
-  {
-    slug: 'odoo',
-    title: 'Sistem CRM & ERP',
-    shortTitle: 'Odoo',
-    description: 'Kelola leads, tim, dan operasional dalam satu sistem terintegrasi.',
-    longDescription:
-      'Implementasi Odoo yang benar-benar dipakai tim Anda — dari CRM, HR, accounting, sampai operasional, semua dalam satu platform.',
-    icon: '⚙️',
-    highlight: true,
-    features: [
-      'Implementasi CRM untuk pipeline sales',
-      'Kustomisasi modul sesuai alur bisnis',
-      'Migrasi data dari sistem lama',
-      'Training tim hingga mandiri',
-      'Support post-implementasi',
-    ],
-    waMessage: 'odoo',
-    metaTitle: 'Odoo Developer Semarang — Implementasi CRM & ERP untuk Bisnis',
-    metaDescription:
-      'Odoo developer di Semarang. Implementasi, kustomisasi, dan training Odoo CRM, ERP, HR, dan Accounting untuk UMKM hingga enterprise.',
-  },
-  */
   {
     slug: 'ai-integration',
     title: 'AI Integration',

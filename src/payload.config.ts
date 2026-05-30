@@ -13,6 +13,7 @@ import { Media } from './collections/Media.ts'
 import { Categories } from './collections/Categories.ts'
 import { Posts } from './collections/Posts.ts'
 import { Inquiries } from './collections/Inquiries.ts'
+import { SiteSettings } from './globals/SiteSettings.ts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -56,6 +57,7 @@ export default buildConfig({
     },
   },
   collections: [Posts, Inquiries, Categories, Media, Users],
+  globals: [SiteSettings],
   editor: lexicalEditor(),
   email: emailAdapter,
   graphQL: { disable: true },

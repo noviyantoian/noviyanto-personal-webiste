@@ -63,7 +63,7 @@ export function generateMetadata({
 }
 
 // ── JSON-LD Schemas ──────────────────────────────────────────────
-export function personSchema() {
+export function personSchema(opts?: { sameAs?: string[] }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
@@ -72,10 +72,7 @@ export function personSchema() {
     jobTitle: 'Digital Growth Partner',
     url: SITE.url,
     image: `${SITE.url}/images/noviyanto-profile.webp`,
-    sameAs: [
-      'https://folkastudio.com',
-      // Tambahkan: URL LinkedIn, Google Business Profile, Instagram
-    ],
+    sameAs: opts?.sameAs?.length ? opts.sameAs : ['https://folkastudio.com'],
     email: SITE.email,
     telephone: `+${SITE.waNumber}`,
     address: {
