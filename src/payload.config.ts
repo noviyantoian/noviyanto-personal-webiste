@@ -58,6 +58,7 @@ export default buildConfig({
   collections: [Posts, Inquiries, Categories, Media, Users],
   editor: lexicalEditor(),
   email: emailAdapter,
+  graphQL: { disable: true },
   secret: PAYLOAD_SECRET,
   db: postgresAdapter({
     pool: { connectionString: DATABASE_URI },

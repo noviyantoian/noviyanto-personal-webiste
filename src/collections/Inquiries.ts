@@ -14,7 +14,7 @@ export const Inquiries: CollectionConfig = {
   access: {
     create: anyone,
     read: authenticated,
-    update: authenticated,
+    update: adminOnly,
     delete: adminOnly,
   },
   admin: {
