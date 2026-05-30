@@ -28,6 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Google Ads Semarang',
       'iklan Google bisnis',
     ],
+    hasGeneratedOgImage: true,
   })
 }
 

@@ -16,6 +16,10 @@ import { getSiteSettings, getDefaultOgImage } from './site-settings'
 export async function buildMetadata(params: GenerateMetadataParams): Promise<Metadata> {
   const base = generateMetadata(params)
 
+  // Route punya generated OG card (opengraph-image.tsx) → biarkan konvensi file
+  // Next yang isi og:image. Jangan inject apa pun (cegah dobel tag).
+  if (params.hasGeneratedOgImage) return base
+
   // Gambar spesifik halaman menang — tidak perlu query CMS.
   if (params.ogImage) return base
 

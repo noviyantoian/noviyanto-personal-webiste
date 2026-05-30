@@ -22,6 +22,12 @@ export interface GenerateMetadataParams {
   ogImage?: string
   keywords?: string[]
   noIndex?: boolean
+  /**
+   * Set true kalau route punya opengraph-image.tsx (generated card).
+   * generateMetadata tidak akan emit openGraph/twitter images supaya tidak
+   * dobel dengan og:image dari konvensi file Next.
+   */
+  hasGeneratedOgImage?: boolean
 }
 
 export function generateMetadata({
@@ -31,6 +37,7 @@ export function generateMetadata({
   ogImage,
   keywords,
   noIndex = false,
+  hasGeneratedOgImage = false,
 }: GenerateMetadataParams): Metadata {
   const url = `${SITE.url}${path}`
   const image = ogImage ?? SITE.ogImage
@@ -51,13 +58,15 @@ export function generateMetadata({
       siteName: SITE.name,
       locale: 'id_ID',
       type: 'website',
-      images: [{ url: image, width: 1200, height: 630, alt: title }],
+      ...(hasGeneratedOgImage
+        ? {}
+        : { images: [{ url: image, width: 1200, height: 630, alt: title }] }),
     },
     twitter: {
       card: 'summary_large_image',
       title: `${title} | ${SITE.name}`,
       description,
-      images: [image],
+      ...(hasGeneratedOgImage ? {} : { images: [image] }),
     },
   }
 }
