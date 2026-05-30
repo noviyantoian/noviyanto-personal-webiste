@@ -1,7 +1,8 @@
 'use client'
 
+import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
-import { getWaLink, SITE, WA_MESSAGES } from '@/lib/constants'
+import { WA_MESSAGES } from '@/lib/constants'
 import { trackEvent } from '@/lib/analytics'
 
 type WaKey = keyof typeof WA_MESSAGES
@@ -18,7 +19,7 @@ export default function ServiceCTA({
   headline,
   body,
   ctaWaKey,
-  ctaLabel = 'Hubungi via WhatsApp',
+  ctaLabel = 'Konsultasi Gratis',
   subText,
 }: ServiceCTAProps) {
   const shouldReduce = useReducedMotion() ?? false
@@ -54,11 +55,9 @@ export default function ServiceCTA({
             {body}
           </p>
 
-          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center">
-            <a
-              href={getWaLink(ctaWaKey)}
-              target="_blank"
-              rel="noopener noreferrer"
+          <div className="mt-8 flex justify-center">
+            <Link
+              href="/kontak"
               onClick={() =>
                 trackEvent('cta_click', { location: 'service_cta_bottom', page: ctaWaKey })
               }
@@ -66,26 +65,15 @@ export default function ServiceCTA({
             >
               {ctaLabel}
               <span aria-hidden="true" className="-mr-0.5">→</span>
-            </a>
-            <a
-              href={SITE.calendlyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent('calendly_open', { location: 'service_cta_bottom' })}
-              className="inline-flex items-center justify-center gap-2 h-12 sm:h-14 px-7 sm:px-8 bg-white hover:bg-[#F9FAFB] active:bg-[#F3F4F6] border border-[#E5E7EB] hover:border-[#D1D5DB] text-[#111827] font-medium text-[15px] sm:text-base tracking-[-0.01em] leading-none rounded-xl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2"
-            >
-              Jadwalkan Meeting
-            </a>
+            </Link>
           </div>
 
           <p className="mt-4 text-xs text-[#6B7280] flex items-center justify-center gap-2">
             <span className="inline-block w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" aria-hidden="true" />
-            Respons cepat di hari kerja · Tanpa biaya konsultasi awal
+            Isi form singkat · lanjut diskusi via WhatsApp · tanpa biaya konsultasi awal
           </p>
 
-          {subText ? (
-            <p className="mt-4 text-sm text-[#9CA3AF]">{subText}</p>
-          ) : null}
+          {subText ? <p className="mt-4 text-sm text-[#9CA3AF]">{subText}</p> : null}
         </motion.div>
       </div>
     </section>

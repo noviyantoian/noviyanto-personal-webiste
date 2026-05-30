@@ -1,0 +1,27 @@
+# Postgres 17 untuk Payload CMS blog — terisolasi (bind 127.0.0.1 only).
+# Dipakai sama persis di local & VPS (mirror). Tidak expose ke internet.
+#   Local : docker compose up -d
+#   VPS   : sama, app PM2 connect via 127.0.0.1:5432
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: noviyanto-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: noviyanto
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-devpassword}
+      POSTGRES_DB: noviyanto_blog
+    ports:
+      # Bind ke loopback saja — tidak terlihat dari luar VPS.
+      - '127.0.0.1:5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U noviyanto -d noviyanto_blog']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+    name: noviyanto_pgdata

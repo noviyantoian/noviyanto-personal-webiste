@@ -5,11 +5,18 @@ export const SITE = {
   description:
     'Bukan sekadar bikin website — Noviyanto bantu bisnis Anda tumbuh dan mendapatkan leads melalui web development, digital marketing, dan AI integration.',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://noviyanto.com',
-  location: 'Semarang · Kendal · Salatiga',
-  email: 'hello@noviyanto.com',
-  waNumber: process.env.NEXT_PUBLIC_WA_NUMBER ?? '6281234567890',
-  calendlyUrl: process.env.NEXT_PUBLIC_CALENDLY_URL ?? 'https://calendly.com/noviyanto',
+  location: 'Jakarta · Bandung · Semarang',
+  email: 'info@noviyanto.com',
+  waNumber: process.env.NEXT_PUBLIC_WA_NUMBER ?? '6285879448563',
   ogImage: '/og/default.jpg',
+  address: {
+    line: 'Dk. Kaligetas, Kelurahan Jatibarang',
+    district: 'Kecamatan Mijen',
+    city: 'Kota Semarang',
+    region: 'Jawa Tengah',
+    country: 'Indonesia',
+    full: 'Dk. Kaligetas, Kelurahan Jatibarang, Kecamatan Mijen, Kota Semarang, Jawa Tengah, Indonesia',
+  },
 } as const
 
 // ── WhatsApp Messages ────────────────────────────────────────────
@@ -45,10 +52,22 @@ export const SERVICE_LINKS = [
   { label: 'Google Ads', href: '/layanan/google-ads', slug: 'google-ads' },
   { label: 'SEO Organik', href: '/layanan/seo', slug: 'seo' },
   { label: 'Digital Marketing', href: '/layanan/digital-marketing', slug: 'digital-marketing' },
-  { label: 'Odoo CRM & ERP', href: '/layanan/odoo', slug: 'odoo' },
   { label: 'AI Integration', href: '/layanan/ai-integration', slug: 'ai-integration' },
   { label: 'Aplikasi Mobile', href: '/layanan/mobile-app', slug: 'mobile-app' },
   { label: 'Maintenance', href: '/layanan/maintenance', slug: 'maintenance' },
+] as const
+
+// Area layanan — halaman jasa website per kota
+export const AREA_LINKS = [
+  { label: 'Jasa Website Jakarta', href: '/layanan/website/jakarta' },
+  { label: 'Jasa Website Bandung', href: '/layanan/website/bandung' },
+  { label: 'Jasa Website Semarang', href: '/layanan/website/semarang' },
+] as const
+
+// Halaman legal — ditautkan di footer
+export const LEGAL_LINKS = [
+  { label: 'Kebijakan Privasi', href: '/kebijakan-privasi' },
+  { label: 'Syarat & Ketentuan', href: '/syarat-ketentuan' },
 ] as const
 
 // ── Stats ────────────────────────────────────────────────────────
@@ -56,13 +75,13 @@ export const STATS = [
   { value: '30+', label: 'Proyek Selesai' },
   { value: '7',   label: 'Industri Ditangani' },
   { value: '3+',  label: 'Tahun Pengalaman' },
-  { value: '100%', label: 'Klien dari Referral' },
+  { value: 'Jakarta · Bandung · Semarang', label: 'Area Jangkauan' },
 ] as const
 
 // ── Industries ───────────────────────────────────────────────────
 export const INDUSTRIES = [
   { name: 'B2B IT & Teknologi',             icon: '💻' },
-  { name: 'Jasa Panggilan',                  icon: '🏠' },
+  { name: 'Home Service',                  icon: '🏠' },
   { name: 'Tour & Travel',                   icon: '✈️' },
   { name: 'Perhiasan & Jewelry',             icon: '💎' },
   { name: 'Firma Hukum & Legal',             icon: '⚖️' },

@@ -4,19 +4,23 @@
 
 Gunakan CSS variables yang sudah didefinisikan di globals.css:
 ```css
---color-bg:          #0C0C0C
---color-surface-1:   #141414
---color-surface-2:   #1E1E1E
---color-border:      #262626
---color-text:        #FAFAFA
---color-text-muted:  #A3A3A3
---color-accent:      #F59E0B
---color-accent-warm: #F97316
+--color-bg:           #FFFFFF
+--color-surface-1:    #F9FAFB
+--color-surface-2:    #F3F4F6
+--color-border:       #E5E7EB
+--color-text:         #111827
+--color-text-muted:   #6B7280
+--color-text-subtle:  #9CA3AF
+--color-accent:       #F59E0B
+--color-accent-warm:  #F97316
+--color-accent-dark:  #D97706
 ```
 
-Dalam Tailwind, pakai class yang sudah dikonfigurasi:
-`bg-bg`, `bg-surface-1`, `bg-surface-2`, `border-border`,
-`text-primary`, `text-muted`, `text-accent`
+Dalam Tailwind, pakai class yang sesuai:
+`bg-white`, `bg-gray-50`, `bg-gray-100`, `border-gray-200`,
+`text-gray-900`, `text-gray-500`, `text-amber-500`
+
+Mode: **LIGHT ONLY**. Tidak ada dark mode. Jangan tambahkan class `dark:` apapun.
 
 ## Button Component
 
@@ -55,9 +59,9 @@ interface SectionProps {
 ## Card Component
 
 ```tsx
-// Pola card standar
-<div className="bg-surface-1 border border-border rounded-2xl p-6 lg:p-8
-                hover:bg-surface-2 hover:border-accent/30
+// Pola card standar — light mode
+<div className="bg-white border border-gray-200 rounded-2xl p-6 lg:p-8
+                hover:bg-gray-50 hover:border-amber-300/60 hover:shadow-sm
                 transition-colors duration-200">
   {/* konten */}
 </div>
@@ -66,19 +70,17 @@ interface SectionProps {
 ## Gradient Patterns
 
 ```tsx
-// Accent glow di background — dipakai di hero, CTA section
-<div className="absolute inset-0 bg-gradient-radial from-accent/10 via-transparent to-transparent" />
+// Accent glow di background — sangat subtle untuk light mode
+<div className="absolute inset-0 bg-gradient-radial from-amber-400/6 via-transparent to-transparent" />
 
-// Text gradient
-<span className="bg-gradient-to-r from-accent to-accent-warm bg-clip-text text-transparent">
+// Text gradient — untuk kata kunci di headline
+<span className="bg-gradient-to-r from-amber-500 to-orange-500 bg-clip-text text-transparent">
   kata kunci penting
 </span>
 
-// Border gradient card
-<div className="relative p-[1px] rounded-2xl bg-gradient-to-br from-accent/40 to-transparent">
-  <div className="bg-surface-1 rounded-2xl p-6">
-    {/* konten */}
-  </div>
+// Highlight card — border amber tipis dengan bg kuning sangat muda
+<div className="bg-amber-50 border border-amber-200 rounded-2xl p-6">
+  {/* konten */}
 </div>
 ```
 
@@ -148,11 +150,11 @@ interface ServiceCardProps {
 
 ```tsx
 // Layout: centered text + subtle background glow
-// H1: besar (text-5xl lg:text-7xl), font-display, font-extrabold
-// Subheadline: text-lg lg:text-xl, text-muted
-// CTA group: primary (amber) + secondary (ghost)
-// Badge di atas H1: "Digital Growth Partner" dengan accent border
-// Background: glow effect + subtle grid pattern
+// H1: besar (text-5xl lg:text-7xl), font-display, font-extrabold, text-gray-900
+// Subheadline: text-lg lg:text-xl, text-gray-500
+// CTA group: primary (amber bg) + secondary (border gray-200)
+// Badge di atas H1: "Digital Growth Partner" — bg-amber-50 border border-amber-200 text-amber-700
+// Background: white dengan radial gradient amber sangat subtle + dot grid pattern tipis
 ```
 
 ## Floating WhatsApp Button

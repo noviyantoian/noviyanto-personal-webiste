@@ -5,7 +5,7 @@ export const services: Service[] = [
     slug: 'website',
     title: 'Website Development',
     shortTitle: 'Website',
-    description: 'Website yang menghasilkan leads, bukan sekadar brosur digital.',
+    description: 'Dirancang untuk mengubah pengunjung jadi prospek yang menghubungi Anda.',
     longDescription:
       'Website yang dirancang dari tujuan bisnis — mengubah pengunjung jadi prospek yang menghubungi Anda.',
     icon: '🌐',
@@ -13,7 +13,7 @@ export const services: Service[] = [
       'Next.js / React — cepat dan SEO-friendly',
       'Desain mobile-first yang responsif',
       'Optimasi konversi di setiap halaman',
-      'Integrasi WhatsApp, form, dan Calendly',
+      'Integrasi WhatsApp, form, dan sistem booking',
       'Setup SEO on-page dari hari pertama',
     ],
     waMessage: 'website',
@@ -25,7 +25,7 @@ export const services: Service[] = [
     slug: 'google-ads',
     title: 'Google Ads',
     shortTitle: 'Google Ads',
-    description: 'Customer baru bisa mulai masuk dalam 7 hari pertama.',
+    description: 'Customer baru bisa masuk dalam minggu pertama. Setiap rupiah terukur hasilnya.',
     longDescription:
       'Kampanye Google Ads yang dikelola berdasarkan data — setiap rupiah anggaran diarahkan ke keyword dan audience yang paling berpotensi konversi.',
     icon: '📈',
@@ -45,7 +45,7 @@ export const services: Service[] = [
     slug: 'seo',
     title: 'SEO Organik',
     shortTitle: 'SEO',
-    description: 'Muncul di halaman pertama Google tanpa terus-menerus bayar iklan.',
+    description: 'Muncul di halaman pertama Google tanpa terus bayar iklan.',
     longDescription:
       'Strategi SEO berbasis riset keyword nyata — dari optimasi teknis, on-page, sampai konten yang menjawab pertanyaan target customer Anda.',
     icon: '🔍',
@@ -81,11 +81,12 @@ export const services: Service[] = [
     metaDescription:
       'Jasa digital marketing di Semarang. Dari strategi, eksekusi, sampai laporan. Website, SEO, Google Ads, Meta Ads dalam satu ekosistem.',
   },
+  /* ODOO - sementara dinonaktifkan
   {
     slug: 'odoo',
-    title: 'Odoo CRM & ERP',
+    title: 'Sistem CRM & ERP',
     shortTitle: 'Odoo',
-    description: 'Kelola bisnis dan leads dalam satu sistem yang saling terhubung.',
+    description: 'Kelola leads, tim, dan operasional dalam satu sistem terintegrasi.',
     longDescription:
       'Implementasi Odoo yang benar-benar dipakai tim Anda — dari CRM, HR, accounting, sampai operasional, semua dalam satu platform.',
     icon: '⚙️',
@@ -102,11 +103,12 @@ export const services: Service[] = [
     metaDescription:
       'Odoo developer di Semarang. Implementasi, kustomisasi, dan training Odoo CRM, ERP, HR, dan Accounting untuk UMKM hingga enterprise.',
   },
+  */
   {
     slug: 'ai-integration',
     title: 'AI Integration',
     shortTitle: 'AI',
-    description: 'Otomasi pekerjaan berulang agar tim fokus ke hal yang lebih penting.',
+    description: 'Otomasi tugas berulang agar tim fokus ke hal yang lebih penting.',
     longDescription:
       'Integrasi AI dan otomasi bisnis menggunakan n8n, OpenAI API, dan Python — disesuaikan dengan proses kerja bisnis Anda yang sudah berjalan.',
     icon: '🤖',
@@ -126,7 +128,7 @@ export const services: Service[] = [
     slug: 'mobile-app',
     title: 'Aplikasi Mobile',
     shortTitle: 'Mobile App',
-    description: 'Aplikasi Android & iOS dari satu proses development.',
+    description: 'Solusi custom untuk customer-facing atau tim lapangan Anda.',
     longDescription:
       'Pengembangan aplikasi mobile cross-platform dengan React Native — untuk customer-facing app, aplikasi internal tim, atau kombinasi keduanya.',
     icon: '📱',

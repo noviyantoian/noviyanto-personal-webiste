@@ -9,7 +9,6 @@ declare global {
 type EventName =
   | 'cta_click'
   | 'whatsapp_click'
-  | 'calendly_open'
   | 'form_submit'
   | 'service_view'
   | 'portfolio_click'

@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+/* ── Tailwind v4 theme tokens (expose as utilities) ─ */
+@theme {
+  --color-bg:           #FFFFFF;
+  --color-surface-1:    #F9FAFB;
+  --color-surface-2:    #F3F4F6;
+  --color-border-1:     #E5E7EB;
+  --color-primary:      #111827;
+  --color-muted:        #6B7280;
+  --color-subtle:       #9CA3AF;
+  --color-accent-dark:  #D97706;
+  --color-accent:       #F59E0B;
+  --color-accent-warm:  #F97316;
+  --color-accent-glow:  #FDE68A;
+  --color-success:      #22C55E;
+  --color-error:        #EF4444;
+
+  --font-display: var(--font-clash-display), system-ui, sans-serif;
+  --font-body:    var(--font-satoshi), system-ui, sans-serif;
+}
+
+/* ── Raw design tokens for inline use ──────────────── */
+:root {
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+/* ── Base styles (layered so Tailwind utilities can override) ── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img, video {
+    max-width: 100%;
+    display: block;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+    color: var(--color-primary);
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-2);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-border-1); }
+}
+
+/* ── Custom utilities ───────────────────────────────── */
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty  { text-wrap: pretty; }
+
+  .container-wide {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px)  { .container-wide { padding-inline: 1.5rem; } }
+  @media (min-width: 1024px) { .container-wide { padding-inline: 2rem; } }
+
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  .glow-amber {
+    background: radial-gradient(ellipse 60% 40% at 50% 0%,
+      color-mix(in srgb, #F59E0B 12%, transparent),
+      transparent 70%
+    );
+  }
+}
+
+/* ── Blog article content (lexical richtext output) ─── */
+.blog-prose {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: #374151;
+}
+.blog-prose > * + * { margin-top: 1.25em; }
+.blog-prose h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem);
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  margin-top: 2.25em;
+  margin-bottom: 0.6em;
+  scroll-margin-top: 6rem;
+}
+.blog-prose h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.5rem);
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+  scroll-margin-top: 6rem;
+}
+.blog-prose h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 1.5em;
+}
+.blog-prose p { margin: 0; }
+.blog-prose a {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.blog-prose a:hover { color: var(--color-accent-warm); }
+.blog-prose strong { color: var(--color-primary); font-weight: 600; }
+.blog-prose ul,
+.blog-prose ol { padding-left: 1.4em; }
+.blog-prose ul { list-style: disc; }
+.blog-prose ol { list-style: decimal; }
+.blog-prose li { margin-top: 0.4em; }
+.blog-prose li::marker { color: var(--color-accent); }
+.blog-prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.25rem;
+  font-style: italic;
+  color: var(--color-muted);
+}
+.blog-prose img {
+  border-radius: var(--radius-lg);
+  margin-top: 1.75em;
+  margin-bottom: 1.75em;
+}
+.blog-prose hr {
+  border: none;
+  border-top: 1px solid var(--color-border-1);
+  margin: 2.5em 0;
+}
+.blog-prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+  background: var(--color-surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Reduced motion ─────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}

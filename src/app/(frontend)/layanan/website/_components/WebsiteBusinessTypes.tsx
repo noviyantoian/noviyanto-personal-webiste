@@ -1,0 +1,158 @@
+import Image from 'next/image'
+import {
+  HeartPulse,
+  Building2,
+  Plane,
+  Scale,
+  Gem,
+  ShoppingBag,
+  Code2,
+  Wrench,
+} from 'lucide-react'
+
+const BUSINESS_TYPES = [
+  {
+    icon: HeartPulse,
+    name: 'Home Service & Massage',
+    desc: 'Jasa panggilan, terapis, perawatan di rumah — booking & WhatsApp lead capture.',
+  },
+  {
+    icon: Building2,
+    name: 'Sewa Kantor & Virtual Office',
+    desc: 'Coworking, serviced office, virtual office — listing ruang & form inquiry.',
+  },
+  {
+    icon: Plane,
+    name: 'Tour, Travel & Rental',
+    desc: 'Paket wisata, car rental, agen travel — itinerary, harga, booking lead.',
+  },
+  {
+    icon: Scale,
+    name: 'Firma Hukum & Konsultan',
+    desc: 'Kantor pengacara, notaris, konsultan profesional — otoritas + lead form.',
+  },
+  {
+    icon: Gem,
+    name: 'Perhiasan & Jewelry',
+    desc: 'Toko emas, jewelry brand — katalog produk, brand storytelling, e-commerce.',
+  },
+  {
+    icon: ShoppingBag,
+    name: 'E-commerce & Retail',
+    desc: 'Toko online, brand D2C, marketplace seller — funnel produk ke checkout.',
+  },
+  {
+    icon: Code2,
+    name: 'B2B IT & SaaS',
+    desc: 'Software house, IT services, agency — landing page B2B yang convert.',
+  },
+  {
+    icon: Wrench,
+    name: 'Automotive & Workshop',
+    desc: 'Bengkel, dealer, modifikasi — katalog layanan, lokasi, jadwal service.',
+  },
+] as const
+
+interface ClientLogo {
+  src: string
+  alt: string
+  dark?: boolean
+}
+
+const CLIENT_LOGOS: ClientLogo[] = [
+  { src: '/images/clients/folkastudio.svg', alt: 'Logo Folkastudio' },
+  { src: '/images/clients/navbar/prioffice.png', alt: 'Logo PriOffice' },
+  { src: '/images/clients/navbar/rockologist.png', alt: 'Logo Rockologist' },
+  { src: '/images/clients/navbar/lapin.png', alt: 'Logo Lapin' },
+  {
+    src: '/images/clients/navbar/jedahomemassage.png',
+    alt: 'Logo Jeda Home Massage',
+    dark: true,
+  },
+  {
+    src: '/images/clients/navbar/trulyhomemassage.png',
+    alt: 'Logo Truly Home Massage',
+  },
+  { src: '/images/clients/navbar/inisumedang.png', alt: 'Logo Ini Sumedang' },
+  { src: '/images/clients/navbar/layz-motor.png', alt: 'Logo Layz Motor' },
+]
+
+export default function WebsiteBusinessTypes() {
+  return (
+    <section
+      aria-labelledby="business-types-heading"
+      className="py-20 lg:py-32 bg-[#F9FAFB]"
+    >
+      <div className="container-wide">
+        <div className="max-w-3xl mb-12 lg:mb-16">
+          <span className="inline-block px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-medium mb-5">
+            Industri yang sering dibantu
+          </span>
+          <h2
+            id="business-types-heading"
+            className="text-3xl lg:text-5xl font-bold text-[#111827] tracking-tight mb-5"
+          >
+            Bisnis seperti apa yang biasa saya kerjakan?
+          </h2>
+          <p className="text-base lg:text-lg text-[#6B7280] leading-relaxed">
+            Saya tidak mengerjakan semua jenis bisnis. Daftar di bawah adalah industri yang sudah
+            berulang kali saya bantu — sehingga saya paham cara pengunjung mereka berperilaku, apa
+            yang membuat mereka menghubungi, dan struktur halaman yang biasanya bekerja paling baik.
+          </p>
+        </div>
+
+        <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+          {BUSINESS_TYPES.map(({ icon: Icon, name, desc }) => (
+            <li
+              key={name}
+              className="p-5 lg:p-6 rounded-2xl border border-gray-200 bg-white hover:border-amber-300 hover:shadow-sm transition-all"
+            >
+              <span
+                className="inline-flex w-11 h-11 items-center justify-center rounded-xl bg-amber-50 border border-amber-200 text-amber-600 mb-4"
+                aria-hidden="true"
+              >
+                <Icon className="w-5 h-5" strokeWidth={1.75} />
+              </span>
+              <h3 className="text-base font-semibold text-[#111827] mb-1.5">{name}</h3>
+              <p className="text-sm text-[#6B7280] leading-relaxed">{desc}</p>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-16 lg:mt-24">
+          <div className="text-center mb-8">
+            <p className="text-xs uppercase tracking-widest text-[#9CA3AF] font-medium mb-2">
+              Sebagian klien yang dipercayakan
+            </p>
+            <h3 className="text-xl lg:text-2xl font-semibold text-[#111827]">
+              Brand & bisnis yang sudah bekerja bersama
+            </h3>
+          </div>
+
+          <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-6 items-center">
+            {CLIENT_LOGOS.map((logo) => (
+              <li
+                key={logo.src}
+                className={
+                  logo.dark
+                    ? 'flex items-center justify-center h-20 lg:h-24 px-4 rounded-xl bg-[#1f1f1f] border border-[#1f1f1f]'
+                    : 'flex items-center justify-center h-20 lg:h-24 px-4 rounded-xl bg-white border border-gray-200'
+                }
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    fill
+                    sizes="(min-width: 1024px) 200px, 150px"
+                    className="object-contain p-3"
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+  )
+}
