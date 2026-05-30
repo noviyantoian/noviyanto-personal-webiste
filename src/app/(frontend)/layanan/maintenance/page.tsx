@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
-import { generateMetadata, serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -13,13 +14,15 @@ import ServiceCTA from '@/components/sections/ServiceCTA'
 const PATH = '/layanan/maintenance'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Maintenance Website — Update, Backup, Monitoring, Optimasi',
-  description:
-    'Layanan maintenance website: update CMS/plugin, backup rutin, monitoring uptime, optimasi performa, dan update konten kecil.',
-  path: PATH,
-  keywords: ['maintenance website', 'perawatan website', 'jasa update website', 'website monitoring'],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Maintenance Website — Update, Backup, Monitoring, Optimasi',
+    description:
+      'Layanan maintenance website: update CMS/plugin, backup rutin, monitoring uptime, optimasi performa, dan update konten kecil.',
+    path: PATH,
+    keywords: ['maintenance website', 'perawatan website', 'jasa update website', 'website monitoring'],
+  })
+}
 
 const jsonLd = [
   serviceSchema({

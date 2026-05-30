@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { generateMetadata as genMeta, breadcrumbSchema } from '@/lib/seo'
+import { breadcrumbSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE, getWaLink } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 
@@ -9,13 +10,15 @@ const PATH = '/kebijakan-privasi'
 const URL = `${SITE.url}${PATH}`
 const LAST_UPDATED = '30 Mei 2026'
 
-export const metadata: Metadata = genMeta({
-  title: 'Kebijakan Privasi',
-  description:
-    'Kebijakan Privasi Noviyanto — bagaimana data yang Anda berikan melalui form konsultasi dan kunjungan situs dikumpulkan, digunakan, dan dilindungi.',
-  path: PATH,
-  keywords: ['kebijakan privasi Noviyanto', 'privacy policy'],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Kebijakan Privasi',
+    description:
+      'Kebijakan Privasi Noviyanto — bagaimana data yang Anda berikan melalui form konsultasi dan kunjungan situs dikumpulkan, digunakan, dan dilindungi.',
+    path: PATH,
+    keywords: ['kebijakan privasi Noviyanto', 'privacy policy'],
+  })
+}
 
 const jsonLd = [
   {

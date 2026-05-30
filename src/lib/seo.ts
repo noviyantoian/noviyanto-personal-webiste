@@ -15,7 +15,7 @@ export function safeJsonLd(data: unknown): string {
     .replace(/\//g, '\\u002f')
 }
 
-interface GenerateMetadataParams {
+export interface GenerateMetadataParams {
   title: string
   description: string
   path: string

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { Bot, Workflow, FileSpreadsheet, FileScan, Sparkles } from 'lucide-react'
 
-import { generateMetadata, serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -14,13 +15,15 @@ import ServiceCTA from '@/components/sections/ServiceCTA'
 const PATH = '/layanan/ai-integration'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'AI Integration — Otomasi Pekerjaan Berulang untuk Tim Anda',
-  description:
-    'Integrasi AI untuk otomasi bisnis: chatbot, follow-up leads, laporan otomatis, pemrosesan dokumen. n8n, OpenAI, Make, Python.',
-  path: PATH,
-  keywords: ['AI integration', 'otomasi bisnis', 'chatbot WhatsApp', 'n8n', 'workflow automation'],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'AI Integration — Otomasi Pekerjaan Berulang untuk Tim Anda',
+    description:
+      'Integrasi AI untuk otomasi bisnis: chatbot, follow-up leads, laporan otomatis, pemrosesan dokumen. n8n, OpenAI, Make, Python.',
+    path: PATH,
+    keywords: ['AI integration', 'otomasi bisnis', 'chatbot WhatsApp', 'n8n', 'workflow automation'],
+  })
+}
 
 const jsonLd = [
   serviceSchema({

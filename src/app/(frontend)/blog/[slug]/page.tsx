@@ -13,11 +13,11 @@ import {
   categoryTitle,
 } from '@/lib/blog'
 import {
-  generateMetadata as genMeta,
   blogPostingSchema,
   breadcrumbSchema,
   safeJsonLd,
 } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 
 export const revalidate = 300
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const ogPath = mediaURL(post.meta?.image ?? post.heroImage, 'og')
   const ogImage = ogPath ? `${SITE.url}${ogPath}` : undefined
 
-  return genMeta({
+  return await buildMetadata({
     title: post.meta?.title ?? post.title,
     description: post.meta?.description ?? post.excerpt,
     path: `/blog/${post.slug}`,

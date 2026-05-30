@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { generateMetadata, breadcrumbSchema } from '@/lib/seo'
+import { breadcrumbSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import ServiceHero from '@/components/sections/ServiceHero'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
@@ -20,21 +21,23 @@ import WebsiteTestimonials from '../_components/WebsiteTestimonials'
 const PATH = '/layanan/website/semarang'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title:
-    'Jasa Pembuatan Website Semarang — Website Bisnis yang Mendatangkan Klien',
-  description:
-    'Jasa pembuatan website profesional di Semarang oleh Noviyanto. Website cepat, SEO-ready, dan dirancang untuk mengubah pengunjung jadi calon klien. Konsultasi langsung tanpa perantara.',
-  path: PATH,
-  keywords: [
-    'jasa pembuatan website Semarang',
-    'jasa website Semarang',
-    'web developer Semarang',
-    'jasa bikin website Semarang',
-    'pembuatan website profesional Semarang',
-    'jasa landing page Semarang',
-  ],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title:
+      'Jasa Pembuatan Website Semarang — Website Bisnis yang Mendatangkan Klien',
+    description:
+      'Jasa pembuatan website profesional di Semarang oleh Noviyanto. Website cepat, SEO-ready, dan dirancang untuk mengubah pengunjung jadi calon klien. Konsultasi langsung tanpa perantara.',
+    path: PATH,
+    keywords: [
+      'jasa pembuatan website Semarang',
+      'jasa website Semarang',
+      'web developer Semarang',
+      'jasa bikin website Semarang',
+      'pembuatan website profesional Semarang',
+      'jasa landing page Semarang',
+    ],
+  })
+}
 
 const faqItems = [
   {

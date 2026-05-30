@@ -23,3 +23,25 @@ export function getDefaultOgImageUrl(settings: SiteSetting): string | null {
   if (!img || typeof img === 'number') return null
   return (img as Media).url ?? null
 }
+
+export interface OgImage {
+  url: string
+  width?: number
+  height?: number
+}
+
+/**
+ * OG image default dari CMS lengkap dengan dimensi asli media.
+ * Dimensi dipakai biar tag og:image:width/height akurat (gambar bisa non-1200x630).
+ */
+export function getDefaultOgImage(settings: SiteSetting): OgImage | null {
+  const img = settings.defaultOgImage
+  if (!img || typeof img === 'number') return null
+  const media = img as Media
+  if (!media.url) return null
+  return {
+    url: media.url,
+    width: media.width ?? undefined,
+    height: media.height ?? undefined,
+  }
+}

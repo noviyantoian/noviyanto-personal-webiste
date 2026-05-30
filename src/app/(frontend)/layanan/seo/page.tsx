@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
-import { generateMetadata, serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -13,13 +14,15 @@ import ServiceCTA from '@/components/sections/ServiceCTA'
 const PATH = '/layanan/seo'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Jasa SEO — Muncul di Halaman Pertama Google Tanpa Bayar Iklan',
-  description:
-    'Jasa SEO berbasis riset keyword nyata. Audit teknis, on-page, local SEO, dan konten yang membangun traffic organik sebagai aset jangka panjang.',
-  path: PATH,
-  keywords: ['jasa SEO', 'SEO Semarang', 'jasa optimasi Google', 'local SEO', 'audit SEO'],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Jasa SEO — Muncul di Halaman Pertama Google Tanpa Bayar Iklan',
+    description:
+      'Jasa SEO berbasis riset keyword nyata. Audit teknis, on-page, local SEO, dan konten yang membangun traffic organik sebagai aset jangka panjang.',
+    path: PATH,
+    keywords: ['jasa SEO', 'SEO Semarang', 'jasa optimasi Google', 'local SEO', 'audit SEO'],
+  })
+}
 
 const jsonLd = [
   serviceSchema({

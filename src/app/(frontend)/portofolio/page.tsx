@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ExternalLink } from 'lucide-react'
 
-import { generateMetadata, breadcrumbSchema, collectionPageSchema } from '@/lib/seo'
+import { breadcrumbSchema, collectionPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE, INDUSTRIES } from '@/lib/constants'
 import { INDUSTRY_ICONS } from '@/lib/icons'
 import Breadcrumb from '@/components/layout/Breadcrumb'
@@ -14,13 +15,15 @@ import ServiceCTA from '@/components/sections/ServiceCTA'
 const PATH = '/portofolio'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Portofolio — Klien Aktif di Berbagai Industri',
-  description:
-    'Klien aktif Noviyanto: Truly Home Massage, Jeda Home Massage, Layz Motor, Rockologist, Prioffice, Inisumedang. Web maintenance, Google Ads, SEO, VPS.',
-  path: PATH,
-  keywords: ['portofolio Noviyanto', 'klien Noviyanto', 'case study web maintenance', 'digital marketing client'],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Portofolio — Klien Aktif di Berbagai Industri',
+    description:
+      'Klien aktif Noviyanto: Truly Home Massage, Jeda Home Massage, Layz Motor, Rockologist, Prioffice, Inisumedang. Web maintenance, Google Ads, SEO, VPS.',
+    path: PATH,
+    keywords: ['portofolio Noviyanto', 'klien Noviyanto', 'case study web maintenance', 'digital marketing client'],
+  })
+}
 
 function buildJsonLd(items: { name: string; url: string; description?: string }[]) {
   return [

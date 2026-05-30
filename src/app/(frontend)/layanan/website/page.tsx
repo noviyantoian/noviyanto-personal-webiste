@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { generateMetadata, serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import ServiceHero from '@/components/sections/ServiceHero'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
@@ -17,19 +18,21 @@ import WebsiteProcess from './_components/WebsiteProcess'
 const PATH = '/layanan/website'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Jasa Pembuatan Website — Website yang Bekerja Keras untuk Bisnis Anda',
-  description:
-    'Jasa pembuatan website bisnis dan landing page yang dirancang untuk mengubah pengunjung jadi prospek. Next.js, mobile-first, SEO-ready.',
-  path: PATH,
-  keywords: [
-    'jasa pembuatan website',
-    'website bisnis',
-    'website landing page',
-    'jasa website Semarang',
-    'web developer Indonesia',
-  ],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Jasa Pembuatan Website — Website yang Bekerja Keras untuk Bisnis Anda',
+    description:
+      'Jasa pembuatan website bisnis dan landing page yang dirancang untuk mengubah pengunjung jadi prospek. Next.js, mobile-first, SEO-ready.',
+    path: PATH,
+    keywords: [
+      'jasa pembuatan website',
+      'website bisnis',
+      'website landing page',
+      'jasa website Semarang',
+      'web developer Indonesia',
+    ],
+  })
+}
 
 const faqItems = [
   {

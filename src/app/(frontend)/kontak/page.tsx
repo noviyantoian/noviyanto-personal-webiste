@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { MessageCircle, Mail, MapPin, Clock, ShieldCheck } from 'lucide-react'
 
-import { generateMetadata, breadcrumbSchema, contactPageSchema, faqPageSchema } from '@/lib/seo'
+import { breadcrumbSchema, contactPageSchema, faqPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
@@ -10,13 +11,15 @@ import ConsultationForm from '@/components/lead/ConsultationForm'
 const PATH = '/kontak'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Konsultasi Gratis — Hubungi Noviyanto',
-  description:
-    'Isi form konsultasi singkat, ceritakan kebutuhan bisnis Anda, lalu lanjut diskusi langsung via WhatsApp. Konsultasi pertama gratis, tanpa komitmen.',
-  path: PATH,
-  keywords: ['kontak Noviyanto', 'konsultasi web developer', 'konsultasi digital Semarang'],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Konsultasi Gratis — Hubungi Noviyanto',
+    description:
+      'Isi form konsultasi singkat, ceritakan kebutuhan bisnis Anda, lalu lanjut diskusi langsung via WhatsApp. Konsultasi pertama gratis, tanpa komitmen.',
+    path: PATH,
+    keywords: ['kontak Noviyanto', 'konsultasi web developer', 'konsultasi digital Semarang'],
+  })
+}
 
 const faqItems = [
   {

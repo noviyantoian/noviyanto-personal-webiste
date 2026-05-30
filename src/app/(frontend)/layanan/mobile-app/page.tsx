@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { Users, HardHat, Layers } from 'lucide-react'
 
-import { generateMetadata, serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -14,13 +15,15 @@ import ServiceCTA from '@/components/sections/ServiceCTA'
 const PATH = '/layanan/mobile-app'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Pembuatan Aplikasi Mobile — Cross-Platform React Native',
-  description:
-    'Pembuatan aplikasi mobile cross-platform (Android + iOS) dengan React Native. Untuk customer-facing, internal tim, atau hybrid.',
-  path: PATH,
-  keywords: ['jasa aplikasi mobile', 'developer React Native', 'app developer Indonesia', 'cross-platform app'],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Pembuatan Aplikasi Mobile — Cross-Platform React Native',
+    description:
+      'Pembuatan aplikasi mobile cross-platform (Android + iOS) dengan React Native. Untuk customer-facing, internal tim, atau hybrid.',
+    path: PATH,
+    keywords: ['jasa aplikasi mobile', 'developer React Native', 'app developer Indonesia', 'cross-platform app'],
+  })
+}
 
 const jsonLd = [
   serviceSchema({

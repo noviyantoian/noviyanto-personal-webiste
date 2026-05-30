@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Target, MessageSquare, ShieldCheck } from 'lucide-react'
 
-import { generateMetadata, breadcrumbSchema, personSchema, aboutPageSchema } from '@/lib/seo'
+import { breadcrumbSchema, personSchema, aboutPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE, INDUSTRIES } from '@/lib/constants'
 import { INDUSTRY_ICONS } from '@/lib/icons'
 import Breadcrumb from '@/components/layout/Breadcrumb'
@@ -13,13 +14,15 @@ import ServiceCTA from '@/components/sections/ServiceCTA'
 const PATH = '/tentang'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Tentang Noviyanto — Digital Growth Partner',
-  description:
-    'Noviyanto — digital growth partner berbasis di Semarang. Lebih dari 3 tahun bantu bisnis di 7+ industri tumbuh secara digital, dari Jakarta sampai Semarang.',
-  path: PATH,
-  keywords: ['Noviyanto', 'tentang Noviyanto', 'digital growth partner', 'web developer Semarang'],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Tentang Noviyanto — Digital Growth Partner',
+    description:
+      'Noviyanto — digital growth partner berbasis di Semarang. Lebih dari 3 tahun bantu bisnis di 7+ industri tumbuh secara digital, dari Jakarta sampai Semarang.',
+    path: PATH,
+    keywords: ['Noviyanto', 'tentang Noviyanto', 'digital growth partner', 'web developer Semarang'],
+  })
+}
 
 const jsonLd = [
   personSchema(),

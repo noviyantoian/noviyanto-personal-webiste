@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
-import { generateMetadata, serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -12,19 +13,21 @@ import ServiceCTA from '@/components/sections/ServiceCTA'
 const PATH = '/layanan/digital-marketing'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Jasa Digital Marketing — Strategi yang Menyatukan Semua Kanal',
-  description:
-    'Digital marketing terpadu: strategi, content, paid ads, email marketing, dan analitik. Website, iklan, SEO, dan media sosial yang bekerja bersama.',
-  path: PATH,
-  keywords: [
-    'jasa digital marketing',
-    'agensi digital marketing',
-    'strategi digital marketing',
-    'paid ads',
-    'content strategy',
-  ],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Jasa Digital Marketing — Strategi yang Menyatukan Semua Kanal',
+    description:
+      'Digital marketing terpadu: strategi, content, paid ads, email marketing, dan analitik. Website, iklan, SEO, dan media sosial yang bekerja bersama.',
+    path: PATH,
+    keywords: [
+      'jasa digital marketing',
+      'agensi digital marketing',
+      'strategi digital marketing',
+      'paid ads',
+      'content strategy',
+    ],
+  })
+}
 
 const jsonLd = [
   serviceSchema({

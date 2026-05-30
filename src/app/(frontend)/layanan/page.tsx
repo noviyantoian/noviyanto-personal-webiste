@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 
-import { generateMetadata, breadcrumbSchema, collectionPageSchema } from '@/lib/seo'
+import { breadcrumbSchema, collectionPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE, SERVICE_LINKS } from '@/lib/constants'
 import { services } from '@/content/services'
 import { SERVICE_ICONS } from '@/lib/icons'
@@ -13,19 +14,21 @@ import ServiceCTA from '@/components/sections/ServiceCTA'
 const PATH = '/layanan'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Layanan — Web Development, Iklan, SEO, ERP, dan AI',
-  description:
-    'Layanan digital end-to-end: pembuatan website, Google Ads, SEO, digital marketing, implementasi Odoo, AI integration, aplikasi mobile, dan maintenance.',
-  path: PATH,
-  keywords: [
-    'jasa web development',
-    'jasa digital marketing',
-    'jasa SEO',
-    'jasa Google Ads',
-    'Odoo developer',
-  ],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Layanan — Web Development, Iklan, SEO, ERP, dan AI',
+    description:
+      'Layanan digital end-to-end: pembuatan website, Google Ads, SEO, digital marketing, implementasi Odoo, AI integration, aplikasi mobile, dan maintenance.',
+    path: PATH,
+    keywords: [
+      'jasa web development',
+      'jasa digital marketing',
+      'jasa SEO',
+      'jasa Google Ads',
+      'Odoo developer',
+    ],
+  })
+}
 
 const jsonLd = [
   collectionPageSchema({

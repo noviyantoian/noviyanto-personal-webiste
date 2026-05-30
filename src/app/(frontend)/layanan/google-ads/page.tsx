@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { Home, Plane, Briefcase, Search } from 'lucide-react'
 
-import { generateMetadata, serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -15,18 +16,20 @@ import ServiceCTA from '@/components/sections/ServiceCTA'
 const PATH = '/layanan/google-ads'
 const URL = `${SITE.url}${PATH}`
 
-export const metadata: Metadata = generateMetadata({
-  title: 'Jasa Google Ads — Customer Baru Mulai Masuk Minggu Pertama',
-  description:
-    'Pengelolaan Google Ads berbasis data: riset keyword, setup, optimasi rutin, tracking konversi WhatsApp/form. Setiap rupiah terukur.',
-  path: PATH,
-  keywords: [
-    'jasa Google Ads',
-    'pengelolaan Google Ads',
-    'Google Ads Semarang',
-    'iklan Google bisnis',
-  ],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Jasa Google Ads — Customer Baru Mulai Masuk Minggu Pertama',
+    description:
+      'Pengelolaan Google Ads berbasis data: riset keyword, setup, optimasi rutin, tracking konversi WhatsApp/form. Setiap rupiah terukur.',
+    path: PATH,
+    keywords: [
+      'jasa Google Ads',
+      'pengelolaan Google Ads',
+      'Google Ads Semarang',
+      'iklan Google bisnis',
+    ],
+  })
+}
 
 const jsonLd = [
   serviceSchema({

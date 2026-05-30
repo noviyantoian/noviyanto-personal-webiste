@@ -3,18 +3,21 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, Clock } from 'lucide-react'
 import { getPublishedPosts, mediaURL, formatPostDate, categoryTitle, type PostCardData } from '@/lib/blog'
-import { generateMetadata as genMeta, blogListSchema, breadcrumbSchema, safeJsonLd } from '@/lib/seo'
+import { blogListSchema, breadcrumbSchema, safeJsonLd } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 
 export const revalidate = 300 // ISR — blog di-cache, DB jarang kepukul
 
-export const metadata: Metadata = genMeta({
-  title: 'Blog & Wawasan Digital',
-  description:
-    'Artikel praktis seputar web development, SEO, Google Ads, dan strategi pertumbuhan bisnis dari Noviyanto — digital growth partner.',
-  path: '/blog',
-  keywords: ['blog digital marketing', 'tips SEO', 'web development', 'Noviyanto'],
-})
+export async function generateMetadata(): Promise<Metadata> {
+  return buildMetadata({
+    title: 'Blog & Wawasan Digital',
+    description:
+      'Artikel praktis seputar web development, SEO, Google Ads, dan strategi pertumbuhan bisnis dari Noviyanto — digital growth partner.',
+    path: '/blog',
+    keywords: ['blog digital marketing', 'tips SEO', 'web development', 'Noviyanto'],
+  })
+}
 
 function PostCard({ post, featured = false }: { post: PostCardData; featured?: boolean }) {
   const img = mediaURL(post.heroImage, featured ? 'feature' : 'card')

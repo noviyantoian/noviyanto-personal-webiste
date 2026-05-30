@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { generateMetadata } from '@/lib/seo'
+import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import Stats from '@/components/sections/Stats'
 import Problem from '@/components/sections/Problem'
@@ -15,26 +15,27 @@ const HOME_TITLE = 'Noviyanto: Web Developer & Digital Marketing Expert'
 const HOME_DESCRIPTION =
   'Noviyanto — digital growth partner untuk bisnis di Semarang. Bukan sekadar bikin website, kami bantu bisnis Anda mendapatkan leads dan tumbuh secara digital.'
 
-const baseMetadata = generateMetadata({
-  title: HOME_TITLE,
-  description: HOME_DESCRIPTION,
-  path: '/',
-  keywords: [
-    'web developer',
-    'digital marketing expert',
-    'jasa website Semarang',
-    'digital marketing Semarang',
-    'web developer Semarang',
-    'Google Ads Semarang',
-    'SEO Semarang',
-  ],
-})
-
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: { absolute: HOME_TITLE },
-  openGraph: { ...baseMetadata.openGraph, title: HOME_TITLE },
-  twitter: { ...baseMetadata.twitter, title: HOME_TITLE },
+export async function generateMetadata(): Promise<Metadata> {
+  const base = await buildMetadata({
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    path: '/',
+    keywords: [
+      'web developer',
+      'digital marketing expert',
+      'jasa website Semarang',
+      'digital marketing Semarang',
+      'web developer Semarang',
+      'Google Ads Semarang',
+      'SEO Semarang',
+    ],
+  })
+  return {
+    ...base,
+    title: { absolute: HOME_TITLE },
+    openGraph: { ...base.openGraph, title: HOME_TITLE },
+    twitter: { ...base.twitter, title: HOME_TITLE },
+  }
 }
 
 const HERO_IMG_SRCSET =
