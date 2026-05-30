@@ -87,8 +87,10 @@ export default buildConfig({
       collections: ['posts'],
       uploadsCollection: 'media',
       tabbedUI: true,
+      // Jangan tambah suffix di sini — layout title.template ('%s | Noviyanto')
+      // yang menambahkannya. Kalau ditambah di sini juga → dobel suffix.
       generateTitle: ({ doc }: { doc?: { title?: string } }) =>
-        doc?.title ? `${doc.title} | Noviyanto` : 'Noviyanto',
+        doc?.title ?? 'Noviyanto',
       generateDescription: ({ doc }: { doc?: { excerpt?: string } }) =>
         doc?.excerpt ?? '',
       generateURL: ({ doc }: { doc?: { slug?: string } }) =>

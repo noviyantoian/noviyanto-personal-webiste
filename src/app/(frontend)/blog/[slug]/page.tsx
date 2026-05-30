@@ -39,8 +39,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const ogPath = mediaURL(post.meta?.image ?? post.heroImage, 'og')
   const ogImage = ogPath ? `${SITE.url}${ogPath}` : undefined
 
+  // meta.title dari seoPlugin bisa tersimpan dengan suffix "| Noviyanto", dan
+  // layout title.template juga menambah "| Noviyanto" → dobel. Strip suffix di
+  // sini supaya template menambahkannya tepat sekali.
+  const rawTitle = post.meta?.title ?? post.title
+  const title = rawTitle.replace(/\s*\|\s*Noviyanto\s*$/i, '')
+
   return await buildMetadata({
-    title: post.meta?.title ?? post.title,
+    title,
     description: post.meta?.description ?? post.excerpt,
     path: `/blog/${post.slug}`,
     ogImage,
