@@ -3,7 +3,7 @@ import { SITE } from '@/lib/constants'
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: '*', allow: '/', disallow: ['/api/', '/_next/'] },
+    rules: { userAgent: '*', allow: '/', disallow: ['/api/', '/_next/', '/cms-noviyanto-ian/'] },
     sitemap: `${SITE.url}/sitemap-index.xml`,
     host: SITE.url,
   }

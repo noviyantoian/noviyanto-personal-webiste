@@ -29,7 +29,7 @@ export default function Footer() {
             <Link
               href="/"
               aria-label={`${SITE.name} — beranda`}
-              className="inline-block font-[family-name:var(--font-plus-jakarta)] text-2xl font-bold tracking-tight text-[#111827]"
+              className="inline-block font-[family-name:var(--font-clash-display)] text-2xl font-bold tracking-tight text-[#111827]"
             >
               {SITE.name}
               <span className="text-[#F59E0B]">.</span>

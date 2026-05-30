@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
-import { SITE, GA_ID } from '@/lib/constants'
-import { personSchema, webSiteSchema, professionalServiceSchema } from '@/lib/seo'
+import { SITE } from '@/lib/constants'
+import { personSchema, webSiteSchema, professionalServiceSchema, safeJsonLd } from '@/lib/seo'
+import { GOOGLE_REVIEWS, REVIEWS_AGGREGATE } from '@/content/reviews'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import FloatingWA from '@/components/layout/FloatingWA'
@@ -87,10 +88,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
+            __html: safeJsonLd([
               webSiteSchema(),
               personSchema(),
-              professionalServiceSchema(),
+              professionalServiceSchema({
+                aggregateRating: {
+                  ratingValue: REVIEWS_AGGREGATE.rating,
+                  reviewCount: REVIEWS_AGGREGATE.count,
+                },
+                review: GOOGLE_REVIEWS.map((r) => ({
+                  author: r.author,
+                  date: r.date,
+                  rating: r.rating,
+                  text: r.text,
+                })),
+              }),
             ]),
           }}
         />
@@ -124,16 +136,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
 
-        {GA_ID && (
-          <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${GA_ID}',{page_path:window.location.pathname});`,
-              }}
-            />
-          </>
-        )}
       </head>
       <body>
         {/* GTM noscript fallback */}

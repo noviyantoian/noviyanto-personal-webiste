@@ -9,6 +9,7 @@ import Services from '@/components/sections/Services'
 import Industries from '@/components/sections/Industries'
 import WhyNoviyanto from '@/components/sections/WhyNoviyanto'
 import CTA from '@/components/sections/CTA'
+import WebsiteTestimonials from '@/app/(frontend)/layanan/website/_components/WebsiteTestimonials'
 
 const HOME_TITLE = 'Noviyanto: Web Developer & Digital Marketing Expert'
 const HOME_DESCRIPTION =
@@ -182,7 +183,7 @@ export default function HomePage() {
       <Services />
       <Industries />
       <WhyNoviyanto />
-      {/* Testimonials slot — TBD */}
+      <WebsiteTestimonials />
       <CTA />
     </>
   )

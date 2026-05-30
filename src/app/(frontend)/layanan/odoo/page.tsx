@@ -27,6 +27,7 @@ export const metadata: Metadata = generateMetadata({
     'Implementasi Odoo (CRM, Accounting, HR, Inventory, Project, Website) untuk bisnis Indonesia. Konfigurasi, kustomisasi, migrasi data, training.',
   path: PATH,
   keywords: ['Odoo developer', 'implementasi Odoo', 'Odoo Indonesia', 'CRM ERP'],
+  noIndex: true,
 })
 
 const jsonLd = [

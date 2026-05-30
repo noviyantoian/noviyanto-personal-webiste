@@ -61,7 +61,7 @@ export const GOOGLE_REVIEWS: readonly GoogleReview[] = [
 
 export const REVIEWS_AGGREGATE = {
   rating: 5.0,
-  count: 14,
+  count: 8,
   source: 'Google Maps',
 } as const
 

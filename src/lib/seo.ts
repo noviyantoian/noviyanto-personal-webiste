@@ -36,7 +36,7 @@ export function generateMetadata({
   const image = ogImage ?? SITE.ogImage
 
   return {
-    title: `${title} | ${SITE.name}`,
+    title,
     description,
     keywords,
     metadataBase: new URL(SITE.url),
@@ -72,7 +72,10 @@ export function personSchema() {
     jobTitle: 'Digital Growth Partner',
     url: SITE.url,
     image: `${SITE.url}/images/noviyanto-profile.webp`,
-    sameAs: [],
+    sameAs: [
+      'https://folkastudio.com',
+      // Tambahkan: URL LinkedIn, Google Business Profile, Instagram
+    ],
     email: SITE.email,
     telephone: `+${SITE.waNumber}`,
     address: {
@@ -154,7 +157,7 @@ export function blogPostingSchema(params: {
     ...(params.image && { image: [params.image] }),
     ...(params.datePublished && { datePublished: params.datePublished }),
     dateModified: params.dateModified ?? params.datePublished,
-    author: { '@type': 'Person', name: params.authorName, url: SITE.url },
+    author: { '@type': 'Person', '@id': `${SITE.url}/#person`, name: params.authorName, url: SITE.url },
     publisher: { '@id': `${SITE.url}/#business` },
   }
 }

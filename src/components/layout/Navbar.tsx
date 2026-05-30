@@ -43,7 +43,7 @@ export default function Navbar() {
         <Link
           href="/"
           aria-label={`${SITE.name} — beranda`}
-          className="font-[family-name:var(--font-plus-jakarta)] text-xl font-bold tracking-tight text-[#111827] rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
+          className="font-[family-name:var(--font-clash-display)] text-xl font-bold tracking-tight text-[#111827] rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
         >
           {SITE.name}
           <span className="text-[#F59E0B]">.</span>
