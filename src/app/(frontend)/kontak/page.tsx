@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { MessageCircle, Mail, MapPin, Clock, ShieldCheck } from 'lucide-react'
 
-import { breadcrumbSchema, contactPageSchema, faqPageSchema } from '@/lib/seo'
+import { breadcrumbSchema, contactPageSchema, faqPageSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
@@ -63,7 +63,7 @@ export default function KontakPage() {
     <main className="bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
       <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: 'Kontak' }]} />

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Users, HardHat, Layers } from 'lucide-react'
 
-import { serviceSchema, breadcrumbSchema, faqPageSchema } from '@/lib/seo'
+import { serviceSchema, breadcrumbSchema, faqPageSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
@@ -122,7 +122,7 @@ export default function MobileAppPage() {
     <main className="bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([...jsonLd, faqPageSchema(faqItems)]) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd([...jsonLd, faqPageSchema(faqItems)]) }}
       />
 
       <Breadcrumb

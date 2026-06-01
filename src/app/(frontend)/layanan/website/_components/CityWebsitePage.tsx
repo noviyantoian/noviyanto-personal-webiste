@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { cityWebsiteServiceSchema, faqPageSchema, breadcrumbSchema } from '@/lib/seo'
+import { cityWebsiteServiceSchema, faqPageSchema, breadcrumbSchema, safeJsonLd } from '@/lib/seo'
 import { SITE } from '@/lib/constants'
 import type { CityData } from '@/content/cities'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -37,7 +37,7 @@ export default function CityWebsitePage({ city }: CityWebsitePageProps) {
     <main className="bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
       <nav aria-label="Breadcrumb" className="container-wide pt-6 text-xs text-[#6B7280]">

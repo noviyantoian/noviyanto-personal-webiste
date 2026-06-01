@@ -85,6 +85,11 @@ export default function Footer() {
                   {SITE.email}
                 </a>
               </li>
+              <li>
+                <a href={`tel:+${SITE.waNumber}`} className={linkClass}>
+                  +62 858-7944-8563
+                </a>
+              </li>
             </ul>
           </div>
         </div>

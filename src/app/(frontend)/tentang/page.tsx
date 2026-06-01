@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Target, MessageSquare, ShieldCheck } from 'lucide-react'
 
-import { breadcrumbSchema, personSchema, aboutPageSchema } from '@/lib/seo'
+import { breadcrumbSchema, personSchema, aboutPageSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE, INDUSTRIES } from '@/lib/constants'
 import { INDUSTRY_ICONS } from '@/lib/icons'
@@ -63,7 +63,7 @@ export default function TentangPage() {
     <main className="bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
       <Breadcrumb

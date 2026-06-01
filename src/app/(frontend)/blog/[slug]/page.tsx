@@ -27,8 +27,12 @@ interface PageProps {
 }
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
-  const slugs = await getAllPublishedSlugs()
-  return slugs.map((slug) => ({ slug }))
+  try {
+    const slugs = await getAllPublishedSlugs()
+    return slugs.map((slug) => ({ slug }))
+  } catch {
+    return []
+  }
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

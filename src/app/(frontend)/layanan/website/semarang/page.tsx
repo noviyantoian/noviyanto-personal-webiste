@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { breadcrumbSchema } from '@/lib/seo'
+import { breadcrumbSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -175,7 +175,7 @@ export default function SemarangWebsitePage() {
     <main className="bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
       <nav

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 
-import { breadcrumbSchema, collectionPageSchema } from '@/lib/seo'
+import { breadcrumbSchema, collectionPageSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE, SERVICE_LINKS } from '@/lib/constants'
 import { services } from '@/content/services'
@@ -57,7 +57,7 @@ export default function LayananPage() {
     <main className="bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
       <Breadcrumb

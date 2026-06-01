@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { breadcrumbSchema } from '@/lib/seo'
+import { breadcrumbSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE, getWaLink } from '@/lib/constants'
 import Breadcrumb from '@/components/layout/Breadcrumb'
@@ -40,7 +40,7 @@ export default function SyaratKetentuanPage() {
     <main className="bg-white">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
       <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: 'Syarat & Ketentuan' }]} />

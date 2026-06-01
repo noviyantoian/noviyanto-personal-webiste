@@ -62,9 +62,13 @@ const nextConfig: NextConfig = {
     ]
   },
 
-  // Redirects — tambah kalau diperlukan
   async redirects() {
-    return []
+    return [
+      // C1: odoo route tidak ada — redirect ke layanan overview
+      { source: '/layanan/odoo', destination: '/layanan', permanent: true },
+      // H9: /sitemap.xml conventional path → actual sitemap index
+      { source: '/sitemap.xml', destination: '/sitemap-index.xml', permanent: true },
+    ]
   },
 }
 

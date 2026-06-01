@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { ExternalLink } from 'lucide-react'
 
-import { breadcrumbSchema, collectionPageSchema } from '@/lib/seo'
+import { breadcrumbSchema, collectionPageSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE, INDUSTRIES } from '@/lib/constants'
 import { INDUSTRY_ICONS } from '@/lib/icons'
@@ -162,7 +162,7 @@ export default function PortofolioPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
+          __html: safeJsonLd(
             buildJsonLd(
               clients.map((c) => ({
                 name: c.name,

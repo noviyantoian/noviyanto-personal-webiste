@@ -80,7 +80,7 @@ function PostCard({ post, featured = false }: { post: PostCardData; featured?: b
 }
 
 export default async function BlogPage() {
-  const posts = await getPublishedPosts()
+  const posts = await getPublishedPosts().catch(() => [] as Awaited<ReturnType<typeof getPublishedPosts>>)
   const url = `${SITE.url}/blog`
 
   const jsonLd = [
