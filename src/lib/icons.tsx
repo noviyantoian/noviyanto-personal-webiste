@@ -13,7 +13,6 @@ import {
   Bot,
   Smartphone,
   ShieldCheck,
-  Settings2,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -32,7 +31,6 @@ export const SERVICE_ICONS: Record<string, LucideIcon> = {
   'google-ads': TrendingUp,
   seo: Search,
   'digital-marketing': Target,
-  odoo: Settings2,
   'ai-integration': Bot,
   'mobile-app': Smartphone,
   maintenance: ShieldCheck,

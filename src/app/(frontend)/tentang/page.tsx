@@ -214,7 +214,6 @@ export default function TentangPage() {
           'React Native',
           'TypeScript',
           'Tailwind CSS',
-          'Odoo',
           'n8n',
           'OpenAI',
           'Anthropic Claude',

@@ -97,7 +97,6 @@ export function personSchema(opts?: { sameAs?: string[] }) {
       'Digital Marketing',
       'SEO',
       'Google Ads',
-      'Odoo ERP',
       'AI Integration',
     ],
     worksFor: { '@id': `${SITE.url}/#business` },

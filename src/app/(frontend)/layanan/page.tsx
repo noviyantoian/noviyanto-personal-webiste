@@ -16,16 +16,15 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Layanan — Web Development, Iklan, SEO, ERP, dan AI',
+    title: 'Layanan — Web Development, Iklan, SEO, dan AI',
     description:
-      'Layanan digital end-to-end: pembuatan website, Google Ads, SEO, digital marketing, implementasi Odoo, AI integration, aplikasi mobile, dan maintenance.',
+      'Layanan digital end-to-end: pembuatan website, Google Ads, SEO, digital marketing, AI integration, aplikasi mobile, dan maintenance.',
     path: PATH,
     keywords: [
       'jasa web development',
       'jasa digital marketing',
       'jasa SEO',
       'jasa Google Ads',
-      'Odoo developer',
     ],
     hasGeneratedOgImage: true,
   })
@@ -36,7 +35,7 @@ const jsonLd = [
     url: URL,
     name: 'Layanan Digital — Noviyanto',
     description:
-      'Layanan digital end-to-end: web development, Google Ads, SEO, digital marketing, Odoo, AI integration, mobile app, dan maintenance.',
+      'Layanan digital end-to-end: web development, Google Ads, SEO, digital marketing, AI integration, mobile app, dan maintenance.',
     items: SERVICE_LINKS.map((s) => ({
       name: s.label,
       url: `${SITE.url}${s.href}`,
