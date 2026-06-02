@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
+import { webPageSchema, safeJsonLd } from '@/lib/seo'
 import Stats from '@/components/sections/Stats'
 import Problem from '@/components/sections/Problem'
 import Process from '@/components/sections/Process'
@@ -11,7 +12,7 @@ import WhyNoviyanto from '@/components/sections/WhyNoviyanto'
 import CTA from '@/components/sections/CTA'
 import WebsiteTestimonials from '@/app/(frontend)/layanan/website/_components/WebsiteTestimonials'
 
-const HOME_TITLE = 'Noviyanto: Web Developer & Digital Marketing Expert'
+const HOME_TITLE = 'Noviyanto: Jasa Website & Digital Marketing Profesional'
 const HOME_DESCRIPTION =
   'Noviyanto — digital growth partner untuk bisnis di Semarang. Bukan sekadar bikin website, kami bantu bisnis Anda mendapatkan leads dan tumbuh secara digital.'
 
@@ -20,9 +21,10 @@ export async function generateMetadata(): Promise<Metadata> {
     title: HOME_TITLE,
     description: HOME_DESCRIPTION,
     path: '/',
+    hasGeneratedOgImage: true,
     keywords: [
-      'web developer',
-      'digital marketing expert',
+      'jasa website',
+      'digital marketing',
       'jasa website Semarang',
       'digital marketing Semarang',
       'web developer Semarang',
@@ -48,6 +50,18 @@ const HERO_IMG_SIZES = '(max-width: 640px) 280px, (max-width: 1024px) 360px, 400
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: safeJsonLd(
+            webPageSchema({
+              url: SITE.url,
+              name: HOME_TITLE,
+              description: HOME_DESCRIPTION,
+            })
+          ),
+        }}
+      />
       {/* LCP image preload — App Router hoists to <head> */}
       <link
         rel="preload"

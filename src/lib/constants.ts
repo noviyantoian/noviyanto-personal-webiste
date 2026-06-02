@@ -15,6 +15,7 @@ export const SITE = {
     city: 'Kota Semarang',
     region: 'Jawa Tengah',
     country: 'Indonesia',
+    postalCode: '50215',
     full: 'Dk. Kaligetas, Kelurahan Jatibarang, Kecamatan Mijen, Kota Semarang, Jawa Tengah, Indonesia',
   },
 } as const

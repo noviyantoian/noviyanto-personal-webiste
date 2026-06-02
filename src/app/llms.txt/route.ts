@@ -5,6 +5,7 @@ export const dynamic = 'force-static'
 export function GET() {
   const u = SITE.url
   const body = `# Noviyanto
+license: RSL-1.0
 
 > Digital growth partner berbasis di Semarang. Bantu bisnis tumbuh dan dapat leads melalui web development, Google Ads, SEO, digital marketing, AI integration, mobile app, dan maintenance website. Founder Folkastudio (50+ proyek digital).
 

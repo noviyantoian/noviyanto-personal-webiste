@@ -17,10 +17,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-[#E5E7EB] bg-[#FFFFFF]" aria-labelledby="footer-heading">
-      <h2 id="footer-heading" className="sr-only">
-        Footer
-      </h2>
+    <footer className="border-t border-[#E5E7EB] bg-[#FFFFFF]" aria-label="Footer">
 
       <div className="container-wide py-16 lg:py-20">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-12 lg:gap-8">

@@ -89,7 +89,13 @@ export function personSchema(opts?: { sameAs?: string[] }) {
       streetAddress: SITE.address.line,
       addressLocality: SITE.address.city,
       addressRegion: SITE.address.region,
+      postalCode: SITE.address.postalCode,
       addressCountry: 'ID',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: -7.0618,
+      longitude: 110.3452,
     },
     areaServed: ['Semarang', 'Jakarta', 'Bandung', 'Indonesia'],
     knowsAbout: [
@@ -116,15 +122,13 @@ export function serviceSchema(params: {
     description: params.description,
     url: params.url,
     serviceType: params.serviceType,
-    provider: {
-      '@type': 'Person',
-      name: 'Noviyanto',
-      url: SITE.url,
-    },
-    areaServed: {
-      '@type': 'City',
-      name: 'Semarang',
-    },
+    provider: { '@id': `${SITE.url}/#person` },
+    areaServed: [
+      { '@type': 'City', name: 'Semarang' },
+      { '@type': 'City', name: 'Jakarta' },
+      { '@type': 'City', name: 'Bandung' },
+      { '@type': 'Country', name: 'Indonesia' },
+    ],
   }
 }
 
@@ -149,7 +153,6 @@ export function blogPostingSchema(params: {
   image?: string
   datePublished?: string
   dateModified?: string
-  authorName: string
 }) {
   return {
     '@context': 'https://schema.org',
@@ -160,9 +163,9 @@ export function blogPostingSchema(params: {
     mainEntityOfPage: { '@type': 'WebPage', '@id': params.url },
     inLanguage: 'id-ID',
     ...(params.image && { image: [params.image] }),
-    ...(params.datePublished && { datePublished: params.datePublished }),
-    dateModified: params.dateModified ?? params.datePublished,
-    author: { '@type': 'Person', '@id': `${SITE.url}/#person`, name: params.authorName, url: SITE.url },
+    datePublished: params.datePublished ?? new Date().toISOString(),
+    dateModified: params.dateModified ?? params.datePublished ?? new Date().toISOString(),
+    author: { '@id': `${SITE.url}/#person` },
     publisher: { '@id': `${SITE.url}/#business` },
   }
 }
@@ -170,7 +173,7 @@ export function blogPostingSchema(params: {
 // ── Blog (CollectionPage untuk /blog) ────────────────────────────
 export function blogListSchema(params: {
   url: string
-  items: Array<{ name: string; url: string; description?: string }>
+  items: Array<{ name: string; url: string; description?: string; datePublished?: string }>
 }) {
   return {
     '@context': 'https://schema.org',
@@ -185,8 +188,29 @@ export function blogListSchema(params: {
       '@type': 'BlogPosting',
       headline: item.name,
       url: item.url,
+      author: { '@id': `${SITE.url}/#person` },
       ...(item.description && { description: item.description }),
+      ...(item.datePublished && { datePublished: item.datePublished }),
     })),
+  }
+}
+
+// ── WebPage (untuk halaman individual) ───────────────────────────
+export function webPageSchema(params: {
+  url: string
+  name: string
+  description: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${params.url}#webpage`,
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    isPartOf: { '@id': `${SITE.url}/#website` },
+    about: { '@id': `${SITE.url}/#person` },
+    inLanguage: 'id-ID',
   }
 }
 
@@ -223,6 +247,8 @@ export function professionalServiceSchema(opts?: {
     rating: number
     text: string
   }>
+  businessHours?: Array<{ dayOfWeek: string[]; opens: string; closes: string }>
+  geo?: { latitude: number; longitude: number }
 }) {
   const base = {
     '@context': 'https://schema.org',
@@ -240,8 +266,24 @@ export function professionalServiceSchema(opts?: {
       streetAddress: SITE.address.line,
       addressLocality: SITE.address.city,
       addressRegion: SITE.address.region,
+      postalCode: SITE.address.postalCode,
       addressCountry: 'ID',
     },
+    ...(opts?.geo && {
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: opts.geo.latitude,
+        longitude: opts.geo.longitude,
+      },
+    }),
+    ...(opts?.businessHours?.length && {
+      openingHoursSpecification: opts.businessHours.map((h) => ({
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: h.dayOfWeek,
+        opens: h.opens,
+        closes: h.closes,
+      })),
+    }),
     areaServed: [
       { '@type': 'City', name: 'Semarang' },
       { '@type': 'City', name: 'Jakarta' },

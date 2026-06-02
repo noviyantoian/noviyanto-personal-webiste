@@ -90,6 +90,7 @@ export default async function BlogPage() {
         name: p.title,
         url: `${SITE.url}/blog/${p.slug}`,
         description: p.excerpt,
+        datePublished: p.publishedAt ?? undefined,
       })),
     }),
     breadcrumbSchema([

@@ -77,11 +77,9 @@ export default async function BlogPostPage({ params }: PageProps) {
       image: ogPath ? `${SITE.url}${ogPath}` : undefined,
       datePublished: post.publishedAt ?? post.createdAt,
       dateModified: post.updatedAt,
-      authorName: post.author,
     }),
     breadcrumbSchema([
       { name: 'Beranda', url: SITE.url },
-      { name: 'Blog', url: `${SITE.url}/blog` },
       { name: post.title, url },
     ]),
   ]

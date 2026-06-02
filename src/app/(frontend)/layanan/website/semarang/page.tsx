@@ -88,7 +88,7 @@ const faqItems = [
 const businessSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  '@id': `${URL}#business`,
+  '@id': `${SITE.url}/#business`,
   name: 'Noviyanto — Jasa Pembuatan Website Profesional di Semarang',
   description:
     'Jasa pembuatan website bisnis di Kota Semarang oleh Noviyanto. Website cepat, SEO-ready, mobile-first, dirancang untuk konversi.',
@@ -110,12 +110,7 @@ const businessSchema = {
     { '@type': 'City', name: 'Demak' },
     { '@type': 'City', name: 'Salatiga' },
   ],
-  founder: {
-    '@type': 'Person',
-    name: 'Noviyanto',
-    jobTitle: 'Web Developer & Digital Growth Partner',
-    image: `${SITE.url}/images/noviyanto-profile.webp`,
-  },
+  founder: { '@id': `${SITE.url}/#person` },
   makesOffer: {
     '@type': 'Offer',
     itemOffered: {

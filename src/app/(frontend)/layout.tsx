@@ -3,7 +3,7 @@ import localFont from 'next/font/local'
 import { SITE } from '@/lib/constants'
 import { personSchema, webSiteSchema, professionalServiceSchema, safeJsonLd } from '@/lib/seo'
 import { GOOGLE_REVIEWS, REVIEWS_AGGREGATE } from '@/content/reviews'
-import { getSiteSettings, getDefaultOgImageUrl } from '@/lib/site-settings'
+import { getSiteSettings, getDefaultOgImageUrl, getBusinessHours, getGeoCoordinates } from '@/lib/site-settings'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import FloatingWA from '@/components/layout/FloatingWA'
@@ -86,13 +86,18 @@ export const viewport: Viewport = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const settings = await getSiteSettings()
   const sameAs = settings.sameAs?.map((s) => s.url).filter(Boolean) ?? ['https://folkastudio.com']
+  const businessHours = getBusinessHours(settings)
+  const geo = getGeoCoordinates(settings)
 
   return (
     <html lang="id" suppressHydrationWarning className={`${clashDisplay.variable} ${satoshi.variable}`}>
       <head>
-        {/* Preconnect to analytics origins */}
+        {/* Preconnect + dns-prefetch for analytics origins */}
         <link rel="preconnect" href="https://analytics.folkastudio.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://analytics.folkastudio.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
         <script
           type="application/ld+json"
@@ -111,6 +116,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                   rating: r.rating,
                   text: r.text,
                 })),
+                businessHours,
+                geo,
               }),
             ]),
           }}

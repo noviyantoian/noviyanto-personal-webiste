@@ -17,6 +17,44 @@ export const getSiteSettings = cache(async (): Promise<SiteSetting> => {
   }
 })
 
+// ── Business Hours ────────────────────────────────────────────────
+export interface BusinessHourSpec {
+  dayOfWeek: string[]
+  opens: string
+  closes: string
+}
+
+/**
+ * Ekstrak jam operasional dari CMS.
+ * Fallback ke Senin–Jumat 09:00–18:00 kalau belum di-set di admin.
+ * Setelah `npx payload generate:types`, cast `as any` bisa dihapus.
+ */
+export function getBusinessHours(settings: SiteSetting): BusinessHourSpec[] {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const hours = (settings as any).businessHours as BusinessHourSpec[] | undefined
+  if (hours?.length) return hours
+  return [
+    { dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '18:00' },
+  ]
+}
+
+// ── Geo Coordinates ───────────────────────────────────────────────
+export interface GeoCoordinates {
+  latitude: number
+  longitude: number
+}
+
+/**
+ * Ekstrak koordinat lokasi dari CMS.
+ * Fallback ke koordinat Kec. Mijen, Semarang kalau belum di-set.
+ */
+export function getGeoCoordinates(settings: SiteSetting): GeoCoordinates {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const geo = (settings as any).geo as GeoCoordinates | undefined
+  if (geo?.latitude && geo?.longitude) return geo
+  return { latitude: -7.0618, longitude: 110.3452 }
+}
+
 /** Ekstrak URL OG image default dari global settings. */
 export function getDefaultOgImageUrl(settings: SiteSetting): string | null {
   const img = settings.defaultOgImage

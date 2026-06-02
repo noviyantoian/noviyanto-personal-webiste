@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Target, MessageSquare, ShieldCheck } from 'lucide-react'
 
-import { breadcrumbSchema, personSchema, aboutPageSchema, safeJsonLd } from '@/lib/seo'
+import { breadcrumbSchema, aboutPageSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE, INDUSTRIES } from '@/lib/constants'
 import { INDUSTRY_ICONS } from '@/lib/icons'
@@ -25,7 +25,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const jsonLd = [
-  personSchema(),
   aboutPageSchema({
     url: URL,
     name: 'Tentang Noviyanto — Digital Growth Partner',

@@ -36,6 +36,37 @@
 - [x] **C6** — Nomor telepon `+62 858-7944-8563` ditambah ke Footer (visible on-page, `tel:` link)
 - [x] **H9** — `/sitemap.xml` → `/sitemap-index.xml` redirect 301 ditambah ke `next.config.ts`
 
+### Sprint 2 — HIGH (dikerjakan 2 Juni 2026, batch 2)
+
+- [x] **H1** — Homepage title: `"Noviyanto: Jasa Website & Digital Marketing Profesional"` — keyword transaksional ada, brand-first dipertahankan
+- [x] **H2** — Google Ads H1 sudah benar dari kode existing: `"Customer Baru Bisa Mulai Masuk Minggu Pertama"` — tidak perlu diubah
+- [x] **H3** — `noIndex: true` di `/layanan/website/jakarta` + `/bandung`; kedua URL dihapus dari sitemap — sementara sampai konten unik 60%+
+- [x] **H4** — `personSchema()` duplikat dihapus dari `/tentang/page.tsx`
+- [x] **H5** — `serviceSchema` provider → `{ '@id': '/#person' }`; `areaServed` expand multi-kota (sekalian M13)
+- [ ] **H6** — Review velocity — action offline
+- [x] **H7** — `opengraph-image.tsx` dibuat untuk homepage; `hasGeneratedOgImage: true` ditambah ke metadata
+- [ ] **H8** — Pricing context — butuh input harga dari pemilik bisnis
+- [x] **H10** — nginx `security-headers.conf` diupdate: `X-XSS-Protection` dihapus, HSTS ditambah `preload`. Backup disimpan di `.conf.bak`. Header dari Next.js + nginx global sekarang identik valuenya.
+
+### Sprint 3 — MEDIUM (dikerjakan 2 Juni 2026, batch 3)
+
+- [x] **M1+M2** — Sitemap: `lastmod` diganti ke static dates; `changeFrequency` + `priority` dihapus (Google abaikan sejak 2023); Jakarta + Bandung dikeluarkan dari sitemap (noindex)
+- [x] **M3** — Semarang `businessSchema @id` difix: `${URL}#business` → `${SITE.url}/#business`; `founder` inline → `{ '@id': '/#person' }`
+- [x] **M4** — Footer `<h2 sr-only>Footer</h2>` dihapus; ganti `aria-labelledby` dengan `aria-label="Footer"` langsung di `<footer>`
+- [x] **M5** — Blog breadcrumb schema turun dari 3 → 2 level matching UI (`Beranda → Post title`)
+- [ ] **M6** — `/tentang` thin content — perlu ekspansi konten manual
+- [x] **M7** — `blogPostingSchema.datePublished` fallback ke `new Date().toISOString()` kalau CMS null
+- [ ] **M8** — Outbound links — perlu keputusan konten per halaman
+- [x] **M9** — Cache header ditambah untuk `/images/` dan `/fonts/` di `next.config.ts`
+- [x] **M10** — `X-XSS-Protection` deprecated dihapus dari nginx `security-headers.conf`
+- [x] **M11** — `openingHoursSpecification` sekarang di-set via Payload CMS (`SiteSettings` → Jam Operasional); fallback Senin–Jumat 09:00–18:00
+- [x] **M12** — `geo` GeoCoordinates sekarang di-set via Payload CMS (`SiteSettings` → Koordinat Lokasi); fallback Kec. Mijen (-7.0618, 110.3452)
+- [x] **M13** — Sudah dikerjakan di H5: `serviceSchema.areaServed` expand multi-kota
+- [x] **M14** — `postalCode: '50215'` ditambah ke `SITE.address` di `constants.ts`; dipakai di `personSchema` dan `professionalServiceSchema`
+- [x] **M15** — `blogPostingSchema` author disederhanakan ke `{ '@id': '/#person' }`; param `authorName` dihapus
+
+> **Catatan:** Setelah deploy Payload CMS dengan field baru, jalankan `npx payload generate:types` untuk regenerate TypeScript types dari `SiteSettings` global.
+
 ---
 
 ## CRITICAL — Perbaiki Segera
@@ -252,16 +283,18 @@ provider: { '@id': SCHEMA_ID.person }
 
 ## LOW — Backlog
 
-- `llms.txt` tidak ada deklarasi RSL-1.0 license → tambah `license: RSL-1.0` di header
-- Tidak ada `speakable` property → tambah untuk AI Overview candidacy
-- `robots.txt` pakai `Host:` directive non-standard (Yandex only) → hapus
-- `/blog` listing page 282 kata → tambah editorial intro
-- IndexNow protocol tidak diimplementasi → buat key file + Payload webhook
-- Tidak ada YouTube `sameAs` → faktor korelasi AI citation tertinggi (~0.737)
-- `Blog` schema `blogPost` stubs tidak ada `datePublished` + `author`
-- `WebPage` schema tidak ada di homepage
-- `preconnect` google-analytics.com tidak ada fallback `dns-prefetch`
-- Konflik font source: CLAUDE.md (`next/font/local`) vs `performance.md` (`next/font/google`) → rekonsiliasi
+- [x] `llms.txt` — `license: RSL-1.0` ditambah ke header
+- [ ] `speakable` property — tambah untuk AI Overview candidacy
+- [ ] `robots.txt` `Host:` directive — tidak ditemukan di kode (Next.js MetadataRoute tidak generate Host); mungkin dari nginx/proxy lama — periksa di VPS
+- [ ] `/blog` listing page 282 kata — tambah editorial intro (konten manual)
+- [ ] IndexNow protocol — buat key file + Payload webhook (kompleks)
+- [ ] YouTube `sameAs` — action offline (setup YouTube channel dulu)
+- [x] `Blog` schema `blogPost` stubs — `author: { '@id': '/#person' }` + `datePublished` dari CMS ditambah
+- [x] `WebPage` schema — ditambah ke homepage via `webPageSchema()`
+- [x] `dns-prefetch` fallback — ditambah untuk folkastudio analytics, GTM, dan google-analytics.com di `layout.tsx`
+- [x] Font conflict — sudah resolved: `layout.tsx` pakai `next/font/local` (sesuai CLAUDE.md)
+- [ ] **H10** — Nginx duplicate security headers — butuh explicit VPS access (jalankan manual, lihat instruksi di bawah)
+- [ ] **M10** — `X-XSS-Protection` deprecated di nginx — hapus bersamaan dengan H10
 
 ---
 
