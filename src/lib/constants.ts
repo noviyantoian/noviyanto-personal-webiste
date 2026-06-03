@@ -32,6 +32,7 @@ export const WA_MESSAGES = {
   maintenance: 'Halo, saya ingin tahu paket maintenance website yang tersedia.',
   portfolio: 'Halo, saya lihat portofolio Anda dan tertarik untuk diskusi.',
   audit: 'Halo, saya ingin minta audit website gratis.',
+  tourTravel: 'Halo Noviyanto, saya tertarik dengan jasa website tour & travel. Boleh konsultasi gratis?',
 } as const
 
 export function getWaLink(message: keyof typeof WA_MESSAGES = 'default') {
