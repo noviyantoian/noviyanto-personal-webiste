@@ -312,15 +312,11 @@ export default function PortofolioPage() {
         <ul className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-10 items-center">
           {clients.map((c) => (
             <li key={c.slug} className="flex justify-center">
-              <a
-                href={`https://${c.domain}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Kunjungi ${c.name}`}
+              <div
                 className={
                   c.wallLogoDarkBg
-                    ? 'group block w-full h-14 lg:h-16 max-w-[160px] rounded-lg bg-[#1f1f1f] flex items-center justify-center px-3 py-2'
-                    : 'group block w-full h-14 lg:h-16 max-w-[160px] flex items-center justify-center'
+                    ? 'w-full h-14 lg:h-16 max-w-[160px] rounded-lg bg-[#1f1f1f] flex items-center justify-center px-3 py-2'
+                    : 'w-full h-14 lg:h-16 max-w-[160px] flex items-center justify-center'
                 }
               >
                 <Image
@@ -330,11 +326,11 @@ export default function PortofolioPage() {
                   height={64}
                   className={
                     c.wallLogoDarkBg
-                      ? 'object-contain max-h-full max-w-full transition-all duration-300'
-                      : 'object-contain max-h-full max-w-full grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300'
+                      ? 'object-contain max-h-full max-w-full'
+                      : 'object-contain max-h-full max-w-full grayscale opacity-60'
                   }
                 />
-              </a>
+              </div>
             </li>
           ))}
         </ul>
