@@ -93,7 +93,7 @@ export default function ServiceColumns({
               >
                 {col.badge}
               </span>
-              <h3 className="mt-4 text-xl lg:text-2xl font-display font-medium text-[#111827] tracking-tight">
+              <h3 className="mt-4 text-xl lg:text-2xl font-display font-semibold text-[#111827] tracking-normal">
                 {col.title}
               </h3>
               <ul className="mt-6 space-y-3">

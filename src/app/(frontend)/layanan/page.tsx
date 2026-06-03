@@ -96,14 +96,14 @@ export default function LayananPage() {
                     </div>
                   </div>
 
-                  <h2 className="font-display font-medium text-lg text-[#111827]">
+                  <h2 className="font-display font-semibold text-xl text-[#111827] tracking-normal">
                     {s.title}
                   </h2>
-                  <p className="mt-2 text-base text-[#6B7280] leading-relaxed flex-1">
+                  <p className="mt-2.5 text-base text-[#4B5563] leading-relaxed flex-1">
                     {s.description}
                   </p>
 
-                  <ul className="mt-5 space-y-1.5 text-sm text-[#9CA3AF]">
+                  <ul className="mt-5 space-y-2 text-base text-[#6B7280]">
                     {s.features.slice(0, 3).map((f) => (
                       <li key={f} className="flex items-start gap-2">
                         <span className="text-amber-500 mt-0.5">·</span>

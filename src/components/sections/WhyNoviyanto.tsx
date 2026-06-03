@@ -68,7 +68,7 @@ export default function WhyNoviyanto() {
                 <Icon className="w-5 h-5" strokeWidth={2} />
               </div>
 
-              <h3 className="font-display font-bold text-lg text-[#111827] mb-3 tracking-tight">
+              <h3 className="font-display font-bold text-xl text-[#111827] mb-3 tracking-normal">
                 {reason.title}
               </h3>
 

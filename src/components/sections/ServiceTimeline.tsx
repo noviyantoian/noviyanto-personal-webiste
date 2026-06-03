@@ -73,7 +73,7 @@ export default function ServiceTimeline({
                 {i + 1}
               </span>
               <div className="flex items-baseline gap-3 flex-wrap">
-                <h3 className="font-display font-medium text-lg text-[#111827] tracking-tight">
+                <h3 className="font-display font-semibold text-xl text-[#111827] tracking-normal">
                   {step.title}
                 </h3>
                 {step.label ? (

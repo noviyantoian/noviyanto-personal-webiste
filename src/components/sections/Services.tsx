@@ -64,11 +64,11 @@ export default function Services() {
                   <Icon className="w-5 h-5" strokeWidth={2} />
                 </div>
 
-                <h3 className="font-display font-bold text-lg text-[#111827] mb-2 tracking-tight">
+                <h3 className="font-display font-semibold text-xl text-[#111827] mb-2 tracking-normal">
                   {service.title}
                 </h3>
 
-                <p className="text-[#6B7280] text-base leading-relaxed text-pretty flex-1">
+                <p className="text-[#4B5563] text-base leading-relaxed text-pretty flex-1">
                   {service.description}
                 </p>
 

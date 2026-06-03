@@ -77,7 +77,7 @@ export default function ServiceCardGrid({
                   {c.icon}
                 </div>
               ) : null}
-              <h3 className="font-display font-medium text-lg text-[#111827] tracking-tight">
+              <h3 className="font-display font-semibold text-xl text-[#111827] tracking-normal">
                 {c.title}
               </h3>
               <p className="mt-2 text-base text-[#6B7280] leading-relaxed">{c.body}</p>
