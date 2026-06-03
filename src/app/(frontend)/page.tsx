@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import { webPageSchema, safeJsonLd } from '@/lib/seo'
+import ClientLogos from '@/components/sections/ClientLogos'
 import Stats from '@/components/sections/Stats'
 import Problem from '@/components/sections/Problem'
 import Process from '@/components/sections/Process'
@@ -72,7 +73,7 @@ export default function HomePage() {
         fetchPriority="high"
       />
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center overflow-hidden min-h-[88vh] lg:min-h-screen">
+      <section className="relative flex items-center justify-center overflow-hidden min-h-[78vh] lg:min-h-[82vh]">
         {/* Soft amber glow */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -95,7 +96,7 @@ export default function HomePage() {
           }}
         />
 
-        <div className="container-wide relative z-10 py-20 lg:py-28">
+        <div className="container-wide relative z-10 py-16 lg:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* ── Left: text ───────────────────────────── */}
             <div className="lg:col-span-7 text-center lg:text-left">
@@ -192,6 +193,7 @@ export default function HomePage() {
         </div>
       </section>
 
+      <ClientLogos />
       <Stats />
       <Problem />
       <Process />
