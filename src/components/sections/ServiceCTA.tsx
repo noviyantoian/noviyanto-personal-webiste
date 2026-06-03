@@ -73,7 +73,7 @@ export default function ServiceCTA({
             Isi form singkat · lanjut diskusi via WhatsApp · tanpa biaya konsultasi awal
           </p>
 
-          {subText ? <p className="mt-4 text-sm text-[#9CA3AF]">{subText}</p> : null}
+          {subText ? <p className="mt-4 text-base text-[#6B7280]">{subText}</p> : null}
         </motion.div>
       </div>
     </section>

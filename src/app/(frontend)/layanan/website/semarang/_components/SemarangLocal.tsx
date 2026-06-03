@@ -68,7 +68,7 @@ export default function SemarangLocal() {
                 </li>
               ))}
             </ul>
-            <p className="text-sm text-[#6B7280] mt-5 leading-relaxed">
+            <p className="text-base text-[#4B5563] mt-5 leading-relaxed">
               Bertemu langsung untuk diskusi awal? Bisa diatur di area Simpang
               Lima, Pleburan, atau Tembalang. Untuk pengerjaan, semuanya remote
               sehingga tidak menambah biaya transportasi pada proyek Anda.
@@ -89,7 +89,7 @@ export default function SemarangLocal() {
                 </li>
               ))}
             </ul>
-            <p className="text-sm text-[#6B7280] leading-relaxed">
+            <p className="text-base text-[#4B5563] leading-relaxed">
               Klien dari Ungaran, Kendal, Demak, Salatiga, dan Ambarawa juga
               biasa dikerjakan dengan kunjungan singkat saat dibutuhkan. Untuk
               proyek di luar Jateng, koordinasi penuh secara online.

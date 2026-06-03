@@ -63,7 +63,7 @@ export default function Process() {
             <div className="font-display font-extrabold text-5xl lg:text-6xl text-[#F59E0B] mb-5 leading-none">
               {step.number}
             </div>
-            <h3 className="font-display font-bold text-xl text-[#111827] mb-3 tracking-tight">{step.title}</h3>
+            <h3 className="font-display font-bold text-xl text-[#111827] mb-3 tracking-normal">{step.title}</h3>
             <p className="text-[#6B7280] leading-relaxed text-pretty">{step.description}</p>
           </motion.div>
         ))}

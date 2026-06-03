@@ -215,7 +215,7 @@ export default function PortofolioPage() {
                 <h2 className="mt-4 font-display font-semibold text-2xl sm:text-3xl lg:text-4xl text-[#111827] tracking-tight leading-[1.1] text-balance">
                   Folkastudio — Studio Digital yang Saya Dirikan
                 </h2>
-                <p className="mt-4 text-sm sm:text-base text-[#6B7280] leading-relaxed text-pretty">
+                <p className="mt-4 text-base sm:text-lg text-[#4B5563] leading-relaxed text-pretty">
                   Saya adalah founder <strong className="text-[#111827]">Folkastudio</strong> —
                   studio digital yang sudah dipercaya 50+ bisnis untuk proyek website dan aplikasi.
                   Layanan personal di sini berjalan beriringan dengan Folkastudio untuk proyek
@@ -261,27 +261,27 @@ export default function PortofolioPage() {
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <h2 className="font-display font-medium text-lg text-[#111827] tracking-tight truncate">
+                    <h2 className="font-display font-semibold text-xl text-[#111827] tracking-normal truncate">
                       {c.name}
                     </h2>
                     <a
                       href={`https://${c.domain}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-0.5 inline-flex items-center gap-1 text-xs text-[#6B7280] hover:text-amber-700 transition-colors"
+                      className="mt-0.5 inline-flex items-center gap-1 text-sm text-[#6B7280] hover:text-amber-700 transition-colors"
                     >
                       {c.domain}
                       <ExternalLink className="w-3 h-3" aria-hidden="true" />
                     </a>
-                    <p className="mt-1 text-xs text-[#9CA3AF]">{c.industry}</p>
+                    <p className="mt-1 text-sm text-[#6B7280]">{c.industry}</p>
                   </div>
                 </div>
 
-                <p className="mt-5 text-sm text-[#6B7280] leading-relaxed">
+                <p className="mt-5 text-base text-[#4B5563] leading-relaxed">
                   {c.summary}
                 </p>
 
-                <p className="mt-4 text-xs font-medium text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                <p className="mt-4 text-sm font-medium text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
                   {c.highlight}
                 </p>
 

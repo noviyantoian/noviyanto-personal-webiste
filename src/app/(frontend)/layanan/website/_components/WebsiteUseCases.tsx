@@ -67,10 +67,10 @@ export default function WebsiteUseCases() {
               <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4" aria-hidden="true">
                 {c.icon}
               </div>
-              <h3 className="font-display font-medium text-lg text-[#111827] tracking-tight">
+              <h3 className="font-display font-semibold text-xl text-[#111827] tracking-normal">
                 {c.title}
               </h3>
-              <p className="mt-2 text-sm text-[#6B7280] leading-relaxed">{c.body}</p>
+              <p className="mt-2 text-base text-[#4B5563] leading-relaxed">{c.body}</p>
             </motion.article>
           ))}
         </div>
