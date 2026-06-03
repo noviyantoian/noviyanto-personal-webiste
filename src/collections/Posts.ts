@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { slugField } from '../fields/slug.ts'
 import { readingTimeMinutes } from '../lib/payload/readingTime.ts'
 import { authenticated, adminOnly, publishedOrAuthenticated } from './access'
+import { pingIndexNow, blogUrl } from '../lib/indexnow.ts'
 
 /**
  * Posts — artikel blog. Struktur SEO: judul, slug, excerpt (meta desc),
@@ -49,6 +50,23 @@ export const Posts: CollectionConfig = {
           next.publishedAt = new Date().toISOString()
         }
         return next
+      },
+    ],
+    afterChange: [
+      async ({ doc, req }) => {
+        // Ping IndexNow hanya saat artikel published & punya slug.
+        // Non-blocking: kegagalan ping tidak mengganggu simpan artikel.
+        if (doc._status !== 'published' || !doc.slug) return
+        try {
+          const result = await pingIndexNow([blogUrl(doc.slug)])
+          if (result.ok) {
+            req.payload.logger.info(`IndexNow: ping sukses untuk /blog/${doc.slug}`)
+          } else {
+            req.payload.logger.warn(`IndexNow: ping gagal (${result.error}) untuk /blog/${doc.slug}`)
+          }
+        } catch (e) {
+          req.payload.logger.error('IndexNow: error tak terduga — ' + (e instanceof Error ? e.message : String(e)))
+        }
       },
     ],
   },
