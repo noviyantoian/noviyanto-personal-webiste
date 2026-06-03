@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     path: PATH,
     keywords: city.meta.keywords,
     hasGeneratedOgImage: true,
-    noIndex: true,
+    noIndex: false,
   })
 }
 

@@ -65,10 +65,11 @@ export default async function sitemap({
       lastModified: LAST_MODIFIED.services,
     }))
 
-    // Jakarta dan Bandung noindex — tidak di-submit ke sitemap
     return [
       ...serviceUrls,
       { url: `${base}/layanan/website/semarang`, lastModified: LAST_MODIFIED.semarang },
+      { url: `${base}/layanan/website/jakarta`,  lastModified: LAST_MODIFIED.semarang },
+      { url: `${base}/layanan/website/bandung`,  lastModified: LAST_MODIFIED.semarang },
     ]
   }
 
