@@ -72,7 +72,7 @@ export default function WhyNoviyanto() {
                 {reason.title}
               </h3>
 
-              <p className="text-[#6B7280] text-sm leading-relaxed text-pretty">
+              <p className="text-[#6B7280] text-base leading-relaxed text-pretty">
                 {reason.description}
               </p>
             </motion.div>

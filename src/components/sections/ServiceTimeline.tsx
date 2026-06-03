@@ -82,7 +82,7 @@ export default function ServiceTimeline({
                   </span>
                 ) : null}
               </div>
-              <p className="mt-2 text-sm sm:text-base text-[#6B7280] leading-relaxed">
+              <p className="mt-2 text-base sm:text-lg text-[#6B7280] leading-relaxed">
                 {step.description}
               </p>
             </motion.li>

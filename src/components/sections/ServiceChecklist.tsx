@@ -63,7 +63,7 @@ export default function ServiceChecklist({
 
             <div className="mt-8 bg-white border border-gray-200 rounded-2xl p-6 lg:p-8">
               {bulletTitle ? (
-                <p className="text-sm font-semibold text-[#111827] mb-4">{bulletTitle}</p>
+                <p className="text-base font-semibold text-[#111827] mb-4">{bulletTitle}</p>
               ) : null}
               <ul className="space-y-3">
                 {bullets.map((point, i) => (
@@ -73,7 +73,7 @@ export default function ServiceChecklist({
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: '-40px' }}
                     transition={{ duration: 0.35, delay: i * 0.05 }}
-                    className="flex items-start gap-3 text-sm text-[#374151]"
+                    className="flex items-start gap-3 text-base text-[#374151]"
                   >
                     <span className="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center">
                       <Check className="w-3 h-3" aria-hidden="true" strokeWidth={3} />

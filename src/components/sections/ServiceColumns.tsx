@@ -98,7 +98,7 @@ export default function ServiceColumns({
               </h3>
               <ul className="mt-6 space-y-3">
                 {col.items.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-[#374151]">
+                  <li key={item} className="flex items-start gap-3 text-base text-[#374151]">
                     <span
                       className={`flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center ${ICON_BG[col.icon]}`}
                     >

@@ -80,7 +80,7 @@ export default function ServiceCardGrid({
               <h3 className="font-display font-medium text-lg text-[#111827] tracking-tight">
                 {c.title}
               </h3>
-              <p className="mt-2 text-sm text-[#6B7280] leading-relaxed">{c.body}</p>
+              <p className="mt-2 text-base text-[#6B7280] leading-relaxed">{c.body}</p>
             </motion.article>
           ))}
         </div>

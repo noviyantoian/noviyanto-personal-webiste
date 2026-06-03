@@ -55,7 +55,7 @@ export default function ServiceFAQ({ items, title = 'Pertanyaan Umum' }: Service
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => toggle(idx, item.question)}
-                    className="w-full flex justify-between items-center text-left text-sm font-medium text-gray-900 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-md"
+                    className="w-full flex justify-between items-center text-left text-base font-medium text-gray-900 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-md"
                   >
                     <span className="pr-4">{item.question}</span>
                     <ChevronDown
@@ -76,7 +76,7 @@ export default function ServiceFAQ({ items, title = 'Pertanyaan Umum' }: Service
                         transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                         className="overflow-hidden"
                       >
-                        <p className="text-sm text-gray-500 leading-relaxed mt-3">
+                        <p className="text-base text-[#6B7280] leading-relaxed mt-3">
                           {item.answer}
                         </p>
                       </motion.div>
