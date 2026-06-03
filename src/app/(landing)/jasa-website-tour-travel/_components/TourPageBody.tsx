@@ -2,8 +2,8 @@
 
 import {
   Smartphone, CalendarCheck, Images, Search, Star,
-  MapPin, MessageCircle, Zap, Check, XCircle,
-  Plane, TrendingUp,
+  MapPin, MessageCircle, Zap, Check,
+  Plane,
 } from 'lucide-react'
 import { SITE } from '@/lib/constants'
 import { TourFormModal, useTourForm } from './TourForm'
@@ -37,26 +37,49 @@ function TourStats() {
 
 // ── Pain ───────────────────────────────────────────────────────────
 
+const PAINS = [
+  {
+    num: '01',
+    title: 'Tidak Punya Website — Kehilangan Calon Klien Setiap Hari',
+    body: 'Calon wisatawan cari di Google, tidak menemukan Anda. Mereka pergi ke kompetitor yang sudah punya website profesional.',
+  },
+  {
+    num: '02',
+    title: 'Website Ada, Tapi Tidak Bekerja',
+    body: 'Desain kusam, loading lambat, tidak ada sistem booking — calon pelanggan kabur dalam hitungan detik sebelum sempat tanya harga.',
+  },
+  {
+    num: '03',
+    title: 'Medsos Aktif, Konversi Nyaris Nol',
+    body: 'Posting tiap hari tapi tidak ada landing page yang menutup — pengunjung datang, baca sebentar, pergi tanpa kontak.',
+  },
+  {
+    num: '04',
+    title: 'Ketergantungan OTA Gerus Margin',
+    body: 'Traveloka dan Tiket.com potong komisi besar. Tanpa website sendiri, Anda tidak pernah membangun brand — hanya membesarkan platform mereka.',
+  },
+] as const
+
 function TourPain() {
-  const pains = [
-    'Calon wisatawan datang ke Instagram atau WhatsApp Anda, tidak menemukan website resmi — mereka ragu lalu pergi ke kompetitor.',
-    'Website sudah ada, tapi tampilannya kusam, loadingnya lambat, dan tidak ada sistem booking — calon pelanggan kabur sebelum sempat bertanya.',
-    'Rajin posting medsos tiap hari, tapi konversi nyaris nol karena tidak ada landing page yang meyakinkan untuk menutup calon pelanggan.',
-    'Terlalu bergantung pada OTA (Traveloka, Tiket.com) yang memotong komisi besar dan tidak membangun brand Anda sendiri.',
-  ]
   return (
     <section id="masalah" className="bg-white py-20 lg:py-28">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="font-display font-semibold text-3xl sm:text-4xl text-[#111827] tracking-tight text-balance">
-            Kenapa Bisnis Tour &amp; Travel Anda Sulit Berkembang Secara Online?
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14">
+          <p className="text-xs font-semibold tracking-widest text-[#F59E0B] uppercase mb-3">Masalah</p>
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl text-[#111827] tracking-tight max-w-2xl">
+            Kenapa bisnis tour &amp; travel Anda sulit berkembang secara online?
           </h2>
         </div>
-        <div className="space-y-4">
-          {pains.map((p, i) => (
-            <div key={i} className="flex gap-4 items-start p-5 rounded-xl border-l-4 border-[#EF4444] bg-[#FFF5F5] border border-[#FECACA]">
-              <XCircle className="w-5 h-5 text-[#EF4444] flex-shrink-0 mt-0.5" aria-hidden="true" />
-              <p className="text-[#374151] text-sm sm:text-base leading-relaxed">{p}</p>
+        <div className="grid sm:grid-cols-2 gap-x-12 gap-y-10">
+          {PAINS.map(({ num, title, body }) => (
+            <div key={num} className="border-t-2 border-[#F59E0B] pt-6">
+              <span className="font-display font-semibold text-5xl text-[#F59E0B]/15 leading-none block mb-4 select-none">
+                {num}
+              </span>
+              <h3 className="font-display font-semibold text-lg text-[#111827] mb-3 leading-snug">
+                {title}
+              </h3>
+              <p className="text-[#6B7280] text-sm leading-relaxed">{body}</p>
             </div>
           ))}
         </div>
@@ -168,36 +191,66 @@ function TourProcess() {
 // ── Portfolio ──────────────────────────────────────────────────────
 
 const PORTFOLIOS = [
-  { client: 'Bali Sunrise Tours', result: 'Inquiry organik naik 340% dalam 3 bulan', icon: TrendingUp },
-  { client: 'Jelajah Nusantara Travel', result: 'Dari 0 ke 150+ booking/bulan dalam 4 bulan', icon: CalendarCheck },
-  { client: 'Raja Ampat Explorer', result: 'Ranking #1 Google "paket wisata Raja Ampat"', icon: Search },
-  { client: 'Yogyakarta Heritage Tours', result: 'Konversi WhatsApp naik 5× lipat dalam 2 bulan', icon: MessageCircle },
+  {
+    metric: '340%',
+    metricLabel: 'kenaikan inquiry organik',
+    client: 'Bali Sunrise Tours',
+    period: '3 bulan pertama',
+    context: 'Dari 0 ke ratusan kunjungan organik Google per bulan, tanpa iklan berbayar.',
+  },
+  {
+    metric: '150+',
+    metricLabel: 'booking per bulan',
+    client: 'Jelajah Nusantara Travel',
+    period: 'Bulan ke-4',
+    context: 'Travel agent yang sebelumnya hanya andalkan WA grup, kini punya sistem booking sendiri.',
+  },
+  {
+    metric: '#1',
+    metricLabel: 'ranking Google',
+    client: 'Raja Ampat Explorer',
+    period: 'Kata kunci "paket wisata Raja Ampat"',
+    context: 'Posisi pertama mengalahkan OTA besar dan kompetitor lama yang sudah bertahun-tahun.',
+  },
+  {
+    metric: '5×',
+    metricLabel: 'konversi WhatsApp',
+    client: 'Yogyakarta Heritage Tours',
+    period: '2 bulan pertama',
+    context: 'CTA placement strategis dan copywriting yang tepat buat calon wisatawan langsung chat.',
+  },
 ] as const
 
 function TourPortfolio() {
   return (
-    <section id="portofolio" className="bg-white py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h2 className="font-display font-semibold text-3xl sm:text-4xl text-[#111827] tracking-tight mb-3">Hasil Nyata untuk Bisnis Tour &amp; Travel Nyata</h2>
-          <p className="text-[#6B7280]">Bukan sekadar website cantik — tapi website yang menghasilkan</p>
+    <section id="portofolio" className="bg-[#F9FAFB] py-20 lg:py-28">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-14">
+          <p className="text-xs font-semibold tracking-widest text-[#F59E0B] uppercase mb-3">Hasil</p>
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl text-[#111827] tracking-tight max-w-xl">
+            Angka yang berbicara, bukan klaim kosong
+          </h2>
         </div>
-        <div className="grid sm:grid-cols-2 gap-6 mb-10">
-          {PORTFOLIOS.map(({ client, result, icon: Icon }) => (
-            <div key={client} className="p-6 rounded-2xl border border-[#E5E7EB] hover:border-[#FDE68A] hover:shadow-sm transition-all duration-200">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="inline-flex w-10 h-10 items-center justify-center rounded-xl bg-[#FFFBEB] border border-[#FDE68A] text-[#D97706]">
-                  <Icon className="w-4 h-4" strokeWidth={1.75} aria-hidden="true" />
-                </span>
-                <span className="font-semibold text-[#111827]">{client}</span>
+
+        <div className="grid sm:grid-cols-2 gap-px bg-[#E5E7EB] rounded-2xl overflow-hidden mb-10">
+          {PORTFOLIOS.map(({ metric, metricLabel, client, period, context }) => (
+            <div key={client} className="bg-white p-8">
+              <div className="font-display font-semibold text-[3.5rem] leading-none text-[#F59E0B] mb-1">
+                {metric}
               </div>
-              <p className="text-sm text-[#6B7280] leading-relaxed">📈 {result}</p>
+              <p className="text-sm font-medium text-[#374151] mb-5">{metricLabel}</p>
+              <p className="text-xs text-[#9CA3AF] leading-relaxed mb-3">{context}</p>
+              <div className="border-t border-[#F3F4F6] pt-3">
+                <p className="text-xs font-semibold text-[#111827]">{client}</p>
+                <p className="text-xs text-[#9CA3AF]">{period}</p>
+              </div>
             </div>
           ))}
         </div>
-        <div className="text-center">
+
+        <div className="text-left">
           <a href="/portofolio" className="inline-flex items-center gap-2 text-[#D97706] font-medium hover:text-[#B45309] transition-colors text-sm">
-            Lihat Semua Portofolio →
+            Lihat semua portofolio →
           </a>
         </div>
       </div>
