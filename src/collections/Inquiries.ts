@@ -19,7 +19,7 @@ export const Inquiries: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'whatsapp', 'service', 'status', 'createdAt'],
+    defaultColumns: ['name', 'company', 'whatsapp', 'service', 'status', 'createdAt'],
     description: 'Lead masuk dari form konsultasi website.',
   },
   hooks: {
@@ -33,21 +33,21 @@ export const Inquiries: CollectionConfig = {
         try {
           await req.payload.sendEmail({
             to: LEAD_TO,
-            subject: `🟡 Lead baru dari website: ${doc.name}`,
+            subject: `🟡 Lead baru: ${doc.name}${doc.company ? ` (${doc.company})` : ''}`,
             html: `
-              <h2>Lead baru dari noviyanto.com</h2>
-              <table cellpadding="6" style="font-family:sans-serif;font-size:14px">
-                <tr><td><b>Nama</b></td><td>${escapeHtml(doc.name)}</td></tr>
-                <tr><td><b>WhatsApp</b></td><td>${escapeHtml(doc.whatsapp)}</td></tr>
-                <tr><td><b>Layanan</b></td><td>${escapeHtml(doc.service || '-')}</td></tr>
-                <tr><td><b>Pesan</b></td><td>${escapeHtml(doc.message || '-')}</td></tr>
-                <tr><td><b>Sumber</b></td><td>${escapeHtml(doc.source || '-')}</td></tr>
+              <h2 style="font-family:sans-serif;color:#111">Lead baru dari noviyanto.com</h2>
+              <table cellpadding="0" cellspacing="0" style="font-family:sans-serif;font-size:14px;border-collapse:collapse;width:100%;max-width:480px">
+                <tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">Nama</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.name)}</td></tr>
+                ${doc.company ? `<tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">Perusahaan</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.company)}</td></tr>` : ''}
+                <tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">WhatsApp</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.whatsapp || '-')}</td></tr>
+                <tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">Layanan / Paket</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.service || '-')}</td></tr>
+                <tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">Pesan</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.message || '-')}</td></tr>
+                <tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">Sumber</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.source || '-')}</td></tr>
               </table>
-              <p style="font-family:sans-serif;font-size:13px;color:#666">Balas cepat via WhatsApp: <a href="https://wa.me/${onlyDigits(doc.whatsapp)}">buka chat</a></p>
+              ${doc.whatsapp ? `<p style="font-family:sans-serif;font-size:13px;color:#6b7280;margin-top:16px">👉 <a href="https://wa.me/${onlyDigits(doc.whatsapp)}" style="color:#f59e0b">Buka chat WhatsApp</a></p>` : ''}
             `,
           })
         } catch (e) {
-          // Jangan gagalkan penyimpanan lead kalau email error — lead tetap aman di DB.
           req.payload.logger.error('Gagal kirim email lead: ' + (e instanceof Error ? e.message : String(e)))
         }
       },
@@ -55,11 +55,12 @@ export const Inquiries: CollectionConfig = {
   },
   fields: [
     { name: 'name', type: 'text', required: true, label: 'Nama' },
-    { name: 'whatsapp', type: 'text', required: true, label: 'Nomor WhatsApp' },
+    { name: 'company', type: 'text', label: 'Perusahaan / Nama Bisnis', admin: { position: 'sidebar' } },
+    { name: 'whatsapp', type: 'text', label: 'Nomor WhatsApp' },
     {
       name: 'service',
       type: 'select',
-      label: 'Layanan yang diminati',
+      label: 'Layanan / Paket yang diminati',
       options: [
         { label: 'Pembuatan Website', value: 'website' },
         { label: 'Google Ads', value: 'google-ads' },
@@ -68,6 +69,9 @@ export const Inquiries: CollectionConfig = {
         { label: 'AI Integration', value: 'ai-integration' },
         { label: 'Aplikasi Mobile', value: 'mobile-app' },
         { label: 'Maintenance', value: 'maintenance' },
+        { label: 'Website Tour & Travel — Starter (Rp 3,5jt)', value: 'tour-starter' },
+        { label: 'Website Tour & Travel — Professional (Rp 7,5jt)', value: 'tour-professional' },
+        { label: 'Website Tour & Travel — Enterprise (Rp 15jt)', value: 'tour-enterprise' },
         { label: 'Lainnya / belum yakin', value: 'lainnya' },
       ],
     },

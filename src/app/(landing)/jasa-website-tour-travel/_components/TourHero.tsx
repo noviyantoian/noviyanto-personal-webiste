@@ -2,10 +2,12 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import { Star, Award, ThumbsUp } from 'lucide-react'
-import { getWaLink } from '@/lib/constants'
-import { trackEvent } from '@/lib/analytics'
 
-export default function TourHero() {
+interface TourHeroProps {
+  onConsult: (pkg?: string) => void
+}
+
+export default function TourHero({ onConsult }: TourHeroProps) {
   const shouldReduce = useReducedMotion() ?? false
 
   const motionProps = shouldReduce
@@ -15,8 +17,6 @@ export default function TourHero() {
         animate: { opacity: 1, y: 0 },
         transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
       }
-
-  const waHref = getWaLink('tourTravel')
 
   return (
     <section
@@ -64,15 +64,13 @@ export default function TourHero() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 mb-10">
-            <a
-              href={waHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent('cta_click', { location: 'tour_hero_primary' })}
+            <button
+              type="button"
+              onClick={() => onConsult()}
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#F59E0B] hover:bg-[#D97706] active:bg-[#B45309] text-[#111827] font-semibold text-base rounded-xl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2"
             >
               📱 Mulai Konsultasi Gratis
-            </a>
+            </button>
             <a
               href="#portofolio"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-[#E5E7EB] hover:border-[#D97706] hover:bg-[#FFFBEB] text-[#374151] font-medium text-base rounded-xl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2"
