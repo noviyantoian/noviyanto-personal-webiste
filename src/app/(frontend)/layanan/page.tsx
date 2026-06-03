@@ -83,22 +83,17 @@ export default function LayananPage() {
               const href = SLUG_TO_PATH[s.slug] ?? `/layanan/${s.slug}`
               const Icon = SERVICE_ICONS[s.slug] ?? SERVICE_ICONS.website
               return (
-                <Link
+                <article
                   key={s.slug}
-                  href={href}
-                  className="group bg-white border border-gray-200 rounded-2xl p-6 lg:p-7 hover:border-amber-200 hover:shadow-sm transition-all duration-200 flex flex-col"
+                  className="bg-white border border-gray-200 rounded-2xl p-6 lg:p-7 flex flex-col"
                 >
-                  <div className="flex items-start justify-between mb-4">
+                  <div className="mb-4">
                     <div
                       className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center"
                       aria-hidden="true"
                     >
                       <Icon className="w-5 h-5" />
                     </div>
-                    <ArrowUpRight
-                      className="w-4 h-4 text-gray-300 group-hover:text-amber-500 transition-colors"
-                      aria-hidden="true"
-                    />
                   </div>
 
                   <h2 className="font-display font-medium text-lg text-[#111827]">
@@ -117,11 +112,14 @@ export default function LayananPage() {
                     ))}
                   </ul>
 
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-xs font-medium text-amber-700 group-hover:gap-2 transition-all">
+                  <Link
+                    href={href}
+                    className="mt-6 inline-flex items-center gap-1.5 text-xs font-medium text-amber-700 hover:gap-2 hover:text-amber-600 transition-all self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-sm"
+                  >
                     Pelajari lebih lanjut
                     <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
-                  </span>
-                </Link>
+                  </Link>
+                </article>
               )
             })}
           </div>

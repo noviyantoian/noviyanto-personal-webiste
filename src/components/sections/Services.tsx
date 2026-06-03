@@ -59,11 +59,8 @@ export default function Services() {
           const Icon = ICON_MAP[service.slug] ?? Globe
           return (
             <motion.div key={service.slug} variants={shouldReduce ? undefined : staggerItem}>
-              <Link
-                href={`/layanan/${service.slug}`}
-                className="group flex flex-col h-full px-6 py-8 rounded-2xl bg-[#F9FAFB] border border-[#E5E7EB] transition-colors duration-200 hover:bg-[#F3F4F6] hover:border-[#F59E0B]/40"
-              >
-                <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-amber-50 text-amber-600 group-hover:bg-amber-100 transition-colors mb-5" aria-hidden="true">
+              <div className="flex flex-col h-full px-6 py-8 rounded-2xl bg-[#F9FAFB] border border-[#E5E7EB]">
+                <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-amber-50 text-amber-600 mb-5" aria-hidden="true">
                   <Icon className="w-5 h-5" strokeWidth={2} />
                 </div>
 
@@ -71,10 +68,18 @@ export default function Services() {
                   {service.title}
                 </h3>
 
-                <p className="text-[#6B7280] text-base leading-relaxed text-pretty">
+                <p className="text-[#6B7280] text-base leading-relaxed text-pretty flex-1">
                   {service.description}
                 </p>
-              </Link>
+
+                <Link
+                  href={`/layanan/${service.slug}`}
+                  className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-amber-700 hover:text-amber-600 hover:gap-2 transition-all self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-sm"
+                >
+                  Pelajari lebih lanjut
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </motion.div>
           )
         })}
