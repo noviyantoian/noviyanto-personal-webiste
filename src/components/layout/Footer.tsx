@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SITE, SERVICE_LINKS, AREA_LINKS, LEGAL_LINKS } from '@/lib/constants'
+import { SITE, SERVICE_LINKS, AREA_LINKS, INDUSTRY_LINKS, LEGAL_LINKS } from '@/lib/constants'
 
 const COMPANY_LINKS = [
   { label: 'Tentang', href: '/tentang' },
@@ -9,9 +9,9 @@ const COMPANY_LINKS = [
 ] as const
 
 const linkClass =
-  'rounded-sm text-sm text-[#6B7280] transition-colors hover:text-[#F59E0B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]'
+  'rounded-sm text-sm 2xl:text-base text-[#6B7280] transition-colors hover:text-[#F59E0B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]'
 
-const headingClass = 'text-sm font-semibold uppercase tracking-wider text-[#111827]'
+const headingClass = 'text-sm 2xl:text-base font-semibold uppercase tracking-wider text-[#111827]'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -22,24 +22,24 @@ export default function Footer() {
       <div className="container-wide py-16 lg:py-20">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-12 lg:gap-8">
           {/* Brand */}
-          <div className="col-span-2 sm:col-span-3 lg:col-span-4">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-3">
             <Link
               href="/"
               aria-label={`${SITE.name} — beranda`}
-              className="inline-block font-[family-name:var(--font-clash-display)] text-2xl font-bold tracking-tight text-[#111827]"
+              className="inline-block font-[family-name:var(--font-clash-display)] text-2xl 2xl:text-3xl font-bold tracking-tight text-[#111827]"
             >
               {SITE.name}
               <span className="text-[#F59E0B]">.</span>
             </Link>
-            <p className="mt-2 text-sm font-medium text-[#F59E0B]">{SITE.tagline}</p>
-            <p className="mt-1 text-sm text-[#6B7280]">{SITE.location}</p>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-[#6B7280]">
+            <p className="mt-2 text-sm 2xl:text-base font-medium text-[#F59E0B]">{SITE.tagline}</p>
+            <p className="mt-1 text-sm 2xl:text-base text-[#6B7280]">{SITE.location}</p>
+            <p className="mt-4 max-w-sm text-sm 2xl:text-base leading-relaxed text-[#6B7280]">
               Bukan sekadar bikin website — kami bantu bisnis Anda tumbuh dan mendapatkan leads.
             </p>
           </div>
 
           {/* Layanan */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <h3 className={headingClass}>Layanan</h3>
             <ul className="mt-4 space-y-3">
               {SERVICE_LINKS.map((s) => (
@@ -60,6 +60,20 @@ export default function Footer() {
                 <li key={a.href}>
                   <Link href={a.href} className={linkClass}>
                     {a.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Industri */}
+          <div className="lg:col-span-2">
+            <h3 className={headingClass}>Industri</h3>
+            <ul className="mt-4 space-y-3">
+              {INDUSTRY_LINKS.map((i) => (
+                <li key={i.href}>
+                  <Link href={i.href} className={linkClass}>
+                    {i.label}
                   </Link>
                 </li>
               ))}
@@ -92,7 +106,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-[#E5E7EB] pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-[#9CA3AF]">
+          <p className="text-xs 2xl:text-sm text-[#9CA3AF]">
             © {year} {SITE.name}. Hak cipta dilindungi.
           </p>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
@@ -100,7 +114,7 @@ export default function Footer() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="rounded-sm text-xs text-[#9CA3AF] transition-colors hover:text-[#F59E0B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
+                  className="rounded-sm text-xs 2xl:text-sm text-[#9CA3AF] transition-colors hover:text-[#F59E0B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
                 >
                   {l.label}
                 </Link>

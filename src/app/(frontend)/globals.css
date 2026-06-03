@@ -47,6 +47,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Scale base font-size untuk layar 2K/4K agar teks proporsional */
+  @media (min-width: 1920px) { body { font-size: 17px; } }
+  @media (min-width: 2560px) { body { font-size: 18px; } }
+
   h1 {
     font-family: var(--font-display);
     font-weight: 600;
@@ -112,6 +116,8 @@
 
   @media (min-width: 640px)  { .container-wide { padding-inline: 1.5rem; } }
   @media (min-width: 1024px) { .container-wide { padding-inline: 2rem; } }
+  @media (min-width: 1920px) { .container-wide { max-width: 1536px; } }
+  @media (min-width: 2560px) { .container-wide { max-width: 1920px; } }
 
   .noise::after {
     content: '';

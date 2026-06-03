@@ -65,6 +65,11 @@ export const AREA_LINKS = [
   { label: 'Jasa Website Semarang', href: '/layanan/website/semarang' },
 ] as const
 
+// Industri — landing page per niche bisnis
+export const INDUSTRY_LINKS = [
+  { label: 'Tour & Travel', href: '/jasa-website-tour-travel' },
+] as const
+
 // Halaman legal — ditautkan di footer
 export const LEGAL_LINKS = [
   { label: 'Kebijakan Privasi', href: '/kebijakan-privasi' },
