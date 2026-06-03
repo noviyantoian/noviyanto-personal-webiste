@@ -29,6 +29,7 @@ const LAST_MODIFIED = {
   layanan:    new Date('2026-06-02'),
   services:   new Date('2026-06-02'),
   semarang:   new Date('2026-06-02'),
+  industri:   new Date('2026-06-03'),
   portofolio: new Date('2026-05-30'),
   blog:       new Date('2026-06-01'),
   tentang:    new Date('2026-06-02'),
@@ -70,6 +71,8 @@ export default async function sitemap({
       { url: `${base}/layanan/website/semarang`, lastModified: LAST_MODIFIED.semarang },
       { url: `${base}/layanan/website/jakarta`,  lastModified: LAST_MODIFIED.semarang },
       { url: `${base}/layanan/website/bandung`,  lastModified: LAST_MODIFIED.semarang },
+      // Industri landing pages (sub-layanan per niche)
+      { url: `${base}/jasa-website-tour-travel`, lastModified: LAST_MODIFIED.industri },
     ]
   }
 
