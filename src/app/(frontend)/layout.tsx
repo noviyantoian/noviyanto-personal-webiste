@@ -138,10 +138,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           data-max-duration="300000"
         />
 
-        {/* Google Consent Mode v2 — default deny, cookieless pings until consent granted */}
+        {/* Google Consent Mode v2 — analytics granted (pasar ID, UU PDP tidak
+            wajibkan cookie banner). Ad storage tetap denied (tidak ada iklan
+            di site sendiri). GA4 dapat data penuh tanpa banner. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','url_passthrough',true);gtag('set','ads_data_redaction',true);`,
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted',functionality_storage:'granted',security_storage:'granted'});gtag('set','url_passthrough',true);gtag('set','ads_data_redaction',true);`,
           }}
         />
 
