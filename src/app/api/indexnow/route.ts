@@ -8,14 +8,31 @@ export const dynamic = 'force-dynamic'
  * POST /api/indexnow
  * Ping IndexNow untuk semua halaman statis (atau URL spesifik).
  *
+ * Dilindungi INDEXNOW_SECRET via header x-indexnow-secret atau Bearer token.
+ * Tujuan: cegah orang spam endpoint ini → server kita terus fetch api.indexnow.org.
+ * (IndexNow KEY itu sendiri memang publik by design — bukan itu yang dilindungi di sini.)
+ *
+ * Contoh: curl -X POST https://noviyanto.com/api/indexnow \
+ *   -H "x-indexnow-secret: <secret>"
+ *
  * Body opsional (JSON):
  *   { "paths": ["/layanan/website", "/blog/slug"] }
  * Tanpa body = ping semua halaman statis.
- *
- * Tidak perlu auth — IndexNow hanya terima URL dari domain sendiri,
- * sehingga caller eksternal tidak bisa menyalahgunakan endpoint ini.
  */
 export async function POST(req: NextRequest): Promise<NextResponse> {
+  const secret = process.env.INDEXNOW_SECRET
+  if (!secret) {
+    return NextResponse.json({ error: 'INDEXNOW_SECRET not configured' }, { status: 500 })
+  }
+
+  const reqSecret =
+    req.headers.get('x-indexnow-secret') ??
+    req.headers.get('authorization')?.replace('Bearer ', '')
+
+  if (reqSecret !== secret) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
   let body: { paths?: string[] } | null = null
 
   try {
