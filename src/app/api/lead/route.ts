@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true })
   } catch (e) {
-    console.error('[api/inquiries]', e)
+    console.error('[api/lead]', e)
     return NextResponse.json({ ok: false, error: 'Server error' }, { status: 500 })
   }
 }

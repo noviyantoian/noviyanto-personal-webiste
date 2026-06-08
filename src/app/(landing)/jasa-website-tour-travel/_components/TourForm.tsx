@@ -44,7 +44,7 @@ function TourFormInner({ defaultPackage, onClose }: TourFormProps) {
     setErrorMsg('')
 
     try {
-      const res = await fetch('/api/inquiries', {
+      const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...lead, source: 'tour-travel-landing', website: '' }),

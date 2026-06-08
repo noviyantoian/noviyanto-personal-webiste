@@ -46,7 +46,7 @@ export default function ConsultationForm({
     setErrorMsg('')
 
     // Fire-and-forget — API failure tidak blokir redirect ke WA
-    fetch('/api/inquiries', {
+    fetch('/api/lead', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...lead, source, website: '' }),

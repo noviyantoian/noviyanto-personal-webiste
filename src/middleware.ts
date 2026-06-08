@@ -48,8 +48,8 @@ export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
   const ip = getIp(req)
 
-  // Rate limit: POST /api/inquiries — 15 req / 60 detik per IP
-  if (pathname === '/api/inquiries' && req.method === 'POST') {
+  // Rate limit: POST /api/lead — 15 req / 60 detik per IP
+  if (pathname === '/api/lead' && req.method === 'POST') {
     const { allowed, remaining } = rateLimit(`inquiries:${ip}`, 15, 60_000)
     if (!allowed) {
       return NextResponse.json(
@@ -95,7 +95,7 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    '/api/inquiries',
+    '/api/lead',
     '/api/users/login',
     '/api/users/forgot-password',
   ],
