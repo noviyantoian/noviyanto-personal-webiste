@@ -24,7 +24,7 @@ export default function ConsultationForm({
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const fd = new FormData(e.currentTarget)
     // Honeypot — bot mengisi field tersembunyi ini.
@@ -44,23 +44,18 @@ export default function ConsultationForm({
 
     setStatus('submitting')
     setErrorMsg('')
-    try {
-      const res = await fetch('/api/inquiries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...lead, source, website: '' }),
-      })
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
 
-      trackEvent('form_submit', { service: lead.service ?? '', source })
-      setStatus('redirecting')
-      onSuccess?.()
-      // Redirect ke WhatsApp dengan pesan pre-filled.
-      window.location.href = leadWaLink(lead)
-    } catch {
-      setStatus('error')
-      setErrorMsg('Gagal mengirim. Coba lagi, atau hubungi WhatsApp langsung di bawah.')
-    }
+    // Fire-and-forget — API failure tidak blokir redirect ke WA
+    fetch('/api/inquiries', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...lead, source, website: '' }),
+    }).catch(() => {/* ignore — user tetap diarahkan ke WA */})
+
+    trackEvent('form_submit', { service: lead.service ?? '', source })
+    setStatus('redirecting')
+    onSuccess?.()
+    window.location.href = leadWaLink(lead)
   }
 
   const busy = status === 'submitting' || status === 'redirecting'
