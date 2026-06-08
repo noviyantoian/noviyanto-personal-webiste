@@ -1,31 +1,38 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { getPayload } from 'payload'
+import config from '@payload-config'
+
+export const dynamic = 'force-dynamic'
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
 
-    // Honeypot check
+    // Honeypot — tolak kalau terisi
     if (body.website) {
       return NextResponse.json({ ok: true })
     }
 
     const { name, whatsapp, service, message, source } = body
     if (!name || !whatsapp) {
-      return NextResponse.json({ ok: false, error: 'Missing required fields' }, { status: 400 })
+      return NextResponse.json({ ok: false, error: 'Nama dan nomor WhatsApp wajib diisi.' }, { status: 400 })
     }
 
-    // TODO: simpan ke DB/email/spreadsheet di sini
-    console.log('[inquiry]', {
-      name,
-      whatsapp,
-      service: service ?? '',
-      message: message ?? '',
-      source: source ?? '',
-      at: new Date().toISOString(),
+    const payload = await getPayload({ config })
+    await payload.create({
+      collection: 'inquiries',
+      data: {
+        name: String(name).trim(),
+        whatsapp: String(whatsapp).trim(),
+        service: service || undefined,
+        message: message ? String(message).trim() : undefined,
+        source: source ? String(source).trim() : undefined,
+      },
     })
 
     return NextResponse.json({ ok: true })
-  } catch {
-    return NextResponse.json({ ok: false, error: 'Bad request' }, { status: 400 })
+  } catch (e) {
+    console.error('[api/inquiries]', e)
+    return NextResponse.json({ ok: false, error: 'Server error' }, { status: 500 })
   }
 }
