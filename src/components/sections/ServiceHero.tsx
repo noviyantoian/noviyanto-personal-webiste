@@ -79,7 +79,14 @@ export default function ServiceHero({
       />
 
       <div className="container-wide relative z-10">
-        <motion.div {...motionProps} className="max-w-3xl mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-center">
+          {/*
+            Badge dan H1 sengaja DI LUAR motion.div.
+            Keduanya kandidat LCP di 11 halaman layanan; kalau dibungkus
+            `initial: { opacity: 0 }`, teks baru terlihat setelah bundel JS
+            ter-hydrate dan IntersectionObserver memicu animasi — LCP tertunda
+            tanpa alasan. Elemen di bawahnya tetap dianimasikan.
+          */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#FDE68A] bg-[#FFFBEB] text-[#B45309] text-xs sm:text-sm font-medium mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
             {badge}
@@ -89,6 +96,7 @@ export default function ServiceHero({
             {renderHeadline(headline, highlight)}
           </h1>
 
+          <motion.div {...motionProps}>
           <p className="text-base sm:text-lg text-[#6B7280] max-w-2xl mx-auto mb-8 text-pretty leading-relaxed">
             {subheadline}
           </p>
@@ -114,7 +122,8 @@ export default function ServiceHero({
           {socialProof ? (
             <p className="mt-6 text-xs sm:text-sm text-[#9CA3AF]">{socialProof}</p>
           ) : null}
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

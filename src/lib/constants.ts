@@ -5,6 +5,10 @@ export const SITE = {
   description:
     'Bukan sekadar bikin website — Noviyanto bantu bisnis Anda tumbuh dan mendapatkan leads melalui web development, digital marketing, dan AI integration.',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://noviyanto.com',
+  // Kota basis operasional — dipakai untuk sinyal lokal (badge hero, dsb).
+  // Dipisah dari `location` supaya relevansi Semarang tidak terencerkan
+  // oleh daftar tiga kota yang berbobot sama.
+  baseCity: 'Semarang',
   location: 'Jakarta · Bandung · Semarang',
   email: 'info@noviyanto.com',
   waNumber: process.env.NEXT_PUBLIC_WA_NUMBER ?? '6285879448563',
@@ -58,11 +62,13 @@ export const SERVICE_LINKS = [
   { label: 'Maintenance', href: '/layanan/maintenance', slug: 'maintenance' },
 ] as const
 
-// Area layanan — halaman jasa website per kota
+// Area layanan — halaman jasa website per kota.
+// Semarang didahulukan: itu pasar rumah dan satu-satunya halaman kota
+// dengan konten lokal asli, jadi ia yang harus menerima bobot tautan terbesar.
 export const AREA_LINKS = [
+  { label: 'Jasa Website Semarang', href: '/layanan/website/semarang' },
   { label: 'Jasa Website Jakarta', href: '/layanan/website/jakarta' },
   { label: 'Jasa Website Bandung', href: '/layanan/website/bandung' },
-  { label: 'Jasa Website Semarang', href: '/layanan/website/semarang' },
 ] as const
 
 // Industri — landing page per niche bisnis

@@ -78,6 +78,51 @@ const nextConfig: NextConfig = {
     return [
       // H9: /sitemap.xml conventional path → actual sitemap index
       { source: '/sitemap.xml', destination: '/sitemap-index.xml', permanent: true },
+
+      // ---------------------------------------------------------------------
+      // Warisan WordPress → Next.js (migrasi Mei 2026)
+      //
+      // Domain ini berjalan di WordPress sejak 2018. Saat migrasi, URL lama
+      // tidak dipetakan sehingga seluruh otoritas & histori peringkatnya putus
+      // di 404. Audit 2026-08-15 memverifikasi 12 URL berikut masih terindeks
+      // Google namun mengembalikan 404 tanpa satu pun 301.
+      //
+      // Catatan: URL lama berakhiran garis miring (mis. /about/) melewati
+      // normalisasi 308 Next.js lebih dulu, lalu kena 301 di sini. Rantai dua
+      // hop ini normal dan tetap meneruskan sinyal ke tujuan.
+      // ---------------------------------------------------------------------
+
+      // Terverifikasi 404 — prioritas utama, URL exact-match keyword komersial
+      { source: '/jasa-pembuatan-website-semarang', destination: '/layanan/website/semarang', permanent: true },
+
+      // Terverifikasi 404 — halaman layanan & profil
+      { source: '/web-development', destination: '/layanan/website', permanent: true },
+      { source: '/beranda', destination: '/', permanent: true },
+      { source: '/homepage-2', destination: '/', permanent: true },
+      { source: '/about', destination: '/tentang', permanent: true },
+      { source: '/privacy-policy', destination: '/kebijakan-privasi', permanent: true },
+      { source: '/my-links', destination: '/kontak', permanent: true },
+
+      // Terverifikasi 404 — artikel blog lama (konten tidak dimigrasi)
+      { source: '/why-dark-mode-websites-are-so-popular', destination: '/blog', permanent: true },
+      { source: '/the-ultimate-guide-to-user-on-boarding', destination: '/blog', permanent: true },
+      { source: '/how-to-improve-your-b2c-web-design', destination: '/blog', permanent: true },
+
+      // Terverifikasi 404 — custom post type "testimonial" milik tema WordPress.
+      // Pola :slug menangkap testimonial-1 s/d -N sekaligus.
+      { source: '/testimonial/:slug', destination: '/portofolio', permanent: true },
+
+      // Terverifikasi 404 — sisa struktur multibahasa WPML/Polylang.
+      // Entri spesifik didahulukan; sisanya ditangkap pola /en/:path*.
+      { source: '/en/category/web-development-en', destination: '/layanan/website', permanent: true },
+      { source: '/en/:path*', destination: '/', permanent: true },
+
+      // Preventif — taksonomi & arsip bawaan WordPress. Belum diverifikasi satu
+      // per satu, tapi tidak ada route aktif memakai prefix ini, jadi aman:
+      // mencegah sisa URL terindeks jatuh ke 404 alih-alih halaman relevan.
+      { source: '/category/:path*', destination: '/blog', permanent: true },
+      { source: '/tag/:path*', destination: '/blog', permanent: true },
+      { source: '/author/:path*', destination: '/tentang', permanent: true },
     ]
   },
 }

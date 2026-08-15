@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import { webPageSchema, safeJsonLd } from '@/lib/seo'
@@ -13,9 +14,12 @@ import WhyNoviyanto from '@/components/sections/WhyNoviyanto'
 import CTA from '@/components/sections/CTA'
 import WebsiteTestimonials from '@/app/(frontend)/layanan/website/_components/WebsiteTestimonials'
 
-const HOME_TITLE = 'Noviyanto: Jasa Website & Digital Marketing Profesional'
+// Beranda adalah halaman dengan otoritas tertinggi di situs ini, jadi ia yang
+// menargetkan keyword komersial utama secara eksplisit — sesuai spesifikasi
+// keyword di CLAUDE.md. Sebelumnya title/H1 sama sekali tidak menyebut Semarang.
+const HOME_TITLE = 'Jasa Pembuatan Website Semarang & Digital Marketing | Noviyanto'
 const HOME_DESCRIPTION =
-  'Noviyanto — digital growth partner untuk bisnis di Semarang. Bukan sekadar bikin website, kami bantu bisnis Anda mendapatkan leads dan tumbuh secara digital.'
+  'Jasa pembuatan website & digital marketing di Semarang. Bukan sekadar bikin website — Noviyanto bantu bisnis Anda ditemukan di Google dan mendapatkan leads.'
 
 export async function generateMetadata(): Promise<Metadata> {
   const base = await buildMetadata({
@@ -41,13 +45,6 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const HERO_IMG_SRCSET =
-  '/_next/image?url=%2Fimages%2Fnoviyanto-profile.webp&w=384&q=75 384w, ' +
-  '/_next/image?url=%2Fimages%2Fnoviyanto-profile.webp&w=640&q=75 640w, ' +
-  '/_next/image?url=%2Fimages%2Fnoviyanto-profile.webp&w=750&q=75 750w'
-
-const HERO_IMG_SIZES = '(max-width: 640px) 280px, (max-width: 1024px) 360px, 400px'
-
 export default function HomePage() {
   return (
     <>
@@ -63,15 +60,12 @@ export default function HomePage() {
           ),
         }}
       />
-      {/* LCP image preload — App Router hoists to <head> */}
-      <link
-        rel="preload"
-        as="image"
-        href="/_next/image?url=%2Fimages%2Fnoviyanto-profile.webp&w=384&q=75"
-        imageSrcSet={HERO_IMG_SRCSET}
-        imageSizes={HERO_IMG_SIZES}
-        fetchPriority="high"
-      />
+      {/*
+        Preload gambar hero ditangani otomatis oleh <Image priority> di bawah.
+        Preload manual dihapus 2026-08-15: kandidat 384w-nya tidak terdaftar di
+        `deviceSizes`/`imageSizes` pada next.config.ts, sehingga request-nya
+        mengembalikan HTTP 400 dan slot prioritas tinggi untuk LCP terbuang.
+      */}
       {/* Hero Section */}
       <section className="relative flex items-center justify-center overflow-hidden min-h-[78vh] lg:min-h-[82vh]">
         {/* Soft amber glow */}
@@ -103,39 +97,40 @@ export default function HomePage() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#FDE68A] bg-[#FFFBEB] text-[#B45309] text-xs sm:text-sm font-medium mb-6">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
-                Digital Growth Partner · {SITE.location}
+                Digital Growth Partner · Berbasis di {SITE.baseCity}
               </div>
 
-              {/* H1 */}
+              {/* H1 — menyebut lokasi agar beranda ikut menargetkan kueri lokal */}
               <h1 className="font-display font-extrabold text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl text-balance mb-6 leading-[1.05] tracking-tight text-[#111827]">
-                Bisnis Anda Butuh{' '}
+                Bisnis Semarang Butuh{' '}
                 <span className="bg-gradient-to-r from-[#F59E0B] to-[#F97316] bg-clip-text text-transparent">
                   Leads
                 </span>
                 , Bukan Sekadar Website
               </h1>
 
-              {/* Subheadline */}
+              {/* Subheadline — menyebut layanan + kota, lalu memperluas ke kota lain */}
               <p className="text-base sm:text-lg text-[#6B7280] max-w-2xl mx-auto lg:mx-0 mb-8 text-pretty leading-relaxed">
-                Saya bantu bisnis Anda ditemukan di Google dan diubah jadi customer nyata —
-                lewat website, iklan, dan strategi digital yang sudah terbukti.
+                Jasa pembuatan website dan digital marketing di Semarang — juga melayani
+                Jakarta, Bandung, dan kota lain secara remote. Saya bantu bisnis Anda
+                ditemukan di Google dan diubah jadi customer nyata.
               </p>
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start items-stretch sm:items-center">
-                <a
+                <Link
                   href="/kontak"
                   className="inline-flex items-center justify-center gap-2 h-12 sm:h-14 px-7 sm:px-8 bg-[#F59E0B] hover:bg-[#D97706] active:bg-[#B45309] text-[#111827] font-medium text-[15px] sm:text-base tracking-[-0.01em] leading-none rounded-xl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2"
                 >
                   Konsultasi Gratis
                   <span aria-hidden="true" className="-mr-0.5">→</span>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/layanan"
                   className="inline-flex items-center justify-center gap-2 h-12 sm:h-14 px-7 sm:px-8 bg-white hover:bg-[#F9FAFB] active:bg-[#F3F4F6] border border-[#E5E7EB] hover:border-[#D1D5DB] text-[#111827] font-medium text-[15px] sm:text-base tracking-[-0.01em] leading-none rounded-xl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2"
                 >
                   Lihat Layanan
-                </a>
+                </Link>
               </div>
 
               <p className="mt-4 text-xs text-[#6B7280] flex items-center justify-center lg:justify-start gap-2">
@@ -143,9 +138,24 @@ export default function HomePage() {
                 Respons cepat di hari kerja · Konsultasi pertama gratis
               </p>
 
+              {/*
+                Tautan kontekstual ke halaman kota utama. Sebelumnya halaman ini
+                hanya dijangkau dari footer, sehingga bobot tautan internalnya
+                jauh lebih kecil daripada relevansinya terhadap kueri target.
+              */}
+              <p className="mt-5 text-sm">
+                <Link
+                  href="/layanan/website/semarang"
+                  className="inline-flex items-center gap-1.5 rounded-sm font-medium text-[#B45309] underline decoration-[#FDE68A] decoration-2 underline-offset-4 transition-colors hover:text-[#92400E] hover:decoration-[#F59E0B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2"
+                >
+                  Lihat detail jasa pembuatan website di Semarang
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </p>
+
               {/* Social proof */}
               <p className="mt-6 text-xs sm:text-sm text-[#9CA3AF]">
-                Dipercaya <span className="text-[#111827] font-medium">30+ bisnis</span> dari Jakarta, Bandung, Semarang, dan kota lainnya
+                Dipercaya <span className="text-[#111827] font-medium">30+ bisnis</span> dari Semarang, Jakarta, Bandung, dan kota lainnya
               </p>
             </div>
 

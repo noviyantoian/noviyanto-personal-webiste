@@ -32,7 +32,20 @@ export default function Footer() {
               <span className="text-[#F59E0B]">.</span>
             </Link>
             <p className="mt-2 text-sm 2xl:text-base font-medium text-[#F59E0B]">{SITE.tagline}</p>
-            <p className="mt-1 text-sm 2xl:text-base text-[#6B7280]">{SITE.location}</p>
+
+            {/*
+              NAP terlihat mata, bukan hanya di JSON-LD.
+              Sebelumnya alamat lengkap hanya ada di structured data, sehingga
+              pengunjung — dan sebagian sinyal lokal — tidak pernah melihatnya.
+            */}
+            <address className="mt-3 not-italic text-sm 2xl:text-base leading-relaxed text-[#6B7280]">
+              {SITE.address.line}
+              <br />
+              {SITE.address.district}, {SITE.address.city}
+              <br />
+              {SITE.address.region} {SITE.address.postalCode}
+            </address>
+
             <p className="mt-4 max-w-sm text-sm 2xl:text-base leading-relaxed text-[#6B7280]">
               Bukan sekadar bikin website — kami bantu bisnis Anda tumbuh dan mendapatkan leads.
             </p>
