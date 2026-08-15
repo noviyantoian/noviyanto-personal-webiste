@@ -48,3 +48,10 @@ next-env.d.ts
 
 # tooling artifacts (understand-anything knowledge graph)
 .understand-anything/
+
+# claude code — konfigurasi mesin, bukan konvensi project.
+# .claude/rules/ dan .claude/commands/ SENGAJA tetap di-track:
+# keduanya konvensi project yang dibagikan, sejenis CLAUDE.md.
+.claude/settings.json
+.claude/settings.local.json
+.claude/hooks/
