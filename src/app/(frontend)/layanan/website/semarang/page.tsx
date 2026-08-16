@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { breadcrumbSchema, safeJsonLd } from '@/lib/seo'
+import { breadcrumbSchema, pricingOffersSchema, safeJsonLd } from '@/lib/seo'
+import { tiersOf } from '@/content/pricing'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -16,6 +17,7 @@ import SemarangLocal from './_components/SemarangLocal'
 import SemarangAuthor from './_components/SemarangAuthor'
 import WebsiteBusinessTypes from '../_components/WebsiteBusinessTypes'
 import WebsiteTestimonials from '../_components/WebsiteTestimonials'
+import WebsitePricing from '../_components/WebsitePricing'
 
 const PATH = '/layanan/website/semarang'
 const URL = `${SITE.url}${PATH}`
@@ -124,6 +126,12 @@ const businessSchema = {
       name: 'Jasa Pembuatan Website Profesional di Semarang',
       serviceType: 'Web Development',
       url: URL,
+      // Angka bersumber dari pricing.ts yang sama dengan yang dirender
+      // <WebsitePricing /> di bawah — bukan disalin manual ke sini.
+      ...(() => {
+        const offers = pricingOffersSchema({ tiers: tiersOf('website'), url: URL })
+        return offers ? { offers } : {}
+      })(),
     },
   },
   // aggregateRating & review SENGAJA dihapus — lihat catatan di src/lib/seo.ts.
@@ -212,6 +220,9 @@ export default function SemarangWebsitePage() {
       <WebsiteApproach />
 
       <WebsiteIncluded />
+
+      {/* Sama seperti CityWebsitePage: harga dulu, testimoni menyusul. */}
+      <WebsitePricing city="Semarang" />
 
       <WebsiteTestimonials />
 

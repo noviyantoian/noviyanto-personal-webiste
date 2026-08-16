@@ -425,8 +425,13 @@ export function collectionPageSchema(params: {
 }
 
 // ── City Website Service (untuk /layanan/website/[kota]) ─────────
-export function cityWebsiteServiceSchema(params: { city: CityData; url: string }) {
-  const { city, url } = params
+export function cityWebsiteServiceSchema(params: {
+  city: CityData
+  url: string
+  /** Hanya diisi kalau halaman benar-benar menampilkan harga. */
+  offers?: Record<string, unknown> | null
+}) {
+  const { city, url, offers } = params
   return {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
@@ -457,6 +462,10 @@ export function cityWebsiteServiceSchema(params: { city: CityData; url: string }
         name: `Jasa Pembuatan Website Profesional di ${city.city}`,
         serviceType: 'Web Development',
         url,
+        // AggregateOffer ditaruh di dalam itemOffered, BUKAN di level atas
+        // makesOffer — dua asersi harga untuk entitas yang sama membingungkan
+        // parser. Diisi hanya kalau halaman benar-benar merender harga.
+        ...(offers && { offers }),
       },
     },
     // aggregateRating & review SENGAJA tidak disertakan — lihat catatan di

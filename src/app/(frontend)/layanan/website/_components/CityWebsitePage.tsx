@@ -1,6 +1,13 @@
 import Link from 'next/link'
 
-import { cityWebsiteServiceSchema, faqPageSchema, breadcrumbSchema, safeJsonLd } from '@/lib/seo'
+import {
+  cityWebsiteServiceSchema,
+  faqPageSchema,
+  breadcrumbSchema,
+  pricingOffersSchema,
+  safeJsonLd,
+} from '@/lib/seo'
+import { tiersOf } from '@/content/pricing'
 import { SITE } from '@/lib/constants'
 import type { CityData } from '@/content/cities'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -12,6 +19,7 @@ import WebsiteIncluded from './WebsiteIncluded'
 import WebsiteProcess from './WebsiteProcess'
 import WebsiteBusinessTypes from './WebsiteBusinessTypes'
 import WebsiteTestimonials from './WebsiteTestimonials'
+import WebsitePricing from './WebsitePricing'
 import CityLocal from './CityLocal'
 import CityAuthor from './CityAuthor'
 
@@ -23,7 +31,12 @@ export default function CityWebsitePage({ city }: CityWebsitePageProps) {
   const url = `${SITE.url}/layanan/website/${city.slug}`
 
   const jsonLd = [
-    cityWebsiteServiceSchema({ city, url }),
+    cityWebsiteServiceSchema({
+      city,
+      url,
+      // Halaman ini merender <WebsitePricing />, jadi boleh mengemit offers.
+      offers: pricingOffersSchema({ tiers: tiersOf('website'), url }),
+    }),
     faqPageSchema(city.faq),
     breadcrumbSchema([
       { name: 'Beranda', url: SITE.url },
@@ -89,6 +102,13 @@ export default function CityWebsitePage({ city }: CityWebsitePageProps) {
       <WebsiteApproach />
 
       <WebsiteIncluded />
+
+      {/*
+        Harga tepat setelah "yang Anda dapat", lalu testimoni menyusul —
+        social proof setelah angka mengurangi keraguan. WebsiteIncluded putih,
+        WebsitePricing abu, WebsiteTestimonials putih: ritme tetap berselang.
+      */}
+      <WebsitePricing city={city.city} />
 
       <WebsiteTestimonials />
 
