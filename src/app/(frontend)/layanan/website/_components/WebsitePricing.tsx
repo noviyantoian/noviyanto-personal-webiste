@@ -77,7 +77,8 @@ function TierCard({ tier, city, delay }: { tier: PricingTier; city?: string; del
                 })
         }
       >
-        {tier.price.kind === 'quote' ? 'Diskusikan Kebutuhan' : `Pilih ${tier.name}`}
+        {/* Label tetap pendek: nama tier terpanjang akan meluber di tombol. */}
+        {tier.price.kind === 'quote' ? 'Diskusikan Kebutuhan' : 'Tanya Paket Ini'}
       </Button>
     </motion.div>
   )
@@ -98,15 +99,15 @@ export default function WebsitePricing({ city }: WebsitePricingProps) {
           className="mx-auto mb-12 max-w-3xl text-center"
         >
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">
-            Investasi
+            Harga
           </span>
           <h2 className="mt-4 text-balance font-display text-3xl font-semibold leading-[1.1] tracking-tight text-[#111827] sm:text-4xl lg:text-5xl">
             {city ? `Biaya Pembuatan Website di ${city}` : 'Biaya Pembuatan Website'}
           </h2>
           <p className="mt-5 text-pretty leading-relaxed text-[#6B7280]">
-            Angka di bawah adalah titik awal, bukan harga mati — lingkup akhir disusun
-            setelah kita bicara. Domain dan hosting didaftarkan atas nama Anda, jadi tidak
-            ada biaya perpanjangan tahunan ke saya.
+            Angka di bawah adalah titik awal, bukan harga mati — rinciannya kita susun
+            setelah bicara. Domain dan hosting didaftarkan atas nama Anda, jadi tidak ada
+            tagihan perpanjangan tahunan ke saya.
           </p>
         </motion.div>
 
