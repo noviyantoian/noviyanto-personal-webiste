@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { SITE } from './constants'
+import type { PricingTier, TierPrice } from '@/content/pricing'
 import type { CityData } from '@/content/cities'
 
 /**
@@ -109,11 +110,73 @@ export function personSchema(opts?: { sameAs?: string[] }) {
   }
 }
 
+// ── Offer ────────────────────────────────────────────────────────
+//
+// Service TIDAK punya rich result harga di Google Search. Nilai markup ini
+// untuk kejelasan entitas dan grounding jawaban AI — dan itu justru alasan
+// kuat menolak angka karangan: tidak ada upside dari menebak.
+//
+// Aturan yang ditegakkan di sini:
+//   - 'exact'   → Offer.price (klaim harga transaksi pasti)
+//   - 'from'    → priceSpecification.minPrice. JANGAN pernah menaruh angka
+//                 "mulai dari" di Offer.price — itu menegaskan harga pasti
+//                 yang tidak ditawarkan.
+//   - 'monthly' → minPrice + unitText, bukan harga sekali bayar
+//   - 'quote'   → tidak diemit sama sekali
+//
+// priceValidUntil sengaja DIKOSONGKAN, bukan dihardcode: tanggal kedaluwarsa
+// yang terlewat memicu peringatan "offer no longer valid" dan tidak akan ada
+// yang ingat memperbaruinya.
+//
+// Pemanggil WAJIB hanya mengoper tier yang benar-benar dirender di halaman itu
+// — lowPrice harus sama dengan angka terkecil yang terlihat pengunjung.
+// Karena itu parameternya opt-in per halaman, bukan dibakar ke serviceSchema.
+export function pricingOffersSchema(params: {
+  tiers: readonly PricingTier[]
+  url: string
+}): Record<string, unknown> | null {
+  // Type predicate, bukan predikat biasa: tanpa ini TypeScript tidak
+  // mempersempit union sehingga varian 'quote' masih terbawa ke dalam map.
+  const priced = params.tiers.filter(
+    (t): t is PricingTier & { price: Exclude<TierPrice, { kind: 'quote' }> } =>
+      t.price.kind !== 'quote',
+  )
+  if (priced.length === 0) return null
+
+  const amounts = priced.map((t) => t.price.amount)
+  const anchor = `${params.url}#harga`
+
+  return {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'IDR',
+    lowPrice: Math.min(...amounts),
+    highPrice: Math.max(...amounts),
+    offerCount: priced.length,
+    offers: priced.map((t) => {
+      const base = { '@type': 'Offer', name: t.name, priceCurrency: 'IDR', url: anchor }
+      if (t.price.kind === 'exact') {
+        return { ...base, price: t.price.amount }
+      }
+      return {
+        ...base,
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          priceCurrency: 'IDR',
+          minPrice: t.price.amount,
+          ...(t.price.kind === 'monthly' && { unitText: 'per bulan' }),
+        },
+      }
+    }),
+  }
+}
+
 export function serviceSchema(params: {
   name: string
   description: string
   url: string
   serviceType: string
+  /** Hanya diisi kalau halaman benar-benar menampilkan harga. */
+  offers?: Record<string, unknown> | null
 }) {
   return {
     '@context': 'https://schema.org',
@@ -129,6 +192,7 @@ export function serviceSchema(params: {
       { '@type': 'City', name: 'Bandung' },
       { '@type': 'Country', name: 'Indonesia' },
     ],
+    ...(params.offers && { offers: params.offers }),
   }
 }
 

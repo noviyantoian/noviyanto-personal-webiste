@@ -1,7 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 
-import { serviceSchema, breadcrumbSchema, faqPageSchema, safeJsonLd } from '@/lib/seo'
+import {
+  serviceSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+  pricingOffersSchema,
+  safeJsonLd,
+} from '@/lib/seo'
+import { tiersOf } from '@/content/pricing'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
 import ServiceHero from '@/components/sections/ServiceHero'
@@ -67,6 +74,9 @@ const jsonLd = [
       'Pembuatan website bisnis dan landing page berbasis Next.js — mobile-first, SEO-ready, dirancang untuk menghasilkan leads.',
     url: URL,
     serviceType: 'Web Development',
+    // Halaman ini merender <WebsitePricing />, jadi boleh mengemit offers.
+    // Halaman yang tidak menampilkan harga TIDAK boleh mengoper ini.
+    offers: pricingOffersSchema({ tiers: tiersOf('website'), url: URL }),
   }),
   breadcrumbSchema([
     { name: 'Beranda', url: SITE.url },
