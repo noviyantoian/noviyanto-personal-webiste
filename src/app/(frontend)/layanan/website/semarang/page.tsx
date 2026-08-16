@@ -12,7 +12,6 @@ import WebsiteApproach from '../_components/WebsiteApproach'
 import WebsiteIncluded from '../_components/WebsiteIncluded'
 import WebsiteProcess from '../_components/WebsiteProcess'
 
-import { GOOGLE_REVIEWS, REVIEWS_AGGREGATE } from '@/content/reviews'
 import SemarangLocal from './_components/SemarangLocal'
 import SemarangAuthor from './_components/SemarangAuthor'
 import WebsiteBusinessTypes from '../_components/WebsiteBusinessTypes'
@@ -92,7 +91,10 @@ const faqItems = [
 const businessSchema = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  '@id': `${SITE.url}/#business`,
+  // @id page-scoped, mengikuti pola cityWebsiteServiceSchema untuk Jakarta &
+  // Bandung. Sebelumnya `${SITE.url}/#business` — identik dengan entitas
+  // sitewide di layout, sehingga dua node berbeda mengklaim ID yang sama.
+  '@id': `${URL}#business`,
   name: 'Noviyanto — Jasa Pembuatan Website Profesional di Semarang',
   description:
     'Jasa pembuatan website bisnis di Kota Semarang oleh Noviyanto. Website cepat, SEO-ready, mobile-first, dirancang untuk konversi.',
@@ -124,25 +126,9 @@ const businessSchema = {
       url: URL,
     },
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: REVIEWS_AGGREGATE.rating.toFixed(1),
-    reviewCount: REVIEWS_AGGREGATE.count,
-    bestRating: '5',
-    worstRating: '1',
-  },
-  review: GOOGLE_REVIEWS.map((r) => ({
-    '@type': 'Review',
-    author: { '@type': 'Person', name: r.author },
-    datePublished: r.date,
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: r.rating,
-      bestRating: 5,
-      worstRating: 1,
-    },
-    reviewBody: r.text,
-  })),
+  // aggregateRating & review SENGAJA dihapus — lihat catatan di src/lib/seo.ts.
+  // Ulasannya asli, tapi menandai ulasan tentang diri sendiri di situs sendiri
+  // tidak pernah eligible untuk bintang dan membuka risiko manual action.
 }
 
 const faqSchema = {

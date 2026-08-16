@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { MessageCircle, Mail, MapPin, Clock, ShieldCheck } from 'lucide-react'
+import { MessageCircle, Mail, MapPin, Clock, ShieldCheck, ExternalLink } from 'lucide-react'
 
 import { breadcrumbSchema, contactPageSchema, faqPageSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
@@ -116,10 +116,46 @@ export default function KontakPage() {
                 <Mail className="h-4 w-4 text-amber-600" strokeWidth={1.75} aria-hidden="true" />
                 {SITE.email}
               </a>
-              <p className="flex items-start gap-3 text-sm text-gray-500">
+              {/* NAP terlihat mata — sebelumnya alamat hanya ada di JSON-LD */}
+              <div className="flex items-start gap-3 text-sm text-gray-500">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-600" strokeWidth={1.75} aria-hidden="true" />
-                Melayani klien di {SITE.location} dan kota lainnya secara remote.
-              </p>
+                <div>
+                  <address className="not-italic text-gray-600">
+                    {SITE.address.line}
+                    <br />
+                    {SITE.address.district}, {SITE.address.city}
+                    <br />
+                    {SITE.address.region} {SITE.address.postalCode}
+                  </address>
+                  <p className="mt-2">
+                    Melayani klien di {SITE.location} dan kota lainnya secara remote.
+                  </p>
+                  <a
+                    href={SITE.gbpUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1.5 rounded-sm font-medium text-amber-700 underline decoration-amber-200 decoration-2 underline-offset-4 transition-colors hover:text-amber-900 hover:decoration-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
+                  >
+                    Lihat profil &amp; ulasan di Google
+                    <ExternalLink className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
+
+              {/*
+                Peta lokasi. loading="lazy" karena berada di bawah fold dan
+                iframe pihak ketiga tidak boleh ikut menahan LCP.
+              */}
+              <div className="mt-6 overflow-hidden rounded-2xl border border-gray-200">
+                <iframe
+                  title={`Lokasi ${SITE.name} di Google Maps`}
+                  src={`https://www.google.com/maps?cid=${SITE.gbpCid}&output=embed`}
+                  className="block h-64 w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
             </div>
           </div>
 

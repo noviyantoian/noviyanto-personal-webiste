@@ -47,12 +47,16 @@ export interface GeoCoordinates {
 /**
  * Ekstrak koordinat lokasi dari CMS.
  * Fallback ke koordinat Kec. Mijen, Semarang kalau belum di-set.
+ *
+ * Nilai fallback disamakan persis dengan pin Google Business Profile
+ * (place /g/11s8c0rp6f). Sebelumnya -7.0618, 110.3452 — meleset ~1,2 km
+ * dari pin GBP, dan koordinat yang tidak konsisten melemahkan sinyal lokal.
  */
 export function getGeoCoordinates(settings: SiteSetting): GeoCoordinates {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const geo = (settings as any).geo as GeoCoordinates | undefined
   if (geo?.latitude && geo?.longitude) return geo
-  return { latitude: -7.0618, longitude: 110.3452 }
+  return { latitude: -7.0642496, longitude: 110.3351475 }
 }
 
 /** Ekstrak URL OG image default dari global settings. */

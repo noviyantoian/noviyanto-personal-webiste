@@ -1,5 +1,6 @@
-import { Star } from 'lucide-react'
+import { Star, ExternalLink } from 'lucide-react'
 import { GOOGLE_REVIEWS, REVIEWS_AGGREGATE, formatReviewDate } from '@/content/reviews'
+import { SITE } from '@/lib/constants'
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -43,6 +44,23 @@ export default function WebsiteTestimonials() {
             <span className="text-sm text-[#6B7280]">
               Sumber: {REVIEWS_AGGREGATE.source} (terverifikasi)
             </span>
+            <span className="text-[#9CA3AF]" aria-hidden="true">
+              ·
+            </span>
+            {/*
+              Tautan ke listing asli. Ulasan ini sengaja TIDAK ditandai dengan
+              schema Review/AggregateRating — lihat catatan di src/lib/seo.ts.
+              Menautkan ke sumbernya adalah cara yang benar untuk membuktikannya.
+            */}
+            <a
+              href={SITE.gbpUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-sm text-sm font-medium text-[#B45309] underline decoration-amber-200 decoration-2 underline-offset-4 transition-colors hover:text-[#92400E] hover:decoration-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2"
+            >
+              Baca semua ulasan di Google
+              <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden="true" />
+            </a>
           </div>
         </div>
 

@@ -42,7 +42,9 @@ const nextConfig: NextConfig = {
               "img-src 'self' data: blob: https:",
               "font-src 'self' data:",
               "connect-src 'self' https://www.google-analytics.com https://analytics.folkastudio.com https://www.googletagmanager.com",
-              "frame-src 'self'",
+              // google.com/maps diizinkan khusus untuk embed peta lokasi GBP
+              // di halaman kontak. Dipersempit ke host itu saja, bukan https:.
+              "frame-src 'self' https://www.google.com https://maps.google.com",
               "frame-ancestors 'self'",
               "worker-src 'self' blob:",
               "object-src 'none'",

@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next'
 import localFont from 'next/font/local'
 import { SITE } from '@/lib/constants'
 import { personSchema, webSiteSchema, professionalServiceSchema, safeJsonLd } from '@/lib/seo'
-import { GOOGLE_REVIEWS, REVIEWS_AGGREGATE } from '@/content/reviews'
 import { getSiteSettings, getDefaultOgImageUrl, getBusinessHours, getGeoCoordinates } from '@/lib/site-settings'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -106,20 +105,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             __html: safeJsonLd([
               webSiteSchema(),
               personSchema({ sameAs }),
-              professionalServiceSchema({
-                aggregateRating: {
-                  ratingValue: REVIEWS_AGGREGATE.rating,
-                  reviewCount: REVIEWS_AGGREGATE.count,
-                },
-                review: GOOGLE_REVIEWS.map((r) => ({
-                  author: r.author,
-                  date: r.date,
-                  rating: r.rating,
-                  text: r.text,
-                })),
-                businessHours,
-                geo,
-              }),
+              professionalServiceSchema({ businessHours, geo }),
             ]),
           }}
         />

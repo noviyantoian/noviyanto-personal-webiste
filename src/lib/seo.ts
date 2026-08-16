@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { SITE } from './constants'
 import type { CityData } from '@/content/cities'
-import { GOOGLE_REVIEWS, REVIEWS_AGGREGATE } from '@/content/reviews'
 
 /**
  * Serialisasi JSON-LD aman untuk inline `<script>`. `JSON.stringify` biasa
@@ -92,10 +91,11 @@ export function personSchema(opts?: { sameAs?: string[] }) {
       postalCode: SITE.address.postalCode,
       addressCountry: 'ID',
     },
+    // Disamakan dengan pin Google Business Profile (place /g/11s8c0rp6f).
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: -7.0618,
-      longitude: 110.3452,
+      latitude: -7.0642496,
+      longitude: 110.3351475,
     },
     areaServed: ['Semarang', 'Jakarta', 'Bandung', 'Indonesia'],
     knowsAbout: [
@@ -236,17 +236,19 @@ export function webSiteSchema() {
 }
 
 // ── ProfessionalService (entitas bisnis utama, sitewide) ─────────
+//
+// TIDAK menerima aggregateRating / review — dan jangan ditambahkan kembali.
+//
+// Google menonaktifkan fitur bintang untuk LocalBusiness/Organization yang
+// menandai ulasan tentang dirinya sendiri di situsnya sendiri ("self-serving"),
+// dan melarang menandai ulasan pihak ketiga (termasuk Google Business Profile)
+// sebagai konten situs. Markup semacam ini tidak pernah menghasilkan bintang,
+// tapi membuka risiko manual action.
+//
+// Ulasan Google tetap DITAMPILKAN sebagai konten biasa lewat komponen
+// WebsiteTestimonials — itu boleh, dan tetap berguna untuk konversi & E-E-A-T.
+// Bintang bisnis ini muncul di local pack / Google Maps, bukan dari markup.
 export function professionalServiceSchema(opts?: {
-  aggregateRating?: {
-    ratingValue: number
-    reviewCount: number
-  }
-  review?: Array<{
-    author: string
-    date: string
-    rating: number
-    text: string
-  }>
   businessHours?: Array<{ dayOfWeek: string[]; opens: string; closes: string }>
   geo?: { latitude: number; longitude: number }
 }) {
@@ -293,32 +295,7 @@ export function professionalServiceSchema(opts?: {
     founder: { '@id': SCHEMA_ID.person },
   }
 
-  return {
-    ...base,
-    ...(opts?.aggregateRating && {
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: opts.aggregateRating.ratingValue.toFixed(1),
-        reviewCount: opts.aggregateRating.reviewCount,
-        bestRating: '5',
-        worstRating: '1',
-      },
-    }),
-    ...(opts?.review && {
-      review: opts.review.map((r) => ({
-        '@type': 'Review',
-        author: { '@type': 'Person', name: r.author },
-        datePublished: r.date,
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: r.rating,
-          bestRating: 5,
-          worstRating: 1,
-        },
-        reviewBody: r.text,
-      })),
-    }),
-  }
+  return base
 }
 
 // ── AboutPage (untuk /tentang) ───────────────────────────────────
@@ -418,25 +395,9 @@ export function cityWebsiteServiceSchema(params: { city: CityData; url: string }
         url,
       },
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: REVIEWS_AGGREGATE.rating.toFixed(1),
-      reviewCount: REVIEWS_AGGREGATE.count,
-      bestRating: '5',
-      worstRating: '1',
-    },
-    review: GOOGLE_REVIEWS.map((r) => ({
-      '@type': 'Review',
-      author: { '@type': 'Person', name: r.author },
-      datePublished: r.date,
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: r.rating,
-        bestRating: 5,
-        worstRating: 1,
-      },
-      reviewBody: r.text,
-    })),
+    // aggregateRating & review SENGAJA tidak disertakan — lihat catatan di
+    // professionalServiceSchema. Ulasannya asli, tapi menandainya di sini
+    // tetap tergolong self-serving dan tidak pernah eligible untuk bintang.
   }
 }
 

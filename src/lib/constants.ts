@@ -13,13 +13,21 @@ export const SITE = {
   email: 'info@noviyanto.com',
   waNumber: process.env.NEXT_PUBLIC_WA_NUMBER ?? '6285879448563',
   ogImage: '/og/default.jpg',
+  // Google Business Profile — kategori primer "Website designer".
+  // CID diambil dari URL Maps listing; bentuk ?cid= adalah tautan kanonik
+  // yang stabil (terverifikasi 200), tidak seperti share.google yang butuh sesi.
+  gbpCid: '9851987512875631919',
+  gbpUrl: 'https://www.google.com/maps?cid=9851987512875631919',
   address: {
     line: 'Dk. Kaligetas, Kelurahan Jatibarang',
     district: 'Kecamatan Mijen',
     city: 'Kota Semarang',
     region: 'Jawa Tengah',
     country: 'Indonesia',
-    postalCode: '50215',
+    // 50219 adalah kode pos resmi Kelurahan Jatibarang, Kec. Mijen.
+    // Sebelumnya tertulis 50215 — tidak cocok dengan listing GBP dan
+    // ketidakcocokan NAP melemahkan sinyal lokal.
+    postalCode: '50219',
     full: 'Dk. Kaligetas, Kelurahan Jatibarang, Kecamatan Mijen, Kota Semarang, Jawa Tengah, Indonesia',
   },
 } as const

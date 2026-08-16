@@ -114,6 +114,16 @@ export default function Footer() {
                   +62 858-7944-8563
                 </a>
               </li>
+              <li>
+                <a
+                  href={SITE.gbpUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                >
+                  Profil &amp; ulasan Google
+                </a>
+              </li>
             </ul>
           </div>
         </div>
