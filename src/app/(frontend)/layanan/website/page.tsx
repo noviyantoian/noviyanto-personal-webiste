@@ -13,6 +13,7 @@ import WebsiteApproach from './_components/WebsiteApproach'
 import WebsiteIncluded from './_components/WebsiteIncluded'
 import WebsiteTech from './_components/WebsiteTech'
 import WebsiteUseCases from './_components/WebsiteUseCases'
+import WebsitePricing from './_components/WebsitePricing'
 import WebsiteProcess from './_components/WebsiteProcess'
 
 const PATH = '/layanan/website'
@@ -122,6 +123,14 @@ export default function WebsiteServicePage() {
       <WebsiteTech />
 
       <WebsiteUseCases />
+
+      {/*
+        Disisipkan di sini, bukan setelah WebsiteIncluded: latar section sudah
+        berselang-seling (Included putih → Tech abu → UseCases putih), jadi blok
+        abu setelah Included akan menempel ke Tech dan membuat dua garis border-y
+        beradu. Posisi ini memecah rentetan putih UseCases → Process.
+      */}
+      <WebsitePricing />
 
       <WebsiteProcess />
 
