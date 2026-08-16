@@ -70,15 +70,23 @@ const WEBSITE_TIERS: readonly PricingTier[] = [
     slug: 'web-landing',
     family: 'website',
     name: 'Landing Page',
-    price: { kind: 'from', amount: 3_500_000 },
+    // Rp 1,5jt, bukan 3,5jt. Dua alasan:
+    // (1) Konsistensi internal — landing tour & travel mematok Rp 3,5jt untuk
+    //     LIMA halaman. Angka yang sama untuk satu halaman terbaca janggal
+    //     bagi pengunjung yang membuka kedua halaman.
+    // (2) Bingkai perbandingan — Gowebbagus & WebNesia menjual 5 halaman di
+    //     2,5jt. Calon klien membandingkan "1 halaman vs 5 halaman", bukan
+    //     kualitas buatannya. Entry harus jelas di bawah paket 5 halaman itu.
+    // Tetap ~2× lantai pasar (Lenteraweb 770rb) — murah, tapi tidak termurah.
+    price: { kind: 'from', amount: 1_500_000 },
     tagline: 'Satu halaman untuk satu penawaran',
     features: [
       'Satu halaman, fokus ke satu tujuan',
-      'Naskah ditulis dari riset calon pembeli Anda',
+      'Bantuan menyusun naskah halaman',
       'Formulir + tombol WhatsApp langsung',
       'Optimasi dasar agar terbaca Google',
       'Domain & hosting atas nama Anda',
-      'Revisi besar 2×',
+      'Revisi besar 1×',
       'Garansi 30 hari',
     ],
   },
