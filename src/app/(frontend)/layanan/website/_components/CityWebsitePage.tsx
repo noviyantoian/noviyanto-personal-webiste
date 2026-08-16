@@ -18,7 +18,7 @@ import WebsiteApproach from './WebsiteApproach'
 import WebsiteIncluded from './WebsiteIncluded'
 import WebsiteProcess from './WebsiteProcess'
 import WebsiteBusinessTypes from './WebsiteBusinessTypes'
-import WebsiteTestimonials from './WebsiteTestimonials'
+import ClientReviews from '@/components/sections/ClientReviews'
 import WebsitePricing from './WebsitePricing'
 import CityLocal from './CityLocal'
 import CityAuthor from './CityAuthor'
@@ -106,11 +106,11 @@ export default function CityWebsitePage({ city }: CityWebsitePageProps) {
       {/*
         Harga tepat setelah "yang Anda dapat", lalu testimoni menyusul —
         social proof setelah angka mengurangi keraguan. WebsiteIncluded putih,
-        WebsitePricing abu, WebsiteTestimonials putih: ritme tetap berselang.
+        WebsitePricing abu, ClientReviews putih: ritme tetap berselang.
       */}
       <WebsitePricing city={city.city} />
 
-      <WebsiteTestimonials />
+      <ClientReviews />
 
       <WebsiteProcess />
 

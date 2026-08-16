@@ -10,6 +10,7 @@ import { SERVICE_ICONS } from '@/lib/icons'
 import Breadcrumb from '@/components/layout/Breadcrumb'
 import ServiceHero from '@/components/sections/ServiceHero'
 import ServiceCTA from '@/components/sections/ServiceCTA'
+import ClientReviews from '@/components/sections/ClientReviews'
 
 const PATH = '/layanan'
 const URL = `${SITE.url}${PATH}`
@@ -125,6 +126,8 @@ export default function LayananPage() {
           </div>
         </div>
       </section>
+
+      <ClientReviews background="gray" />
 
       <ServiceCTA
         headline="Tidak Yakin Layanan Mana yang Anda Butuhkan?"

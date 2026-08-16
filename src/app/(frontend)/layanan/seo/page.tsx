@@ -10,6 +10,7 @@ import ServiceCardGrid from '@/components/sections/ServiceCardGrid'
 import ServiceTimeline from '@/components/sections/ServiceTimeline'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
+import ClientReviews from '@/components/sections/ClientReviews'
 
 const PATH = '/layanan/seo'
 const URL = `${SITE.url}${PATH}`
@@ -197,6 +198,8 @@ export default function SeoPage() {
         intro="Setiap industri punya dinamika pencarian berbeda. Brand perhiasan butuh pendekatan berbeda dari jasa hukum. Tour & travel punya seasonality yang harus diperhitungkan."
         items={industries}
       />
+
+      <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
 

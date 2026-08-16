@@ -12,6 +12,7 @@ import ServiceCardGrid from '@/components/sections/ServiceCardGrid'
 import ServiceTimeline from '@/components/sections/ServiceTimeline'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
+import ClientReviews from '@/components/sections/ClientReviews'
 
 const PATH = '/layanan/google-ads'
 const URL = `${SITE.url}${PATH}`
@@ -195,6 +196,8 @@ export default function GoogleAdsPage() {
         headline="Bagaimana Cara Mulainya"
         steps={onboardingSteps}
       />
+
+      <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
 

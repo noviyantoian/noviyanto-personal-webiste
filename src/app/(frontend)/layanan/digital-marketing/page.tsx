@@ -9,6 +9,7 @@ import ServiceProse from '@/components/sections/ServiceProse'
 import ServiceCardGrid from '@/components/sections/ServiceCardGrid'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
+import ClientReviews from '@/components/sections/ClientReviews'
 
 const PATH = '/layanan/digital-marketing'
 const URL = `${SITE.url}${PATH}`
@@ -171,6 +172,8 @@ export default function DigitalMarketingPage() {
         items={industries}
         columns={3}
       />
+
+      <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
 

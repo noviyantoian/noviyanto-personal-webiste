@@ -11,6 +11,7 @@ import ServiceCardGrid from '@/components/sections/ServiceCardGrid'
 import ServiceTimeline from '@/components/sections/ServiceTimeline'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
+import ClientReviews from '@/components/sections/ClientReviews'
 
 const PATH = '/layanan/mobile-app'
 const URL = `${SITE.url}${PATH}`
@@ -178,6 +179,8 @@ export default function MobileAppPage() {
         steps={processSteps}
         background="gray"
       />
+
+      <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
 

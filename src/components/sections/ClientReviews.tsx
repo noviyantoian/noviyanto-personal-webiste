@@ -3,12 +3,17 @@ import { Star, ExternalLink } from 'lucide-react'
 import { GOOGLE_REVIEWS, REVIEWS_AGGREGATE, formatReviewDate } from '@/content/reviews'
 import { SITE } from '@/lib/constants'
 
+// Dipindahkan dari layanan/website/_components/WebsiteTestimonials.tsx.
+// Begitu dipakai lintas layanan (beranda, /layanan, dan tujuh halaman layanan),
+// tinggal di folder _components milik satu layanan jadi salah tempat —
+// /layanan/seo tidak seharusnya mengimpor dari ../website/_components/.
+//
 // Carousel ini sengaja CSS murni — tanpa tombol panah, tanpa 'use client'.
-// Komponen ini dirender di beranda dan tiga halaman kota; menambah JavaScript
-// di sana demi dua tombol bukan tukaran yang sepadan. Scroll-snap menangani
-// sentuhan di mobile (mayoritas trafik), scrollbar yang sengaja DIBIARKAN
-// terlihat memberi petunjuk di desktop, dan container-nya fokusabel sehingga
-// pengguna keyboard bisa menggesernya dengan tombol panah.
+// Ia dirender di 12 halaman termasuk beranda; menambah JavaScript di sana demi
+// dua tombol bukan tukaran yang sepadan. Scroll-snap menangani sentuhan di
+// mobile (mayoritas trafik), scrollbar sengaja DIBIARKAN terlihat sebagai
+// petunjuk di desktop, dan container-nya fokusabel sehingga pengguna keyboard
+// bisa menggesernya dengan tombol panah.
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -62,9 +67,16 @@ function Avatar({ name, logo }: { name: string; logo?: string }) {
   )
 }
 
-export default function WebsiteTestimonials() {
+interface ClientReviewsProps {
+  /** Latar section. Dipakai untuk menjaga selang-seling di tiap halaman. */
+  background?: 'white' | 'gray'
+}
+
+export default function ClientReviews({ background = 'white' }: ClientReviewsProps) {
+  const bg = background === 'gray' ? 'bg-gray-50 border-y border-gray-100' : 'bg-white'
+
   return (
-    <section aria-labelledby="testimonials-heading" className="py-20 lg:py-32 bg-white">
+    <section aria-labelledby="testimonials-heading" className={`py-20 lg:py-32 ${bg}`}>
       <div className="container-wide">
         <div className="max-w-3xl mb-12 lg:mb-16">
           <span className="inline-block px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-medium mb-5">

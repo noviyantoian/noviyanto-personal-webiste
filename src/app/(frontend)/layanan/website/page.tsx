@@ -14,6 +14,7 @@ import { SITE } from '@/lib/constants'
 import ServiceHero from '@/components/sections/ServiceHero'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
+import ClientReviews from '@/components/sections/ClientReviews'
 
 import WebsiteProblem from './_components/WebsiteProblem'
 import WebsiteApproach from './_components/WebsiteApproach'
@@ -143,6 +144,8 @@ export default function WebsiteServicePage() {
       <WebsitePricing />
 
       <WebsiteProcess />
+
+      <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
 

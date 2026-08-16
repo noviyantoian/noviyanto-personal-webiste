@@ -11,6 +11,7 @@ import ServiceCardGrid from '@/components/sections/ServiceCardGrid'
 import ServiceTimeline from '@/components/sections/ServiceTimeline'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
+import ClientReviews from '@/components/sections/ClientReviews'
 
 const PATH = '/layanan/ai-integration'
 const URL = `${SITE.url}${PATH}`
@@ -188,6 +189,8 @@ export default function AiIntegrationPage() {
           'Saya tidak akan menjual sistem yang kompleks kalau kebutuhan Anda bisa diselesaikan dengan cara yang lebih sederhana.',
         ]}
       />
+
+      <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
 

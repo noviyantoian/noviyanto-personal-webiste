@@ -16,7 +16,7 @@ import WebsiteProcess from '../_components/WebsiteProcess'
 import SemarangLocal from './_components/SemarangLocal'
 import SemarangAuthor from './_components/SemarangAuthor'
 import WebsiteBusinessTypes from '../_components/WebsiteBusinessTypes'
-import WebsiteTestimonials from '../_components/WebsiteTestimonials'
+import ClientReviews from '@/components/sections/ClientReviews'
 import WebsitePricing from '../_components/WebsitePricing'
 
 const PATH = '/layanan/website/semarang'
@@ -224,7 +224,7 @@ export default function SemarangWebsitePage() {
       {/* Sama seperti CityWebsitePage: harga dulu, testimoni menyusul. */}
       <WebsitePricing city="Semarang" />
 
-      <WebsiteTestimonials />
+      <ClientReviews />
 
       <WebsiteProcess />
 

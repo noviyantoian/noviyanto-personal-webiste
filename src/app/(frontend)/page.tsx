@@ -12,7 +12,7 @@ import Services from '@/components/sections/Services'
 import Industries from '@/components/sections/Industries'
 import WhyNoviyanto from '@/components/sections/WhyNoviyanto'
 import CTA from '@/components/sections/CTA'
-import WebsiteTestimonials from '@/app/(frontend)/layanan/website/_components/WebsiteTestimonials'
+import ClientReviews from '@/components/sections/ClientReviews'
 
 // Title beranda sengaja LEBIH LUAS dari /layanan/website/semarang.
 // Halaman itu yang memegang exact match "Jasa Pembuatan Website Semarang";
@@ -215,7 +215,7 @@ export default function HomePage() {
       <Services />
       <Industries />
       <WhyNoviyanto />
-      <WebsiteTestimonials />
+      <ClientReviews />
       <CTA />
     </>
   )

@@ -10,6 +10,7 @@ import ServiceCardGrid from '@/components/sections/ServiceCardGrid'
 import ServiceColumns from '@/components/sections/ServiceColumns'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
+import ClientReviews from '@/components/sections/ClientReviews'
 
 const PATH = '/layanan/maintenance'
 const URL = `${SITE.url}${PATH}`
@@ -193,6 +194,8 @@ export default function MaintenancePage() {
         headline="Siapa yang Paling Butuh Layanan Ini"
         items={targetAudience}
       />
+
+      <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
 
