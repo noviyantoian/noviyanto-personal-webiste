@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Star, ExternalLink } from 'lucide-react'
 import { GOOGLE_REVIEWS, REVIEWS_AGGREGATE, formatReviewDate } from '@/content/reviews'
 import { SITE } from '@/lib/constants'
@@ -31,7 +32,26 @@ function initialsOf(name: string): string {
   return words.map((w) => w[0]?.toUpperCase() ?? '').join('')
 }
 
-function Avatar({ name }: { name: string }) {
+/**
+ * Logo perusahaan kalau tersedia, kalau tidak inisial nama.
+ * Logo dipilih lebih dulu karena ia memberi konteks yang bisa diverifikasi —
+ * sesuatu yang foto wajah tidak lakukan.
+ */
+function Avatar({ name, logo }: { name: string; logo?: string }) {
+  if (logo) {
+    return (
+      <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-gray-200">
+        <Image
+          src={logo}
+          alt=""
+          width={44}
+          height={44}
+          className="h-full w-full object-contain p-1.5"
+          aria-hidden="true"
+        />
+      </span>
+    )
+  }
   return (
     <span
       aria-hidden="true"
@@ -112,10 +132,30 @@ export default function WebsiteTestimonials() {
                 <p>&ldquo;{r.text}&rdquo;</p>
               </blockquote>
               <footer className="mt-5 flex items-center gap-3 border-t border-gray-200 pt-5">
-                <Avatar name={r.author} />
+                <Avatar name={r.author} logo={r.logo} />
                 <div className="min-w-0">
                   <p className="truncate text-sm font-semibold text-[#111827]">{r.author}</p>
-                  <p className="mt-0.5 text-xs text-[#6B7280]">
+                  {/*
+                    Jabatan + perusahaan adalah bukti yang bisa dicek pembaca —
+                    itu sebabnya ia diletakkan di atas tanggal, bukan di bawah.
+                  */}
+                  {r.role && (
+                    <p className="truncate text-xs text-[#374151]">
+                      {r.site ? (
+                        <a
+                          href={`https://${r.site}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="rounded-sm underline decoration-gray-300 underline-offset-2 transition-colors hover:text-amber-700 hover:decoration-amber-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                        >
+                          {r.role}
+                        </a>
+                      ) : (
+                        r.role
+                      )}
+                    </p>
+                  )}
+                  <p className="mt-0.5 text-xs text-[#9CA3AF]">
                     Ulasan Google · {formatReviewDate(r.date)}
                   </p>
                 </div>
