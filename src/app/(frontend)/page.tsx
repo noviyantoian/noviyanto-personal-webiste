@@ -14,10 +14,15 @@ import WhyNoviyanto from '@/components/sections/WhyNoviyanto'
 import CTA from '@/components/sections/CTA'
 import WebsiteTestimonials from '@/app/(frontend)/layanan/website/_components/WebsiteTestimonials'
 
-// Beranda adalah halaman dengan otoritas tertinggi di situs ini, jadi ia yang
-// menargetkan keyword komersial utama secara eksplisit — sesuai spesifikasi
-// keyword di CLAUDE.md. Sebelumnya title/H1 sama sekali tidak menyebut Semarang.
-const HOME_TITLE = 'Jasa Pembuatan Website Semarang & Digital Marketing | Noviyanto'
+// Title beranda sengaja LEBIH LUAS dari /layanan/website/semarang.
+// Halaman itu yang memegang exact match "Jasa Pembuatan Website Semarang";
+// kalau beranda memakai frasa sama, keduanya berebut kueri yang sama.
+//
+// Tanpa suffix "| Noviyanto": untuk halaman utama Google menambahkan sendiri
+// prefix nama situs dari og:site_name ("Noviyanto: ..."), jadi menaruh brand
+// di ekor hanya memakan jatah lebar dua kali. Diukur ~491px dari ambang potong
+// ~600px SERP desktop, sudah termasuk prefix Google — sisa ruang ~109px.
+const HOME_TITLE = 'Jasa Website & Digital Marketing Semarang'
 const HOME_DESCRIPTION =
   'Jasa pembuatan website & digital marketing di Semarang. Bukan sekadar bikin website — Noviyanto bantu bisnis Anda ditemukan di Google dan mendapatkan leads.'
 

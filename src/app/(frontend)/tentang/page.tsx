@@ -16,7 +16,9 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Tentang Noviyanto — Digital Growth Partner',
+    // Tanpa "Noviyanto" di judul: template layout sudah menambahkannya,
+    // dan "Semarang" dipakai untuk mengisi ruang itu dengan sinyal lokal.
+    title: 'Tentang — Digital Growth Partner Semarang',
     description:
       'Noviyanto — digital growth partner berbasis di Semarang. Lebih dari 3 tahun bantu bisnis di 7+ industri tumbuh secara digital, dari Jakarta sampai Semarang.',
     path: PATH,

@@ -16,7 +16,9 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Jasa SEO — Muncul di Halaman Pertama Google Tanpa Bayar Iklan',
+    // Dipendekkan dari ~717px; "Semarang" ditambahkan karena title lama
+    // tidak punya sinyal lokal sama sekali.
+    title: 'Jasa SEO Semarang — Naik Peringkat Organik',
     description:
       'Jasa SEO berbasis riset keyword nyata. Audit teknis, on-page, local SEO, dan konten yang membangun traffic organik sebagai aset jangka panjang.',
     path: PATH,

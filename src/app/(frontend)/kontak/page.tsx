@@ -13,7 +13,9 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Konsultasi Gratis — Hubungi Noviyanto',
+    // Tanpa "Noviyanto" di judul: template layout sudah menambahkan
+    // " | Noviyanto", jadi versi lama menampilkan brand dua kali.
+    title: 'Konsultasi Gratis untuk Bisnis Anda',
     description:
       'Isi form konsultasi singkat, ceritakan kebutuhan bisnis Anda, lalu lanjut diskusi langsung via WhatsApp. Konsultasi pertama gratis, tanpa komitmen.',
     path: PATH,

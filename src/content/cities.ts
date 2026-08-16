@@ -52,7 +52,8 @@ const JAKARTA: CityData = {
   city: 'Jakarta',
   region: 'DKI Jakarta',
   meta: {
-    title: 'Jasa Pembuatan Website Jakarta — Website Bisnis yang Mendatangkan Klien',
+    // Dipendekkan: versi lama ~803px vs ambang potong ~600px SERP desktop.
+    title: 'Jasa Pembuatan Website Jakarta',
     description:
       'Jasa pembuatan website profesional di Jakarta oleh Noviyanto. Website cepat, SEO-ready, dan dirancang untuk mengubah pengunjung jadi calon klien. Dikerjakan langsung tanpa perantara, koordinasi online & kunjungan terjadwal.',
     keywords: [
@@ -152,7 +153,8 @@ const BANDUNG: CityData = {
   city: 'Bandung',
   region: 'Jawa Barat',
   meta: {
-    title: 'Jasa Pembuatan Website Bandung — Website Bisnis yang Mendatangkan Klien',
+    // Dipendekkan: versi lama ~818px vs ambang potong ~600px SERP desktop.
+    title: 'Jasa Pembuatan Website Bandung',
     description:
       'Jasa pembuatan website profesional di Bandung oleh Noviyanto. Website cepat, SEO-ready, dan dirancang untuk mengubah pengunjung jadi calon klien. Dikerjakan langsung tanpa perantara, koordinasi online & kunjungan terjadwal.',
     keywords: [

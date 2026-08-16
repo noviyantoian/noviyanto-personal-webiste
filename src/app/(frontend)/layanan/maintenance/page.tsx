@@ -16,7 +16,8 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Maintenance Website — Update, Backup, Monitoring, Optimasi',
+    // Dipendekkan dari ~665px vs ambang potong ~600px SERP desktop.
+    title: 'Maintenance Website — Update & Backup Rutin',
     description:
       'Layanan maintenance website: update CMS/plugin, backup rutin, monitoring uptime, optimasi performa, dan update konten kecil.',
     path: PATH,

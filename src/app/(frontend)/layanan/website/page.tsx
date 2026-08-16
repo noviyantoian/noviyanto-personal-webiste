@@ -20,7 +20,8 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Jasa Pembuatan Website — Website yang Bekerja Keras untuk Bisnis Anda',
+    // Dipendekkan: versi lama ~782px vs ambang potong ~600px SERP desktop.
+    title: 'Jasa Pembuatan Website Profesional',
     description:
       'Jasa pembuatan website bisnis dan landing page yang dirancang untuk mengubah pengunjung jadi prospek. Next.js, mobile-first, SEO-ready.',
     path: PATH,

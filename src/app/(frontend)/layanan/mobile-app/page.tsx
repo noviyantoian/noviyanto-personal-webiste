@@ -17,7 +17,8 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Pembuatan Aplikasi Mobile — Cross-Platform React Native',
+    // Dipendekkan dari ~631px vs ambang potong ~600px SERP desktop.
+    title: 'Pembuatan Aplikasi Mobile Cross-Platform',
     description:
       'Pembuatan aplikasi mobile cross-platform (Android + iOS) dengan React Native. Untuk customer-facing, internal tim, atau hybrid.',
     path: PATH,

@@ -18,7 +18,8 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Jasa Google Ads — Customer Baru Mulai Masuk Minggu Pertama',
+    // Dipendekkan dari ~693px; "Semarang" ditambahkan untuk sinyal lokal.
+    title: 'Jasa Google Ads Semarang — Iklan Tepat Sasaran',
     description:
       'Pengelolaan Google Ads berbasis data: riset keyword, setup, optimasi rutin, tracking konversi WhatsApp/form. Setiap rupiah terukur.',
     path: PATH,

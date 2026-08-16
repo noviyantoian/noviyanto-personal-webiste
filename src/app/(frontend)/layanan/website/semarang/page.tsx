@@ -23,10 +23,14 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title:
-      'Jasa Pembuatan Website Semarang — Website Bisnis yang Mendatangkan Klien',
+    // Halaman ini pemegang exact match "Jasa Pembuatan Website Semarang".
+    // Judul dipendekkan dari 84 karakter: versi lama terukur ~830px terhadap
+    // ambang potong ~600px SERP desktop, sehingga lebih dari sepertiganya —
+    // termasuk seluruh frasa nilai — tidak pernah tampil. Template layout
+    // menambahkan " | Noviyanto", total ~431px.
+    title: 'Jasa Pembuatan Website Semarang',
     description:
-      'Jasa pembuatan website profesional di Semarang oleh Noviyanto. Website cepat, SEO-ready, dan dirancang untuk mengubah pengunjung jadi calon klien. Konsultasi langsung tanpa perantara.',
+      'Jasa pembuatan website profesional di Semarang. Website cepat, SEO-ready, dirancang mengubah pengunjung jadi calon klien. Dikerjakan langsung tanpa perantara.',
     path: PATH,
     keywords: [
       'jasa pembuatan website Semarang',

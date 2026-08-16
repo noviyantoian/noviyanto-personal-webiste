@@ -17,7 +17,8 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'AI Integration — Otomasi Pekerjaan Berulang untuk Tim Anda',
+    // Dipendekkan dari ~657px vs ambang potong ~600px SERP desktop.
+    title: 'AI Integration — Otomasi Kerja Berulang',
     description:
       'Integrasi AI untuk otomasi bisnis: chatbot, follow-up leads, laporan otomatis, pemrosesan dokumen. n8n, OpenAI, Make, Python.',
     path: PATH,

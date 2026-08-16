@@ -8,7 +8,12 @@ const PATH = '/jasa-website-tour-travel'
 const URL = `${SITE.url}${PATH}`
 
 export const metadata: Metadata = {
-  title: 'Jasa Website Tour & Travel Profesional — Noviyanto',
+  // Tanpa "— Noviyanto": template layout sudah menambahkan " | Noviyanto",
+  // sehingga versi lama menampilkan brand dua kali dan hanya menyisakan
+  // 22px dari ambang potong ~600px SERP desktop.
+  // openGraph.title & twitter.title di bawah TETAP membawa brand — keduanya
+  // tidak menerima template, jadi di sana brand memang diperlukan.
+  title: 'Jasa Website Tour & Travel Profesional',
   description:
     'Jasa pembuatan website tour & travel dengan sistem booking, SEO, dan integrasi WhatsApp. Harga transparan, garansi kepuasan. Konsultasi gratis!',
   alternates: { canonical: URL },

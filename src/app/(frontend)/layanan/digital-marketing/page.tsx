@@ -15,7 +15,8 @@ const URL = `${SITE.url}${PATH}`
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: 'Jasa Digital Marketing — Strategi yang Menyatukan Semua Kanal',
+    // Dipendekkan dari ~691px; "Semarang" ditambahkan untuk sinyal lokal.
+    title: 'Jasa Digital Marketing Semarang',
     description:
       'Digital marketing terpadu: strategi, content, paid ads, email marketing, dan analitik. Website, iklan, SEO, dan media sosial yang bekerja bersama.',
     path: PATH,
