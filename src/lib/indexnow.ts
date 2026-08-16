@@ -33,7 +33,15 @@ export const ALL_STATIC_PAGES = [
   '/tentang',
   '/kontak',
   '/blog',
+  '/kebijakan-privasi',
+  '/syarat-ketentuan',
 ] as const
+
+// Catatan: daftar ini sengaja hanya memuat halaman STATIS. Artikel blog
+// ditambahkan secara dinamis oleh /api/indexnow karena slug-nya berasal dari
+// CMS — lihat route-nya. Query Payload tidak ditaruh di file ini untuk
+// menghindari dependensi melingkar: indexnow.ts diimpor collections/Posts.ts,
+// sementara lib/blog.ts menarik konfigurasi Payload yang memuat koleksi itu.
 
 interface PingResult {
   ok: boolean
@@ -77,11 +85,9 @@ export async function pingIndexNow(urls: string[]): Promise<PingResult> {
   }
 }
 
-/** Ping semua halaman statis sekaligus. */
-export async function pingAllPages(): Promise<PingResult> {
-  const urls = ALL_STATIC_PAGES.map((path) => `${SITE.url}${path}`)
-  return pingIndexNow(urls)
-}
+// pingAllPages() dihapus: ia hanya mengirim halaman statis dan melewatkan
+// artikel blog, sehingga memakainya untuk "ping semuanya" justru menyesatkan.
+// /api/indexnow kini menyusun daftar lengkapnya sendiri (statis + blog dari CMS).
 
 /** Helper: bangun URL artikel blog dari slug. */
 export function blogUrl(slug: string): string {

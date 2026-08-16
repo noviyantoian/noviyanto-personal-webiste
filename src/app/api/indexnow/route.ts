@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { pingAllPages, pingIndexNow } from '@/lib/indexnow'
+import { pingIndexNow, ALL_STATIC_PAGES } from '@/lib/indexnow'
+import { getPostsForSitemap } from '@/lib/blog'
 import { SITE } from '@/lib/constants'
 
 export const dynamic = 'force-dynamic'
@@ -46,7 +47,22 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const urls = body.paths.map((p) => `${SITE.url}${p}`)
     result = await pingIndexNow(urls)
   } else {
-    result = await pingAllPages()
+    // Tanpa body = ping SEMUA yang ada di sitemap, bukan hanya halaman statis.
+    // Sebelumnya artikel blog terlewat di ping massal: ia hanya di-ping satu per
+    // satu lewat hook publish, sehingga perubahan sitewide (footer, NAP, tautan
+    // GBP) tidak pernah memberi tahu mesin pencari untuk halaman blog.
+    //
+    // Query Payload dilakukan DI SINI, bukan di lib/indexnow.ts, untuk
+    // menghindari dependensi melingkar dengan collections/Posts.ts.
+    const staticUrls = ALL_STATIC_PAGES.map((p) => `${SITE.url}${p}`)
+    let blogUrls: string[] = []
+    try {
+      const posts = await getPostsForSitemap()
+      blogUrls = posts.map((p) => `${SITE.url}/blog/${p.slug}`)
+    } catch {
+      // CMS tidak terjangkau: tetap ping halaman statis daripada gagal total.
+    }
+    result = await pingIndexNow([...staticUrls, ...blogUrls])
   }
 
   if (!result.ok) {
