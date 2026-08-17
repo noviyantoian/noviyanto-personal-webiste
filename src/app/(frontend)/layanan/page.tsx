@@ -54,7 +54,7 @@ const SLUG_TO_PATH = Object.fromEntries(
 
 export default function LayananPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
@@ -136,6 +136,6 @@ export default function LayananPage() {
         ctaLabel="Diskusi via WhatsApp"
         subText="Konsultasi awal gratis, tanpa komitmen."
       />
-    </main>
+    </div>
   )
 }

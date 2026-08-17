@@ -133,7 +133,7 @@ const faqItems = [
 
 export default function SeoPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd([...jsonLd, faqPageSchema(faqItems)]) }}
@@ -210,6 +210,6 @@ export default function SeoPage() {
         ctaLabel="Minta Audit SEO Gratis"
         subText="Kirim URL website Anda via WhatsApp →"
       />
-    </main>
+    </div>
   )
 }

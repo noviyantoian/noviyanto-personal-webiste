@@ -47,7 +47,7 @@ export default function CityWebsitePage({ city }: CityWebsitePageProps) {
   ]
 
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
@@ -126,6 +126,6 @@ export default function CityWebsitePage({ city }: CityWebsitePageProps) {
         ctaLabel="Mulai Konsultasi via WhatsApp"
         subText="Konsultasi awal gratis, tanpa komitmen."
       />
-    </main>
+    </div>
   )
 }

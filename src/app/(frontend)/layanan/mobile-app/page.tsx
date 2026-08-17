@@ -121,7 +121,7 @@ const faqItems = [
 
 export default function MobileAppPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd([...jsonLd, faqPageSchema(faqItems)]) }}
@@ -191,6 +191,6 @@ export default function MobileAppPage() {
         ctaLabel="Diskusi via WhatsApp"
         subText="Konsultasi awal gratis, tanpa komitmen."
       />
-    </main>
+    </div>
   )
 }

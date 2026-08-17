@@ -113,7 +113,7 @@ const faqItems = [
 
 export default function DigitalMarketingPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd([...jsonLd, faqPageSchema(faqItems)]) }}
@@ -184,6 +184,6 @@ export default function DigitalMarketingPage() {
         ctaLabel="Mulai Diskusi via WhatsApp"
         subText="Konsultasi gratis, tidak ada kewajiban apapun →"
       />
-    </main>
+    </div>
   )
 }

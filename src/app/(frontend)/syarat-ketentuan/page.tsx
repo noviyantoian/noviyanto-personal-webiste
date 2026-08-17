@@ -37,7 +37,7 @@ const jsonLd = [
 
 export default function SyaratKetentuanPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
@@ -154,6 +154,6 @@ export default function SyaratKetentuanPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

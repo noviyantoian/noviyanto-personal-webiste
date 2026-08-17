@@ -122,7 +122,7 @@ const faqItems = [
 
 export default function GoogleAdsPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd([...jsonLd, faqPageSchema(faqItems)]) }}
@@ -208,6 +208,6 @@ export default function GoogleAdsPage() {
         ctaLabel="Tanya via WhatsApp"
         subText="Konsultasi awal gratis, tanpa komitmen."
       />
-    </main>
+    </div>
   )
 }

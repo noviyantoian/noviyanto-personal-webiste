@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import { Star, Award, ThumbsUp } from 'lucide-react'
+import { Star, Award, ThumbsUp, MessageCircle, Sparkles } from 'lucide-react'
 
 interface TourHeroProps {
   onConsult: (pkg?: string) => void
@@ -19,9 +19,11 @@ export default function TourHero({ onConsult }: TourHeroProps) {
       }
 
   return (
+    // pt lebih kecil dari versi lama: navbar global sticky (ikut memakan ruang
+    // dokumen), bukan fixed seperti navbar landing yang dulu dipakai halaman ini.
     <section
       id="hero"
-      className="relative flex items-center overflow-hidden pt-24 pb-20 lg:pt-32 lg:pb-28"
+      className="relative flex items-center overflow-hidden pt-14 pb-20 lg:pt-20 lg:pb-28"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -45,8 +47,8 @@ export default function TourHero({ onConsult }: TourHeroProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <motion.div {...motionProps} className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#FDE68A] bg-[#FFFBEB] text-[#B45309] text-xs sm:text-sm font-medium mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
-            ✦ Spesialis Website Tour &amp; Travel
+            <Sparkles className="w-3.5 h-3.5" strokeWidth={1.75} aria-hidden="true" />
+            Spesialis Website Tour &amp; Travel
           </div>
 
           <h1 className="font-display font-semibold text-[2.4rem] sm:text-5xl md:text-6xl lg:text-[4rem] text-balance leading-[1.06] tracking-tight text-[#111827] mb-6">
@@ -69,7 +71,8 @@ export default function TourHero({ onConsult }: TourHeroProps) {
               onClick={() => onConsult()}
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#F59E0B] hover:bg-[#D97706] active:bg-[#B45309] text-[#111827] font-semibold text-base rounded-xl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2"
             >
-              📱 Mulai Konsultasi Gratis
+              <MessageCircle className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
+              Mulai Konsultasi Gratis
             </button>
             <a
               href="#portofolio"

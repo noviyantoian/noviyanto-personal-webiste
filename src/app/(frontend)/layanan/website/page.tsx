@@ -88,7 +88,7 @@ const jsonLd = [
 
 export default function WebsiteServicePage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd([...jsonLd, faqPageSchema(faqItems)]) }}
@@ -156,6 +156,6 @@ export default function WebsiteServicePage() {
         ctaLabel="Mulai Konsultasi via WhatsApp"
         subText="Konsultasi awal gratis, tanpa komitmen."
       />
-    </main>
+    </div>
   )
 }

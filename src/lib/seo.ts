@@ -475,7 +475,7 @@ export function cityWebsiteServiceSchema(params: {
 }
 
 // ── FAQPage ──────────────────────────────────────────────────────
-export function faqPageSchema(items: Array<{ question: string; answer: string }>) {
+export function faqPageSchema(items: ReadonlyArray<{ question: string; answer: string }>) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

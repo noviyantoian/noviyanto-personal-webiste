@@ -158,7 +158,7 @@ const LOGO_BG: Record<Client['logoBg'], string> = {
 
 export default function PortofolioPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -357,6 +357,6 @@ export default function PortofolioPage() {
         ctaLabel="Diskusi via WhatsApp"
         subText="Konsultasi awal gratis, tanpa komitmen."
       />
-    </main>
+    </div>
   )
 }

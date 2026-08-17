@@ -113,7 +113,7 @@ const faqItems = [
 
 export default function MaintenancePage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd([...jsonLd, faqPageSchema(faqItems)]) }}
@@ -206,6 +206,6 @@ export default function MaintenancePage() {
         ctaLabel="Minta Audit Website Gratis"
         subText="Kirim URL website Anda via WhatsApp →"
       />
-    </main>
+    </div>
   )
 }

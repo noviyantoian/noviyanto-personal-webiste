@@ -62,7 +62,7 @@ const jsonLd: object[] = [
 
 export default function KontakPage() {
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
@@ -173,6 +173,6 @@ export default function KontakPage() {
       </section>
 
       <ServiceFAQ items={faqItems} title="Pertanyaan Sebelum Menghubungi" />
-    </main>
+    </div>
   )
 }

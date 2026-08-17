@@ -1,11 +1,12 @@
 'use client'
 
+import Link from 'next/link'
 import {
   Smartphone, CalendarCheck, Images, Search, Star,
   MapPin, MessageCircle, Zap, Check,
-  Plane,
+  Plane, Gift, Flame, Globe, TrendingUp, Megaphone,
 } from 'lucide-react'
-import { SITE } from '@/lib/constants'
+import { tiersOf, tierPriceLabel, PPN_NOTE } from '@/content/pricing'
 import { TourFormModal, useTourForm } from './TourForm'
 import TourHero from './TourHero'
 import TourFAQ from './TourFAQ'
@@ -249,9 +250,9 @@ function TourPortfolio() {
         </div>
 
         <div className="text-left">
-          <a href="/portofolio" className="inline-flex items-center gap-2 text-[#D97706] font-medium hover:text-[#B45309] transition-colors text-sm">
+          <Link href="/portofolio" className="inline-flex items-center gap-2 text-[#D97706] font-medium hover:text-[#B45309] transition-colors text-sm">
             Lihat semua portofolio →
-          </a>
+          </Link>
         </div>
       </div>
     </section>
@@ -260,20 +261,10 @@ function TourPortfolio() {
 
 // ── Pricing ────────────────────────────────────────────────────────
 
-const PLANS = [
-  {
-    name: 'STARTER', slug: 'tour-starter', price: 'Rp 3.500.000', tagline: 'Travel agent baru go digital', popular: false,
-    features: ['5 halaman', 'Desain mobile-friendly', 'Form kontak + WA button', 'SEO on-page dasar', 'Revisi mayor 1×', 'Hosting + Domain 1 tahun gratis', 'Garansi 30 hari'],
-  },
-  {
-    name: 'PROFESSIONAL', slug: 'tour-professional', price: 'Rp 7.500.000', tagline: 'Dominasi pasar lokal', popular: true,
-    features: ['Hingga 15 halaman', 'Desain premium mobile-friendly', 'Form kontak + WA button', 'Sistem booking online', 'Halaman paket tour unlimited', 'SEO on-page lengkap', 'Integrasi Google Maps', 'Blog / konten marketing', 'Galeri foto & video', 'Revisi mayor 3×', 'Hosting + Domain 1 tahun gratis', 'Pelatihan CMS', 'Garansi kepuasan penuh'],
-  },
-  {
-    name: 'ENTERPRISE', slug: 'tour-enterprise', price: 'Rp 15.000.000', tagline: 'Bisnis tour skala besar', popular: false,
-    features: ['Halaman unlimited', 'Desain enterprise', 'Sistem booking + payment gateway', 'Dashboard admin paket tour', 'SEO + Google Ads setup', 'Multi bahasa (ID & EN)', 'Galeri + media management', 'Revisi tidak terbatas', 'Hosting premium 1 tahun gratis', 'Pelatihan CMS', 'Support teknis 3 bulan', 'Strategi marketing'],
-  },
-] as const
+// Harga dibaca dari sumber kebenaran tunggal (src/content/pricing.ts) — array
+// lokal yang dulu ada di sini adalah salinan yang bisa menyimpang diam-diam dari
+// angka yang diemit ke JSON-LD di page.tsx.
+const PLANS = tiersOf('tour')
 
 function TourPricing({ onConsult }: { onConsult: (pkg: string) => void }) {
   return (
@@ -285,15 +276,18 @@ function TourPricing({ onConsult }: { onConsult: (pkg: string) => void }) {
         </div>
         <div className="grid md:grid-cols-3 gap-6 items-start">
           {PLANS.map((plan) => (
-            <div key={plan.name} className={`relative rounded-2xl border p-6 bg-white ${plan.popular ? 'border-[#F59E0B] shadow-lg ring-1 ring-[#F59E0B]/20' : 'border-[#E5E7EB]'}`}>
+            <div key={plan.slug} className={`relative rounded-2xl border p-6 bg-white ${plan.popular ? 'border-[#F59E0B] shadow-lg ring-1 ring-[#F59E0B]/20' : 'border-[#E5E7EB]'}`}>
               {plan.popular && (
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#F59E0B] text-[#111827] text-xs font-semibold rounded-full">★ Paling Populer</span>
+                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-[#F59E0B] text-[#111827] text-xs font-semibold rounded-full">
+                    <Star className="w-3 h-3 fill-current" aria-hidden="true" />
+                    Paling Populer
+                  </span>
                 </div>
               )}
               <div className="mb-5">
                 <p className="text-xs font-semibold tracking-wider text-[#9CA3AF] uppercase mb-1">{plan.name}</p>
-                <p className="font-display font-semibold text-2xl text-[#111827] mb-1">{plan.price}</p>
+                <p className="font-display font-semibold text-2xl text-[#111827] mb-1">{tierPriceLabel(plan.price)}</p>
                 <p className="text-xs text-[#9CA3AF]">{plan.tagline}</p>
               </div>
               <ul className="space-y-2 mb-6">
@@ -309,13 +303,13 @@ function TourPricing({ onConsult }: { onConsult: (pkg: string) => void }) {
                 onClick={() => onConsult(plan.slug)}
                 className={`flex items-center justify-center h-10 w-full rounded-xl text-sm font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2 ${plan.popular ? 'bg-[#F59E0B] hover:bg-[#D97706] text-[#111827]' : 'bg-[#F3F4F6] hover:bg-[#E5E7EB] text-[#374151]'}`}
               >
-                Konsultasi Paket {plan.name.charAt(0) + plan.name.slice(1).toLowerCase()}
+                Konsultasi Paket {plan.name}
               </button>
             </div>
           ))}
         </div>
         <p className="mt-8 text-center text-xs text-[#9CA3AF]">
-          * Semua harga belum termasuk PPN 11%. Butuh fitur custom?{' '}
+          * {PPN_NOTE} Butuh fitur custom?{' '}
           <button type="button" onClick={() => onConsult('lainnya')} className="text-[#D97706] hover:underline">
             Hubungi Noviyanto untuk penawaran khusus.
           </button>
@@ -381,7 +375,10 @@ function TourCTA({ onConsult }: { onConsult: () => void }) {
           Bergabunglah dengan 50+ pemilik bisnis tour &amp; travel yang sudah mempercayakan website mereka kepada Noviyanto. Konsultasi pertama GRATIS — tanpa tekanan, tanpa kewajiban apapun.
         </p>
         <div className="mb-8 p-5 rounded-2xl bg-[#FFFBEB] border border-[#FDE68A] text-left">
-          <p className="font-semibold text-[#B45309] text-sm mb-3">🎁 BONUS EKSKLUSIF untuk 5 Klien Berikutnya:</p>
+          <p className="flex items-center gap-2 font-semibold text-[#B45309] text-sm mb-3">
+            <Gift className="w-4 h-4 flex-shrink-0" strokeWidth={1.75} aria-hidden="true" />
+            Bonus eksklusif untuk 5 klien berikutnya:
+          </p>
           <ul className="space-y-1.5">
             {['Setup Google Business Profile (senilai Rp 500.000) — GRATIS', '1 Artikel SEO Blog siap publish (senilai Rp 300.000) — GRATIS', 'Konsultasi Strategi Digital Marketing 1 Jam (senilai Rp 500.000) — GRATIS'].map((b) => (
               <li key={b} className="flex items-center gap-2 text-sm text-[#374151]">
@@ -391,62 +388,82 @@ function TourCTA({ onConsult }: { onConsult: () => void }) {
             ))}
           </ul>
         </div>
-        <p className="text-xs text-[#D97706] font-medium mb-6">🔥 Slot bulan ini hampir penuh. Amankan jadwal konsultasi Anda sekarang!</p>
-        <button
-          type="button"
-          onClick={onConsult}
-          className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#F59E0B] hover:bg-[#D97706] active:bg-[#B45309] text-[#111827] font-semibold text-base rounded-xl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2"
-        >
-          📱 Konsultasi Gratis Sekarang →
-        </button>
+        <p className="inline-flex items-center gap-1.5 text-xs text-[#D97706] font-medium mb-6">
+          <Flame className="w-3.5 h-3.5 flex-shrink-0" strokeWidth={1.75} aria-hidden="true" />
+          Slot bulan ini hampir penuh. Amankan jadwal konsultasi Anda sekarang!
+        </p>
+        <div>
+          <button
+            type="button"
+            onClick={onConsult}
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#F59E0B] hover:bg-[#D97706] active:bg-[#B45309] text-[#111827] font-semibold text-base rounded-xl transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2"
+          >
+            <MessageCircle className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
+            Konsultasi Gratis Sekarang →
+          </button>
+        </div>
         <p className="mt-4 text-xs text-[#9CA3AF]">Isi form singkat → disimpan ke sistem → lanjut diskusi via WhatsApp</p>
       </div>
     </section>
   )
 }
 
-// ── Footer ─────────────────────────────────────────────────────────
+// ── Layanan terkait (internal linking) ─────────────────────────────
+//
+// Menggantikan footer lokal yang dulu ada di halaman ini: header & footer
+// sekarang diambil dari layout global. Blok ini menyisakan nilai SEO-nya —
+// tautan internal ke layanan yang relevan dengan bisnis tour & travel.
 
-function TourFooter({ onConsult }: { onConsult: () => void }) {
+const RELATED = [
+  {
+    icon: Globe,
+    title: 'Jasa Pembuatan Website',
+    href: '/layanan/website',
+    desc: 'Website bisnis untuk industri lain di luar tour & travel.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Jasa SEO',
+    href: '/layanan/seo',
+    desc: 'Naikkan peringkat organik untuk kata kunci paket wisata di kota Anda.',
+  },
+  {
+    icon: Megaphone,
+    title: 'Google Ads',
+    href: '/layanan/google-ads',
+    desc: 'Dapatkan booking lebih cepat sambil menunggu SEO tumbuh.',
+  },
+] as const
+
+function TourRelated() {
   return (
-    <footer id="footer" className="bg-[#F9FAFB] border-t border-[#E5E7EB] py-12">
+    <section id="layanan-terkait" className="bg-[#F9FAFB] border-t border-[#E5E7EB] py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <p className="font-display font-semibold text-lg text-[#111827] mb-1">Noviyanto</p>
-            <p className="text-xs text-[#6B7280] mb-3">Website Developer &amp; Digital Marketing</p>
-            <p className="text-sm text-[#6B7280] leading-relaxed">Spesialis membantu bisnis tour &amp; travel Indonesia tumbuh melalui website profesional, SEO, dan integrasi digital.</p>
-            <a href="/" className="inline-block mt-3 text-sm text-[#D97706] hover:underline">noviyanto.com</a>
-          </div>
-          <div>
-            <p className="font-semibold text-xs tracking-wider text-[#9CA3AF] uppercase mb-4">HALAMAN INI</p>
-            <ul className="space-y-2">
-              {[['↑ Kembali ke Atas', '#hero'], ['Fitur', '#fitur'], ['Portofolio', '#portofolio'], ['Harga', '#harga'], ['FAQ', '#faq'], ['Konsultasi Gratis', '#cta']].map(([label, href]) => (
-                <li key={href}><a href={href} className="text-sm text-[#6B7280] hover:text-[#111827] transition-colors">{label}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="font-semibold text-xs tracking-wider text-[#9CA3AF] uppercase mb-4">HUBUNGI NOVIYANTO</p>
-            <ul className="space-y-2 mb-6">
-              <li><a href={`mailto:${SITE.email}`} className="text-sm text-[#6B7280] hover:text-[#111827]">📧 {SITE.email}</a></li>
-              <li>
-                <button type="button" onClick={onConsult} className="text-sm text-[#D97706] hover:underline text-left">
-                  💬 Konsultasi via WhatsApp →
-                </button>
-              </li>
-              <li><span className="text-sm text-[#6B7280]">📍 Semarang, Jawa Tengah</span></li>
-            </ul>
-            <p className="font-semibold text-xs tracking-wider text-[#9CA3AF] uppercase mb-3">LAYANAN LAINNYA</p>
-            <a href="/layanan" className="text-sm text-[#D97706] hover:underline">→ noviyanto.com/layanan</a>
-          </div>
-        </div>
-        <div className="border-t border-[#E5E7EB] pt-6 text-center text-xs text-[#9CA3AF]">
-          © 2026 Noviyanto · Website Developer &amp; Digital Marketing · noviyanto.com
-          <br />Halaman ini adalah sub-layanan dari noviyanto.com
+        <h2 className="font-display font-semibold text-2xl sm:text-3xl text-[#111827] tracking-tight mb-3">
+          Layanan lain yang sering dipakai bersama
+        </h2>
+        <p className="text-[#6B7280] text-sm mb-10 max-w-2xl">
+          Website adalah fondasinya. Tiga layanan ini yang biasanya mempercepat hasilnya.
+        </p>
+        <div className="grid sm:grid-cols-3 gap-6">
+          {RELATED.map(({ icon: Icon, title, href, desc }) => (
+            <Link
+              key={href}
+              href={href}
+              className="group bg-white rounded-2xl border border-[#E5E7EB] p-6 hover:border-[#FDE68A] hover:bg-[#FFFBEB] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
+            >
+              <span className="inline-flex w-11 h-11 items-center justify-center rounded-xl bg-[#FFFBEB] border border-[#FDE68A] text-[#D97706] mb-4">
+                <Icon className="w-5 h-5" strokeWidth={1.75} aria-hidden="true" />
+              </span>
+              <h3 className="font-semibold text-[#111827] mb-2 group-hover:text-[#B45309] transition-colors">
+                {title} →
+              </h3>
+              <p className="text-[#6B7280] text-sm leading-relaxed">{desc}</p>
+            </Link>
+          ))}
         </div>
       </div>
-    </footer>
+    </section>
   )
 }
 
@@ -469,7 +486,7 @@ export default function TourPageBody() {
       <TourTestimonials />
       <TourFAQ />
       <TourCTA onConsult={open} />
-      <TourFooter onConsult={open} />
+      <TourRelated />
     </>
   )
 }
