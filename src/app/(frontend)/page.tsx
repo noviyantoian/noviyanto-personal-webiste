@@ -14,15 +14,22 @@ import WhyNoviyanto from '@/components/sections/WhyNoviyanto'
 import CTA from '@/components/sections/CTA'
 import ClientReviews from '@/components/sections/ClientReviews'
 
-// Title beranda sengaja LEBIH LUAS dari /layanan/website/semarang.
-// Halaman itu yang memegang exact match "Jasa Pembuatan Website Semarang";
-// kalau beranda memakai frasa sama, keduanya berebut kueri yang sama.
+// Brand dibawa EKSPLISIT di depan, tidak diserahkan ke Google.
 //
-// Tanpa suffix "| Noviyanto": untuk halaman utama Google menambahkan sendiri
-// prefix nama situs dari og:site_name ("Noviyanto: ..."), jadi menaruh brand
-// di ekor hanya memakan jatah lebar dua kali. Diukur ~491px dari ambang potong
-// ~600px SERP desktop, sudah termasuk prefix Google — sisa ruang ~109px.
-const HOME_TITLE = 'Jasa Website & Digital Marketing Semarang'
+// Versi sebelumnya ('Jasa Website & Digital Marketing Semarang') bertaruh bahwa
+// Google akan menambahkan sendiri prefix "Noviyanto: " dari og:site_name.
+// Taruhan itu tidak terbukti: title yang tayang nol menyebut brand, sementara
+// versi WordPress lama yang membawa brand di depan justru yang bertahan di
+// indeks. Untuk kueri nama sendiri, brand di <title> tidak boleh opsional.
+//
+// Tetap 'absolute' supaya template layout tidak menambah "| Noviyanto" di ekor
+// dan brand tidak muncul dua kali. Panjang 54 karakter, aman dari ambang potong
+// ~600px SERP desktop.
+//
+// "Semarang" sengaja keluar dari title dan kini dipegang description, keywords,
+// serta /layanan/website/semarang — halaman itu yang memang memegang exact
+// match "Jasa Pembuatan Website Semarang", jadi rebutan kueri justru berkurang.
+const HOME_TITLE = 'Noviyanto: Jasa Website & Digital Marketing Profesional'
 const HOME_DESCRIPTION =
   'Jasa pembuatan website & digital marketing di Semarang. Bukan sekadar bikin website — Noviyanto bantu bisnis Anda ditemukan di Google dan mendapatkan leads.'
 
