@@ -7,6 +7,7 @@ import {
   Plane, Gift, Flame, Globe, TrendingUp, Megaphone,
 } from 'lucide-react'
 import { tiersOf, tierPriceLabel, PPN_NOTE } from '@/content/pricing'
+import { REVIEWS_AGGREGATE } from '@/content/reviews'
 import { TourFormModal, useTourForm } from './TourForm'
 import TourHero from './TourHero'
 import TourFAQ from './TourFAQ'
@@ -15,9 +16,13 @@ import TourFAQ from './TourFAQ'
 
 function TourStats() {
   const stats = [
-    { value: '50+', label: 'Website Tour & Travel Terbangun' },
+    // Angka disamakan dengan klaim sitewide: 50+ proyek digital untuk 30+
+    // bisnis. Versi lama ("50+ website tour & travel") mengklaim satu niche
+    // saja melebihi total klien seluruh situs — kontradiksi yang langsung
+    // terlihat kalau pengunjung membuka /layanan/website.
+    { value: '50+', label: 'Proyek Digital Selesai' },
+    { value: '30+', label: 'Bisnis Dipercaya Lintas Industri' },
     { value: '5+', label: 'Tahun Pengalaman Digital' },
-    { value: '98%', label: 'Klien Puas & Repeat Order' },
     { value: '21', label: 'Hari Rata-Rata Selesai' },
   ]
   return (
@@ -335,7 +340,13 @@ function TourTestimonials() {
           <h2 className="font-display font-semibold text-3xl sm:text-4xl text-[#111827] tracking-tight mb-3">Kata Mereka yang Sudah Merasakannya</h2>
           <div className="flex items-center justify-center gap-1">
             {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-[#F59E0B] text-[#F59E0B]" aria-hidden="true" />)}
-            <span className="ml-2 text-sm text-[#6B7280]">Rata-rata 4.9/5 dari 50+ klien</span>
+            {/* Dibaca dari REVIEWS_AGGREGATE — angka yang bisa dicek di profil
+                Google, bukan rata-rata karangan dari jumlah klien yang tidak
+                pernah dikumpulkan ratingnya. */}
+            <span className="ml-2 text-sm text-[#6B7280]">
+              Rata-rata {REVIEWS_AGGREGATE.rating.toFixed(1)}/5 dari{' '}
+              {REVIEWS_AGGREGATE.count} ulasan Google
+            </span>
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -372,7 +383,7 @@ function TourCTA({ onConsult }: { onConsult: () => void }) {
           Siap Transformasi Bisnis Tour &amp; Travel Anda?
         </h2>
         <p className="text-[#6B7280] text-base sm:text-lg leading-relaxed mb-8">
-          Bergabunglah dengan 50+ pemilik bisnis tour &amp; travel yang sudah mempercayakan website mereka kepada Noviyanto. Konsultasi pertama GRATIS — tanpa tekanan, tanpa kewajiban apapun.
+          Bergabunglah dengan 30+ pemilik bisnis yang sudah mempercayakan website mereka kepada Noviyanto. Konsultasi pertama gratis — tanpa tekanan, tanpa kewajiban apa pun.
         </p>
         <div className="mb-8 p-5 rounded-2xl bg-[#FFFBEB] border border-[#FDE68A] text-left">
           <p className="flex items-center gap-2 font-semibold text-[#B45309] text-sm mb-3">

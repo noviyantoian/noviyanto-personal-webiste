@@ -1,13 +1,47 @@
 import { SITE } from '@/lib/constants'
+import { getPublishedPosts } from '@/lib/blog'
 
-export const dynamic = 'force-static'
+// Dulu 'force-static'. Sekarang harus revalidate: section Blog dibangkitkan
+// dari Payload, jadi artikel baru wajib bisa masuk tanpa deploy ulang.
+// Sejam sama dengan sitemap — dua berkas ini sebaiknya tidak saling mendahului.
+export const revalidate = 3600
 
-export function GET() {
+/** Ringkas excerpt agar satu artikel tetap satu baris yang enak dibaca mesin. */
+function oneLine(text: string, max = 160): string {
+  const flat = text.replace(/\s+/g, ' ').trim()
+  return flat.length <= max ? flat : `${flat.slice(0, max - 1).trimEnd()}…`
+}
+
+/**
+ * Daftar artikel untuk section Blog.
+ *
+ * Kalau database tidak bisa dihubungi, kembalikan string kosong dan biarkan
+ * section-nya absen — llms.txt tetap tersaji utuh. Menjatuhkan seluruh berkas
+ * hanya karena blog gagal di-query adalah kerugian yang jauh lebih besar.
+ */
+async function blogSection(u: string): Promise<string> {
+  try {
+    const posts = await getPublishedPosts(50)
+    if (posts.length === 0) return ''
+
+    const lines = posts
+      .map((p) => `- [${p.title}](${u}/blog/${p.slug}): ${oneLine(p.excerpt)}`)
+      .join('\n')
+
+    return `\n## Blog\n- [Indeks Blog](${u}/blog): Semua artikel tentang website, SEO, Google Ads, dan pertumbuhan bisnis digital.\n${lines}\n`
+  } catch {
+    return ''
+  }
+}
+
+export async function GET(): Promise<Response> {
   const u = SITE.url
+  const blog = await blogSection(u)
+
   const body = `# Noviyanto
 license: RSL-1.0
 
-> Digital growth partner berbasis di Semarang. Bantu bisnis tumbuh dan dapat leads melalui web development, Google Ads, SEO, digital marketing, AI integration, mobile app, dan maintenance website. Founder Folkastudio (50+ proyek digital).
+> Digital growth partner berbasis di Semarang. Bantu bisnis tumbuh dan dapat leads melalui web development, Google Ads, SEO, digital marketing, AI integration, mobile app, dan maintenance website. Founder Folkastudio — 50+ proyek digital untuk 30+ bisnis.
 
 ## Profil
 - Nama: Noviyanto
@@ -20,7 +54,7 @@ license: RSL-1.0
 
 ## Halaman Utama
 - [Beranda](${u}/): Web Developer & Digital Marketing Expert. Hero, layanan, industri, dan CTA konsultasi.
-- [Layanan](${u}/layanan): Daftar 8 layanan dengan kartu navigasi.
+- [Layanan](${u}/layanan): Daftar 7 layanan dengan kartu navigasi.
 - [Portofolio](${u}/portofolio): 7 klien aktif yang sedang dikelola, plus founder Folkastudio.
 - [Tentang](${u}/tentang): Latar belakang, filosofi kerja, pengalaman lintas industri, stack teknologi.
 - [Kontak](${u}/kontak): WhatsApp, form konsultasi, email, alamat Semarang.
@@ -33,6 +67,14 @@ license: RSL-1.0
 - [AI Integration](${u}/layanan/ai-integration): Otomasi pekerjaan berulang dengan n8n, OpenAI, Anthropic Claude, Make, Python.
 - [Aplikasi Mobile](${u}/layanan/mobile-app): React Native cross-platform Android + iOS.
 - [Maintenance Website](${u}/layanan/maintenance): Update, backup, monitoring uptime, optimasi performa.
+
+## Halaman Industri
+- [Website Tour & Travel](${u}/jasa-website-tour-travel): Website khusus bisnis tour & travel — sistem booking online, halaman paket tour, galeri destinasi, SEO lokal, integrasi WhatsApp.
+
+## Halaman Kota
+- [Jasa Website Semarang](${u}/layanan/website/semarang)
+- [Jasa Website Jakarta](${u}/layanan/website/jakarta)
+- [Jasa Website Bandung](${u}/layanan/website/bandung)
 
 ## Industri yang Ditangani
 - B2B IT & Teknologi
@@ -55,13 +97,15 @@ license: RSL-1.0
 
 ## Stack Teknologi
 Next.js, React, React Native, TypeScript, Tailwind CSS, n8n, OpenAI API, Anthropic Claude, Python, Vercel, PostgreSQL
-
+${blog}
 ## Kontak
 Konsultasi pertama gratis 30 menit. Hubungi via WhatsApp (+${SITE.waNumber}), email (${SITE.email}), atau isi form konsultasi di /kontak.
 
 ## Optional
-- [Sitemap](${u}/sitemap.xml)
 - [Sitemap Index](${u}/sitemap-index.xml)
+- [Sitemap Halaman](${u}/sitemap/pages.xml)
+- [Sitemap Layanan](${u}/sitemap/services.xml)
+- [Sitemap Blog](${u}/sitemap/blog.xml)
 - [Robots](${u}/robots.txt)
 `
 

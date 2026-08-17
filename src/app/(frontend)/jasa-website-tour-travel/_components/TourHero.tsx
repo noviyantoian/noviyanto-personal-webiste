@@ -85,7 +85,7 @@ export default function TourHero({ onConsult }: TourHeroProps) {
           <div className="flex flex-wrap justify-center gap-6 text-sm text-[#6B7280]">
             <span className="flex items-center gap-1.5">
               <Star className="w-4 h-4 text-[#F59E0B] fill-[#F59E0B]" aria-hidden="true" />
-              50+ Website Terbangun
+              30+ Bisnis Dipercaya
             </span>
             <span className="flex items-center gap-1.5">
               <Award className="w-4 h-4 text-[#F59E0B]" aria-hidden="true" />
