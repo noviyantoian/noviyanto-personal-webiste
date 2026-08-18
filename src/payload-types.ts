@@ -278,7 +278,9 @@ export interface Category {
 export interface Inquiry {
   id: number;
   name: string;
-  whatsapp: string;
+  email?: string | null;
+  company?: string | null;
+  whatsapp?: string | null;
   service?:
     | (
         | 'website'
@@ -288,6 +290,9 @@ export interface Inquiry {
         | 'ai-integration'
         | 'mobile-app'
         | 'maintenance'
+        | 'tour-starter'
+        | 'tour-professional'
+        | 'tour-enterprise'
         | 'lainnya'
       )
     | null;
@@ -442,6 +447,8 @@ export interface PostsSelect<T extends boolean = true> {
  */
 export interface InquiriesSelect<T extends boolean = true> {
   name?: T;
+  email?: T;
+  company?: T;
   whatsapp?: T;
   service?: T;
   message?: T;
@@ -590,7 +597,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   createdAt?: T;
 }
 /**
- * Pengaturan global: OG image default, profil sosial (sameAs), dan SEO sitewide.
+ * Pengaturan global: OG image, profil sosial, jam operasional, dan koordinat lokasi.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings".
@@ -610,6 +617,24 @@ export interface SiteSetting {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Digunakan di schema.org openingHoursSpecification. Tambah satu baris per blok jam (mis. Senin–Jumat 09:00–18:00).
+   */
+  businessHours?:
+    | {
+        dayOfWeek: ('Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday' | 'Sunday')[];
+        opens: string;
+        closes: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Digunakan di schema.org geo. Cari koordinat di maps.google.com → klik kanan → "What's here?".
+   */
+  geo?: {
+    latitude?: number | null;
+    longitude?: number | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -624,6 +649,20 @@ export interface SiteSettingsSelect<T extends boolean = true> {
     | {
         url?: T;
         id?: T;
+      };
+  businessHours?:
+    | T
+    | {
+        dayOfWeek?: T;
+        opens?: T;
+        closes?: T;
+        id?: T;
+      };
+  geo?:
+    | T
+    | {
+        latitude?: T;
+        longitude?: T;
       };
   updatedAt?: T;
   createdAt?: T;

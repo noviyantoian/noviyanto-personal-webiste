@@ -3,10 +3,19 @@ import { tierPriceLabel, type PricingTier } from '@/content/pricing'
 
 export interface LeadInput {
   name: string
+  email?: string
   whatsapp?: string
   company?: string
   service?: string
   message?: string
+}
+
+/**
+ * Validasi email seadanya — cukup untuk menyaring salah ketik di form.
+ * Kebenaran alamat tetap diverifikasi saat email pertama dikirim.
+ */
+export function isValidEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim())
 }
 
 export const SERVICE_OPTIONS = [

@@ -19,7 +19,7 @@ export const Inquiries: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'company', 'whatsapp', 'service', 'status', 'createdAt'],
+    defaultColumns: ['name', 'email', 'whatsapp', 'service', 'status', 'createdAt'],
     description: 'Lead masuk dari form konsultasi website.',
   },
   hooks: {
@@ -39,6 +39,7 @@ export const Inquiries: CollectionConfig = {
               <table cellpadding="0" cellspacing="0" style="font-family:sans-serif;font-size:14px;border-collapse:collapse;width:100%;max-width:480px">
                 <tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">Nama</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.name)}</td></tr>
                 ${doc.company ? `<tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">Perusahaan</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.company)}</td></tr>` : ''}
+                <tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">Email</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${doc.email ? `<a href="mailto:${escapeHtml(doc.email)}" style="color:#f59e0b">${escapeHtml(doc.email)}</a>` : '-'}</td></tr>
                 <tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">WhatsApp</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.whatsapp || '-')}</td></tr>
                 <tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">Layanan / Paket</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.service || '-')}</td></tr>
                 <tr><td style="padding:8px 12px;background:#f4f6f7;font-weight:bold;border:1px solid #e5e7eb">Pesan</td><td style="padding:8px 12px;border:1px solid #e5e7eb">${escapeHtml(doc.message || '-')}</td></tr>
@@ -55,6 +56,7 @@ export const Inquiries: CollectionConfig = {
   },
   fields: [
     { name: 'name', type: 'text', required: true, label: 'Nama' },
+    { name: 'email', type: 'email', label: 'Email' },
     { name: 'company', type: 'text', label: 'Perusahaan / Nama Bisnis', admin: { position: 'sidebar' } },
     { name: 'whatsapp', type: 'text', label: 'Nomor WhatsApp' },
     {

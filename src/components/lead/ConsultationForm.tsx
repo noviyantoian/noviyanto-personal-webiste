@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Loader2, Send } from 'lucide-react'
-import { SERVICE_OPTIONS, leadWaLink, type LeadInput } from '@/lib/lead'
+import { SERVICE_OPTIONS, isValidEmail, leadWaLink, type LeadInput } from '@/lib/lead'
 import { trackEvent } from '@/lib/analytics'
 
 interface ConsultationFormProps {
@@ -32,13 +32,19 @@ export default function ConsultationForm({
 
     const lead: LeadInput = {
       name: String(fd.get('name') ?? '').trim(),
+      email: String(fd.get('email') ?? '').trim(),
       whatsapp: String(fd.get('whatsapp') ?? '').trim(),
       service: String(fd.get('service') ?? '') || undefined,
       message: String(fd.get('message') ?? '').trim() || undefined,
     }
-    if (!lead.name || !lead.whatsapp) {
+    if (!lead.name || !lead.email || !lead.whatsapp) {
       setStatus('error')
-      setErrorMsg('Nama dan nomor WhatsApp wajib diisi.')
+      setErrorMsg('Nama, email, dan nomor WhatsApp wajib diisi.')
+      return
+    }
+    if (!isValidEmail(lead.email)) {
+      setStatus('error')
+      setErrorMsg('Format email belum benar. Contoh: nama@domain.com')
       return
     }
 
@@ -82,6 +88,22 @@ export default function ConsultationForm({
           required
           autoComplete="name"
           placeholder="Nama Anda"
+          className="w-full rounded-xl border border-gray-200 px-4 py-3 text-[15px] text-gray-900 outline-none transition-colors focus:border-amber-400 focus:ring-2 focus:ring-amber-100"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="lead-email" className="mb-1.5 block text-sm font-medium text-gray-700">
+          Email <span className="text-amber-600">*</span>
+        </label>
+        <input
+          id="lead-email"
+          name="email"
+          type="email"
+          inputMode="email"
+          required
+          autoComplete="email"
+          placeholder="nama@domain.com"
           className="w-full rounded-xl border border-gray-200 px-4 py-3 text-[15px] text-gray-900 outline-none transition-colors focus:border-amber-400 focus:ring-2 focus:ring-amber-100"
         />
       </div>
