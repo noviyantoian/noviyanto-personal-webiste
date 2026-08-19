@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { Target, MessageSquare, ShieldCheck } from 'lucide-react'
+import { Target, MessageSquare, ShieldCheck, BadgeCheck, MapPin, Mail } from 'lucide-react'
 
 import { breadcrumbSchema, aboutPageSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
@@ -223,6 +223,99 @@ export default function TentangPage() {
           'PostgreSQL',
         ]}
       />
+
+      {/*
+        Legalitas ditaruh di /tentang, bukan hanya footer: halaman inilah yang
+        dibaca saat orang menimbang apakah penyedia jasa ini bisa dipercaya,
+        dan nomor izin yang bisa dicek sendiri menjawab keraguan itu lebih baik
+        daripada klaim pengalaman mana pun.
+      */}
+      <ServiceProse
+        eyebrow="Legalitas"
+        headline="Usaha Terdaftar Resmi"
+        background="gray"
+        paragraphs={[
+          'Layanan ini dijalankan sebagai usaha yang terdaftar resmi di Indonesia, bukan akun anonim. Nomor Induk Berusaha (NIB) di bawah bisa Anda verifikasi sendiri melalui sistem OSS milik pemerintah.',
+          'Alamat yang tercantum sama persis dengan yang terdaftar pada perizinan usaha dan profil Google Business — sengaja dijaga konsisten agar Anda bisa mencocokkannya dari sumber mana pun.',
+        ]}
+      >
+        <dl className="mx-auto mt-8 max-w-2xl divide-y divide-gray-200 overflow-hidden rounded-2xl border border-gray-200 bg-white text-left">
+          <div className="flex items-start gap-4 p-5">
+            <span
+              className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-amber-50 text-amber-600"
+              aria-hidden="true"
+            >
+              <BadgeCheck className="h-5 w-5" strokeWidth={1.75} />
+            </span>
+            <div>
+              <dt className="text-sm font-semibold text-[#111827]">{SITE.legal.nibLabel}</dt>
+              <dd className="mt-1 font-display text-lg tracking-wide tabular-nums text-[#111827]">
+                {SITE.legal.nib}
+              </dd>
+              <dd className="mt-1 text-sm text-[#6B7280]">
+                Diterbitkan oleh {SITE.legal.issuer}. Verifikasi di{' '}
+                <a
+                  href={SITE.legal.verifyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-sm font-medium text-amber-700 underline decoration-amber-200 decoration-2 underline-offset-4 transition-colors hover:text-amber-900 hover:decoration-amber-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                >
+                  oss.go.id
+                </a>
+                .
+              </dd>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4 p-5">
+            <span
+              className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-amber-50 text-amber-600"
+              aria-hidden="true"
+            >
+              <MapPin className="h-5 w-5" strokeWidth={1.75} />
+            </span>
+            <div>
+              <dt className="text-sm font-semibold text-[#111827]">Alamat terdaftar</dt>
+              <dd className="mt-1">
+                <address className="not-italic leading-relaxed text-[#374151]">
+                  {SITE.address.line}
+                  <br />
+                  {SITE.address.district}, {SITE.address.city}
+                  <br />
+                  {SITE.address.region} {SITE.address.postalCode}
+                </address>
+              </dd>
+            </div>
+          </div>
+
+          <div className="flex items-start gap-4 p-5">
+            <span
+              className="inline-flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl border border-amber-200 bg-amber-50 text-amber-600"
+              aria-hidden="true"
+            >
+              <Mail className="h-5 w-5" strokeWidth={1.75} />
+            </span>
+            <div>
+              <dt className="text-sm font-semibold text-[#111827]">Kontak resmi</dt>
+              <dd className="mt-1 text-[#374151]">
+                <a
+                  href={`mailto:${SITE.email}`}
+                  className="rounded-sm transition-colors hover:text-amber-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                >
+                  {SITE.email}
+                </a>
+                {' · '}
+                <a
+                  href={`tel:+${SITE.waNumber}`}
+                  className="rounded-sm tabular-nums transition-colors hover:text-amber-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                >
+                  +{SITE.waNumber}
+                </a>
+              </dd>
+            </div>
+          </div>
+        </dl>
+      </ServiceProse>
 
       <ServiceCTA
         headline="Mau Diskusi Kondisi Bisnis Anda?"

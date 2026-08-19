@@ -46,6 +46,16 @@ export default function Footer() {
               {SITE.address.region} {SITE.address.postalCode}
             </address>
 
+            {/*
+              Nomor izin usaha terlihat di setiap halaman. Ini klaim yang bisa
+              diverifikasi pihak ketiga, jadi bobotnya berbeda dari copy promosi
+              di sekitarnya — karena itu dirender sebagai data, bukan kalimat.
+            */}
+            <p className="mt-3 text-sm 2xl:text-base text-[#6B7280]">
+              <span className="font-medium text-[#374151]">NIB:</span>{' '}
+              <span className="tabular-nums tracking-wide">{SITE.legal.nib}</span>
+            </p>
+
             <p className="mt-4 max-w-sm text-sm 2xl:text-base leading-relaxed text-[#6B7280]">
               Bukan sekadar bikin website — kami bantu bisnis Anda tumbuh dan mendapatkan leads.
             </p>

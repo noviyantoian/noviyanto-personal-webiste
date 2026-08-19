@@ -46,7 +46,8 @@ license: RSL-1.0
 ## Profil
 - Nama: Noviyanto
 - Lokasi: ${SITE.address.city}, ${SITE.address.region}, ${SITE.address.country}
-- Alamat: ${SITE.address.full}
+- Alamat: ${SITE.address.full} ${SITE.address.postalCode}
+- ${SITE.legal.nibLabel}: ${SITE.legal.nib} (diterbitkan oleh ${SITE.legal.issuer}, dapat diverifikasi di ${SITE.legal.verifyUrl})
 - Email: ${SITE.email}
 - WhatsApp: +${SITE.waNumber}
 - Founder: Folkastudio (https://folkastudio.com)

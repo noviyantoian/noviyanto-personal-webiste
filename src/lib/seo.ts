@@ -356,6 +356,20 @@ export function professionalServiceSchema(opts?: {
       { '@type': 'City', name: 'Bandung' },
       { '@type': 'Country', name: 'Indonesia' },
     ],
+    /*
+      NIB ditandai sebagai identifier, bukan taxID: taxID untuk NPWP, sedangkan
+      NIB adalah nomor registrasi usaha. PropertyValue dipakai supaya nama
+      skemanya eksplisit — parser yang tidak mengenal "NIB" tetap bisa membaca
+      bahwa ini nomor registrasi resmi dan siapa penerbitnya.
+    */
+    legalName: SITE.name,
+    identifier: {
+      '@type': 'PropertyValue',
+      propertyID: 'NIB',
+      name: SITE.legal.nibLabel,
+      value: SITE.legal.nib,
+      description: `Diterbitkan oleh ${SITE.legal.issuer}`,
+    },
     founder: { '@id': SCHEMA_ID.person },
   }
 

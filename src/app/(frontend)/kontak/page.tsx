@@ -130,6 +130,10 @@ export default function KontakPage() {
                   <p className="mt-2">
                     Melayani klien di {SITE.location} dan kota lainnya secara remote.
                   </p>
+                  <p className="mt-2 text-gray-600">
+                    <span className="font-medium text-gray-900">NIB:</span>{' '}
+                    <span className="tabular-nums tracking-wide">{SITE.legal.nib}</span>
+                  </p>
                   <a
                     href={SITE.gbpUrl}
                     target="_blank"

@@ -30,6 +30,19 @@ export const SITE = {
     postalCode: '50219',
     full: 'Dk. Kaligetas, Kelurahan Jatibarang, Kecamatan Mijen, Kota Semarang, Jawa Tengah, Indonesia',
   },
+  /*
+    Identitas usaha terdaftar. Ditampilkan terbuka (footer, /tentang, halaman
+    legal) dan ditandai di JSON-LD sebagai identifier bisnis — nomor izin yang
+    bisa diverifikasi publik lewat OSS adalah sinyal Trust paling konkret yang
+    bisa diberikan situs jasa, jauh di atas klaim pengalaman.
+  */
+  legal: {
+    nib: '1908260084177',
+    nibLabel: 'NIB (Nomor Induk Berusaha)',
+    /* Diterbitkan lewat sistem OSS (Online Single Submission) BKPM. */
+    issuer: 'Lembaga OSS — Kementerian Investasi/BKPM',
+    verifyUrl: 'https://oss.go.id',
+  },
 } as const
 
 // ── WhatsApp Messages ────────────────────────────────────────────

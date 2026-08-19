@@ -8,7 +8,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb'
 
 const PATH = '/kebijakan-privasi'
 const URL = `${SITE.url}${PATH}`
-const LAST_UPDATED = '30 Mei 2026'
+const LAST_UPDATED = '19 Agustus 2026'
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
@@ -64,6 +64,29 @@ export default function KebijakanPrivasiPage() {
               konsultasi, WhatsApp, dan email. Dengan menggunakan situs ini, Anda menyetujui praktik
               yang dijelaskan di bawah.
             </p>
+
+            {/*
+              Identitas penyelenggara dieja lengkap di halaman legal — dokumen
+              yang mengikat harus menyebut siapa pihak yang mengikat diri, dan
+              tanpa itu seluruh ketentuan di bawahnya kehilangan pijakan.
+            */}
+            <h2>Identitas Penyelenggara</h2>
+            <ul>
+              <li>
+                <strong>Nama usaha:</strong> {SITE.name} — {SITE.tagline}
+              </li>
+              <li>
+                <strong>{SITE.legal.nibLabel}:</strong> {SITE.legal.nib} — diterbitkan oleh{' '}
+                {SITE.legal.issuer}
+              </li>
+              <li>
+                <strong>Alamat terdaftar:</strong> {SITE.address.line}, {SITE.address.district},{' '}
+                {SITE.address.city}, {SITE.address.region} {SITE.address.postalCode}
+              </li>
+              <li>
+                <strong>Email:</strong> <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+              </li>
+            </ul>
 
             <h2>1. Data yang Kami Kumpulkan</h2>
             <p>
