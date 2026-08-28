@@ -5,21 +5,38 @@
 **Cakupan:** 25 halaman dari sitemap (semua merespons 200)
 **Metode:** Lighthouse 12.8.2 · Chrome for Testing headless · Slow 4G + CPU 4× · viewport 390 px
 **Versi terbaca:** https://claude.ai/code/artifact/03720983-787b-4c66-a965-4f53f973c7a6
+**Diperbarui:** 29 Agustus 2026 — setelah T-01, T-02, T-04, T-06 diperbaiki & di-deploy
 
 Pemicu: error dari seochecker pihak ketiga soal alt image, LCP/FCP, render-blocking,
 dan warning "Some anchor texts are used more than once".
 
 ---
 
-## Ringkasan
+## Status
 
-| Tingkat | Jumlah |
+| Temuan | Status |
 |---|---|
-| Kritis | 1 |
-| Tinggi | 2 |
-| Sedang | 4 |
-| Positif palsu (tidak perlu diperbaiki) | 3 |
-| Belum tuntas | 2 |
+| T-01 CSP Google Ads (kritis) | **Selesai** |
+| T-02 Anchor text (tinggi) | **Selesai** |
+| T-03 Halaman kota (tinggi) | **Sebagian** — 82,4% → 79,7% |
+| T-04 Title & description (sedang) | **Selesai** |
+| T-05 E-E-A-T (sedang) | Belum — butuh data klien |
+| T-06 Kontras (sedang) | **Selesai** |
+| T-07 Bundle (sedang) | Belum — prioritas rendah |
+| P-01..P-03 Positif palsu | Tidak perlu diperbaiki |
+| B-01..B-02 Belum tuntas | Terbuka |
+
+Skor Lighthouse halaman artikel setelah perbaikan:
+
+| Kategori | Sebelum | Sesudah |
+|---|---|---|
+| Accessibility | 96 | **100** |
+| Best Practices | 93 | **100** |
+| SEO | 100 | 100 |
+
+Best Practices ikut naik karena perbaikan CSP menghapus error console.
+
+## Ringkasan awal
 
 **Dua dari tiga keluhan checker adalah positif palsu.** Alt image dan render-blocking
 terverifikasi bersih. LCP 6,4 s tidak tereproduksi — pengukuran ulang memberi 1,1–2,0 s.
@@ -49,7 +66,10 @@ sekaligus data yang dipakai Smart Bidding.
 
 **Perbaikan:** tambahkan `https://pagead2.googlesyndication.com` dan
 `https://googleads.g.doubleclick.net` ke `connect-src` dan `script-src` di
-`next.config.ts`. Verifikasi lewat Tag Assistant setelah deploy.
+`next.config.ts`.
+
+**HASIL — SELESAI.** Diverifikasi ulang di `/kontak`: nol pelanggaran CSP,
+request `ccm/collect` mengembalikan **200**.
 
 ---
 
@@ -67,6 +87,10 @@ Sumber warning "Some anchor texts are used more than once".
 ```
 
 **Perbaikan:** anchor deskriptif per tujuan ("Lihat layanan SEO", dst).
+
+**HASIL — SELESAI.** Beranda dan `/layanan` kini punya 7 anchor unik.
+Pemindaian ulang: nol anchor sama yang menunjuk URL berbeda. Nol overflow
+horizontal di 390 px dan 1440 px.
 
 Catatan: `"Tanya Paket Ini"` 3× per halaman layanan menunjuk ke 3 URL wa.me berbeda —
 eksternal, dampak SEO mendekati nol, biarkan.
@@ -87,6 +111,13 @@ substitusi nama kota + daftar kawasan.
 **Perbaikan:** beri tiap kota minimal satu blok yang tidak bisa disalin (klien nyata
 atau studi kasus lokal). Jangan tambah kota keempat sebelum ini beres.
 
+**HASIL — SEBAGIAN.** Dua FAQ generik yang sudah dijawab di tempat lain diganti
+pertanyaan khas kota (Jakarta: harga + revisi remote; Bandung: harga + takeover
+website lama). Pergerakannya tipis: **82,4% → 79,7%** (13 → 15 blok berbeda dari
+74; pengukuran ini membuang JSON-LD sehingga basisnya beda dari angka 78% di
+atas). Enam blok besar yang identik masih mendominasi. Menuntaskannya perlu
+bukti lokal nyata per kota — data yang tidak boleh dikarang.
+
 ---
 
 ## T-04 · SEDANG · Title terpotong & description kepanjangan
@@ -101,6 +132,10 @@ atau studi kasus lokal). Jangan tambah kota keempat sebelum ini beres.
 | /blog/5-pelajaran-dari-30-proyek-digital… | 47 | 163 |
 
 Target: title ≤60, description 150–160. Tidak ada title/description duplikat antar halaman.
+
+**HASIL — SELESAI.** keamanan 87→45 / 180→151 · seo-on-page 68→52 / 165→145 ·
+google-ads-vs-seo 65→47 · 5-pelajaran 163→142 · kota Jakarta & Bandung 223→159.
+H1 artikel sengaja dibiarkan versi panjangnya.
 
 ---
 
@@ -121,17 +156,24 @@ Sudah benar: schema `Person` + `sameAs` (Instagram, LinkedIn); artikel blog mena
 
 ---
 
-## T-06 · SEDANG · Kontras teks meta artikel
+## T-06 · SEDANG · Kontras teks di bawah ambang WCAG AA
 
-Satu-satunya audit aksesibilitas yang gagal (skor 96/100).
+**Koreksi atas versi pertama laporan ini:** semula ditulis masalahnya hanya di
+baris meta artikel. Setelah ditelusuri, yang gagal ada **lima kelompok** — tiga
+di antaranya di footer global, jadi kena seluruh halaman.
 
 ```
-color-contrast  score = 0
-  <time datetime="2026-08-28T18:16:56.584Z">
-  <span class="inline-flex items-center gap-1">   ← "9 menit baca"
+                      warna    rasio          target AA 4.5:1
+baris meta artikel    #99A1AF  2.60:1  ->  #6B7280  4.83:1
+tautan isi artikel    #D97706  3.19:1  ->  #B45309  5.02:1
+tagline footer        #F59E0B  2.15:1  ->  #B45309  5.02:1
+teks kecil footer     #9CA3AF  2.54:1  ->  #6B7280  4.83:1
 ```
 
-**Perbaikan:** `text-gray-400` → `text-gray-500`/`text-gray-600` di header artikel.
+Token `--color-accent-dark` tidak diubah — dipakai komponen lain dengan ukuran
+dan berat font berbeda. Yang di-override hanya `.blog-prose a`.
+
+**HASIL — SELESAI.** Audit `color-contrast` lolos penuh, Accessibility 96 → 100.
 
 ---
 
@@ -209,10 +251,18 @@ di Google Search Console** untuk data lapangan yang sebenarnya menentukan.
 
 ---
 
-## Urutan kerja
+## Sisa pekerjaan
 
-1. **T-01** — buka CSP untuk Google Ads (satu baris, dampak langsung ke konversi iklan)
-2. **T-02** — ganti 14 anchor "Pelajari lebih lanjut" (penyuntingan teks, nol risiko)
-3. **T-04** — potong 4 title dan 5 meta description
-4. **T-06** — naikkan kontras baris meta artikel (satu class Tailwind)
-5. **T-05** & **T-03** — kredensial terlihat, angka hasil per klien, bedakan halaman kota
+1. **T-05** — angka hasil nyata per klien di `/portofolio`, kredensial eksplisit di
+   `/tentang`. Pekerjaan konten, bukan teknis, dan paling menentukan. Butuh data.
+2. **T-03** — perlu satu klien/studi kasus nyata di Jakarta dan Bandung.
+   Alternatifnya memangkas blok generik dari halaman kota, tapi itu menipiskan
+   halaman yang sedang terindeks dari ~1.850 jadi ~1.400 kata — diputuskan bersama.
+3. **T-07** — 266 KiB JS tidak terpakai. Prioritas paling rendah.
+
+## Catatan proses
+
+Build di server harus jalan **setelah** konten CMS di-seed. Halaman blog memakai
+ISR dengan `revalidate`, jadi build yang mendahului seed menghasilkan prerender
+lama — meta artikel dan sitemap sempat tidak ikut berubah. Urutan yang benar:
+`pull -> build -> seed -> build`.
