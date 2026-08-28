@@ -55,3 +55,6 @@ next-env.d.ts
 .claude/settings.json
 .claude/settings.local.json
 .claude/hooks/
+
+# seed — PNG mentah hasil codex (aset final ada di scripts/seed/assets)
+/scripts/seed/raw
