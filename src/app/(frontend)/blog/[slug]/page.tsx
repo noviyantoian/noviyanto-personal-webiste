@@ -115,7 +115,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </h1>
           <p className="mt-4 text-lg text-gray-500">{post.excerpt}</p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-400">
+          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500">
             <span className="font-medium text-gray-600">{post.author}</span>
             <span aria-hidden>·</span>
             <time dateTime={post.publishedAt ?? undefined}>{formatPostDate(post.publishedAt)}</time>

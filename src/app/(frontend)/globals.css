@@ -173,7 +173,9 @@
 }
 .blog-prose p { margin: 0; }
 .blog-prose a {
-  color: var(--color-accent-dark);
+  /* Bukan --color-accent-dark (#D97706): rasionya cuma 3.19:1 di atas putih,
+     di bawah ambang AA 4.5:1 untuk teks isi. #B45309 = 5.02:1. */
+  color: #B45309;
   text-decoration: underline;
   text-underline-offset: 2px;
   font-weight: 600;

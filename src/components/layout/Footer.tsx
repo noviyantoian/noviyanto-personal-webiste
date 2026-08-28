@@ -31,7 +31,7 @@ export default function Footer() {
               {SITE.name}
               <span className="text-[#F59E0B]">.</span>
             </Link>
-            <p className="mt-2 text-sm 2xl:text-base font-medium text-[#F59E0B]">{SITE.tagline}</p>
+            <p className="mt-2 text-sm 2xl:text-base font-medium text-[#B45309]">{SITE.tagline}</p>
 
             {/*
               NAP terlihat mata, bukan hanya di JSON-LD.
@@ -139,7 +139,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-[#E5E7EB] pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs 2xl:text-sm text-[#9CA3AF]">
+          <p className="text-xs 2xl:text-sm text-[#6B7280]">
             © {year} {SITE.name}. Hak cipta dilindungi.
           </p>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
@@ -147,7 +147,7 @@ export default function Footer() {
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className="rounded-sm text-xs 2xl:text-sm text-[#9CA3AF] transition-colors hover:text-[#F59E0B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
+                  className="rounded-sm text-xs 2xl:text-sm text-[#6B7280] transition-colors hover:text-[#F59E0B] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
                 >
                   {l.label}
                 </Link>
