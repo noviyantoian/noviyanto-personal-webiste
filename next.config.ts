@@ -105,6 +105,19 @@ const nextConfig: NextConfig = {
       { source: '/privacy-policy', destination: '/kebijakan-privasi', permanent: true },
       { source: '/my-links', destination: '/kontak', permanent: true },
 
+      // Artikel lama yang diproduksi ulang — arahkan ke versi barunya, bukan ke
+      // /blog, supaya otoritas URL lama mendarat di konten yang setara.
+      {
+        source: '/pentingnya-keamanan-website',
+        destination: '/blog/keamanan-website-bisnis-di-era-ai',
+        permanent: true,
+      },
+      {
+        source: '/belajar-seo-onpage-untuk-pemula-seperti-saya',
+        destination: '/blog/seo-on-page-2026-aeo-geo-aio',
+        permanent: true,
+      },
+
       // Terverifikasi 404 — artikel blog lama (konten tidak dimigrasi)
       { source: '/why-dark-mode-websites-are-so-popular', destination: '/blog', permanent: true },
       { source: '/the-ultimate-guide-to-user-on-boarding', destination: '/blog', permanent: true },
