@@ -6,8 +6,11 @@
  * Idempoten: media dicocokkan lewat `filename`, artikel lewat `slug`.
  * Menjalankan ulang akan memperbarui, bukan menduplikasi.
  *
- * Default status draft. Tambahkan `--publish` untuk langsung published
+ * Default status draft. Set `SEED_PUBLISH=1` untuk langsung published
  * (ini akan memicu ping IndexNow di hook afterChange Posts).
+ *
+ * Pakai env var, bukan flag CLI: `payload run` membuang seluruh argv sebelum
+ * mengeksekusi script, jadi `process.argv` hanya berisi node + binary payload.
  */
 import { getPayload } from 'payload'
 import config from '@payload-config'
@@ -21,7 +24,7 @@ const HERE = path.dirname(new URL(import.meta.url).pathname)
 const ARTICLES_DIR = path.join(HERE, 'articles')
 const ASSETS_DIR = path.join(HERE, 'assets')
 
-const PUBLISH = process.argv.includes('--publish')
+const PUBLISH = process.env.SEED_PUBLISH === '1'
 
 interface Frontmatter {
   slug: string

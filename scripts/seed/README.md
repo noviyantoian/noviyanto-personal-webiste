@@ -21,16 +21,19 @@ seed-articles.ts  upload media + upsert artikel ke Payload
 npm run seed:images
 
 # 3. masukkan ke CMS (butuh DATABASE_URI aktif)
-npm run seed:articles              # status draft
-npm run seed:articles -- --publish # langsung published
+npm run seed:articles                 # status draft
+SEED_PUBLISH=1 npm run seed:articles  # langsung published
 ```
 
 ## Catatan
 
 - **Idempoten.** Media dicocokkan lewat `filename`, artikel lewat `slug`.
   Menjalankan ulang memperbarui, tidak menduplikasi.
-- **`--publish` memicu ping IndexNow** ke Bing/Yandex lewat hook `afterChange`
-  di koleksi Posts. Jangan pakai flag ini saat uji coba di database throwaway.
+- **`SEED_PUBLISH=1` memicu ping IndexNow** ke Bing/Yandex lewat hook
+  `afterChange` di koleksi Posts. Jangan set saat uji coba di database throwaway.
+- Konfigurasi lewat env var, bukan flag CLI: `payload run` membuang seluruh argv
+  sebelum mengeksekusi script, sehingga `process.argv.includes('--publish')`
+  selalu false.
 - **Hero image diberi padding vertikal** oleh `prepare-images.mjs`: Payload
   memotong hero jadi `og` 1200x630 dan `feature` 1600x900 dengan cover-crop,
   jadi isi ilustrasi harus muat di area tengah 1536x806 supaya tidak terpotong.
