@@ -1,0 +1,218 @@
+# Laporan Audit On-Page — noviyanto.com
+
+**Tanggal:** 29 Agustus 2026
+**Domain:** https://noviyanto.com
+**Cakupan:** 25 halaman dari sitemap (semua merespons 200)
+**Metode:** Lighthouse 12.8.2 · Chrome for Testing headless · Slow 4G + CPU 4× · viewport 390 px
+**Versi terbaca:** https://claude.ai/code/artifact/03720983-787b-4c66-a965-4f53f973c7a6
+
+Pemicu: error dari seochecker pihak ketiga soal alt image, LCP/FCP, render-blocking,
+dan warning "Some anchor texts are used more than once".
+
+---
+
+## Ringkasan
+
+| Tingkat | Jumlah |
+|---|---|
+| Kritis | 1 |
+| Tinggi | 2 |
+| Sedang | 4 |
+| Positif palsu (tidak perlu diperbaiki) | 3 |
+| Belum tuntas | 2 |
+
+**Dua dari tiga keluhan checker adalah positif palsu.** Alt image dan render-blocking
+terverifikasi bersih. LCP 6,4 s tidak tereproduksi — pengukuran ulang memberi 1,1–2,0 s.
+
+**Satu bug kritis ditemukan yang tidak dilaporkan checker mana pun:** CSP memblokir
+conversion tracking Google Ads.
+
+---
+
+## T-01 · KRITIS · CSP memblokir conversion tracking Google Ads
+
+Tag `AW-10927143412` (via GTM `GTM-K8V9TVT`) mengirim event ke
+`pagead2.googlesyndication.com/ccm/collect`. Domain itu tidak ada di `connect-src`,
+jadi browser menolaknya. Direproduksi di `/kontak`.
+
+```
+Refused to connect to 'https://pagead2.googlesyndication.com/ccm/collect
+  ?tid=AW-10927143412&en=page_view&dl=https://noviyanto.com/kontak'
+because it violates the document's Content Security Policy.
+
+connect-src saat ini (next.config.ts:44):
+  'self' google-analytics.com analytics.folkastudio.com googletagmanager.com
+```
+
+Dampak: sinyal konversi ke Google Ads tidak lengkap — merusak pelaporan konversi
+sekaligus data yang dipakai Smart Bidding.
+
+**Perbaikan:** tambahkan `https://pagead2.googlesyndication.com` dan
+`https://googleads.g.doubleclick.net` ke `connect-src` dan `script-src` di
+`next.config.ts`. Verifikasi lewat Tag Assistant setelah deploy.
+
+---
+
+## T-02 · TINGGI · 14 tautan internal memakai anchor tanpa keyword
+
+Sumber warning "Some anchor texts are used more than once".
+`"Pelajari lebih lanjut →"` dipakai 7× di `/` dan 7× di `/layanan`, menunjuk ke
+**tujuh URL berbeda**:
+
+```
+/layanan/website          /layanan/google-ads
+/layanan/seo              /layanan/digital-marketing
+/layanan/ai-integration   /layanan/mobile-app
+/layanan/maintenance
+```
+
+**Perbaikan:** anchor deskriptif per tujuan ("Lihat layanan SEO", dst).
+
+Catatan: `"Tanya Paket Ini"` 3× per halaman layanan menunjuk ke 3 URL wa.me berbeda —
+eksternal, dampak SEO mendekati nol, biarkan.
+
+---
+
+## T-03 · TINGGI · Halaman kota 78% identik
+
+Jakarta vs Bandung, per blok teks: **20 dari 91 blok berbeda**. Perbedaan nyata hanya
+substitusi nama kota + daftar kawasan.
+
+| Halaman | Kata |
+|---|---|
+| /layanan/website/semarang | 1.929 |
+| /layanan/website/jakarta | 1.851 |
+| /layanan/website/bandung | 1.850 |
+
+**Perbaikan:** beri tiap kota minimal satu blok yang tidak bisa disalin (klien nyata
+atau studi kasus lokal). Jangan tambah kota keempat sebelum ini beres.
+
+---
+
+## T-04 · SEDANG · Title terpotong & description kepanjangan
+
+| Halaman | Title | Desc |
+|---|---|---|
+| /blog/keamanan-website-bisnis-di-era-ai | 87 | 180 |
+| /blog/seo-on-page-2026-aeo-geo-aio | 68 | 165 |
+| /blog/google-ads-atau-seo-mana-yang-lebih-cocok… | 65 | 150 |
+| /layanan/website/jakarta | 42 | 223 |
+| /layanan/website/bandung | 42 | 223 |
+| /blog/5-pelajaran-dari-30-proyek-digital… | 47 | 163 |
+
+Target: title ≤60, description 150–160. Tidak ada title/description duplikat antar halaman.
+
+---
+
+## T-05 · SEDANG · Kredensial hanya di structured data
+
+```
+/tentang     484 kata terlihat  ·  sinyal kredensial: TIDAK ADA
+/portofolio  506 kata terlihat  ·  7 klien, tanpa angka hasil per klien
+/kontak      166 kata terlihat  ·  tertipis di seluruh situs
+```
+
+Klaim "3+ tahun pengalaman, 7+ industri" hanya ada di JSON-LD, tidak di teks terlihat.
+
+Sudah benar: schema `Person` + `sameAs` (Instagram, LinkedIn); artikel blog menautkan
+`author` ke `#person`.
+
+**Perbaikan:** angka hasil per klien di `/portofolio`; kredensial eksplisit di `/tentang`.
+
+---
+
+## T-06 · SEDANG · Kontras teks meta artikel
+
+Satu-satunya audit aksesibilitas yang gagal (skor 96/100).
+
+```
+color-contrast  score = 0
+  <time datetime="2026-08-28T18:16:56.584Z">
+  <span class="inline-flex items-center gap-1">   ← "9 menit baca"
+```
+
+**Perbaikan:** `text-gray-400` → `text-gray-500`/`text-gray-600` di header artikel.
+
+---
+
+## T-07 · SEDANG · Cadangan performa
+
+```
+JavaScript tidak terpakai      266 KiB
+JavaScript legacy (polyfill)    24 KiB
+Penyampaian gambar              32 KiB
+Ukuran gambar tidak pas         28 KiB
+```
+
+Prioritas rendah — kerjakan setelah T-01..T-05.
+
+---
+
+## Positif palsu — JANGAN diperbaiki
+
+### P-01 · Alt image
+
+Nol gambar tanpa atribut `alt` di 25 halaman. 12 gambar `alt=""` semuanya logo klien di
+`ClientReviews.tsx` yang membawa `aria-hidden="true"` — nama klien sudah ada di teks
+sebelahnya. Lighthouse `image-alt` score = 1, kategori SEO 100/100.
+
+Mengisi alt di situ membuat screen reader membaca nama klien dua kali.
+
+### P-02 · Render-blocking
+
+Satu resource: `/_next/static/chunks/0ioof8kaungkg.css`, 13,3 KB, ~228 ms.
+Estimasi penghematan Lighthouse: **0 ms**.
+
+### P-03 · "HTTP/1.1" & "redirect 830 ms"
+
+Artefak Lighthouse headless. Verifikasi curl:
+
+```
+$ curl -sI https://noviyanto.com/…      → HTTP/2 200
+http://noviyanto.com/…                  → 1 redirect → https (HTTP/2)
+https://www.noviyanto.com/…             → 1 redirect → https (HTTP/2)
+```
+
+Konsekuensi: run Lighthouse yang sama menghasilkan LCP 6,4 s — angka itu tidak bisa
+dipercaya begitu saja.
+
+---
+
+## Pengukuran performa
+
+Ambang: LCP < 2,5 s · FCP < 1,8 s · CLS < 0,1
+
+| Halaman | FCP | LCP | TTFB | CLS | Elemen LCP |
+|---|---|---|---|---|---|
+| / | 1.964 ms | 1.964 ms | 1.089 ms | 0,001 | H1 teks |
+| /blog/keamanan-website-bisnis-di-era-ai | 1.148 ms | 1.148 ms | 261 ms | 0 | IMG hero |
+| /blog | 1.088 ms | 1.088 ms | 344 ms | 0 | IMG kartu |
+| /portofolio | 1.136 ms | 1.136 ms | 321 ms | 0 | H1 teks |
+| /layanan/website | 1.168 ms | tidak terbit | 337 ms | 0 | — |
+| /layanan/website/semarang | 1.472 ms | tidak terbit | 625 ms | 0 | — |
+
+---
+
+## Belum tuntas
+
+### B-01 · Dua halaman layanan tidak memancarkan entry LCP
+
+`/layanan/website` dan `/layanan/website/semarang` konsisten tanpa kandidat LCP di
+beberapa run, padahal FCP normal. Diperiksa dan negatif: semua elemen di atas fold
+`opacity: 1`, warna solid, tidak ada `visibility: hidden`. Dugaan terkuat artefak
+headless — belum terbukti.
+
+### B-02 · Semua angka adalah data lab
+
+PSI API kehabisan kuota harian, data CrUX tidak terambil. **Cek laporan Core Web Vitals
+di Google Search Console** untuk data lapangan yang sebenarnya menentukan.
+
+---
+
+## Urutan kerja
+
+1. **T-01** — buka CSP untuk Google Ads (satu baris, dampak langsung ke konversi iklan)
+2. **T-02** — ganti 14 anchor "Pelajari lebih lanjut" (penyuntingan teks, nol risiko)
+3. **T-04** — potong 4 title dan 5 meta description
+4. **T-06** — naikkan kontras baris meta artikel (satu class Tailwind)
+5. **T-05** & **T-03** — kredensial terlihat, angka hasil per klien, bedakan halaman kota
