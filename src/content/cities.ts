@@ -55,7 +55,7 @@ const JAKARTA: CityData = {
     // Dipendekkan: versi lama ~803px vs ambang potong ~600px SERP desktop.
     title: 'Jasa Pembuatan Website Jakarta',
     description:
-      'Jasa pembuatan website profesional di Jakarta oleh Noviyanto. Website cepat, SEO-ready, dan dirancang untuk mengubah pengunjung jadi calon klien. Dikerjakan langsung tanpa perantara, koordinasi online & kunjungan terjadwal.',
+      'Jasa pembuatan website profesional di Jakarta oleh Noviyanto. Cepat, SEO-ready, dan dirancang untuk mengubah pengunjung jadi calon klien yang menghubungi Anda.',
     keywords: [
       'jasa pembuatan website Jakarta',
       'jasa website Jakarta',
@@ -127,9 +127,9 @@ const JAKARTA: CityData = {
         'Setiap halaman saya bangun dengan struktur SEO yang benar — heading hierarchy, metadata, schema markup, internal linking, dan optimasi kecepatan. Untuk pencarian lokal Jakarta, saya bantu setup dan optimasi Google Business Profile. Posisi di hasil pencarian tetap memerlukan waktu dan konten yang konsisten.',
     },
     {
-      question: 'Apakah Anda mengerjakan sendiri atau punya tim?',
+      question: 'Apakah harga Anda mengikuti standar Jakarta?',
       answer:
-        'Saya bekerja sebagai individu profesional. Sebagian besar pekerjaan — strategi, copywriting, desain, development, dan setup SEO — saya kerjakan sendiri. Untuk kebutuhan khusus seperti motion design atau fotografi produk, saya bekerja dengan kolaborator terpercaya yang transparan saya sampaikan di awal.',
+        'Tidak. Paket di halaman ini berlaku sama untuk klien Jakarta maupun Semarang — tidak ada penyesuaian harga berdasarkan kota, dan tidak ada biaya tambahan untuk koordinasi jarak jauh. Yang Anda bayar adalah lingkup pekerjaannya, bukan lokasi Anda.',
     },
     {
       question: 'Bagaimana proses pembayaran dan kontraknya?',
@@ -137,9 +137,9 @@ const JAKARTA: CityData = {
         'Selalu ada kontrak kerja tertulis sebelum proyek mulai — berisi lingkup, timeline, deliverables, jumlah revisi, dan biaya. Pembayaran biasanya dibagi menjadi 2–3 tahap (DP, midpoint, dan pelunasan saat go-live). Tidak ada biaya tersembunyi.',
     },
     {
-      question: 'Apakah hosting, domain, dan maintenance ikut diurus?',
+      question: 'Kalau ada revisi mendesak, apakah harus menunggu Anda datang ke Jakarta?',
       answer:
-        'Saya bantu setup hosting dan domain — akun selalu atas nama Anda, bukan atas nama saya, supaya kepemilikan tetap di tangan Anda. Ada juga paket maintenance opsional untuk update konten, monitoring, backup, dan keamanan. Tidak wajib; jika ingin maintain sendiri, saya berikan dokumentasi yang jelas saat handover.',
+        'Tidak. Seluruh revisi, update konten, dan perbaikan dikerjakan remote — perubahan kecil biasanya selesai di hari yang sama. Kunjungan ke Jakarta saya sediakan untuk hal yang memang lebih baik tatap muka, misalnya kickoff proyek besar atau presentasi ke stakeholder internal Anda.',
     },
   ],
   cta: {
@@ -156,7 +156,7 @@ const BANDUNG: CityData = {
     // Dipendekkan: versi lama ~818px vs ambang potong ~600px SERP desktop.
     title: 'Jasa Pembuatan Website Bandung',
     description:
-      'Jasa pembuatan website profesional di Bandung oleh Noviyanto. Website cepat, SEO-ready, dan dirancang untuk mengubah pengunjung jadi calon klien. Dikerjakan langsung tanpa perantara, koordinasi online & kunjungan terjadwal.',
+      'Jasa pembuatan website profesional di Bandung oleh Noviyanto. Cepat, SEO-ready, dan dirancang untuk mengubah pengunjung jadi calon klien yang menghubungi Anda.',
     keywords: [
       'jasa pembuatan website Bandung',
       'jasa website Bandung',
@@ -227,9 +227,9 @@ const BANDUNG: CityData = {
         'Setiap halaman saya bangun dengan struktur SEO yang benar — heading hierarchy, metadata, schema markup, internal linking, dan optimasi kecepatan. Untuk pencarian lokal Bandung, saya bantu setup dan optimasi Google Business Profile. Posisi di hasil pencarian tetap memerlukan waktu dan konten yang konsisten.',
     },
     {
-      question: 'Apakah Anda mengerjakan sendiri atau punya tim?',
+      question: 'Apakah harga Anda mengikuti standar Bandung?',
       answer:
-        'Saya bekerja sebagai individu profesional. Sebagian besar pekerjaan — strategi, copywriting, desain, development, dan setup SEO — saya kerjakan sendiri. Untuk kebutuhan khusus seperti motion design atau fotografi produk, saya bekerja dengan kolaborator terpercaya yang transparan saya sampaikan di awal.',
+        'Tidak. Paket di halaman ini sama persis dengan yang berlaku untuk klien Semarang — tidak ada markup kota dan tidak ada biaya koordinasi jarak jauh. Harga mengikuti lingkup pekerjaan, bukan lokasi Anda.',
     },
     {
       question: 'Bagaimana proses pembayaran dan kontraknya?',
@@ -237,9 +237,9 @@ const BANDUNG: CityData = {
         'Selalu ada kontrak kerja tertulis sebelum proyek mulai — berisi lingkup, timeline, deliverables, jumlah revisi, dan biaya. Pembayaran biasanya dibagi menjadi 2–3 tahap (DP, midpoint, dan pelunasan saat go-live). Tidak ada biaya tersembunyi.',
     },
     {
-      question: 'Apakah hosting, domain, dan maintenance ikut diurus?',
+      question: 'Saya sudah punya website dari developer lain di Bandung. Bisa dilanjutkan?',
       answer:
-        'Saya bantu setup hosting dan domain — akun selalu atas nama Anda, bukan atas nama saya, supaya kepemilikan tetap di tangan Anda. Ada juga paket maintenance opsional untuk update konten, monitoring, backup, dan keamanan. Tidak wajib; jika ingin maintain sendiri, saya berikan dokumentasi yang jelas saat handover.',
+        'Bisa, tapi saya audit dulu sebelum menyanggupi. Kalau fondasinya masih sehat, memperbaiki dan mengoptimasi biasanya lebih hemat daripada membangun ulang. Kalau ternyata bermasalah di struktur atau keamanannya, saya sampaikan terus terang beserta perkiraan biaya kedua opsi — Anda yang memutuskan.',
     },
   ],
   cta: {

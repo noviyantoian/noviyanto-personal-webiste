@@ -5,6 +5,8 @@ excerpt: "AI membuat serangan ke website jadi murah, cepat, dan otomatis. Ini 7 
 category: Keamanan
 heroImage: keamanan-hero
 heroAlt: "Ilustrasi jendela browser dengan perisai yang dikelilingi bot AI yang memindai celah keamanan"
+metaTitle: "Keamanan Website Bisnis di Era AI"
+metaDescription: "AI membuat serangan ke website jadi murah dan otomatis. 7 ancaman yang relevan sekarang, checklist pertahanan berlapis, dan langkah saat situs diretas."
 ---
 
 Ada satu kalimat yang hampir selalu saya dengar setelah sebuah website kena retas: *"Ah, website saya kan kecil, siapa juga yang mau nyerang?"*

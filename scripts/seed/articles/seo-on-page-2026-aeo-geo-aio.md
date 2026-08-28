@@ -5,6 +5,8 @@ excerpt: "On-page belum mati — pembacanya yang bertambah. Panduan praktis fond
 category: SEO
 heroImage: seo-hero
 heroAlt: "Ilustrasi kolom pencarian yang berubah menjadi panel jawaban AI dengan kartu dokumen sebagai sumber"
+metaTitle: "SEO On-Page 2026: Plus AEO, GEO, dan AIO"
+metaDescription: "Panduan SEO on-page 2026: fondasi yang tetap wajib, plus lapisan AEO, GEO, dan AIO agar halaman Anda ikut dikutip mesin jawaban dan AI Overviews."
 ---
 
 Setiap beberapa tahun muncul kabar bahwa SEO sudah mati. Kali ini pemicunya AI Overviews dan ChatGPT. Dan seperti biasa, kabarnya salah — tapi kali ini ada bagian yang benar.

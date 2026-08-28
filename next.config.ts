@@ -37,11 +37,13 @@ const nextConfig: NextConfig = {
             value: [
               "default-src 'self'",
               // unsafe-inline/eval diperlukan GTM + Payload admin (dynamic import)
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://analytics.folkastudio.com https://www.google-analytics.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://analytics.folkastudio.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: blob: https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://www.google-analytics.com https://analytics.folkastudio.com https://www.googletagmanager.com",
+              // pagead2 + doubleclick: endpoint conversion tracking Google Ads (AW-...).
+              // Tanpa keduanya, tag GTM gagal kirim event dan konversi tidak tercatat.
+              "connect-src 'self' https://www.google-analytics.com https://analytics.folkastudio.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net",
               // google.com/maps diizinkan khusus untuk embed peta lokasi GBP
               // di halaman kontak. Dipersempit ke host itu saja, bukan https:.
               "frame-src 'self' https://www.google.com https://maps.google.com",

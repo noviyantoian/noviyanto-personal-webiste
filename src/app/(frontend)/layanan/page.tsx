@@ -117,7 +117,7 @@ export default function LayananPage() {
                     href={href}
                     className="mt-6 inline-flex items-center gap-1.5 text-xs font-medium text-amber-700 hover:gap-2 hover:text-amber-600 transition-all self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-sm"
                   >
-                    Pelajari lebih lanjut
+                    Lihat layanan {s.title}
                     <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
                   </Link>
                 </article>

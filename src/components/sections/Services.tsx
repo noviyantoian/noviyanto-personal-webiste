@@ -76,7 +76,7 @@ export default function Services() {
                   href={`/layanan/${service.slug}`}
                   className="mt-5 inline-flex items-center gap-1.5 text-xs font-medium text-amber-700 hover:text-amber-600 hover:gap-2 transition-all self-start focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-sm"
                 >
-                  Pelajari lebih lanjut
+                  Lihat layanan {service.title}
                   <span aria-hidden="true">→</span>
                 </Link>
               </div>

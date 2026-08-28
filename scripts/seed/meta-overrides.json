@@ -1,0 +1,9 @@
+{
+  "_catatan": "Meta SEO untuk artikel yang dibuat lewat admin CMS, bukan dari scripts/seed/articles/*.md. Dipakai seed-articles.ts agar title <=48 char (layout menambah ' | Noviyanto' = 12 char) dan description 150-160 char.",
+  "google-ads-atau-seo-mana-yang-lebih-cocok-untuk-bisnis-anda": {
+    "metaTitle": "Google Ads vs SEO untuk Bisnis Anda"
+  },
+  "5-pelajaran-dari-30-proyek-digital-kenapa-website-saja-tidak-cukup": {
+    "metaDescription": "Website cantik bukan jaminan bisnis tumbuh. 5 pelajaran dari 30+ proyek digital di 7 industri oleh Noviyanto, digital growth partner Semarang."
+  }
+}

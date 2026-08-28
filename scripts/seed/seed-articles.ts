@@ -33,6 +33,13 @@ interface Frontmatter {
   category: string
   heroImage: string
   heroAlt: string
+  /**
+   * Meta SEO opsional. Kalau kosong, blog page jatuh ke `title`/`excerpt`.
+   * Anggaran title cuma ~48 char: layout menambah ' | Noviyanto' (12 char)
+   * lewat `title.template`, dan Google memotong sekitar 60 char.
+   */
+  metaTitle?: string
+  metaDescription?: string
 }
 
 /** Alt & caption gambar inline, diambil dari markdown `![alt](key "caption")`. */
@@ -116,6 +123,11 @@ async function main() {
     const heroId = mediaIds.get(data.heroImage)
     if (!heroId) throw new Error(`heroImage "${data.heroImage}" tidak punya media`)
 
+    const meta = {
+      ...(data.metaTitle ? { title: data.metaTitle } : {}),
+      ...(data.metaDescription ? { description: data.metaDescription } : {}),
+    }
+
     const postData = {
       title: data.title,
       slug: data.slug,
@@ -124,6 +136,7 @@ async function main() {
       content,
       categories: [category.id],
       author: 'Noviyanto',
+      ...(Object.keys(meta).length ? { meta } : {}),
       _status: PUBLISH ? ('published' as const) : ('draft' as const),
     }
 
@@ -156,7 +169,46 @@ async function main() {
     }
   }
 
-  console.log(`\nSelesai. ${files.length} artikel diproses.`)
+  // Artikel yang dibuat lewat admin CMS tidak punya file markdown, jadi meta
+  // SEO-nya diatur lewat overrides. Hanya field meta yang disentuh — judul,
+  // isi, dan status artikel dibiarkan apa adanya.
+  const overrides = JSON.parse(
+    await readFile(path.join(HERE, 'meta-overrides.json'), 'utf8')
+  ) as Record<string, { metaTitle?: string; metaDescription?: string }>
+
+  console.log('\n── meta-overrides')
+  for (const [slug, o] of Object.entries(overrides)) {
+    if (slug.startsWith('_')) continue
+    const found = await payload.find({
+      collection: 'posts',
+      where: { slug: { equals: slug } },
+      limit: 1,
+      depth: 0,
+      draft: true,
+      overrideAccess: true,
+    })
+    const doc = found.docs[0]
+    if (!doc) {
+      console.log(`   lewati  ${slug} (tidak ada di CMS)`)
+      continue
+    }
+    await payload.update({
+      collection: 'posts',
+      id: doc.id,
+      data: {
+        meta: {
+          ...(doc.meta ?? {}),
+          ...(o.metaTitle ? { title: o.metaTitle } : {}),
+          ...(o.metaDescription ? { description: o.metaDescription } : {}),
+        },
+      },
+      draft: doc._status !== 'published',
+      overrideAccess: true,
+    })
+    console.log(`   meta    ${slug}`)
+  }
+
+  console.log(`\nSelesai. ${files.length} artikel + ${Object.keys(overrides).length - 1} override diproses.`)
   process.exit(0)
 }
 
