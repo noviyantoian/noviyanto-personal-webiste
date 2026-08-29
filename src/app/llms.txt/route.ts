@@ -79,7 +79,7 @@ license: RSL-1.0
 
 ## Industri yang Ditangani
 - B2B IT & Teknologi
-- Home Service (spa panggilan, jasa bersih, les private)
+- Home Service (spa panggilan, jasa bersih, les privat)
 - Tour & Travel
 - Perhiasan & Batu Mulia
 - Firma Hukum & Legal

@@ -59,7 +59,7 @@ const appTypes = [
   {
     icon: <Layers className={ICON} />,
     title: 'Aplikasi Hybrid',
-    body: 'Kombinasi keduanya — customer dan tim sama-sama punya akses, dengan hak yang berbeda.',
+    body: 'Kombinasi keduanya — pelanggan dan tim sama-sama punya akses, dengan hak yang berbeda.',
   },
 ]
 
@@ -86,13 +86,13 @@ const processSteps = [
   },
   {
     label: 'Step 5',
-    title: 'Submit ke App Store / Play Store',
+    title: 'Publikasi ke App Store / Play Store',
     description: 'Termasuk proses pendaftaran developer account (kalau belum punya) dan persiapan materi yang dibutuhkan untuk review.',
   },
   {
     label: 'Step 6',
     title: 'Post-Launch Support',
-    description: 'Aplikasi yang sudah live masih butuh perhatian. Bug kecil yang tidak terdeteksi saat testing baru muncul setelah dipakai dalam kondisi nyata.',
+    description: 'Aplikasi yang sudah live masih butuh perhatian. Bug kecil yang tidak terdeteksi saat pengujian baru muncul setelah dipakai dalam kondisi nyata.',
   },
 ]
 
@@ -100,17 +100,17 @@ const faqItems = [
   {
     question: 'Berapa lama pengerjaan?',
     answer:
-      'Sangat bergantung kompleksitas fitur. Aplikasi sederhana dengan 3-5 layar utama bisa selesai dalam 6-10 minggu. Aplikasi dengan banyak integrasi dan fitur kompleks bisa 4-6 bulan.',
+      'Sangat bergantung kompleksitas fitur. Aplikasi sederhana dengan 3–5 layar utama bisa selesai dalam 6–10 minggu. Aplikasi dengan banyak integrasi dan fitur kompleks bisa 4–6 bulan.',
   },
   {
     question: 'Apakah lebih mahal dari website?',
     answer:
-      'Ya, secara umum. Development aplikasi mobile lebih kompleks dan butuh waktu lebih lama. Tapi kalau kebutuhan bisnis Anda mengarah ke sana, ini investasi yang worthwhile.',
+      'Ya, secara umum. Development aplikasi mobile lebih kompleks dan butuh waktu lebih lama. Tapi kalau kebutuhan bisnis Anda mengarah ke sana, ini investasi yang sepadan.',
   },
   {
     question: 'Bagaimana dengan update setelah aplikasi jadi?',
     answer:
-      'Ada dua opsi: saya handle maintenance dan update berkala, atau tim Anda dilatih untuk update konten tertentu. Disesuaikan dengan kebutuhan dan kemampuan teknis tim.',
+      'Ada dua opsi: saya tangani maintenance dan update berkala, atau tim Anda dilatih untuk update konten tertentu. Disesuaikan dengan kebutuhan dan kemampuan teknis tim.',
   },
   {
     question: 'Apakah bisa diintegrasikan dengan sistem yang sudah ada?',
@@ -150,7 +150,7 @@ export default function MobileAppPage() {
         headline="Tidak Semua Bisnis Butuh Aplikasi. Tapi Beberapa Sangat Memerlukannya."
         paragraphs={[
           'Website yang dioptimalkan untuk mobile sudah cukup untuk banyak bisnis. Tapi ada kondisi di mana aplikasi mobile lebih masuk akal.',
-          'Bisnis Anda punya tim lapangan yang perlu akses data, update status pekerjaan, atau laporan dari lokasi kerja. Anda ingin memberi pengalaman lebih personal kepada customer dengan riwayat transaksi, loyalty program, atau notifikasi push. Ada proses operasional berulang yang jauh lebih efisien lewat aplikasi khusus. Atau Anda punya data yang perlu bisa diakses offline.',
+          'Bisnis Anda punya tim lapangan yang perlu akses data, update status pekerjaan, atau laporan dari lokasi kerja. Anda ingin memberi pengalaman lebih personal kepada pelanggan dengan riwayat transaksi, loyalty program, atau notifikasi push. Ada proses operasional berulang yang jauh lebih efisien lewat aplikasi khusus. Atau Anda punya data yang perlu bisa diakses offline.',
           'Kalau Anda masih tidak yakin apakah bisnis Anda butuh aplikasi, itu bisa jadi bahan diskusi di konsultasi awal.',
         ]}
       />

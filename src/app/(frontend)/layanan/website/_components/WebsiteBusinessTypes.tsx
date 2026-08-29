@@ -14,7 +14,7 @@ const BUSINESS_TYPES = [
   {
     icon: HeartPulse,
     name: 'Home Service & Massage',
-    desc: 'Jasa panggilan, terapis, perawatan di rumah — booking & WhatsApp lead capture.',
+    desc: 'Jasa panggilan, terapis, perawatan di rumah — booking dan penjaringan lead lewat WhatsApp.',
   },
   {
     icon: Building2,
@@ -44,7 +44,7 @@ const BUSINESS_TYPES = [
   {
     icon: Code2,
     name: 'B2B IT & SaaS',
-    desc: 'Software house, IT services, agency — landing page B2B yang convert.',
+    desc: 'Software house, IT services, agency — landing page B2B yang mengonversi.',
   },
   {
     icon: Wrench,

@@ -128,7 +128,7 @@ export default function SyaratKetentuanPage() {
             <h2>6. Pembayaran</h2>
             <p>
               Ketentuan pembayaran diatur dalam kontrak proyek, umumnya dibagi menjadi beberapa tahap
-              (uang muka, midpoint, dan pelunasan saat go-live). Detail metode dan jadwal pembayaran
+              (uang muka, tengah proyek, dan pelunasan saat website tayang). Detail metode dan jadwal pembayaran
               disampaikan secara transparan sebelum proyek dimulai.
             </p>
 

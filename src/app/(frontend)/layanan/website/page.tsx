@@ -49,7 +49,7 @@ const faqItems = [
   {
     question: 'Berapa lama pengerjaan?',
     answer:
-      'Rata-rata 3-4 minggu untuk website standar. Bisa lebih cepat kalau konten dan materi sudah disiapkan dari awal.',
+      'Rata-rata 3–4 minggu untuk website standar. Bisa lebih cepat kalau konten dan materi sudah disiapkan dari awal.',
   },
   {
     question: 'Apakah saya bisa update konten sendiri setelah jadi?',

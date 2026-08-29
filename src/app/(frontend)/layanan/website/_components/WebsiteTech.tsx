@@ -30,7 +30,7 @@ export default function WebsiteTech() {
             panjang, dan jauh lebih aman dari serangan siber yang umum menyasar CMS.
           </p>
           <p className="mt-4 text-base sm:text-lg text-[#6B7280] leading-relaxed text-pretty">
-            Kalau Anda butuh website dengan sistem manajemen konten yang bisa diupdate sendiri,
+            Kalau Anda butuh website dengan sistem manajemen konten yang bisa diperbarui sendiri,
             itu juga bisa dikonfigurasikan.
           </p>
 

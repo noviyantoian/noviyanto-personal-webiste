@@ -60,7 +60,7 @@ export default function TourHero({ onConsult }: TourHeroProps) {
           </h1>
 
           <p className="text-base sm:text-lg text-[#6B7280] max-w-2xl mx-auto mb-8 text-pretty leading-relaxed">
-            Noviyanto bangun website profesional khusus bisnis tour &amp; travel Anda — lengkap
+            Noviyanto membangun website profesional khusus bisnis tour &amp; travel Anda — lengkap
             dengan sistem booking online, integrasi WhatsApp, desain yang meyakinkan, dan SEO yang
             mendatangkan pelanggan organik dari Google.
           </p>

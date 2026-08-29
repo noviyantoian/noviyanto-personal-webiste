@@ -46,7 +46,7 @@ export default function SemarangLocal() {
           </h2>
           <p className="text-base lg:text-lg text-[#6B7280] leading-relaxed">
             Sejak 2022, saya membangun website untuk pelaku bisnis di Semarang
-            dan sekitarnya — dari toko jewelry, kantor hukum, agen properti,
+            dan sekitarnya — dari toko perhiasan, kantor hukum, agen properti,
             biro travel, hingga UMKM yang sedang membangun fondasi digitalnya.
             Bekerja langsung dengan saya berarti Anda bicara dengan orang yang
             mengerjakan, bukan dilempar ke tim yang berbeda-beda.

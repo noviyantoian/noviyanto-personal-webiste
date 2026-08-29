@@ -55,22 +55,22 @@ const useCases = [
   {
     icon: <Home className={ICON} />,
     title: 'Home Service dan layanan lokal',
-    body: 'Spa panggilan, jasa bersih, les privat. Orang yang search "home spa panggilan Jakarta" itu sudah hampir pasti mau booking. Anda tinggal ada di depan mereka.',
+    body: 'Spa panggilan, jasa bersih, les privat. Orang yang mencari "home spa panggilan Jakarta" itu sudah hampir pasti mau booking. Anda tinggal ada di depan mereka.',
   },
   {
     icon: <Plane className={ICON} />,
     title: 'Tour & Travel',
-    body: 'Iklan musiman atau paket spesifik yang perlu cepat menghasilkan inquiry sebelum moment berlalu.',
+    body: 'Iklan musiman atau paket spesifik yang perlu cepat menghasilkan inquiry sebelum momennya lewat.',
   },
   {
     icon: <Briefcase className={ICON} />,
     title: 'B2B dan jasa profesional',
-    body: 'IT, konsultan, firma hukum. Volume pencarian rendah, nilai per lead tinggi. Strategi berbeda dari bisnis consumer.',
+    body: 'IT, konsultan, firma hukum. Volume pencarian rendah, nilai per lead tinggi. Strategi berbeda dari bisnis konsumen.',
   },
   {
     icon: <Search className={ICON} />,
     title: 'Bisnis yang dicari di Google',
-    body: 'Kalau target customer aktif search di Google, Google Ads adalah cara paling langsung untuk masuk ke radar mereka.',
+    body: 'Kalau calon pelanggan Anda aktif mencari di Google, Google Ads adalah cara paling langsung untuk masuk ke radar mereka.',
   },
 ]
 
@@ -88,7 +88,7 @@ const onboardingSteps = [
   {
     label: 'Minggu 3-4',
     title: 'Optimasi Pertama',
-    description: 'Evaluasi data awal, buang keyword yang tidak performa, perkuat yang berhasil.',
+    description: 'Evaluasi data awal, buang keyword yang tidak menghasilkan, perkuat yang berhasil.',
   },
   {
     label: 'Bulan 2+',
@@ -101,12 +101,12 @@ const faqItems = [
   {
     question: 'Berapa budget iklan minimum yang disarankan?',
     answer:
-      'Bergantung pada industri dan area target. Untuk bisnis lokal, budget Rp 1-2 juta per bulan sudah bisa menghasilkan data yang cukup untuk dioptimalkan. Saya jelaskan estimasi realistisnya saat konsultasi.',
+      'Bergantung pada industri dan area target. Untuk bisnis lokal, budget Rp 1–2 juta per bulan sudah bisa menghasilkan data yang cukup untuk dioptimalkan. Saya jelaskan estimasi realistisnya saat konsultasi.',
   },
   {
     question: 'Apakah hasilnya bisa langsung terlihat?',
     answer:
-      'Klik pertama bisa mulai masuk dalam 1-2 hari setelah kampanye tayang. Untuk optimasi yang baik, biasanya butuh 2-4 minggu untuk mengumpulkan data yang cukup.',
+      'Klik pertama bisa mulai masuk dalam 1–2 hari setelah kampanye tayang. Untuk optimasi yang baik, biasanya butuh 2–4 minggu untuk mengumpulkan data yang cukup.',
   },
   {
     question: 'Biaya pengelolaan terpisah dari budget iklan?',
@@ -140,7 +140,7 @@ export default function GoogleAdsPage() {
         badge="Google Ads"
         headline="Customer Baru Bisa Mulai Masuk Minggu Pertama"
         highlight="Minggu Pertama"
-        subheadline="Google Ads yang dikelola dengan benar bukan soal bayar mahal. Soal pasang iklan di depan orang yang sedang aktif mencari bisnis seperti milik Anda, di saat yang tepat."
+        subheadline="Google Ads yang dikelola dengan benar bukan soal bayar mahal, tapi soal memasang iklan di depan orang yang sedang aktif mencari bisnis seperti milik Anda, di saat yang tepat."
         ctaWaKey="googleAds"
         ctaLabel="Konsultasikan Kebutuhan Iklan Saya"
         socialProof="Dipercaya 30+ bisnis dari Jakarta, Bandung, Semarang, dan kota lainnya"
@@ -159,7 +159,7 @@ export default function GoogleAdsPage() {
         eyebrow="Pendekatan"
         headline="Google Ads yang Dimulai dari Pertanyaan yang Benar"
         paragraphs={[
-          'Sebelum setup kampanye, ada yang perlu dipahami: siapa customer paling potensial Anda? Mereka search apa di Google? Kata apa yang dipakai saat serius mau beli, bukan iseng cari informasi?',
+          'Sebelum setup kampanye, ada yang perlu dipahami: siapa customer paling potensial Anda? Apa yang mereka ketik di Google? Kata apa yang dipakai saat serius mau beli, bukan iseng cari informasi?',
           'Dari situ baru keyword dipilih, iklan ditulis, dan landing page dirancang sesuai intent pencarian mereka.',
         ]}
         bulletTitle="Yang masuk dalam pengelolaan:"
@@ -203,7 +203,7 @@ export default function GoogleAdsPage() {
 
       <ServiceCTA
         headline="Berapa Leads yang Bisa Saya Harapkan?"
-        body="Pertanyaan yang wajar. Saya tidak bisa menjanjikan angka pasti karena banyak variabel, tapi bisa berikan estimasi realistis berdasarkan kondisi bisnis dan anggaran Anda. Hubungi saya untuk diskusi 30 menit, gratis."
+        body="Pertanyaan yang wajar. Saya tidak bisa menjanjikan angka pasti karena banyak variabel, tapi saya bisa memberi estimasi realistis berdasarkan kondisi bisnis dan anggaran Anda. Hubungi saya untuk diskusi 30 menit, gratis."
         ctaWaKey="googleAds"
         ctaLabel="Tanya via WhatsApp"
         subText="Konsultasi awal gratis, tanpa komitmen."

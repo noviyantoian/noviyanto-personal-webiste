@@ -53,7 +53,7 @@ const coverage = [
   },
   {
     title: 'Monitoring Uptime',
-    body: 'Notifikasi otomatis kalau website down. Anda tidak perlu tahu dulu dari customer yang komplain.',
+    body: 'Notifikasi otomatis kalau website down. Anda tidak perlu tahu belakangan dari pelanggan yang komplain.',
   },
   {
     title: 'Optimasi Performa',
@@ -84,7 +84,7 @@ const targetAudience = [
   },
   {
     title: 'E-commerce',
-    body: 'Sangat bergantung pada website untuk transaksi dan tidak bisa tolerir downtime atau masalah teknis.',
+    body: 'Sangat bergantung pada website untuk transaksi dan tidak bisa menoleransi downtime atau masalah teknis.',
   },
 ]
 
@@ -92,7 +92,7 @@ const faqItems = [
   {
     question: 'Apakah harus pakai website yang dibangun oleh Noviyanto?',
     answer:
-      'Tidak harus. Saya bisa take over maintenance website yang sebelumnya dibuat orang lain, setelah audit singkat untuk pahami kondisi awalnya.',
+      'Tidak harus. Saya bisa mengambil alih maintenance website yang sebelumnya dibuat orang lain, setelah audit singkat untuk memahami kondisi awalnya.',
   },
   {
     question: 'Apa yang terjadi kalau ada masalah mendadak di luar jam kerja?',
@@ -107,7 +107,7 @@ const faqItems = [
   {
     question: 'Bagaimana kalau saya mau update konten sendiri?',
     answer:
-      'Bisa. Saya bisa setup sistem sehingga Anda atau tim bisa update konten tertentu sendiri tanpa perlu bantuan teknis setiap kali.',
+      'Bisa. Saya bisa menyiapkan sistem sehingga Anda atau tim bisa update konten tertentu sendiri tanpa perlu bantuan teknis setiap kali.',
   },
 ]
 
@@ -131,10 +131,10 @@ export default function MaintenancePage() {
         badge="Maintenance"
         headline="Website Anda Selalu Online, Aman, dan Performa Terjaga"
         highlight="Online, Aman, dan Performa Terjaga"
-        subheadline="Website yang tidak dirawat itu seperti toko yang pintunya tidak pernah dibersihkan dan lampunya mulai redup. Calon customer tetap lihat, tapi kesan yang tertinggal bukan yang Anda inginkan."
+        subheadline="Website yang tidak dirawat itu seperti toko yang pintunya tidak pernah dibersihkan dan lampunya mulai redup. Calon pelanggan tetap melihat, tapi kesan yang tertinggal bukan yang Anda inginkan."
         ctaWaKey="maintenance"
         ctaLabel="Konsultasi Paket Maintenance"
-        socialProof="Untuk website lama atau baru — bisa take over dari developer sebelumnya"
+        socialProof="Untuk website lama atau baru — bisa diambil alih dari developer sebelumnya"
       />
 
       <ServiceProse
@@ -142,7 +142,7 @@ export default function MaintenancePage() {
         headline="Apa yang Terjadi pada Website yang Tidak Dirawat"
         paragraphs={[
           'Website bukan sesuatu yang bisa dibuat sekali lalu dibiarkan selamanya. Ada beberapa hal yang terjadi kalau tidak ada yang merawatnya.',
-          'Plugin dan sistem keamanan ketinggalan update — celah paling umum yang dieksploitasi peretas. Performa menurun: cache menumpuk, gambar tidak dioptimalkan, script mulai konflik. Konten jadi usang dan membuat calon customer merasa bisnis Anda tidak aktif. Hosting bermasalah, pembayaran terlewat, domain expired — semua bisa membuat website down tanpa Anda sadari.',
+          'Plugin dan sistem keamanan ketinggalan update — celah paling umum yang dieksploitasi peretas. Performa menurun: cache menumpuk, gambar tidak dioptimalkan, script mulai konflik. Konten jadi usang dan membuat calon pelanggan merasa bisnis Anda tidak aktif. Hosting bermasalah, pembayaran terlewat, domain kedaluwarsa — semua bisa membuat website down tanpa Anda sadari.',
         ]}
       />
 

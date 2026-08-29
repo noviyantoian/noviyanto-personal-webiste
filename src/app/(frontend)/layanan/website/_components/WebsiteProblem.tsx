@@ -28,7 +28,7 @@ export default function WebsiteProblem() {
           </p>
           <p className="mt-4 text-base sm:text-lg text-[#6B7280] leading-relaxed text-pretty">
             Kalau halaman Anda tidak punya alur jelas — dari pengunjung datang sampai
-            mereka menghubungi Anda — maka sebagus apapun desainnya, hasilnya akan
+            mereka menghubungi Anda — maka sebagus apa pun desainnya, hasilnya akan
             sama saja.
           </p>
         </motion.div>

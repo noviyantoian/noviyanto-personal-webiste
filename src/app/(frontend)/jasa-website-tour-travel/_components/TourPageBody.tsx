@@ -47,7 +47,7 @@ const PAINS = [
   {
     num: '01',
     title: 'Tidak Punya Website — Kehilangan Calon Klien Setiap Hari',
-    body: 'Calon wisatawan cari di Google, tidak menemukan Anda. Mereka pergi ke kompetitor yang sudah punya website profesional.',
+    body: 'Calon wisatawan mencari di Google, tidak menemukan Anda. Mereka pergi ke kompetitor yang sudah punya website profesional.',
   },
   {
     num: '02',
@@ -57,7 +57,7 @@ const PAINS = [
   {
     num: '03',
     title: 'Medsos Aktif, Konversi Nyaris Nol',
-    body: 'Posting tiap hari tapi tidak ada landing page yang menutup — pengunjung datang, baca sebentar, pergi tanpa kontak.',
+    body: 'Posting tiap hari tapi tidak ada landing page yang menutup penjualan — pengunjung datang, baca sebentar, pergi tanpa kontak.',
   },
   {
     num: '04',
@@ -130,8 +130,8 @@ const FEATURES = [
   { icon: Search, title: 'SEO Lokal Teroptimasi', desc: 'Muncul di halaman 1 Google saat calon wisatawan cari "paket wisata [kota Anda]". Traffic organik tanpa bayar iklan.' },
   { icon: Star, title: 'Integrasi Ulasan & Testimoni', desc: 'Review nyata dari pelanggan tampil otomatis. Kepercayaan = konversi lebih tinggi.' },
   { icon: MapPin, title: 'Halaman Paket Tour Lengkap', desc: 'Itinerary, harga, inklusi & eksklusi, galeri per paket — tersaji rapi sehingga calon wisatawan langsung yakin memesan.' },
-  { icon: MessageCircle, title: 'Tombol WhatsApp & CTA Strategis', desc: 'Ditempatkan di posisi psikologis tepat — pengunjung tahu harus ngapain selanjutnya. CTR WhatsApp naik drastis.' },
-  { icon: Zap, title: 'SSL & Loading Super Cepat', desc: 'PageSpeed score 90+, SSL aktif, website aman. Google prioritaskan website cepat — ranking Anda naik.' },
+  { icon: MessageCircle, title: 'Tombol WhatsApp & CTA Strategis', desc: 'Ditempatkan di posisi psikologis tepat — pengunjung tahu harus apa selanjutnya. CTR WhatsApp naik drastis.' },
+  { icon: Zap, title: 'SSL & Loading Super Cepat', desc: 'PageSpeed score 90+, SSL aktif, website aman. Google memprioritaskan website cepat — ranking Anda naik.' },
 ] as const
 
 function TourFeatures() {
@@ -166,9 +166,9 @@ function TourFeatures() {
 
 const STEPS = [
   { num: '01', title: 'Konsultasi Gratis', time: 'Hari 1–2', desc: 'Diskusi kebutuhan bisnis, target pasar, kompetitor, dan referensi desain. 100% gratis tanpa kewajiban.' },
-  { num: '02', title: 'Desain & Development', time: 'Hari 3–14', desc: 'Noviyanto mulai rancang dan bangun website custom sesuai brand dan kebutuhan spesifik tour & travel Anda.' },
-  { num: '03', title: 'Revisi & Finalisasi', time: 'Hari 15–21', desc: 'Anda review dan beri feedback. Revisi dilakukan sampai Anda 100% puas — tidak ada batas revisi.' },
-  { num: '04', title: 'Launch & Training', time: 'Hari 22', desc: 'Website live! Training singkat cara update konten mandiri. Bisnis siap mendatangkan booking online!' },
+  { num: '02', title: 'Desain & Development', time: 'Hari 3–14', desc: 'Noviyanto merancang dan membangun website custom sesuai brand dan kebutuhan spesifik tour & travel Anda.' },
+  { num: '03', title: 'Revisi & Finalisasi', time: 'Hari 15–21', desc: 'Anda tinjau dan beri masukan. Revisi dilakukan sampai Anda 100% puas — tidak ada batas revisi.' },
+  { num: '04', title: 'Launch & Training', time: 'Hari 22', desc: 'Website live! Pelatihan singkat cara memperbarui konten sendiri. Bisnis siap mendatangkan booking online!' },
 ] as const
 
 function TourProcess() {
@@ -177,7 +177,7 @@ function TourProcess() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2 className="font-display font-semibold text-3xl sm:text-4xl text-[#111827] tracking-tight mb-3">Proses Mudah, Hasil Profesional</h2>
-          <p className="text-[#6B7280]">Dari konsultasi sampai live — Noviyanto dampingi setiap langkahnya</p>
+          <p className="text-[#6B7280]">Dari konsultasi sampai live — Noviyanto mendampingi setiap langkahnya</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {STEPS.map((step) => (
@@ -223,7 +223,7 @@ const PORTFOLIOS = [
     metricLabel: 'konversi WhatsApp',
     client: 'Yogyakarta Heritage Tours',
     period: '2 bulan pertama',
-    context: 'CTA placement strategis dan copywriting yang tepat buat calon wisatawan langsung chat.',
+    context: 'CTA placement strategis dan copywriting yang tepat membuat calon wisatawan langsung chat.',
   },
 ] as const
 

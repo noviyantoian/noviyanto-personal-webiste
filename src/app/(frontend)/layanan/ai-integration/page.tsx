@@ -54,7 +54,7 @@ const solutions = [
   {
     icon: <Workflow className={ICON} />,
     title: 'Otomasi Follow-up Leads',
-    body: 'Leads masuk dari form atau WhatsApp, sistem kirim pesan pertama, tanya kebutuhan, masukkan ke pipeline CRM. Tidak ada yang jatuh dari celah.',
+    body: 'Leads masuk dari form atau WhatsApp, sistem kirim pesan pertama, tanya kebutuhan, masukkan ke pipeline CRM. Tidak ada lead yang terlewat.',
   },
   {
     icon: <FileSpreadsheet className={ICON} />,
@@ -64,7 +64,7 @@ const solutions = [
   {
     icon: <FileScan className={ICON} />,
     title: 'Pemrosesan Dokumen',
-    body: 'Ekstrak informasi dari invoice, kontrak, atau formulir yang masuk secara otomatis. Cocok untuk bisnis yang terima banyak dokumen dari berbagai format.',
+    body: 'Ekstrak informasi dari invoice, kontrak, atau formulir yang masuk secara otomatis. Cocok untuk bisnis yang menerima banyak dokumen dalam berbagai format.',
   },
   {
     icon: <Sparkles className={ICON} />,
@@ -87,7 +87,7 @@ const processSteps = [
   {
     label: 'Step 3',
     title: 'Build & Test',
-    description: 'Bangun sistem, test dengan skenario nyata, dan pastikan tidak ada yang bocor atau berperilaku aneh.',
+    description: 'Bangun sistem, uji dengan skenario nyata, dan pastikan tidak ada yang bocor atau berperilaku aneh.',
   },
   {
     label: 'Step 4',
@@ -97,7 +97,7 @@ const processSteps = [
   {
     label: 'Step 5',
     title: 'Monitoring Awal',
-    description: 'Minggu-minggu pertama setelah go-live saya pantau performa. Otomasi baru sering perlu penyesuaian kecil begitu bertemu kondisi nyata.',
+    description: 'Minggu-minggu pertama setelah sistem berjalan saya pantau performanya. Otomasi baru sering perlu penyesuaian kecil begitu bertemu kondisi nyata.',
   },
 ]
 
@@ -168,7 +168,7 @@ export default function AiIntegrationPage() {
         headline="Teknologi di Baliknya"
         paragraphs={[
           'Saya tidak terikat pada satu platform. Pilihan tools disesuaikan dengan kebutuhan dan kondisi teknis bisnis Anda.',
-          'n8n untuk otomasi open-source yang fleksibel dan bisa di-host sendiri. OpenAI API dan Anthropic Claude untuk fitur yang butuh pemahaman bahasa alami. Make (mantan Integromat) untuk integrasi sederhana tanpa server sendiri. Python untuk logika kompleks atau pemrosesan data besar.',
+          'n8n untuk otomasi open-source yang fleksibel dan bisa di-host sendiri. OpenAI API dan Anthropic Claude untuk fitur yang butuh pemahaman bahasa alami. Make (dulunya Integromat) untuk integrasi sederhana tanpa server sendiri. Python untuk logika kompleks atau pemrosesan data besar.',
         ]}
         chips={['n8n', 'OpenAI', 'Anthropic Claude', 'Make', 'Python', 'Webhook']}
       />
@@ -184,7 +184,7 @@ export default function AiIntegrationPage() {
         eyebrow="Harapan Realistis"
         headline="Yang Perlu Anda Pahami Sebelum Mulai"
         paragraphs={[
-          'AI integration bukan solusi instan yang langsung mengubah semua. Ada kurva implementasi, ada waktu yang dibutuhkan untuk tim terbiasa, dan ada kemungkinan perlu iterasi.',
+          'Integrasi AI bukan solusi instan yang langsung mengubah semua. Ada kurva implementasi, ada waktu yang dibutuhkan untuk tim terbiasa, dan ada kemungkinan perlu iterasi.',
           'Yang paling sering berhasil adalah dimulai dari satu masalah spesifik yang paling menyita waktu, selesaikan itu dengan baik, lalu baru ekspansi ke area lain.',
           'Saya tidak akan menjual sistem yang kompleks kalau kebutuhan Anda bisa diselesaikan dengan cara yang lebih sederhana.',
         ]}

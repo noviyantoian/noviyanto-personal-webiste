@@ -76,7 +76,7 @@ const faqItems = [
   {
     question: 'Bagaimana proses pembayaran dan kontraknya?',
     answer:
-      'Selalu ada kontrak kerja tertulis sebelum proyek mulai — berisi lingkup, timeline, deliverables, jumlah revisi, dan biaya. Pembayaran biasanya dibagi menjadi 2–3 tahap (DP, midpoint, dan pelunasan saat go-live). Tidak ada biaya tersembunyi.',
+      'Selalu ada kontrak kerja tertulis sebelum proyek mulai — berisi lingkup, timeline, deliverables, jumlah revisi, dan biaya. Pembayaran biasanya dibagi menjadi 2–3 tahap (DP, tengah proyek, dan pelunasan saat website tayang). Tidak ada biaya tersembunyi.',
   },
   {
     question: 'Apakah hosting dan domain ikut diurus?',

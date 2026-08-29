@@ -25,14 +25,14 @@ export const services: Service[] = [
     slug: 'google-ads',
     title: 'Google Ads',
     shortTitle: 'Google Ads',
-    description: 'Customer baru bisa masuk dalam minggu pertama. Setiap rupiah terukur hasilnya.',
+    description: 'Pelanggan baru bisa masuk sejak minggu pertama. Setiap rupiah terukur hasilnya.',
     longDescription:
       'Kampanye Google Ads yang dikelola berdasarkan data — setiap rupiah anggaran diarahkan ke keyword dan audience yang paling berpotensi konversi.',
     icon: '📈',
     features: [
       'Riset keyword berbasis industri dan lokasi',
       'Setup kampanye dengan struktur yang bersih',
-      'Landing page optimization untuk konversi',
+      'Optimasi landing page untuk konversi',
       'Tracking konversi akurat (WA, form, telpon)',
       'Laporan bulanan yang mudah dipahami',
     ],
@@ -47,7 +47,7 @@ export const services: Service[] = [
     shortTitle: 'SEO',
     description: 'Muncul di halaman pertama Google tanpa terus bayar iklan.',
     longDescription:
-      'Strategi SEO berbasis riset keyword nyata — dari optimasi teknis, on-page, sampai konten yang menjawab pertanyaan target customer Anda.',
+      'Strategi SEO berbasis riset keyword nyata — dari optimasi teknis, on-page, sampai konten yang menjawab pertanyaan calon pelanggan Anda.',
     icon: '🔍',
     features: [
       'Audit teknis dan perbaikan on-page',
@@ -59,7 +59,7 @@ export const services: Service[] = [
     waMessage: 'seo',
     metaTitle: 'Jasa SEO Semarang — Organik, Terukur, Jangka Panjang',
     metaDescription:
-      'Jasa SEO di Semarang untuk bisnis lokal dan nasional. Audit teknis, riset keyword, local SEO, dan konten strategy.',
+      'Jasa SEO di Semarang untuk bisnis lokal dan nasional. Audit teknis, riset keyword, local SEO, dan strategi konten.',
   },
   {
     slug: 'digital-marketing',
@@ -72,7 +72,7 @@ export const services: Service[] = [
     features: [
       'Audit dan perencanaan strategi digital',
       'Pengelolaan Meta Ads (Facebook/Instagram)',
-      'Content strategy untuk media sosial',
+      'Strategi konten untuk media sosial',
       'Email marketing dan nurturing',
       'Analitik terpadu dan laporan ROI',
     ],
@@ -105,7 +105,7 @@ export const services: Service[] = [
     slug: 'mobile-app',
     title: 'Aplikasi Mobile',
     shortTitle: 'Mobile App',
-    description: 'Solusi custom untuk customer-facing atau tim lapangan Anda.',
+    description: 'Solusi custom untuk aplikasi pelanggan atau tim lapangan Anda.',
     longDescription:
       'Pengembangan aplikasi mobile cross-platform dengan React Native — untuk customer-facing app, aplikasi internal tim, atau kombinasi keduanya.',
     icon: '📱',
@@ -113,7 +113,7 @@ export const services: Service[] = [
       'React Native — satu kode untuk Android & iOS',
       'Desain UI/UX yang intuitif',
       'Integrasi API dan backend',
-      'Submit ke Play Store & App Store',
+      'Publikasi ke Play Store & App Store',
       'Support post-launch',
     ],
     waMessage: 'mobileApp',

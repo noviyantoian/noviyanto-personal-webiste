@@ -14,7 +14,7 @@ const CASES: UseCase[] = [
   {
     icon: <Home className="w-5 h-5" />,
     title: 'Bisnis jasa dan layanan lokal',
-    body: 'Home spa panggilan, jasa bersih, les private, laundry, catering — bisnis yang butuh website sederhana tapi langsung bisa ditemukan calon customer di area terdekat.',
+    body: 'Home spa panggilan, jasa bersih, les privat, laundry, catering — bisnis yang butuh website sederhana tapi langsung bisa ditemukan calon pelanggan di area terdekat.',
   },
   {
     icon: <Briefcase className="w-5 h-5" />,

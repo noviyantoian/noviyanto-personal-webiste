@@ -55,7 +55,7 @@ const values = [
   {
     icon: <ShieldCheck className={ICON} />,
     title: 'Fokus pada hasil yang terukur',
-    body: 'Setiap layanan diarahkan ke satu tujuan: bisnis Anda mendapat lebih banyak leads dan customer.',
+    body: 'Setiap layanan diarahkan ke satu tujuan: bisnis Anda mendapat lebih banyak leads dan pelanggan.',
   },
 ]
 
@@ -106,7 +106,7 @@ export default function TentangPage() {
               </p>
               <p className="text-base sm:text-lg text-[#6B7280] leading-relaxed text-pretty">
                 Fokus saya bukan bikin website yang terlihat bagus, tapi membangun ekosistem
-                digital yang benar-benar menghasilkan leads dan customer. Setiap proyek
+                digital yang benar-benar menghasilkan leads dan pelanggan. Setiap proyek
                 dimulai dari pertanyaan yang sama: apa tujuan bisnis Anda?
               </p>
               <p className="mt-4 text-base sm:text-lg text-[#6B7280] leading-relaxed text-pretty">
@@ -161,7 +161,7 @@ export default function TentangPage() {
         headline="Bukan Vendor. Partner."
         background="gray"
         paragraphs={[
-          'Kebanyakan vendor selesaikan pekerjaan lalu pergi. Saya tidak seperti itu. Setiap proyek adalah hubungan jangka panjang — saya ada di sana saat website live, saat iklan butuh optimasi, dan saat sistem perlu disesuaikan dengan kondisi baru.',
+          'Kebanyakan vendor menyelesaikan pekerjaan, lalu pergi. Saya tidak seperti itu. Setiap proyek adalah hubungan jangka panjang — saya ada di sana saat website live, saat iklan butuh optimasi, dan saat sistem perlu disesuaikan dengan kondisi baru.',
           'Kalau menurut saya kebutuhan Anda lebih cocok diselesaikan dengan cara yang lebih sederhana — atau lebih hemat — saya akan bilang. Tidak ada gunanya menjual layanan yang tidak Anda butuhkan.',
         ]}
       />
@@ -207,7 +207,7 @@ export default function TentangPage() {
         eyebrow="Stack"
         headline="Teknologi yang Saya Pakai"
         paragraphs={[
-          'Saya tidak terikat pada satu platform. Pilihan stack disesuaikan dengan kebutuhan dan kondisi bisnis Anda — bukan yang paling trendy, tapi yang paling tepat.',
+          'Saya tidak terikat pada satu platform. Pilihan stack disesuaikan dengan kebutuhan dan kondisi bisnis Anda — bukan yang paling sedang tren, tapi yang paling tepat.',
         ]}
         chips={[
           'Next.js',

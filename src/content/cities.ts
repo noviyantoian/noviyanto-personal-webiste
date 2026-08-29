@@ -134,7 +134,7 @@ const JAKARTA: CityData = {
     {
       question: 'Bagaimana proses pembayaran dan kontraknya?',
       answer:
-        'Selalu ada kontrak kerja tertulis sebelum proyek mulai — berisi lingkup, timeline, deliverables, jumlah revisi, dan biaya. Pembayaran biasanya dibagi menjadi 2–3 tahap (DP, midpoint, dan pelunasan saat go-live). Tidak ada biaya tersembunyi.',
+        'Selalu ada kontrak kerja tertulis sebelum proyek mulai — berisi lingkup, timeline, deliverables, jumlah revisi, dan biaya. Pembayaran biasanya dibagi menjadi 2–3 tahap (DP, tengah proyek, dan pelunasan saat website tayang). Tidak ada biaya tersembunyi.',
     },
     {
       question: 'Kalau ada revisi mendesak, apakah harus menunggu Anda datang ke Jakarta?',
@@ -234,7 +234,7 @@ const BANDUNG: CityData = {
     {
       question: 'Bagaimana proses pembayaran dan kontraknya?',
       answer:
-        'Selalu ada kontrak kerja tertulis sebelum proyek mulai — berisi lingkup, timeline, deliverables, jumlah revisi, dan biaya. Pembayaran biasanya dibagi menjadi 2–3 tahap (DP, midpoint, dan pelunasan saat go-live). Tidak ada biaya tersembunyi.',
+        'Selalu ada kontrak kerja tertulis sebelum proyek mulai — berisi lingkup, timeline, deliverables, jumlah revisi, dan biaya. Pembayaran biasanya dibagi menjadi 2–3 tahap (DP, tengah proyek, dan pelunasan saat website tayang). Tidak ada biaya tersembunyi.',
     },
     {
       question: 'Saya sudah punya website dari developer lain di Bandung. Bisa dilanjutkan?',

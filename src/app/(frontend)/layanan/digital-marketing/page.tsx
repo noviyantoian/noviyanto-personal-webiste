@@ -54,7 +54,7 @@ const scope = [
   },
   {
     title: 'Content Strategy',
-    body: 'Rencana konten konsisten dan relevan di platform terpilih. Bukan posting rutin tanpa arah, tapi konten yang punya tujuan di setiap tahap buyer journey.',
+    body: 'Rencana konten konsisten dan relevan di platform terpilih. Bukan posting rutin tanpa arah, tapi konten yang punya tujuan di setiap tahap perjalanan pembeli.',
   },
   {
     title: 'Paid Advertising',
@@ -62,7 +62,7 @@ const scope = [
   },
   {
     title: 'Email Marketing',
-    body: 'Untuk bisnis yang sudah punya database customer atau lead — salah satu kanal dengan ROI tertinggi tapi paling sering diabaikan.',
+    body: 'Untuk bisnis yang sudah punya database pelanggan atau lead — salah satu kanal dengan ROI tertinggi tapi paling sering diabaikan.',
   },
   {
     title: 'Analitik dan Laporan',
@@ -77,7 +77,7 @@ const industries = [
   },
   {
     title: 'Tour & Travel',
-    body: 'Ada seasonality yang harus diperhitungkan. Konten inspirasi di awal, lanjut promosi spesifik mendekati momen ramai. Kombinasi organik dan paid yang berubah sesuai musim.',
+    body: 'Ada musim ramai dan sepi yang harus diperhitungkan. Konten inspirasi di awal, lanjut promosi spesifik mendekati momen ramai. Kombinasi organik dan paid yang berubah sesuai musim.',
   },
   {
     title: 'Perhiasan',
@@ -85,7 +85,7 @@ const industries = [
   },
   {
     title: 'B2B IT dan Profesional',
-    body: 'Siklus penjualan lebih panjang. Strategi content-led yang membangun kepercayaan lebih dulu sebelum menawarkan produk.',
+    body: 'Siklus penjualan lebih panjang. Strategi berbasis konten yang membangun kepercayaan lebih dulu sebelum menawarkan produk.',
   },
   {
     title: 'Sewa Kantor dan Virtual Office',
@@ -102,7 +102,7 @@ const faqItems = [
   {
     question: 'Siapa yang buat konten?',
     answer:
-      'Tergantung kesepakatan. Saya bisa handle strategi dan pengelolaan, sementara konten visual (foto, video) dari sisi Anda. Atau saya bisa koordinasikan dengan kreator konten yang sudah pernah bekerja sama.',
+      'Tergantung kesepakatan. Saya bisa menangani strategi dan pengelolaan, sementara konten visual (foto, video) dari sisi Anda. Atau saya bisa koordinasikan dengan kreator konten yang pernah bekerja sama.',
   },
   {
     question: 'Bagaimana cara mengukur keberhasilan?',
@@ -142,15 +142,15 @@ export default function DigitalMarketingPage() {
         headline="Sudah Coba Banyak Hal, tapi Tidak Ada yang Terasa Berhasil Penuh"
         paragraphs={[
           'Banyak pemilik bisnis sudah mencoba iklan di Instagram. Sudah punya website. Kadang posting di Facebook. Tapi semua berjalan terpisah tanpa strategi yang menyatukan.',
-          'Hasilnya: effort banyak, tapi tidak ada yang bisa diukur dengan jelas. Tidak tahu mana yang menghasilkan customer, mana yang membuang waktu.',
-          'Digital marketing yang efektif bukan soal ada di mana-mana. Soal ada di tempat yang tepat, dengan pesan yang tepat, untuk orang yang tepat.',
+          'Hasilnya: tenaga terkuras banyak, tapi tidak ada yang bisa diukur dengan jelas. Tidak tahu mana yang menghasilkan pelanggan, mana yang membuang waktu.',
+          'Digital marketing yang efektif bukan soal ada di mana-mana, tapi soal ada di tempat yang tepat, dengan pesan yang tepat, untuk orang yang tepat.',
         ]}
       />
 
       <ServiceCardGrid
         eyebrow="Cakupan Layanan"
         headline="Mulai dari Strategi, Bukan dari Tools"
-        intro="Sebelum memutuskan 'pakai Instagram atau TikTok', ada pertanyaan lebih mendasar: di mana target customer Anda menghabiskan waktu? Apa yang mereka cari? Dan di titik mana mereka siap dihubungi?"
+        intro="Sebelum memutuskan 'pakai Instagram atau TikTok', ada pertanyaan lebih mendasar: di mana calon pelanggan Anda menghabiskan waktu? Apa yang mereka cari? Dan di titik mana mereka siap dihubungi?"
         items={scope}
         columns={3}
         background="gray"
@@ -160,7 +160,7 @@ export default function DigitalMarketingPage() {
         eyebrow="Bukan untuk Semua Bisnis"
         headline="Jujur Soal Kapan Ini Cocok untuk Anda"
         paragraphs={[
-          'Digital marketing full-funnel paling efektif untuk bisnis yang sudah punya produk atau jasa terbukti, punya kapasitas menangani leads (tim sales, WhatsApp responsif, proses follow-up), dan siap komitmen minimal 3-6 bulan.',
+          'Digital marketing full-funnel paling efektif untuk bisnis yang sudah punya produk atau jasa terbukti, punya kapasitas menangani leads (tim sales, WhatsApp responsif, proses follow-up), dan siap komitmen minimal 3–6 bulan.',
           'Kalau bisnis Anda masih di tahap awal, mungkin dimulai dari satu kanal saja lebih masuk akal. Saya akan merekomendasikan yang paling realistis untuk kondisi Anda saat ini.',
         ]}
       />
@@ -179,10 +179,10 @@ export default function DigitalMarketingPage() {
 
       <ServiceCTA
         headline="Tidak Tahu Harus Mulai dari Mana?"
-        body="Itu wajar. Digital marketing punya banyak pilihan dan mudah terasa overwhelming. Ceritakan kondisi bisnis Anda sekarang, saya akan bantu identifikasi langkah pertama yang paling logis."
+        body="Itu wajar. Digital marketing punya banyak pilihan dan mudah bikin kewalahan. Ceritakan kondisi bisnis Anda sekarang, saya akan bantu identifikasi langkah pertama yang paling logis."
         ctaWaKey="digitalMarketing"
         ctaLabel="Mulai Diskusi via WhatsApp"
-        subText="Konsultasi gratis, tidak ada kewajiban apapun →"
+        subText="Konsultasi gratis, tidak ada kewajiban apa pun →"
       />
     </div>
   )

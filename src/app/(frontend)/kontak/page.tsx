@@ -42,7 +42,7 @@ const faqItems = [
   {
     question: 'Berapa lama respons setelah saya kirim?',
     answer:
-      'Hari kerja: biasanya beberapa jam. Akhir pekan atau hari libur bisa lebih lama. Untuk yang urgent, lanjutkan saja chat WhatsApp setelah submit.',
+      'Hari kerja: biasanya beberapa jam. Akhir pekan atau hari libur bisa lebih lama. Untuk yang mendesak, lanjutkan saja chat WhatsApp setelah form terkirim.',
   },
 ]
 

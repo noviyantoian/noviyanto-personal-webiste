@@ -46,7 +46,7 @@ const jsonLd = [
 const workItems = [
   {
     title: 'SEO Teknis',
-    body: 'Kecepatan loading, struktur URL, sitemap, schema markup, mobile-friendliness. Dasar-dasar yang harus benar sebelum hal lain dikerjakan.',
+    body: 'Kecepatan loading, struktur URL, sitemap, schema markup, kenyamanan di layar ponsel. Dasar-dasar yang harus benar sebelum hal lain dikerjakan.',
   },
   {
     title: 'On-page Optimization',
@@ -54,7 +54,7 @@ const workItems = [
   },
   {
     title: 'Konten',
-    body: 'Blog, artikel, atau halaman layanan yang menjawab pertanyaan spesifik target customer. Konten berguna, bukan yang sekadar dipenuhi keyword.',
+    body: 'Blog, artikel, atau halaman layanan yang menjawab pertanyaan spesifik calon pelanggan. Konten berguna, bukan yang sekadar dipenuhi keyword.',
   },
   {
     title: 'Local SEO',
@@ -69,7 +69,7 @@ const workItems = [
 const industries = [
   {
     title: 'Bisnis perhiasan',
-    body: 'Fokus brand awareness dan product discovery. Visual kuat dan konten storytelling yang membangun keinginan.',
+    body: 'Fokus membangun kesadaran merek dan penemuan produk. Visual kuat dan konten bercerita yang menumbuhkan keinginan.',
   },
   {
     title: 'Jasa panggilan lokal',
@@ -81,7 +81,7 @@ const industries = [
   },
   {
     title: 'B2B IT',
-    body: 'Keyword teknis dan berbasis solusi. Pendekatan content-led yang membangun otoritas.',
+    body: 'Keyword teknis dan berbasis solusi. Pendekatan berbasis konten yang membangun otoritas.',
   },
 ]
 
@@ -94,7 +94,7 @@ const timelineSteps = [
   {
     label: 'Bulan 3-4',
     title: 'Konten Terindeks',
-    description: 'Konten baru mulai terindeks, ranking bergerak untuk keyword ekor panjang.',
+    description: 'Konten baru mulai terindeks, ranking bergerak untuk keyword turunan yang lebih spesifik.',
   },
   {
     label: 'Bulan 5-6',
@@ -120,7 +120,7 @@ const faqItems = [
       'Tidak harus di awal, tapi sangat membantu jangka panjang. Konten blog yang menjawab pertanyaan spesifik audience adalah cara paling efektif untuk naik ranking.',
   },
   {
-    question: 'Apakah hasilnya bisa di-guarantee?',
+    question: 'Apakah hasilnya bisa dijamin?',
     answer:
       'Tidak ada yang bisa jamin posisi 1 Google — kalau ada yang menjanjikan itu, hati-hati. Yang saya jamin: proses transparan, taktik sesuai panduan Google, dan laporan jujur.',
   },
@@ -169,7 +169,7 @@ export default function SeoPage() {
       <ServiceCardGrid
         eyebrow="Yang Dikerjakan"
         headline="SEO yang Dimulai dari Riset, Bukan Asumsi"
-        intro="Sebelum menulis satu kata pun, saya cari tahu: kata kunci apa yang target customer Anda gunakan? Mana yang volume cukup tinggi tapi persaingannya bisa ditembus?"
+        intro="Sebelum menulis satu kata pun, saya cari tahu: kata kunci apa yang dipakai calon pelanggan Anda? Mana yang volume cukup tinggi tapi persaingannya bisa ditembus?"
         items={workItems}
         columns={3}
         background="gray"
@@ -195,7 +195,7 @@ export default function SeoPage() {
       <ServiceCardGrid
         eyebrow="Industri"
         headline="Pengalaman SEO di Berbagai Industri"
-        intro="Setiap industri punya dinamika pencarian berbeda. Brand perhiasan butuh pendekatan berbeda dari jasa hukum. Tour & travel punya seasonality yang harus diperhitungkan."
+        intro="Setiap industri punya dinamika pencarian berbeda. Brand perhiasan butuh pendekatan berbeda dari jasa hukum. Tour & travel punya musim ramai dan sepi yang harus diperhitungkan."
         items={industries}
       />
 
