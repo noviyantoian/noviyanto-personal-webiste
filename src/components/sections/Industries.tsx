@@ -22,9 +22,9 @@ interface Industry {
 
 const INDUSTRIES_LIST: Industry[] = [
   { name: 'B2B IT & Teknologi', icon: Cpu },
-  { name: 'Home Service', icon: Home, note: 'Home Spa · Bersih Rumah · Les Private' },
+  { name: 'Home Service', icon: Home, note: 'Home Spa · Bersih-Bersih Rumah · Les Privat' },
   { name: 'Tour & Travel', icon: Plane },
-  { name: 'Perhiasan & Jewelry', icon: Gem },
+  { name: 'Perhiasan & Batu Mulia', icon: Gem },
   { name: 'Firma Hukum & Legal', icon: Scale },
   { name: 'Sewa Kantor & Virtual Office', icon: Building2 },
   { name: 'E-commerce', icon: ShoppingBag },
@@ -49,7 +49,7 @@ export default function Industries() {
           Pengalaman di Lapangan, Bukan Teori
         </h2>
         <p className="text-[#6B7280] text-base sm:text-lg leading-relaxed text-pretty">
-          Setiap industri punya buyer behavior yang berbeda. Saya sudah pernah bekerja langsung di:
+          Setiap industri punya perilaku pembeli yang berbeda. Saya sudah menangani langsung:
         </p>
       </motion.div>
 
@@ -99,7 +99,7 @@ export default function Industries() {
         <span className="hidden sm:block w-1 h-1 rounded-full bg-[#E5E7EB]" aria-hidden="true" />
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]" aria-hidden="true" />
-          <span>3+ tahun menangani buyer behavior berbeda</span>
+          <span>3+ tahun menghadapi perilaku pembeli yang berbeda-beda</span>
         </div>
       </motion.div>
     </Section>

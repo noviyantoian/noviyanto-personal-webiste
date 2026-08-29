@@ -33,7 +33,7 @@ const BUSINESS_TYPES = [
   },
   {
     icon: Gem,
-    name: 'Perhiasan & Jewelry',
+    name: 'Perhiasan & Batu Mulia',
     desc: 'Toko emas, jewelry brand — katalog produk, brand storytelling, e-commerce.',
   },
   {

@@ -112,20 +112,22 @@ export default function HomePage() {
                 Digital Growth Partner · Berbasis di {SITE.baseCity}
               </div>
 
-              {/* H1 — menyebut lokasi agar beranda ikut menargetkan kueri lokal */}
+              {/* H1 — bicara ke pembaca, bukan ke satu kota. Sinyal lokal dipegang
+                  badge, subheadline, tautan /layanan/website/semarang, dan metadata. */}
               <h1 className="font-display font-extrabold text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.25rem] xl:text-7xl text-balance mb-6 leading-[1.05] tracking-tight text-[#111827]">
-                Bisnis Semarang Butuh{' '}
+                Bisnis Anda Butuh{' '}
                 <span className="bg-gradient-to-r from-[#F59E0B] to-[#F97316] bg-clip-text text-transparent">
                   Leads
                 </span>
                 , Bukan Sekadar Website
               </h1>
 
-              {/* Subheadline — menyebut layanan + kota, lalu memperluas ke kota lain */}
+              {/* Subheadline — layanan dulu, jangkauan sesudahnya, lalu manfaatnya */}
               <p className="text-base sm:text-lg text-[#6B7280] max-w-2xl mx-auto lg:mx-0 mb-8 text-pretty leading-relaxed">
-                Jasa pembuatan website dan digital marketing di Semarang — juga melayani
-                Jakarta, Bandung, dan kota lain secara remote. Saya bantu bisnis Anda
-                ditemukan di Google dan diubah jadi customer nyata.
+                Jasa pembuatan website dan digital marketing untuk bisnis di mana pun Anda
+                berada. Berbasis di Semarang, mengerjakan klien Jakarta, Bandung, dan kota
+                lainnya secara remote. Saya bantu bisnis Anda ditemukan di Google — lalu
+                mengubah pengunjungnya jadi pelanggan.
               </p>
 
               {/* CTAs */}

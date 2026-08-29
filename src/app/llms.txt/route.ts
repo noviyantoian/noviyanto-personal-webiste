@@ -81,7 +81,7 @@ license: RSL-1.0
 - B2B IT & Teknologi
 - Home Service (spa panggilan, jasa bersih, les private)
 - Tour & Travel
-- Perhiasan & Jewelry
+- Perhiasan & Batu Mulia
 - Firma Hukum & Legal
 - Sewa Kantor & Virtual Office
 - E-commerce

@@ -20,7 +20,7 @@ export const INDUSTRY_ICONS: Record<string, LucideIcon> = {
   'B2B IT & Teknologi': Cpu,
   'Home Service': Home,
   'Tour & Travel': Plane,
-  'Perhiasan & Jewelry': Gem,
+  'Perhiasan & Batu Mulia': Gem,
   'Firma Hukum & Legal': Scale,
   'Sewa Kantor & Virtual Office': Building2,
   'E-commerce': ShoppingBag,

@@ -20,7 +20,7 @@ const STEPS = [
     number: '03',
     title: 'Eksekusi',
     description:
-      'Website dibuat, iklan dijalankan, traffic dibangun. Anda fokus ke bisnis, saya urus digitalnya.',
+      'Website dibuat, iklan dijalankan, trafik ditumbuhkan. Anda fokus mengurus bisnis, sisi digitalnya saya yang pegang.',
   },
 ] as const
 
@@ -43,7 +43,7 @@ export default function Process() {
           </span>
         </h2>
         <p className="text-[#6B7280] text-base sm:text-lg leading-relaxed text-pretty">
-          Kebanyakan vendor selesaikan pekerjaan lalu pergi. Saya tidak seperti itu.
+          Kebanyakan vendor menyelesaikan pekerjaan, lalu pergi. Saya tidak seperti itu.
         </p>
       </motion.div>
 

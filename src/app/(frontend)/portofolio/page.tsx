@@ -370,7 +370,7 @@ export default function PortofolioPage() {
           return {
             icon: Icon ? <Icon className="w-5 h-5" /> : null,
             title: i.name,
-            body: 'Pendekatan disesuaikan dengan buyer behavior dan dinamika pencarian industri ini.',
+            body: 'Pendekatan disesuaikan dengan perilaku pembeli dan dinamika pencarian di industri ini.',
           }
         })}
         columns={3}

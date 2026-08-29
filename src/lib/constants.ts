@@ -116,7 +116,7 @@ export const INDUSTRIES = [
   { name: 'B2B IT & Teknologi',             icon: '💻' },
   { name: 'Home Service',                  icon: '🏠' },
   { name: 'Tour & Travel',                   icon: '✈️' },
-  { name: 'Perhiasan & Jewelry',             icon: '💎' },
+  { name: 'Perhiasan & Batu Mulia',             icon: '💎' },
   { name: 'Firma Hukum & Legal',             icon: '⚖️' },
   { name: 'Sewa Kantor & Virtual Office',    icon: '🏢' },
   { name: 'E-commerce',                      icon: '🛒' },

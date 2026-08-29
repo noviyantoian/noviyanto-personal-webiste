@@ -178,8 +178,8 @@ export default function TentangPage() {
         headline="3+ Tahun, 30+ Proyek, 7 Industri"
         background="gray"
         paragraphs={[
-          'Setiap industri punya buyer behavior yang berbeda. Pendekatan untuk firma hukum tidak sama dengan brand perhiasan. Strategi untuk B2B IT tidak bisa dipakai untuk tour & travel.',
-          'Saya sudah pernah bekerja di:',
+          'Setiap industri punya perilaku pembeli yang berbeda. Pendekatan untuk firma hukum tidak sama dengan brand perhiasan. Strategi untuk B2B IT tidak bisa dipakai untuk tour & travel.',
+          'Saya sudah menangani langsung:',
         ]}
       >
         <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">

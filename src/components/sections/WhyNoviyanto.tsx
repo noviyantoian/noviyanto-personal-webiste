@@ -16,13 +16,13 @@ const REASONS: Reason[] = [
     icon: Brain,
     title: 'Pendekatan yang kontekstual',
     description:
-      'Setiap rekomendasi dimulai dari kondisi dan tujuan bisnis Anda. Kita cari solusi yang paling pas, bersama.',
+      'Setiap rekomendasi berangkat dari kondisi dan tujuan bisnis Anda. Solusinya kita cari bersama, bukan saya tentukan sendiri.',
   },
   {
     icon: TrendingUp,
     title: 'Fokus pada hasil yang terukur',
     description:
-      'Setiap layanan diarahkan ke satu tujuan: bisnis Anda mendapat lebih banyak leads dan customer.',
+      'Setiap layanan diarahkan ke satu tujuan: bisnis Anda mendapat lebih banyak leads dan pelanggan.',
   },
   {
     icon: MessageCircle,

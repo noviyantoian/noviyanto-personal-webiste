@@ -21,8 +21,8 @@ export default function Problem() {
 
         <div className="space-y-6 text-[#6B7280] text-base sm:text-lg leading-relaxed text-pretty">
           <p>
-            Sudah punya website, tapi tidak ada inquiry yang masuk. Sudah coba iklan, tapi
-            hasilnya tidak sepadan.
+            Sudah punya website, tapi tidak ada yang menghubungi. Sudah coba iklan, tapi
+            hasilnya tidak sepadan dengan biayanya.
           </p>
           <p>
             Masalahnya bukan di alatnya, tapi di strateginya.
