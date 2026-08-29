@@ -15,6 +15,8 @@ import ServiceHero from '@/components/sections/ServiceHero'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
 import ClientReviews from '@/components/sections/ClientReviews'
+import RelatedLinks from '@/components/sections/RelatedLinks'
+import { RELATED_ARTICLES } from '@/content/related'
 
 import WebsiteProblem from './_components/WebsiteProblem'
 import WebsiteApproach from './_components/WebsiteApproach'
@@ -117,7 +119,7 @@ export default function WebsiteServicePage() {
 
       <ServiceHero
         badge="Website Development"
-        headline="Website yang Bekerja Keras untuk Bisnis Anda"
+        headline="Jasa Pembuatan Website yang Bekerja Keras untuk Bisnis Anda"
         highlight="Bekerja Keras"
         subheadline="Bukan soal tampilan semata. Website yang benar-benar berguna itu mengubah pengunjung jadi orang yang menghubungi Anda, bukan sekadar membaca lalu pergi."
         ctaWaKey="website"
@@ -148,6 +150,12 @@ export default function WebsiteServicePage() {
       <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
+
+      <RelatedLinks
+        eyebrow="Bacaan Terkait"
+        headline="Pelajari Dulu Sebelum Memutuskan"
+        items={RELATED_ARTICLES['/layanan/website']}
+      />
 
       <ServiceCTA
         headline="Siap Punya Website yang Benar-benar Berguna?"

@@ -17,6 +17,8 @@ import SemarangLocal from './_components/SemarangLocal'
 import SemarangAuthor from './_components/SemarangAuthor'
 import WebsiteBusinessTypes from '../_components/WebsiteBusinessTypes'
 import ClientReviews from '@/components/sections/ClientReviews'
+import RelatedLinks from '@/components/sections/RelatedLinks'
+import { RELATED_ARTICLES } from '@/content/related'
 import WebsitePricing from '../_components/WebsitePricing'
 
 const PATH = '/layanan/website/semarang'
@@ -231,6 +233,12 @@ export default function SemarangWebsitePage() {
       <ServiceFAQ
         items={[...faqItems]}
         title="Pertanyaan yang Sering Ditanyakan oleh Klien di Semarang"
+      />
+
+      <RelatedLinks
+        eyebrow="Bacaan Terkait"
+        headline="Pelajari Dulu Sebelum Memutuskan"
+        items={RELATED_ARTICLES['/layanan/website/semarang']}
       />
 
       <ServiceCTA

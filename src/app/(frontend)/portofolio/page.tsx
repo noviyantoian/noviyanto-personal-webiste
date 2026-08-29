@@ -22,6 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Klien aktif Noviyanto: Truly Home Massage, Jeda Home Massage, Rockologist, Prioffice, Layz Motor, Folclean, Wallblock, Inisumedang. Maintenance, Google Ads, SEO, VPS.',
     path: PATH,
     keywords: ['portofolio Noviyanto', 'klien Noviyanto', 'case study web maintenance', 'digital marketing client'],
+    hasGeneratedOgImage: true,
   })
 }
 

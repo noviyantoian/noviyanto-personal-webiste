@@ -23,6 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Noviyanto — digital growth partner berbasis di Semarang. Lebih dari 3 tahun bantu bisnis di 7+ industri tumbuh secara digital, dari Jakarta sampai Semarang.',
     path: PATH,
     keywords: ['Noviyanto', 'tentang Noviyanto', 'digital growth partner', 'web developer Semarang'],
+    hasGeneratedOgImage: true,
   })
 }
 

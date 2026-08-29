@@ -11,6 +11,8 @@ import ServiceTimeline from '@/components/sections/ServiceTimeline'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
 import ClientReviews from '@/components/sections/ClientReviews'
+import RelatedLinks from '@/components/sections/RelatedLinks'
+import { RELATED_ARTICLES } from '@/content/related'
 
 const PATH = '/layanan/seo'
 const URL = `${SITE.url}${PATH}`
@@ -149,8 +151,8 @@ export default function SeoPage() {
 
       <ServiceHero
         badge="SEO Organik"
-        headline="Muncul di Halaman Pertama Google Tanpa Terus Bayar Iklan"
-        highlight="Tanpa Terus Bayar Iklan"
+        headline="Jasa SEO yang Membuat Anda Muncul di Halaman Pertama Google"
+        highlight="Halaman Pertama Google"
         subheadline="SEO yang dikerjakan dengan benar adalah investasi. Semakin lama, hasilnya semakin kuat. Sementara kompetitor masih bayar per klik, bisnis Anda sudah ditemukan secara gratis."
         ctaWaKey="seo"
         ctaLabel="Cek Kondisi SEO Website Saya"
@@ -202,6 +204,12 @@ export default function SeoPage() {
       <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
+
+      <RelatedLinks
+        eyebrow="Bacaan Terkait"
+        headline="Pelajari Dulu Sebelum Memutuskan"
+        items={RELATED_ARTICLES['/layanan/seo']}
+      />
 
       <ServiceCTA
         headline="Ingin Tahu Kondisi SEO Website Anda Sekarang?"

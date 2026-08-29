@@ -28,6 +28,16 @@ export interface GenerateMetadataParams {
    * dobel dengan og:image dari konvensi file Next.
    */
   hasGeneratedOgImage?: boolean
+  /**
+   * Metadata Open Graph khusus artikel. Kalau diisi, og:type jadi 'article'
+   * dan tanggal terbit/ubah plus penulis ikut diemit — sinyal yang dibaca
+   * Google Discover dan pratinjau sosial, dan tidak berlaku untuk halaman biasa.
+   */
+  article?: {
+    publishedTime?: string
+    modifiedTime?: string
+    authors?: string[]
+  }
 }
 
 export function generateMetadata({
@@ -38,6 +48,7 @@ export function generateMetadata({
   keywords,
   noIndex = false,
   hasGeneratedOgImage = false,
+  article,
 }: GenerateMetadataParams): Metadata {
   const url = `${SITE.url}${path}`
   const image = ogImage ?? SITE.ogImage
@@ -57,7 +68,14 @@ export function generateMetadata({
       url,
       siteName: SITE.name,
       locale: 'id_ID',
-      type: 'website',
+      ...(article
+        ? {
+            type: 'article' as const,
+            publishedTime: article.publishedTime,
+            modifiedTime: article.modifiedTime,
+            authors: article.authors,
+          }
+        : { type: 'website' as const }),
       ...(hasGeneratedOgImage
         ? {}
         : { images: [{ url: image, width: 1200, height: 630, alt: title }] }),

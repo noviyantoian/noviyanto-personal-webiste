@@ -10,6 +10,8 @@ import ServiceCardGrid from '@/components/sections/ServiceCardGrid'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
 import ClientReviews from '@/components/sections/ClientReviews'
+import RelatedLinks from '@/components/sections/RelatedLinks'
+import { RELATED_ARTICLES } from '@/content/related'
 
 const PATH = '/layanan/digital-marketing'
 const URL = `${SITE.url}${PATH}`
@@ -129,7 +131,7 @@ export default function DigitalMarketingPage() {
 
       <ServiceHero
         badge="Digital Marketing"
-        headline="Strategi Digital yang Menyatukan Semua Kanal, Bukan yang Jalan Sendiri-sendiri"
+        headline="Jasa Digital Marketing yang Menyatukan Semua Kanal, Bukan yang Jalan Sendiri-sendiri"
         highlight="Menyatukan Semua Kanal"
         subheadline="Website, iklan, SEO, dan media sosial yang bekerja secara terpadu menghasilkan lebih dari yang dikerjakan terpisah. Saya bantu Anda merancang dan menjalankan ekosistem digital yang saling mendukung."
         ctaWaKey="digitalMarketing"
@@ -176,6 +178,12 @@ export default function DigitalMarketingPage() {
       <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
+
+      <RelatedLinks
+        eyebrow="Bacaan Terkait"
+        headline="Pelajari Dulu Sebelum Memutuskan"
+        items={RELATED_ARTICLES['/layanan/digital-marketing']}
+      />
 
       <ServiceCTA
         headline="Tidak Tahu Harus Mulai dari Mana?"

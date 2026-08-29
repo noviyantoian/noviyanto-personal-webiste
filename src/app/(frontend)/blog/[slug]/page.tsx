@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, Clock } from 'lucide-react'
 import RichText from '@/components/blog/RichText'
+import RelatedLinks from '@/components/sections/RelatedLinks'
+import { RELATED_SERVICES } from '@/content/related'
 import {
   getPostBySlug,
   getAllPublishedSlugs,
@@ -54,6 +56,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description: post.meta?.description ?? post.excerpt,
     path: `/blog/${post.slug}`,
     ogImage,
+    article: {
+      publishedTime: post.publishedAt ?? post.createdAt,
+      modifiedTime: post.updatedAt,
+      authors: [SITE.name],
+    },
   })
 }
 
@@ -80,6 +87,7 @@ export default async function BlogPostPage({ params }: PageProps) {
     }),
     breadcrumbSchema([
       { name: 'Beranda', url: SITE.url },
+      { name: 'Blog', url: `${SITE.url}/blog` },
       { name: post.title, url },
     ]),
   ]
@@ -163,6 +171,14 @@ export default async function BlogPostPage({ params }: PageProps) {
           </Link>
         </aside>
       </article>
+
+      {/* Arah sebaliknya dari tautan di halaman layanan: artikel ikut
+          menyalurkan otoritas balik ke halaman yang menghasilkan inquiry. */}
+      <RelatedLinks
+        eyebrow="Layanan Terkait"
+        headline="Butuh Bantuan Mengerjakannya?"
+        items={RELATED_SERVICES[post.slug] ?? []}
+      />
     </>
   )
 }

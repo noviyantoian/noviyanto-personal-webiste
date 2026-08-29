@@ -16,6 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Artikel praktis seputar web development, SEO, Google Ads, dan strategi pertumbuhan bisnis dari Noviyanto — digital growth partner.',
     path: '/blog',
     keywords: ['blog digital marketing', 'tips SEO', 'web development', 'Noviyanto'],
+    hasGeneratedOgImage: true,
   })
 }
 

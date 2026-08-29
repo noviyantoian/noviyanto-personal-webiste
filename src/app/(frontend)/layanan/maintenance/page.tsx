@@ -11,6 +11,8 @@ import ServiceColumns from '@/components/sections/ServiceColumns'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
 import ClientReviews from '@/components/sections/ClientReviews'
+import RelatedLinks from '@/components/sections/RelatedLinks'
+import { RELATED_ARTICLES } from '@/content/related'
 
 const PATH = '/layanan/maintenance'
 const URL = `${SITE.url}${PATH}`
@@ -129,7 +131,7 @@ export default function MaintenancePage() {
 
       <ServiceHero
         badge="Maintenance"
-        headline="Website Anda Selalu Online, Aman, dan Performa Terjaga"
+        headline="Maintenance Website: Selalu Online, Aman, dan Performa Terjaga"
         highlight="Online, Aman, dan Performa Terjaga"
         subheadline="Website yang tidak dirawat itu seperti toko yang pintunya tidak pernah dibersihkan dan lampunya mulai redup. Calon pelanggan tetap melihat, tapi kesan yang tertinggal bukan yang Anda inginkan."
         ctaWaKey="maintenance"
@@ -198,6 +200,12 @@ export default function MaintenancePage() {
       <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
+
+      <RelatedLinks
+        eyebrow="Bacaan Terkait"
+        headline="Pelajari Dulu Sebelum Memutuskan"
+        items={RELATED_ARTICLES['/layanan/maintenance']}
+      />
 
       <ServiceCTA
         headline="Website Anda Sudah Terakhir Dicek Kapan?"

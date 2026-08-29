@@ -13,6 +13,8 @@ import ServiceTimeline from '@/components/sections/ServiceTimeline'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
 import ClientReviews from '@/components/sections/ClientReviews'
+import RelatedLinks from '@/components/sections/RelatedLinks'
+import { RELATED_ARTICLES } from '@/content/related'
 
 const PATH = '/layanan/google-ads'
 const URL = `${SITE.url}${PATH}`
@@ -138,7 +140,7 @@ export default function GoogleAdsPage() {
 
       <ServiceHero
         badge="Google Ads"
-        headline="Customer Baru Bisa Mulai Masuk Minggu Pertama"
+        headline="Jasa Google Ads: Pelanggan Baru Bisa Mulai Masuk Minggu Pertama"
         highlight="Minggu Pertama"
         subheadline="Google Ads yang dikelola dengan benar bukan soal bayar mahal, tapi soal memasang iklan di depan orang yang sedang aktif mencari bisnis seperti milik Anda, di saat yang tepat."
         ctaWaKey="googleAds"
@@ -200,6 +202,12 @@ export default function GoogleAdsPage() {
       <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
+
+      <RelatedLinks
+        eyebrow="Bacaan Terkait"
+        headline="Pelajari Dulu Sebelum Memutuskan"
+        items={RELATED_ARTICLES['/layanan/google-ads']}
+      />
 
       <ServiceCTA
         headline="Berapa Leads yang Bisa Saya Harapkan?"

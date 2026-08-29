@@ -12,6 +12,8 @@ import ServiceTimeline from '@/components/sections/ServiceTimeline'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
 import ClientReviews from '@/components/sections/ClientReviews'
+import RelatedLinks from '@/components/sections/RelatedLinks'
+import { RELATED_ARTICLES } from '@/content/related'
 
 const PATH = '/layanan/ai-integration'
 const URL = `${SITE.url}${PATH}`
@@ -137,8 +139,8 @@ export default function AiIntegrationPage() {
 
       <ServiceHero
         badge="AI Integration"
-        headline="Otomasi Pekerjaan yang Berulang Agar Tim Anda Fokus ke Hal yang Lebih Penting"
-        highlight="Pekerjaan yang Berulang"
+        headline="Integrasi AI untuk Mengotomasi Pekerjaan Berulang Tim Anda"
+        highlight="Pekerjaan Berulang"
         subheadline="AI bukan tentang ganti manusia. Ini tentang menghilangkan pekerjaan membosankan yang menyita waktu tim Anda — supaya energi bisa difokuskan ke hal yang benar-benar membutuhkan penilaian manusia."
         ctaWaKey="aiIntegration"
         ctaLabel="Diskusikan Kebutuhan Otomasi Bisnis Saya"
@@ -193,6 +195,12 @@ export default function AiIntegrationPage() {
       <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
+
+      <RelatedLinks
+        eyebrow="Bacaan Terkait"
+        headline="Pelajari Dulu Sebelum Memutuskan"
+        items={RELATED_ARTICLES['/layanan/ai-integration']}
+      />
 
       <ServiceCTA
         headline="Ada Pekerjaan yang Ingin Anda Otomasi tapi Tidak Tahu Caranya?"

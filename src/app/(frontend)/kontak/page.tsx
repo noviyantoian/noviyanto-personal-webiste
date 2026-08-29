@@ -20,6 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Isi form konsultasi singkat, ceritakan kebutuhan bisnis Anda, lalu lanjut diskusi langsung via WhatsApp. Konsultasi pertama gratis, tanpa komitmen.',
     path: PATH,
     keywords: ['kontak Noviyanto', 'konsultasi web developer', 'konsultasi digital Semarang'],
+    hasGeneratedOgImage: true,
   })
 }
 

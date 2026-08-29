@@ -17,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Syarat & Ketentuan penggunaan situs dan layanan Noviyanto — lingkup layanan, kontrak proyek, pembayaran, kekayaan intelektual, dan batasan tanggung jawab.',
     path: PATH,
     keywords: ['syarat dan ketentuan Noviyanto', 'terms and conditions'],
+    hasGeneratedOgImage: true,
   })
 }
 

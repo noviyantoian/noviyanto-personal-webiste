@@ -25,15 +25,20 @@ export async function generateSitemaps(): Promise<{ id: SitemapId }[]> {
 // Static lastmod dates — Google mengabaikan dynamic new Date() per request.
 // Update manual saat halaman mengalami perubahan konten signifikan.
 const LAST_MODIFIED = {
-  home:       new Date('2026-06-02'),
-  layanan:    new Date('2026-06-02'),
-  services:   new Date('2026-06-02'),
-  semarang:   new Date('2026-06-02'),
-  industri:   new Date('2026-06-03'),
-  portofolio: new Date('2026-05-30'),
-  blog:       new Date('2026-06-01'),
-  tentang:    new Date('2026-06-02'),
-  kontak:     new Date('2026-05-30'),
+  // 2026-08-30: revisi copy menyeluruh (H1 beranda + halaman layanan),
+  // dua klien portofolio baru, dan kartu OG untuk halaman yang sebelumnya
+  // memakai gambar fallback.
+  home:       new Date('2026-08-30'),
+  layanan:    new Date('2026-08-30'),
+  services:   new Date('2026-08-30'),
+  semarang:   new Date('2026-08-30'),
+  industri:   new Date('2026-08-30'),
+  portofolio: new Date('2026-08-30'),
+  blog:       new Date('2026-08-30'),
+  tentang:    new Date('2026-08-30'),
+  kontak:     new Date('2026-08-30'),
+  // Isi halaman legal tidak berubah — tanggalnya sengaja dibiarkan supaya
+  // Google tidak diminta merayapi ulang sesuatu yang tidak bergerak.
   legal:      new Date('2026-05-01'),
 } as const
 

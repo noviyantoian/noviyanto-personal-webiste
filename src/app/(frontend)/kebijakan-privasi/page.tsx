@@ -17,6 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Kebijakan Privasi Noviyanto — bagaimana data yang Anda berikan melalui form konsultasi dan kunjungan situs dikumpulkan, digunakan, dan dilindungi.',
     path: PATH,
     keywords: ['kebijakan privasi Noviyanto', 'privacy policy'],
+    hasGeneratedOgImage: true,
   })
 }
 
