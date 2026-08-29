@@ -56,7 +56,7 @@ license: RSL-1.0
 ## Halaman Utama
 - [Beranda](${u}/): Web Developer & Digital Marketing Expert. Hero, layanan, industri, dan CTA konsultasi.
 - [Layanan](${u}/layanan): Daftar 7 layanan dengan kartu navigasi.
-- [Portofolio](${u}/portofolio): 7 klien aktif yang sedang dikelola, plus founder Folkastudio.
+- [Portofolio](${u}/portofolio): 9 klien aktif yang sedang dikelola, plus founder Folkastudio.
 - [Tentang](${u}/tentang): Latar belakang, filosofi kerja, pengalaman lintas industri, stack teknologi.
 - [Kontak](${u}/kontak): WhatsApp, form konsultasi, email, alamat Semarang.
 
@@ -94,6 +94,8 @@ license: RSL-1.0
 - Prioffice (prioffice.com): Maintenance
 - Layz Motor (layz-motor.com): Maintenance
 - Lapin (lapin.id): Google Ads
+- Folclean (folclean.com): Maintenance, SEO, Google Ads, Manage VPS
+- Wallblock (wallblock.co.id): Maintenance, SEO, Google Ads, Manage VPS
 - Inisumedang (inisumedang.com): Manage VPS
 
 ## Stack Teknologi

@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: 'Portofolio — Klien Aktif di Berbagai Industri',
     description:
-      'Klien aktif Noviyanto: Truly Home Massage, Jeda Home Massage, Layz Motor, Rockologist, Prioffice, Inisumedang. Web maintenance, Google Ads, SEO, VPS.',
+      'Klien aktif Noviyanto: Truly Home Massage, Jeda Home Massage, Rockologist, Prioffice, Layz Motor, Folclean, Wallblock, Inisumedang. Maintenance, Google Ads, SEO, VPS.',
     path: PATH,
     keywords: ['portofolio Noviyanto', 'klien Noviyanto', 'case study web maintenance', 'digital marketing client'],
   })
@@ -31,7 +31,7 @@ function buildJsonLd(items: { name: string; url: string; description?: string }[
       url: URL,
       name: 'Portofolio Klien Aktif Noviyanto',
       description:
-        'Daftar klien aktif Noviyanto di berbagai industri — home service, jewelry, virtual office, otomotif, media. Bukan demo, bukan testimoni satu kali.',
+        'Daftar klien aktif Noviyanto di berbagai industri — home service, cleaning service, B2B IT, jewelry, virtual office, otomotif, media. Bukan demo, bukan testimoni satu kali.',
       items,
     }),
     breadcrumbSchema([
@@ -147,6 +147,32 @@ const clients: Client[] = [
     summary:
       'Portal berita daerah Sumedang. Pengelolaan VPS — keamanan server, performa, dan ketersediaan untuk traffic harian yang konsisten.',
     highlight: 'Infrastruktur VPS yang stabil untuk traffic media',
+  },
+  {
+    slug: 'folclean',
+    name: 'Folclean',
+    domain: 'folclean.com',
+    industry: 'Cleaning Service · Rumah & Gedung',
+    logo: '/images/clients/folclean.png',
+    logoBg: 'white',
+    wallLogo: '/images/clients/navbar/folclean.png',
+    services: ['Maintenance Website', 'SEO', 'Google Ads', 'Manage VPS'],
+    summary:
+      'Jasa kebersihan rumah dan gedung di Semarang dan Kendal. Pengelolaan penuh — maintenance website, SEO lokal, Google Ads, sampai VPS tempat situsnya berjalan.',
+    highlight: 'Satu tangan dari server sampai kampanye iklan',
+  },
+  {
+    slug: 'wallblock',
+    name: 'Wallblock',
+    domain: 'wallblock.co.id',
+    industry: 'B2B IT · Cyber Security',
+    logo: '/images/clients/wallblock.png',
+    logoBg: 'white',
+    wallLogo: '/images/clients/navbar/wallblock.png',
+    services: ['Maintenance Website', 'SEO', 'Google Ads', 'Manage VPS'],
+    summary:
+      'Vendor pengadaan IT dan mitra cyber security untuk bank, rumah sakit, dan korporasi di Jawa Tengah. Pengelolaan menyeluruh dari infrastruktur VPS sampai akuisisi lead B2B.',
+    highlight: 'Funnel B2B untuk siklus keputusan panjang',
   },
 ]
 
@@ -309,7 +335,7 @@ export default function PortofolioPage() {
           'Setiap logo di bawah adalah klien yang sedang berjalan — bukan testimonial satu kali, bukan demo. Hubungan kerja jangka panjang yang terus berlangsung setiap bulan.',
         ]}
       >
-        <ul className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-10 items-center">
+        <ul className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-10 items-center">
           {clients.map((c) => (
             <li key={c.slug} className="flex justify-center">
               <div

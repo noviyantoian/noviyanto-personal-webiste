@@ -13,6 +13,8 @@ const CLIENT_LOGOS: ClientLogo[] = [
   { name: 'Prioffice', src: '/images/clients/navbar/prioffice.png' },
   { name: 'Layz Motor', src: '/images/clients/navbar/layz-motor.png' },
   { name: 'Lapin', src: '/images/clients/navbar/lapin.png' },
+  { name: 'Folclean', src: '/images/clients/navbar/folclean.png' },
+  { name: 'Wallblock', src: '/images/clients/navbar/wallblock.png' },
   { name: 'Inisumedang', src: '/images/clients/navbar/inisumedang.png' },
 ]
 
@@ -23,7 +25,7 @@ export default function ClientLogos() {
         <p className="text-center text-xs sm:text-sm font-medium uppercase tracking-[0.15em] text-[#9CA3AF] mb-8">
           Dipercaya bisnis aktif di berbagai industri
         </p>
-        <ul className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-x-6 gap-y-8 items-center">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 gap-x-5 gap-y-8 items-center">
           {CLIENT_LOGOS.map((logo) => (
             <li key={logo.name} className="flex justify-center">
               <div
