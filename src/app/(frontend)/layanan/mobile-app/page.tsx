@@ -12,6 +12,8 @@ import ServiceTimeline from '@/components/sections/ServiceTimeline'
 import ServiceFAQ from '@/components/sections/ServiceFAQ'
 import ServiceCTA from '@/components/sections/ServiceCTA'
 import ClientReviews from '@/components/sections/ClientReviews'
+import RelatedLinks from '@/components/sections/RelatedLinks'
+import { RELATED_ARTICLES } from '@/content/related'
 
 const PATH = '/layanan/mobile-app'
 const URL = `${SITE.url}${PATH}`
@@ -183,6 +185,12 @@ export default function MobileAppPage() {
       <ClientReviews />
 
       <ServiceFAQ items={faqItems} title="Pertanyaan yang Sering Ditanyakan" />
+
+      <RelatedLinks
+        eyebrow="Bacaan Terkait"
+        headline="Pelajari Dulu Sebelum Memutuskan"
+        items={RELATED_ARTICLES['/layanan/mobile-app']}
+      />
 
       <ServiceCTA
         headline="Punya Ide Aplikasi tapi Tidak Tahu Harus Mulai dari Mana?"

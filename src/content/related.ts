@@ -45,6 +45,11 @@ const ARTICLE: Record<string, RelatedLink> = {
     title: 'Berapa Biaya Jasa Pembuatan Website di Semarang?',
     blurb: 'Rincian yang membentuk harga sebuah website, dan kenapa angkanya bisa jauh berbeda.',
   },
+  aplikasiMobile: {
+    href: '/blog/kapan-bisnis-butuh-aplikasi-mobile-kapan-cukup-website',
+    title: 'Kapan Bisnis Butuh Aplikasi Mobile, Kapan Cukup Website',
+    blurb: 'Lima kondisi yang benar-benar menuntut aplikasi, dan biaya perawatan yang jarang dihitung.',
+  },
   pelajaran: {
     href: '/blog/5-pelajaran-dari-30-proyek-digital-kenapa-website-saja-tidak-cukup',
     title: '5 Pelajaran dari 30+ Proyek Digital',
@@ -78,6 +83,11 @@ const SERVICE: Record<string, RelatedLink> = {
     title: 'Jasa Digital Marketing',
     blurb: 'Website, iklan, SEO, dan media sosial yang dijalankan sebagai satu ekosistem.',
   },
+  mobileApp: {
+    href: '/layanan/mobile-app',
+    title: 'Pembuatan Aplikasi Mobile',
+    blurb: 'React Native — satu basis kode untuk Android dan iOS, terhubung ke sistem yang sudah berjalan.',
+  },
   semarang: {
     href: '/layanan/website/semarang',
     title: 'Jasa Pembuatan Website Semarang',
@@ -87,12 +97,13 @@ const SERVICE: Record<string, RelatedLink> = {
 
 /** Artikel pendukung yang ditampilkan di halaman layanan, di-key oleh path halaman. */
 export const RELATED_ARTICLES: Record<string, RelatedLink[]> = {
-  '/layanan/website': [ARTICLE.checklist, ARTICLE.biaya],
+  '/layanan/website': [ARTICLE.checklist, ARTICLE.biaya, ARTICLE.aplikasiMobile],
   '/layanan/seo': [ARTICLE.seoOnPage, ARTICLE.adsVsSeo],
   '/layanan/google-ads': [ARTICLE.adsVsSeo, ARTICLE.pelajaran],
   '/layanan/maintenance': [ARTICLE.keamanan],
   '/layanan/digital-marketing': [ARTICLE.pelajaran, ARTICLE.checklist],
   '/layanan/ai-integration': [ARTICLE.keamanan],
+  '/layanan/mobile-app': [ARTICLE.aplikasiMobile, ARTICLE.pelajaran],
   '/layanan/website/semarang': [ARTICLE.biaya, ARTICLE.checklist],
 }
 
@@ -110,6 +121,10 @@ export const RELATED_SERVICES: Record<string, RelatedLink[]> = {
   ],
   'berapa-biaya-jasa-pembuatan-website-di-semarang-panduan-harga-paket-2026': [
     SERVICE.semarang,
+    SERVICE.website,
+  ],
+  'kapan-bisnis-butuh-aplikasi-mobile-kapan-cukup-website': [
+    SERVICE.mobileApp,
     SERVICE.website,
   ],
   '5-pelajaran-dari-30-proyek-digital-kenapa-website-saja-tidak-cukup': [
