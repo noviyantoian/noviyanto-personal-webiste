@@ -609,7 +609,7 @@ export interface SiteSetting {
    */
   defaultOgImage?: (number | null) | Media;
   /**
-   * URL profil untuk Google Knowledge Graph. Tambahkan LinkedIn, Instagram, Google Business Profile, dll.
+   * URL profil resmi MILIK NOVIYANTO SENDIRI untuk Google Knowledge Graph — LinkedIn, Instagram, TikTok, YouTube, Google Business Profile. Jangan masukkan situs brand lain (mis. folkastudio.com): sameAs menyatakan "ini entitas yang sama", bukan "ini partner/afiliasi". Kalau daftar ini dikosongkan, sistem otomatis memakai Google Business Profile.
    */
   sameAs?:
     | {
