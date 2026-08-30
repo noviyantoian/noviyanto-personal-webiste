@@ -90,33 +90,38 @@ export function generateMetadata({
 }
 
 // ── JSON-LD Schemas ──────────────────────────────────────────────
+/*
+  Person = identitas orangnya saja. NAP (telepon, email, alamat, geo) dan
+  areaServed SENGAJA tidak ada di sini — semuanya hanya hidup di
+  ProfessionalService.
+
+  Sebelumnya kedua node membawa NAP yang identik dan `url` yang sama-sama
+  menunjuk beranda, sehingga Google harus menebak entitas mana yang diwakili
+  halaman itu — dan tebakan semacam itu bisa berubah antar-crawl. Sekarang
+  pembagiannya tegas: orangnya berlabuh di /tentang, bisnisnya di beranda, dan
+  keduanya tetap terikat lewat pasangan worksFor/founder.
+*/
 export function personSchema(opts?: { sameAs?: string[] }) {
+  const aboutUrl = `${SITE.url}/tentang`
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
     '@id': `${SITE.url}/#person`,
     name: 'Noviyanto',
     jobTitle: 'Digital Growth Partner',
-    url: SITE.url,
+    url: aboutUrl,
+    mainEntityOfPage: aboutUrl,
     image: `${SITE.url}/images/noviyanto-profile.webp`,
-    sameAs: opts?.sameAs?.length ? opts.sameAs : ['https://folkastudio.com'],
-    email: SITE.email,
-    telephone: `+${SITE.waNumber}`,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: SITE.address.line,
-      addressLocality: SITE.address.city,
-      addressRegion: SITE.address.region,
-      postalCode: SITE.address.postalCode,
-      addressCountry: 'ID',
-    },
-    // Disamakan dengan pin Google Business Profile (place /g/11s8c0rp6f).
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: -7.0642496,
-      longitude: 110.3351475,
-    },
-    areaServed: ['Semarang', 'Jakarta', 'Bandung', 'Indonesia'],
+    /*
+      Fallback TIDAK boleh berisi folkastudio.com. `sameAs` adalah klaim "URL
+      ini profil resmi lain dari entitas yang sama", sedangkan Folkastudio
+      adalah brand terpisah yang kebetulan berbagi alamat operasional —
+      menyamakan keduanya justru mengaburkan entitas mana yang harus muncul
+      untuk kueri "Noviyanto". Kalau CMS kosong, jatuh ke Google Business
+      Profile: satu-satunya profil yang kepemilikannya sudah terverifikasi.
+    */
+    sameAs: opts?.sameAs?.length ? opts.sameAs : [SITE.gbpUrl],
     knowsAbout: [
       'Web Development',
       'Digital Marketing',
@@ -345,6 +350,15 @@ export function professionalServiceSchema(opts?: {
     telephone: `+${SITE.waNumber}`,
     email: SITE.email,
     priceRange: '$$',
+    /*
+      Tautan ke listing Google Business Profile. Keduanya sengaja diemit:
+      `sameAs` menyatakan "ini profil resmi entitas yang sama", `hasMap`
+      menyatakan "ini halaman petanya". Pasangan ini yang mengikat situs ke
+      listing Maps beserta ulasannya — sinyal entitas yang sebelumnya hanya ada
+      sebagai tautan biasa di footer, tidak pernah masuk markup.
+    */
+    sameAs: [SITE.gbpUrl],
+    hasMap: SITE.gbpUrl,
     address: {
       '@type': 'PostalAddress',
       streetAddress: SITE.address.line,

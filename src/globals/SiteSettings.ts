@@ -24,7 +24,7 @@ export const SiteSettings: GlobalConfig = {
       type: 'array',
       admin: {
         description:
-          'URL profil untuk Google Knowledge Graph. Tambahkan LinkedIn, Instagram, Google Business Profile, dll.',
+          'URL profil resmi MILIK NOVIYANTO SENDIRI untuk Google Knowledge Graph — LinkedIn, Instagram, TikTok, YouTube, Google Business Profile. Jangan masukkan situs brand lain (mis. folkastudio.com): sameAs menyatakan "ini entitas yang sama", bukan "ini partner/afiliasi". Kalau daftar ini dikosongkan, sistem otomatis memakai Google Business Profile.',
       },
       fields: [
         {

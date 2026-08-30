@@ -85,7 +85,10 @@ export const viewport: Viewport = {
 // ── Root Layout ───────────────────────────────────────────────────
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const settings = await getSiteSettings()
-  const sameAs = settings.sameAs?.map((s) => s.url).filter(Boolean) ?? ['https://folkastudio.com']
+  // Kalau CMS kosong, biarkan kosong — personSchema yang menentukan fallback-nya
+  // (Google Business Profile). Jangan pernah default ke folkastudio.com di sini:
+  // itu brand terpisah, dan `sameAs` menyatakan keduanya entitas yang sama.
+  const sameAs = settings.sameAs?.map((s) => s.url).filter(Boolean) ?? []
   const businessHours = getBusinessHours(settings)
   const geo = getGeoCoordinates(settings)
 
