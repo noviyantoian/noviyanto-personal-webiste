@@ -60,7 +60,7 @@ interface ClientLogo {
 }
 
 const CLIENT_LOGOS: ClientLogo[] = [
-  { src: '/images/clients/folkastudio.svg', alt: 'Logo Folkastudio' },
+  { src: '/images/clients/folkastudio.png', alt: 'Logo Folkastudio' },
   { src: '/images/clients/navbar/prioffice.png', alt: 'Logo PriOffice' },
   { src: '/images/clients/navbar/rockologist.png', alt: 'Logo Rockologist' },
   { src: '/images/clients/navbar/lapin.png', alt: 'Logo Lapin' },

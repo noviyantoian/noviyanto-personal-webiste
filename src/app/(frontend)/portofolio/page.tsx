@@ -223,13 +223,12 @@ export default function PortofolioPage() {
           <div className="max-w-5xl mx-auto bg-white border border-gray-200 rounded-2xl p-6 lg:p-10 shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10 items-center">
               <div className="md:col-span-3 flex justify-center md:justify-start">
-                <div className="relative w-32 h-32 rounded-2xl overflow-hidden flex items-center justify-center">
+                <div className="w-32 h-32 rounded-2xl border border-[#D6E7FE] bg-[#F2F7FF] flex items-center justify-center">
                   <Image
-                    src="/images/clients/folkastudio.svg"
+                    src="/images/clients/folkastudio.png"
                     alt="Logo Folkastudio"
-                    width={128}
-                    height={128}
-                    className="w-full h-full"
+                    width={72}
+                    height={81}
                   />
                 </div>
               </div>
