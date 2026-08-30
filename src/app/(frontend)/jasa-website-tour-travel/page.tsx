@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 
 import {
   serviceSchema,
@@ -15,6 +14,7 @@ import { SITE } from '@/lib/constants'
 
 import TourPageBody from './_components/TourPageBody'
 import { FAQ_ITEMS } from './_components/faqItems'
+import Breadcrumb from '@/components/layout/Breadcrumb'
 
 const PATH = '/jasa-website-tour-travel'
 const URL = `${SITE.url}${PATH}`
@@ -73,23 +73,13 @@ export default function JasaWebsiteTourTravelPage() {
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
-      <nav aria-label="Breadcrumb" className="container-wide pt-6 text-xs text-[#6B7280]">
-        <ol className="flex items-center gap-2">
-          <li>
-            <Link href="/" className="hover:text-[#111827] transition-colors">
-              Beranda
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-[#9CA3AF]">/</li>
-          <li>
-            <Link href="/layanan" className="hover:text-[#111827] transition-colors">
-              Layanan
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-[#9CA3AF]">/</li>
-          <li className="text-[#111827] font-medium">Website Tour &amp; Travel</li>
-        </ol>
-      </nav>
+      <Breadcrumb
+        items={[
+          { label: 'Beranda', href: '/' },
+          { label: 'Layanan', href: '/layanan' },
+          { label: 'Website Tour & Travel' },
+        ]}
+      />
 
       <TourPageBody />
     </div>

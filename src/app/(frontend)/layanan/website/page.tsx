@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 
 import {
   serviceSchema,
@@ -25,6 +24,7 @@ import WebsiteTech from './_components/WebsiteTech'
 import WebsiteUseCases from './_components/WebsiteUseCases'
 import WebsitePricing from './_components/WebsitePricing'
 import WebsiteProcess from './_components/WebsiteProcess'
+import Breadcrumb from '@/components/layout/Breadcrumb'
 
 const PATH = '/layanan/website'
 const URL = `${SITE.url}${PATH}`
@@ -96,26 +96,13 @@ export default function WebsiteServicePage() {
         dangerouslySetInnerHTML={{ __html: safeJsonLd([...jsonLd, faqPageSchema(faqItems)]) }}
       />
 
-      <nav
-        aria-label="Breadcrumb"
-        className="container-wide pt-6 text-xs text-[#6B7280]"
-      >
-        <ol className="flex items-center gap-2">
-          <li>
-            <Link href="/" className="hover:text-[#111827] transition-colors">
-              Beranda
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-[#9CA3AF]">/</li>
-          <li>
-            <Link href="/layanan" className="hover:text-[#111827] transition-colors">
-              Layanan
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-[#9CA3AF]">/</li>
-          <li className="text-[#111827] font-medium">Website Development</li>
-        </ol>
-      </nav>
+      <Breadcrumb
+        items={[
+          { label: 'Beranda', href: '/' },
+          { label: 'Layanan', href: '/layanan' },
+          { label: 'Website Development' },
+        ]}
+      />
 
       <ServiceHero
         badge="Website Development"

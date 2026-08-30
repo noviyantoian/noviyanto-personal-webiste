@@ -6,6 +6,7 @@ import { getPublishedPosts, mediaURL, formatPostDate, categoryTitle, type PostCa
 import { blogListSchema, breadcrumbSchema, safeJsonLd } from '@/lib/seo'
 import { buildMetadata } from '@/lib/page-metadata'
 import { SITE } from '@/lib/constants'
+import Breadcrumb from '@/components/layout/Breadcrumb'
 
 export const revalidate = 300 // ISR — blog di-cache, DB jarang kepukul
 
@@ -109,7 +110,9 @@ export default async function BlogPage() {
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+      <Breadcrumb items={[{ label: 'Beranda', href: '/' }, { label: 'Blog' }]} />
+
+      <section className="mx-auto max-w-7xl px-4 pb-20 pt-14 sm:px-6 lg:px-8 lg:pb-28 lg:pt-20">
         {/* Header */}
         <header className="max-w-2xl">
           <span className="inline-flex items-center rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">

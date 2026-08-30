@@ -1,4 +1,3 @@
-import Link from 'next/link'
 
 import {
   cityWebsiteServiceSchema,
@@ -22,6 +21,7 @@ import ClientReviews from '@/components/sections/ClientReviews'
 import WebsitePricing from './WebsitePricing'
 import CityLocal from './CityLocal'
 import CityAuthor from './CityAuthor'
+import Breadcrumb from '@/components/layout/Breadcrumb'
 
 interface CityWebsitePageProps {
   city: CityData
@@ -53,35 +53,14 @@ export default function CityWebsitePage({ city }: CityWebsitePageProps) {
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
-      <nav aria-label="Breadcrumb" className="container-wide pt-6 text-xs text-[#6B7280]">
-        <ol className="flex items-center gap-2 flex-wrap">
-          <li>
-            <Link href="/" className="hover:text-[#111827] transition-colors">
-              Beranda
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-[#9CA3AF]">
-            /
-          </li>
-          <li>
-            <Link href="/layanan" className="hover:text-[#111827] transition-colors">
-              Layanan
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-[#9CA3AF]">
-            /
-          </li>
-          <li>
-            <Link href="/layanan/website" className="hover:text-[#111827] transition-colors">
-              Website Development
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-[#9CA3AF]">
-            /
-          </li>
-          <li className="text-[#111827] font-medium">{city.city}</li>
-        </ol>
-      </nav>
+      <Breadcrumb
+        items={[
+          { label: 'Beranda', href: '/' },
+          { label: 'Layanan', href: '/layanan' },
+          { label: 'Website Development', href: '/layanan/website' },
+          { label: city.city },
+        ]}
+      />
 
       <ServiceHero
         badge={city.hero.badge}

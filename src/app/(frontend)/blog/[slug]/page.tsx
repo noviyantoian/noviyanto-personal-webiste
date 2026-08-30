@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, Clock } from 'lucide-react'
+import { Clock } from 'lucide-react'
 import RichText from '@/components/blog/RichText'
+import Breadcrumb from '@/components/layout/Breadcrumb'
 import RelatedLinks from '@/components/sections/RelatedLinks'
 import { RELATED_SERVICES } from '@/content/related'
 import {
@@ -99,18 +100,15 @@ export default async function BlogPostPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
-      <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:py-24">
-        {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-8">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 transition-colors hover:text-amber-700"
-          >
-            <ArrowLeft className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
-            Semua Artikel
-          </Link>
-        </nav>
+      <Breadcrumb
+        items={[
+          { label: 'Beranda', href: '/' },
+          { label: 'Blog', href: '/blog' },
+          { label: post.title },
+        ]}
+      />
 
+      <article className="mx-auto max-w-3xl px-4 pb-16 pt-12 sm:px-6 lg:pb-24 lg:pt-16">
         {/* Header */}
         <header>
           {category && (

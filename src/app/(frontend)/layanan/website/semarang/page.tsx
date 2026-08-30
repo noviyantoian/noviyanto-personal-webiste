@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 
 import { breadcrumbSchema, pricingOffersSchema, safeJsonLd } from '@/lib/seo'
 import { tiersOf } from '@/content/pricing'
@@ -20,6 +19,7 @@ import ClientReviews from '@/components/sections/ClientReviews'
 import RelatedLinks from '@/components/sections/RelatedLinks'
 import { RELATED_ARTICLES } from '@/content/related'
 import WebsitePricing from '../_components/WebsitePricing'
+import Breadcrumb from '@/components/layout/Breadcrumb'
 
 const PATH = '/layanan/website/semarang'
 const URL = `${SITE.url}${PATH}`
@@ -173,35 +173,14 @@ export default function SemarangWebsitePage() {
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
 
-      <nav
-        aria-label="Breadcrumb"
-        className="container-wide pt-6 text-xs text-[#6B7280]"
-      >
-        <ol className="flex items-center gap-2 flex-wrap">
-          <li>
-            <Link href="/" className="hover:text-[#111827] transition-colors">
-              Beranda
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-[#9CA3AF]">/</li>
-          <li>
-            <Link href="/layanan" className="hover:text-[#111827] transition-colors">
-              Layanan
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-[#9CA3AF]">/</li>
-          <li>
-            <Link
-              href="/layanan/website"
-              className="hover:text-[#111827] transition-colors"
-            >
-              Website Development
-            </Link>
-          </li>
-          <li aria-hidden="true" className="text-[#9CA3AF]">/</li>
-          <li className="text-[#111827] font-medium">Semarang</li>
-        </ol>
-      </nav>
+      <Breadcrumb
+        items={[
+          { label: 'Beranda', href: '/' },
+          { label: 'Layanan', href: '/layanan' },
+          { label: 'Website Development', href: '/layanan/website' },
+          { label: 'Semarang' },
+        ]}
+      />
 
       <ServiceHero
         badge="Jasa Pembuatan Website · Kota Semarang"
