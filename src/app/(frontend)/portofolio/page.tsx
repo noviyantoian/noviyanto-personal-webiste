@@ -10,6 +10,7 @@ import Breadcrumb from '@/components/layout/Breadcrumb'
 import ServiceHero from '@/components/sections/ServiceHero'
 import ServiceProse from '@/components/sections/ServiceProse'
 import ServiceCardGrid from '@/components/sections/ServiceCardGrid'
+import { clients, type Client } from '@/content/clients'
 import ServiceCTA from '@/components/sections/ServiceCTA'
 
 const PATH = '/portofolio'
@@ -42,140 +43,6 @@ function buildJsonLd(items: { name: string; url: string; description?: string }[
   ]
 }
 
-interface Client {
-  slug: string
-  name: string
-  domain: string
-  industry: string
-  logo: string
-  logoBg: 'white' | 'black' | 'amber'
-  wallLogo: string
-  wallLogoDarkBg?: boolean
-  services: string[]
-  summary: string
-  highlight: string
-}
-
-const clients: Client[] = [
-  {
-    slug: 'trulyhomemassage',
-    name: 'Truly Home Massage',
-    domain: 'trulyhomemassage.com',
-    industry: 'Home Service · Spa Panggilan',
-    logo: '/images/clients/trulyhomemassage.png',
-    logoBg: 'white',
-    wallLogo: '/images/clients/navbar/trulyhomemassage.png',
-    services: ['Maintenance Website', 'Google Ads', 'SEO'],
-    summary:
-      'Brand spa panggilan profesional. Pengelolaan maintenance, kampanye Google Ads, dan SEO untuk menjaga aliran booking lewat WhatsApp.',
-    highlight: 'Lead generation lokal + brand visibility jangka panjang',
-  },
-  {
-    slug: 'jedahomemassage',
-    name: 'Jeda Home Massage',
-    domain: 'jedahomemassage.com',
-    industry: 'Home Service · Spa Panggilan',
-    logo: '/images/clients/jedahomemassage.jpg',
-    logoBg: 'white',
-    wallLogo: '/images/clients/navbar/jedahomemassage.png',
-    wallLogoDarkBg: true,
-    services: ['Maintenance Website', 'Google Ads', 'SEO'],
-    summary:
-      'Spa panggilan dengan positioning premium. Maintenance website + Google Ads dan SEO untuk menangkap pencarian intent tinggi di area target.',
-    highlight: 'Funnel paid + organik yang saling menutupi celah',
-  },
-  {
-    slug: 'rockologist',
-    name: 'Rockologist',
-    domain: 'rockologist.id',
-    industry: 'Perhiasan & Batu Mulia',
-    logo: '/images/clients/rockologist.png',
-    logoBg: 'black',
-    wallLogo: '/images/clients/navbar/rockologist.png',
-    services: ['Maintenance Website', 'SEO'],
-    summary:
-      'Brand batu mulia dan jewelry artisan. Maintenance rutin + SEO organik untuk membangun otoritas brand di pencarian produk dan koleksi.',
-    highlight: 'Product discovery via pencarian organik',
-  },
-  {
-    slug: 'prioffice',
-    name: 'Prioffice',
-    domain: 'prioffice.com',
-    industry: 'Sewa Kantor & Virtual Office',
-    logo: '/images/clients/prioffice.png',
-    logoBg: 'white',
-    wallLogo: '/images/clients/navbar/prioffice.png',
-    services: ['Maintenance Website'],
-    summary:
-      'Penyedia sewa kantor dan virtual office. Maintenance website untuk menjaga uptime, performa, dan halaman selalu siap menerima inquiry.',
-    highlight: 'Website selalu online untuk bisnis berbasis booking',
-  },
-  {
-    slug: 'layz-motor',
-    name: 'Layz Motor',
-    domain: 'layz-motor.com',
-    industry: 'Otomotif · Motor',
-    logo: '/images/clients/layz-motor.jpg',
-    logoBg: 'white',
-    wallLogo: '/images/clients/navbar/layz-motor.png',
-    services: ['Maintenance Website'],
-    summary:
-      'Bisnis motor — showroom dan layanan. Maintenance website rutin untuk menjaga keamanan, kecepatan, dan update konten produk.',
-    highlight: 'Maintenance jangka panjang dengan respons cepat',
-  },
-  {
-    slug: 'lapin',
-    name: 'Lapin',
-    domain: 'lapin.id',
-    industry: 'Brand Lokal',
-    logo: '/images/clients/lapin.png',
-    logoBg: 'white',
-    wallLogo: '/images/clients/navbar/lapin.png',
-    services: ['Google Ads'],
-    summary:
-      'Pengelolaan kampanye Google Ads untuk Lapin. Setup, optimasi keyword, dan tracking konversi untuk mendorong inquiry yang relevan.',
-    highlight: 'Paid search yang menargetkan intent komersial',
-  },
-  {
-    slug: 'inisumedang',
-    name: 'Inisumedang',
-    domain: 'inisumedang.com',
-    industry: 'Media Lokal · Berita Daerah',
-    logo: '/images/clients/inisumedang.jpg',
-    logoBg: 'white',
-    wallLogo: '/images/clients/navbar/inisumedang.png',
-    services: ['Manage VPS'],
-    summary:
-      'Portal berita daerah Sumedang. Pengelolaan VPS — keamanan server, performa, dan ketersediaan untuk traffic harian yang konsisten.',
-    highlight: 'Infrastruktur VPS yang stabil untuk traffic media',
-  },
-  {
-    slug: 'folclean',
-    name: 'Folclean',
-    domain: 'folclean.com',
-    industry: 'Cleaning Service · Rumah & Gedung',
-    logo: '/images/clients/folclean.png',
-    logoBg: 'white',
-    wallLogo: '/images/clients/navbar/folclean.png',
-    services: ['Maintenance Website', 'SEO', 'Google Ads', 'Manage VPS'],
-    summary:
-      'Jasa kebersihan rumah dan gedung di Semarang dan Kendal. Pengelolaan penuh — maintenance website, SEO lokal, Google Ads, sampai VPS tempat situsnya berjalan.',
-    highlight: 'Satu tangan dari server sampai kampanye iklan',
-  },
-  {
-    slug: 'wallblock',
-    name: 'Wallblock',
-    domain: 'wallblock.co.id',
-    industry: 'B2B IT · Cyber Security',
-    logo: '/images/clients/wallblock.png',
-    logoBg: 'white',
-    wallLogo: '/images/clients/navbar/wallblock.png',
-    services: ['Maintenance Website', 'SEO', 'Google Ads', 'Manage VPS'],
-    summary:
-      'Vendor pengadaan IT dan mitra cyber security untuk bank, rumah sakit, dan korporasi di Jawa Tengah. Pengelolaan menyeluruh dari infrastruktur VPS sampai akuisisi lead B2B.',
-    highlight: 'Funnel B2B untuk siklus keputusan panjang',
-  },
-]
 
 const LOGO_BG: Record<Client['logoBg'], string> = {
   white: 'bg-white',

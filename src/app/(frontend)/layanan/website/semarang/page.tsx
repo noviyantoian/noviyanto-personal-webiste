@@ -15,6 +15,7 @@ import WebsiteProcess from '../_components/WebsiteProcess'
 import SemarangLocal from './_components/SemarangLocal'
 import SemarangAuthor from './_components/SemarangAuthor'
 import WebsiteBusinessTypes from '../_components/WebsiteBusinessTypes'
+import CityClients from '../_components/CityClients'
 import ClientReviews from '@/components/sections/ClientReviews'
 import RelatedLinks from '@/components/sections/RelatedLinks'
 import { RELATED_ARTICLES } from '@/content/related'
@@ -189,12 +190,14 @@ export default function SemarangWebsitePage() {
         subheadline="Website bisnis yang bukan sekadar tampil bagus, tapi benar-benar mendatangkan calon klien. Dikerjakan langsung oleh Noviyanto — web developer & digital growth partner yang berbasis di Kota Semarang."
         ctaWaKey="website"
         ctaLabel="Konsultasi Gratis via WhatsApp"
-        socialProof="Dipercaya oleh bisnis di Semarang, Jakarta, Bandung, dan kota lainnya"
+        socialProof="Basis saya di Semarang — Folclean dan Wallblock dikelola dari kota ini"
       />
 
       <SemarangLocal />
 
       <SemarangAuthor />
+
+      <CityClients city="Semarang" />
 
       <WebsiteBusinessTypes />
 

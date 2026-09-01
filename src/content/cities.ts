@@ -71,7 +71,7 @@ const JAKARTA: CityData = {
     highlight: 'Website Profesional',
     subheadline:
       'Website bisnis yang bukan sekadar tampil bagus, tapi benar-benar mendatangkan calon klien. Dikerjakan langsung oleh Noviyanto — web developer & digital growth partner yang melayani bisnis di Jakarta secara online dengan koordinasi yang rapi.',
-    socialProof: 'Dipercaya oleh bisnis di Jakarta, Semarang, Bandung, dan kota lainnya',
+    socialProof: 'Prioffice dan Layz Motor — klien Jakarta yang websitenya saya kelola aktif',
   },
   local: {
     eyebrow: 'Melayani Jakarta',
@@ -172,7 +172,7 @@ const BANDUNG: CityData = {
     highlight: 'Website Profesional',
     subheadline:
       'Website bisnis yang bukan sekadar tampil bagus, tapi benar-benar mendatangkan calon klien. Dikerjakan langsung oleh Noviyanto — web developer & digital growth partner yang melayani bisnis di Bandung secara online dengan koordinasi yang rapi.',
-    socialProof: 'Dipercaya oleh bisnis di Bandung, Semarang, Jakarta, dan kota lainnya',
+    socialProof: 'Lapin, Inisumedang, Truly & Jeda Home Massage — empat klien aktif di wilayah Bandung',
   },
   local: {
     eyebrow: 'Melayani Bandung',

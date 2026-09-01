@@ -17,6 +17,7 @@ import WebsiteApproach from './WebsiteApproach'
 import WebsiteIncluded from './WebsiteIncluded'
 import WebsiteProcess from './WebsiteProcess'
 import WebsiteBusinessTypes from './WebsiteBusinessTypes'
+import CityClients from './CityClients'
 import ClientReviews from '@/components/sections/ClientReviews'
 import WebsitePricing from './WebsitePricing'
 import CityLocal from './CityLocal'
@@ -75,6 +76,8 @@ export default function CityWebsitePage({ city }: CityWebsitePageProps) {
       <CityLocal local={city.local} />
 
       <CityAuthor author={city.author} />
+
+      <CityClients city={city.city} />
 
       <WebsiteBusinessTypes />
 
